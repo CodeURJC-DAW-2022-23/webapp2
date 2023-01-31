@@ -2,7 +2,7 @@
 
 # Fase 0:
 
-El grupo 2 desarrollará la aplicación web "".
+El grupo 2 desarrollará la aplicación web "Plataforma Asociaciones URJC".
 
 EL equipo se encuentra compuesto por:
 
