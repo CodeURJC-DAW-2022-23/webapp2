@@ -20,6 +20,7 @@ EL equipo se encuentra compuesto por:
 * evento
 * asociación
 * campus
+* comentario
 
 ### Usuarios
 
@@ -32,7 +33,7 @@ EL equipo se encuentra compuesto por:
 
 #### Funcionalidades usuario base
 
-Logearse, registrarse, y buscar, filtrar y apuntarse a eventos (este último solo registrados)
+Logearse, registrarse, comentar eventos finalizados, y buscar, filtrar y apuntarse a eventos (este último solo registrados)
 
 #### Funcionalidades usuario asociación
 
