@@ -63,20 +63,21 @@ Se creará un algoritmo capaz de buscar y filtrar adecuadamente los eventos.
 
 ## Fase 1
 
-**Captura landing aquí**
+![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/home.PNG?raw=true)
+![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/home2.PNG?raw=true)
 La *landing page* (o "página de aterrizaje") consiste en un menú con una barra de búsqueda con opciones de filtrado y un botón que permite el acceso a los administradores y a los usuarios de las asociaciones. En la parte inferior de la barra de búsqueda, aparecen distintos eventos según lo filtado por la barra de búsqueda.
 
-**Captura detalle evento aquí**
+![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/detalles.PNG?raw=true)
 La página de detalle de eventos muestra información adicional de un evento. Consiste de un texto descriptivo, lugar y horario. También cuenta con un botón de seguir evento para poder recibir avisos sobre este.
 
-**Captura login aquí**
-La página de login de un usuario base consta de los campos de nombre de usuario y contraseña, demás de un botón para continuar.
+![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/loginAsociaciones.PNG?raw=true)
+La página de inicio de sesión de un usuario base consta de los campos de nombre de usuario y contraseña, demás de un botón para continuar.
 
 **Captura login admin aquí**
 La página de login de un usuario de asociación/administración consta de los campos de nombre de usuario y contraseña, demás de un botón para continuar.
 
-**Captura formulario asociación aquí**
+![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/eventform.PNG?raw=true)
 El formulario de asociación permite configurar párámetros relacionados con la creación, modificación y borrado de eventos de la asociación.
 
-**Captura formulario admin aquí**
+![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/eventform.PNG?raw=true)
 El formulario de administración permite configurar párámetros relacionados con la creación, modificación y borrado de todos los eventos. Además, también puede cambiar la configuración del resto de usuarios e incluso borrar usuarios.
