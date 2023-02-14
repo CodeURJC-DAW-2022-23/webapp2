@@ -32,7 +32,7 @@ function inicio() {
     <div class='widget'>
     <div class='widget__photo'></div>
     <div class='widget__button'>
-        <a href="../html/detalles.html">Más Info</a>
+        <a href="detalles.html">Más Info</a>
     </div>
     <div class='widget__details'>
         <div class='widget__name'>
@@ -99,7 +99,7 @@ function inicio() {
 <div class='widget'>
             <div class='widget__photo'></div>
             <div class='widget__button'>
-                <a href="../html/detalles.html">Más Info</a>
+                <a href="detalles.html">Más Info</a>
             </div>
             <div class='widget__details'>
                 <div class='widget__name'>
@@ -166,7 +166,7 @@ function inicio() {
         <div class='widget'>
             <div class='widget__photo'></div>
             <div class='widget__button'>
-                <a href="../html/detalles.html">Más Info</a>
+                <a href="detalles.html">Más Info</a>
             </div>
             <div class='widget__details'>
                 <div class='widget__name'>
@@ -233,7 +233,7 @@ function inicio() {
         <div class='widget'>
             <div class='widget__photo'></div>
             <div class='widget__button'>
-                <a href="../html/detalles.html">Más Info</a>
+                <a href="detalles.html">Más Info</a>
             </div>
             <div class='widget__details'>
                 <div class='widget__name'>
