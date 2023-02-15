@@ -23,8 +23,8 @@ public class UserService {
 		return users.findByEmail(mail);
 	}
 
-	public Optional<User> findByName(String mail) {
-	 	return users.findByEmail(mail);
+	public Optional<User> findByUsername(String username) {
+	 	return users.findByUsername(username);
 	}
 
 	public List<User> findAll() {

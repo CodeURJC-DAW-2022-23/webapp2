@@ -17,7 +17,7 @@ public class RegisterController {
     public String register(Model model, User user){
         if(!userService.existEmail(user.getEmail())){
             userService.save(user);
-            return "redirect:/login";
+            return "redirect:/home";
         }else{
             return "/home";
         }  
