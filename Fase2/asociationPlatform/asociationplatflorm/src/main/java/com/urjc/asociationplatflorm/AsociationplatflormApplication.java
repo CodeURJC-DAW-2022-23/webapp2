@@ -1,4 +1,4 @@
-package com.urjc.asociationplatflorm.Model;
+package com.urjc.asociationplatflorm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
