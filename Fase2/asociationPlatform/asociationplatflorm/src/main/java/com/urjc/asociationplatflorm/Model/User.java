@@ -12,17 +12,11 @@ public class User {
 
     
     private String username;
-
     private String email;
-
     private String password;
-
-
     private String rol;
-
     private String asoname;
     
-
     public User(){}
 
     //admin user
