@@ -6,41 +6,42 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="Id")
     private Long id;
 
-    
-    private String username;
     private String email;
+    private String username;
     private String password;
     private String rol;
-    private String asoname;
+    // private String asoname;
     
     public User(){}
 
-    //admin user
-    public User(String username, String password){
-        this.username = username;
-        this.password = password;
-        this.rol = "admin";
-    }
-
-    //aso user
-    public User(String username, String email, String password,String asoname){
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.rol = "aso";
-    }
-
     //base user
-    public User(String username, String email, String password){
+    public User(String email, String username, String password){
         this.username = username;
         this.email = email;
         this.password = password;
         this.rol = "base";
     }
+
+    //admin user
+    // public User(String username, String password){
+    //     this.username = username;
+    //     this.password = password;
+    //     this.rol = "admin";
+    // }
+
+    //aso user
+    // public User(String username, String email, String password,String asoname){
+    //     this.username = username;
+    //     this.email = email;
+    //     this.password = password;
+    //     this.rol = "aso";
+    // }
+
+    
 
     public String getUsername(){
         return this.username;
