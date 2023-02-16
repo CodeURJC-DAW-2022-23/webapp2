@@ -19,4 +19,13 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/logerror")
+    public String gologerror(Model model){
+        return "404";
+    }
+
+    @GetMapping("/private")
+    public String goprivate(Model model){
+        return "myAso";
+    }
 }
