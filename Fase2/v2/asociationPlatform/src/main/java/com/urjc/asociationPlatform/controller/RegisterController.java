@@ -15,13 +15,9 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(Model model, User user){
-        // if(!userService.existEmail(user.getEmail())){
-            
-        // }else{
-        //     return "login";
-        // } 
-        
-        userService.save(user);
-        return "redirect:/login";
+        if(!userService.existEmail(user.getEmail())){
+            userService.save(user);
+        }
+        return "redirect:/login";         
     }
 }
