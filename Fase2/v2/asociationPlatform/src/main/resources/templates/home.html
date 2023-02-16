@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <header class="nav container_fluid">
+        <div class="">
+            <a href="#"><img class="logo" src="img/URJ_logo_BN_NEG_corona_roja.png" alt=""></a>
+
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="login">Mi Espacio</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </header>
+
+
+    <div class="hero container-fluid">
+        <form class="search-form" id="buscador">
+            <input type="search" value="" placeholder="Busca eventos o categorías" class="search-input">
+            <button type="submit" class="search-button">
+                <svg class="submit-button">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                </svg>
+            </button>
+            <div class="search-option">
+                <div>
+                    <input name="type" type="radio" value="type-users" id="type-users">
+                </div>
+            </div>
+        </form>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
+            <symbol id="search" viewBox="0 0 32 32">
+                <path
+                    d="M 19.5 3 C 14.26514 3 10 7.2651394 10 12.5 C 10 14.749977 10.810825 16.807458 12.125 18.4375 L 3.28125 27.28125 L 4.71875 28.71875 L 13.5625 19.875 C 15.192542 21.189175 17.250023 22 19.5 22 C 24.73486 22 29 17.73486 29 12.5 C 29 7.2651394 24.73486 3 19.5 3 z M 19.5 5 C 23.65398 5 27 8.3460198 27 12.5 C 27 16.65398 23.65398 20 19.5 20 C 15.34602 20 12 16.65398 12 12.5 C 12 8.3460198 15.34602 5 19.5 5 z" />
+            </symbol>
+        </svg>
+    </div>
+
+    <div class="filters-container">
+        <div class="filter">
+            <div class="select-container">
+                <select class="custom-select" id="asociacion">
+                    <option value="" selected>Asociación</option>
+                    <option value="All">Todas</option>
+                    <option value="BIC">BIC</option>
+                    <option value="ARJE">ARJE</option>
+                    <option value="ADEMED URJC">ADEMED URJC</option>
+                    <option value="APOE">APOE</option>
+                    <option value="ANGER">ANGER</option>
+                    <option value="ESN URJC">ESN URJC</option>
+                    <option value="I+b ingeniería biomédica">I+b ingeniería biomédica</option>
+                    <option value="IURIS URJC">IURIS URJC</option>
+                    <option value="ASOLSE">ASOLSE</option>
+                    <option value="Asociación Aeroespacial Cosmos">Asociación Aeroespacial Cosmos </option>
+                    <option value="ALOA">ALOA</option>
+                    <option value="ASESP">ASESP</option>
+                    <option value="ADHUE">ADHUE</option>
+                </select>
+            </div>
+            <div class="select-container">
+                <select class="custom-select" id="mes">
+                    <option value="" selected>Mes</option>
+                    <option value="All">Todos</option>
+                    <option value="ENERO">Enero</option>
+                    <option value="FEBRERO">Febrero</option>
+                    <option value="MARZO">Marzo</option>
+                    <option value="ABRIL">Abril</option>
+                    <option value="MAYO">Mayo</option>
+                    <option value="JUNIO">Junio</option>
+                    <option value="JULIO">Julio</option>
+                    <option value="AGOSTO">Agosto</option>
+                    <option value="SEPTIEMBRE">Septiembre</option>
+                    <option value="OCTUBRE">Octubre</option>
+                    <option value="NOVIEMBRE">Noviembre</option>
+                    <option value="DICIEMBRE">Diciembre</option>
+                </select>
+            </div>
+            <div class="select-container">
+                <select class="custom-select" id="campus">
+                    <option value="" selected>Campus</option>
+                    <option value="All">Todos</option>
+                    <option value="ALCORCON">Alconrcón</option>
+                    <option value="ARANJUEZ">Aranjuez</option>
+                    <option value="FUENLABRADA">Fuenlabrada</option>
+                    <option value="MOSTOLES">Móstoles</option>
+                    <option value="MADRID-VICALVARO">Madrid-Vicalvaro</option>
+                    <option value="MADRID-QUINTANA">Madrid-Quintana</option>
+                </select>
+            </div>
+
+            <!-- <div class="boton">
+                <i class="bx bx-filter-alt"></i>
+                <i class="bx bx-check"></i>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="options">
+        <ul>
+            <li><a href="#eventos" id="eventos">Próximos Eventos</a> </li>
+            <li><a href="#agenda" id="agenda">Agenda</a></li>
+        </ul>
+    </div>
+
+    <div class='content' id="elemento">
+
+        <!-- <div class='widget'>
+            <div class='widget__photo'></div>
+            <div class='widget__button'>
+                Más Info
+            </div>
+            <div class='widget__details'>
+                <div class='widget__name'>
+                    Evento Apertura
+                </div>
+                <div class='widget__type'>
+                    Anger
+                </div>
+                <div class='widget__info'>
+                    <span>
+                        Universidad Rey Juan Carlos
+                    </span>
+                    <span>
+                        Móstoles
+                    </span>
+                </div>
+                <div class='widget__hidden'>
+                    <hr>
+                    <table class='widget__table'>
+                        <tr>
+                            <td>
+                                Fecha
+                            </td>
+                            <td>
+                                17 de febrero 2021
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Horario
+                            </td>
+                            <td>
+                                9-12
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Lugar
+                            </td>
+                            <td>
+                                Salón de actos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reserva
+                            </td>
+                            <td>
+                                Si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Creditos
+                            </td>
+                            <td>
+                                No
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div> -->
+
+
+    </div>
+
+    <footer class="container-fluid">
+        <div class="container">
+            <p>
+                2023 &copy; PGCA
+                -
+                <a href="#">DAW</a>
+                -
+                <a href="#">Universidad Rey Juan Carlos</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/cards.js"></script>
+
+</body>
+
+</html>
