@@ -22,22 +22,22 @@ public class RegisterController {
     @Autowired
 	private PasswordEncoder passwordEncoder;
 
-    // User currentUser;
+    User currentUser;
 
-    // @ModelAttribute
-	// public void addAttributes(Model model, HttpServletRequest request) {
+    @ModelAttribute
+	public void addAttributes(Model model, HttpServletRequest request) {
 
-	// 	Principal principal = request.getUserPrincipal();
+	    Principal principal = request.getUserPrincipal();
 
-	// 	if(principal != null) {
-	// 		userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
-	// 		model.addAttribute("logged", true);
-	// 		model.addAttribute("currentUser", currentUser);
-	// 		model.addAttribute("admin", request.isUserInRole("ADMIN"));
-	// 	} else {
-	// 		model.addAttribute("logged", false);
-	// 	}
-	// }
+	 	if(principal != null) {
+	 		userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
+	 		model.addAttribute("logged", true);
+			model.addAttribute("currentUser", currentUser);
+			model.addAttribute("admin", request.isUserInRole("ADMIN"));
+	 	} else {
+	 		model.addAttribute("logged", false);
+		}
+	}
 
     @PostMapping("/register")
     public String register(Model model, User user){
