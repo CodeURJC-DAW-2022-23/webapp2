@@ -36,6 +36,13 @@
                   <label for="password-signup" class="form-label">Contraseña</label>
                   <input id="password-signup" type="password" name="encodedPassword">
                 </div>
+                <div>
+                  <label for="cars">Elige el tipo de cuenta:</label>
+                  <select name="rol" id="rol">
+                      <option value="BASE">Usuario</option>
+                      <option value="ASO">Asociación (Tendrás que esperar a que un admin te valide)</option>
+                  </select>
+                </div>
                 <div class="form-element form-submit">
                   <button id="signUp" class="signup" type="submit" name="signup" value="User">Crear</button>
                   <input type="hidden" name="_csrf" value="{{token}}"/>

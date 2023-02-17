@@ -44,7 +44,9 @@ public class RegisterController {
         if(!userService.existEmail(user.getEmail())){
             user.setencodedPassword(passwordEncoder.encode(user.getencodedPassword()));
             userService.save(user);
-        }
-        return "redirect:/login";         
+            return "redirect:/login"; 
+        }else{
+            return "logerror";    
+        }      
     }
 }

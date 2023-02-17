@@ -1,4 +1,8 @@
 @charset "UTF-8";
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   margin: 0;
   height: 100%;
@@ -6,6 +10,14 @@ body {
   width: 100% !important;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+}
+
+select{
+  border: none;
+  border-radius: 3px;
+  margin-left: 10px;
+  width: 100px;
+  background-color: #e3e3e3;
 }
 
 .backRight {
@@ -228,7 +240,7 @@ button.off {
   margin: 0;
 }
 button.off.signup {
-  color: #03A9F4;
+  width: 200px ;
 }
 button.off.login {
   color: #CC2020;
