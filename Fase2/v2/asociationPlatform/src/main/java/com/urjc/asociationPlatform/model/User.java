@@ -14,7 +14,7 @@ public class User {
 
     private String email;
     private String username;
-    private String password;
+    private String encodedPassword;
     private String rol;
     private String asoname;
 
@@ -24,25 +24,25 @@ public class User {
     public User(){}
 
     //base user
-    public User(String email, String username, String password){
+    public User(String email, String username, String encodedPassword){
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
         this.rol = "base";
     }
 
     //admin user
-     public User(String username, String password){
+     public User(String username, String encodedPassword){
         this.username = username;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
         this.rol = "admin";
      }
 
     //aso user
-    public User(String username, String email, String password,String asoname){
+    public User(String username, String email, String encodedPassword,String asoname){
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
         this.rol = "aso";
     }
 
@@ -56,8 +56,8 @@ public class User {
         return this.email;
     }
 
-    public String getPassword(){
-        return this.password;
+    public String getencodedPassword(){
+        return this.encodedPassword;
     }
 
     public String getRol(){
@@ -76,8 +76,8 @@ public class User {
         this.email = email;
     }
 
-    public void setPassword(String password){
-        this.password = password;
+    public void setencodedPassword(String encodedPassword){
+        this.encodedPassword = encodedPassword;
     }
 
     public void setRol(String rol){

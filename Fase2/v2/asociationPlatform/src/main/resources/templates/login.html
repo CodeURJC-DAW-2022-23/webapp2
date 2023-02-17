@@ -34,10 +34,11 @@
                 </div>
                 <div class="form-element form-stack">
                   <label for="password-signup" class="form-label">Contraseña</label>
-                  <input id="password-signup" type="password" name="password">
+                  <input id="password-signup" type="password" name="encodedPassword">
                 </div>
                 <div class="form-element form-submit">
                   <button id="signUp" class="signup" type="submit" name="signup" value="User">Crear</button>
+                  <input type="hidden" name="_csrf" value="{{token}}"/>
                 </div>
               </form>
               <button id="goLeft" class="signup off">Iniciar Sesión</button> 
@@ -58,6 +59,7 @@
                 </div>
                 <div class="form-element form-submit">
                   <button id="logIn" class="login" type="submit" name="login">Entrar</button>
+                  <input type="hidden" name="_csrf" value="{{token}}"/>
                 </div>
               </form>
               <button id="goRight" class="login off" name="signup">Crear Cuenta</button>
