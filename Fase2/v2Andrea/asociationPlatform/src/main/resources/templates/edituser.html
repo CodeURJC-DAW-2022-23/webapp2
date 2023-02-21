@@ -110,40 +110,33 @@
                                   
                                   <div class="form-group py-2">
                                     <select class="custom-select" id="asociacion">
-                                      <option value="" selected>Asociación</option>
-                                      <option value="All">Todas</option>
-                                      <option value="BIC">BIC</option>
-                                      <option value="ARJE">ARJE</option>
+                                      <option value="BASE" selected>Base</option>
+                                      <option value="ASO">Asociación</option>
+                                      <option value="ADMIN">Admin</option>
                                     </select>
                                   </div>
                                   <div class='d-sm-flex py-sm-2'>
                                     <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
-                                      <label for="eventName">Nombre</label>
-                                      <input type="text" class="form-control" id="eventName" placeholder="Nombre del evento" />
+                                        <label for="username" class="form-label">Nombre de Usuario</label>
+                                        <input id="username-edituser" type="text" name="username">
                                     </div>
                                     <div class="form-group py-2 py-sm-0 col-sm-5">
-                                      <label for="">Fecha y hora</label>
-                                      <input type="datetime-local" class="form-control" id="eventDate" />
+                                        <label class="form-check-label" for="email-edituser">Email</label>
+                                        <input id="email-edituser" type="email" name="email">
+                                        </div>
                                     </div>
                                   </div>
                                   <div class="form-group py-2">
-                                    <label for="">Ubicación</label>
-                                    <input type="text" class="form-control" id="eventPlace" />
+                                    <label for="password-edituser" class="form-label">Password</label>
+                                    <input id="password-edituser" type="password" name="encodedPassword">
                                   </div>
-                                  <div class="form-group py-2">
-                                    <label for="">Descripción</label>
-                                    <textarea type="text" class="form-control" style=" height: 10em;"> </textarea>
-                                  </div>
+                                  
                                   <div class="d-flex py-2 w-100">
                                     <div class="flex-fill"></div>
-                                    <button type="submit" class="btn btn-danger px-4">Crear</button>
+                                    <button type="submit" class="btn btn-danger px-4">Aceptar</button>
                                   </div>
                                 </form>
                               </div>
-
-
-                        
-
                     </div>
 
                     
