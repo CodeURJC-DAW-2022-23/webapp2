@@ -1,0 +1,1 @@
+insert into asociation (id,campus,description,faculty,name) values (1,'Mostoles','Hola xD','ETSII','Roleros en linea');
