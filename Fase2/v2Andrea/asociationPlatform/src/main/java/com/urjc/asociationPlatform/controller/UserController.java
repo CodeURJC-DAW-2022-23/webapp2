@@ -1,6 +1,7 @@
 package com.urjc.asociationPlatform.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.urjc.asociationPlatform.service.UserService;
 import com.urjc.asociationPlatform.model.User;
@@ -25,29 +26,19 @@ public class UserController {
         model.addAttribute("userlist", userlist);
         return "users"; 
     }
-	/* 
+	
     @GetMapping("/editarUsuarios/{id}")
 	public String obtainUser(Model model, @PathVariable long id) {
 
-		User user = userService.findById(id);
+		Optional<User> user = userService.findById(id);
 
 		model.addAttribute("user", user);
 
-		return "";
+		return "edituser";
 	}
 
-
-    @GetMapping("/editarUsuario/{id}")
-	public String obtainUser(Model model, @PathVariable long id) {
-		User user = userService.findById(id);
-		if (user.getId().equals(userService.getId())) {
-			model.addAttribute("user", user);
-			return "";
-		}
-		return "redirect:/404";
-	}
-
-	@PostMapping("/editarUsuario")
+	/* 
+	@PostMapping("/editarUsuarios/{id}")
 	public String editProfile(Model model, User newUser) throws IOException, SQLException {
 		userService.setUsername(newUser.getUsername());
 		newUser.getEncodedPassword();

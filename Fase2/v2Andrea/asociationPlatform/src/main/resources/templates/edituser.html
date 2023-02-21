@@ -74,56 +74,35 @@
                         <h1 class="mt-4">Usuarios</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Usuarios</li>
-                        </ol>
-                        
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Tabla Usuarios
+                        </ol>     
+                        <form id="form-edituser" method="post" action="/editarUsuario">
+                            <div class="mb-3">
+                              <label for="username" class="form-label">Nombre de Usuario</label>
+                              <input id="username-edituser" type="text" name="username">
                             </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>Contraseña</th>
-                                            <th>Rol</th>
-                                            <th>Modificar</th>
-                                           
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>Contraseña</th>
-                                            <th>Rol</th>
-                                            <th>Modificar</th>
-                                            
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        {{#userlist}}
-                                        <tr>
-                                            <td>{{id}}</td>
-                                            <td>{{username}}</td>
-                                            <td>{{email}}</td>
-                                            <td>{{encodedPassword}}</td>
-                                            <td>{{rol}}</td>
-                                            <td><form action="/editarUsuarios/{{id}}" method="post">
-                                                <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
-                                                <input type="hidden" name="_csrf" value="{{token}}"/>
-                                            </form></td>
-                                        </tr>
-                                        {{/userlist}}
-                                        
-                                    </tbody>
-                                </table>
+
+                            <div class="mb-3">
+                                <label class="form-check-label" for="email-edituser">Email</label>
+                                <input id="email-edituser" type="email" name="email">
+                                </div>
+
+                            <div class="mb-3">
+                              <label for="password-edituser" class="form-label">Password</label>
+                              <input id="password-edituser" type="password" name="encodedPassword">
                             </div>
-                        </div>
+
+                            <div class="mb-3">
+                                <label class="form-check-label" for="exampleCheck1">Rol</label>
+                                <select id="abledSelect" class="form-select">
+                                    <option>Base</option>
+                                    <option>Asociación</option>
+                                    <option>Admin</option>
+                                    <option>Actual</option>
+                                  </select>
+                              </div>
+
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                          </form>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
