@@ -80,6 +80,50 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Crear Evento</li>
                         </ol>
+
+                        <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5">
+                            <div class="form-group py-2">
+                              <select class="custom-select" id="asociacion">
+                                <option value="" selected>Asociación</option>
+                                <option value="All">Todas</option>
+                                <option value="BIC">BIC</option>
+                                <option value="ARJE">ARJE</option>
+                                <option value="ADEMED URJC">ADEMED URJC</option>
+                                <option value="APOE">APOE</option>
+                                <option value="ANGER">ANGER</option>
+                                <option value="ESN URJC">ESN URJC</option>
+                                <option value="I+b ingeniería biomédica">I+b ingeniería biomédica</option>
+                                <option value="IURIS URJC">IURIS URJC</option>
+                                <option value="ASOLSE">ASOLSE</option>
+                                <option value="Asociación Aeroespacial Cosmos">Asociación Aeroespacial Cosmos </option>
+                                <option value="ALOA">ALOA</option>
+                                <option value="ASESP">ASESP</option>
+                                <option value="ADHUE">ADHUE</option>
+                              </select>
+                            </div>
+                            <div class='d-sm-flex py-sm-2'>
+                              <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                <label for="eventName">Nombre</label>
+                                <input type="text" class="form-control" id="eventName" placeholder="Nombre del evento" />
+                              </div>
+                              <div class="form-group py-2 py-sm-0 col-sm-5">
+                                <label for="">Fecha y hora</label>
+                                <input type="datetime-local" class="form-control" id="eventDate" />
+                              </div>
+                            </div>
+                            <div class="form-group py-2">
+                              <label for="">Ubicación</label>
+                              <input type="text" class="form-control" id="eventPlace" />
+                            </div>
+                            <div class="form-group py-2">
+                              <label for="">Descripción</label>
+                              <textarea type="text" class="form-control" style=" height: 10em;"> </textarea>
+                            </div>
+                            <div class="d-flex py-2 w-100">
+                              <div class="flex-fill"></div>
+                              <button type="submit" class="btn btn-danger px-4">Crear</button>
+                            </div>
+                          </form>
                         
                     
                 </main>

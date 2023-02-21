@@ -62,5 +62,10 @@ public class HomeController {
 		return "myAso";
 	}
 
+    @RequestMapping("/crearEvento")
+	public String prueba() {
+		return "crearEvento";
+	}
+
 
 }
