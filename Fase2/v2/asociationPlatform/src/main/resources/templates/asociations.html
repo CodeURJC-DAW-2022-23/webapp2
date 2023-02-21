@@ -83,6 +83,55 @@
                                 </li>
                                 {{/asocList}}
                             </ul>
+
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    Tabla Usuarios
+                                </div>
+                                <div class="card-body">
+                                    <table id="datatablesSimple">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Correo</th>
+                                                <th>Contraseña</th>
+                                                <th>Rol</th>
+                                                <th>Modificar</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Nombre</th>
+                                                <th>Correo</th>
+                                                <th>Contraseña</th>
+                                                <th>Rol</th>
+                                                <th>Modificar</th>
+                                                
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            {{#userlist}}
+                                            <tr>
+                                                <td>{{id}}</td>
+                                                <td>{{username}}</td>
+                                                <td>{{email}}</td>
+                                                <td>{{encodedPassword}}</td>
+                                                <td>{{rol}}</td>
+                                                <td><form action="/logout" method="post">
+                                                    <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success">
+                                                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                                                </form></td>
+                                            </tr>
+                                            {{/userlist}}
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         
                         
                     
