@@ -1,7 +1,5 @@
 package com.urjc.asociationPlatform.model;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +9,42 @@ public class Asociation {
     @Column(name ="Id")
     private Long id;
 
-    private String asociationName;
+    private String name;
+    private String description;
+    private String faculty;
+    private String campus;
     
     public Asociation(){}
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setFaculty(String faculty){
+        this.faculty = faculty;
+    }
+
+    public void setCampus(String campus){
+        this.campus = campus;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getDescription(){
+        return this.description;
+    }
+
+    public String getFaculty(){
+        return this.faculty;
+    }
+
+    public String getCampus(){
+        return this.campus;
+    }
 }
