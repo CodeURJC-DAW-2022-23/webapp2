@@ -24,29 +24,18 @@ public class AdminAsociationController {
         model.addAttribute("asocList", list);
         return "asociations"; 
     }
-
     
-    @GetMapping("/editAsoc/{id}")
+    @GetMapping("/editAsociations/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id) {
 
 		Optional<Asociation> asoc = asoService.findById(id);
 
 		model.addAttribute("asociation", asoc);
 
-		return "";
+		return "editAsociations";
 	}
 
 /* 
-    @GetMapping("/editarUsuario/{id}")
-	public String obtainUser(Model model, @PathVariable long id) {
-		User user = userService.findById(id);
-		if (user.getId().equals(userService.getId())) {
-			model.addAttribute("user", user);
-			return "";
-		}
-		return "redirect:/404";
-	}
-
 	@PostMapping("/editarUsuario")
 	public String editProfile(Model model, User newUser) throws IOException, SQLException {
 		userService.setUsername(newUser.getUsername());
