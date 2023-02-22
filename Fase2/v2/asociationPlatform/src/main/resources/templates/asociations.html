@@ -90,6 +90,7 @@
                                                 <th>Facultad</th>
                                                 <th>Campus</th>
                                                 <th>Modificar</th>
+                                                <th>Eliminar</th>
                                                
                                             </tr>
                                         </thead>
@@ -101,6 +102,7 @@
                                                 <th>Facultad</th>
                                                 <th>Campus</th>
                                                 <th>Modificar</th>
+                                                <th>Eliminar</th>
                                                 
                                             </tr>
                                         </tfoot>
@@ -112,8 +114,12 @@
                                                 <td>{{description}}</td>
                                                 <td>{{faculty}}</td>
                                                 <td>{{campus}}</td>
-                                                <td><form action="/editAsociations/{{id}}" method="get">
+                                                <td><form action="/editAsociations/{{id}}">
                                                     <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success">
+                                                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                                                </form></td>
+                                                <td><form action="/editAsociations/{{id}}/delete" method="post">
+                                                    <input type="submit" value="Eliminar" class="btn btn-sm btn-outline-danger">
                                                     <input type="hidden" name="_csrf" value="{{token}}"/>
                                                 </form></td>
                                             </tr>
