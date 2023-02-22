@@ -11,4 +11,6 @@ import com.urjc.asociationPlatform.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
     Optional<User> findByEmail(String email);
+    Void deleteById(long id);
+
 }

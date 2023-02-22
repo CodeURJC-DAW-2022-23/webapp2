@@ -16,10 +16,6 @@ public class User {
     private String username;
     private String encodedPassword;
     private String rol;
-    private String asoname;
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
     
     public User(){}
 
@@ -62,10 +58,6 @@ public class User {
         return this.rol;
     }
 
-    public String getAsoname(){
-        return this.asoname;
-    }
-
     public void setUsername(String username){
         this.username = username;
     }
@@ -80,18 +72,6 @@ public class User {
 
     public void setRol(String rol){
         this.rol =  rol;
-    }
-
-    public void setAsoname(String asoname){
-        this.asoname = asoname;
-    }
-
-    public List<String> getRoles(){
-        return this.roles;
-    }
-
-    public void setRoles(String ... roles){
-        this.roles = List.of(roles);
     }
 
     public void setId(Long id){
