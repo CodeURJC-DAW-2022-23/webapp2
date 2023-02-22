@@ -1,5 +1,6 @@
 package com.urjc.asociationPlatform.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.urjc.asociationPlatform.service.UserService;
 import com.urjc.asociationPlatform.model.User;
@@ -37,18 +40,13 @@ public class UserController {
 		return "edituser";
 	}
 
-	/* 
-	@PostMapping("/editarUsuarios/{id}")
-	public String editProfile(Model model, User newUser) throws IOException, SQLException {
-		userService.setUsername(newUser.getUsername());
-		newUser.getEncodedPassword();
-		if (!newUser.getEncodedPassword().equals("")){
-			userService.setEncodedPassword(passwordEncoder.encode(newUser.getEncodedPassword()));
-		}
-		userService.setRol(newUser.getRol());
-        userService.setAsoname(newUser.getAsoname());
-		userService.save(userService);
+
+	@PutMapping("/editarUsuarios/{id}")
+	public String editProfile(Model model, User newUser,@PathVariable long id){
+
+		newUser.setId(id);
+		userService.save(newUser);
 		return "redirect:/";
-	}*/
+	}
 
 }

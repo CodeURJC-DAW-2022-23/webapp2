@@ -94,4 +94,8 @@ public class User {
         this.roles = List.of(roles);
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
+
 }

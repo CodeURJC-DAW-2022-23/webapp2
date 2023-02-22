@@ -75,68 +75,40 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Usuarios</li>
                         </ol>     
-                        <!-- <div class="card">
-                            <form id="form-edituser" method="post" action="/editarUsuario">
-                                <div class="mb-3">
-                                  <label for="username" class="form-label">Nombre de Usuario</label>
-                                  <input id="username-edituser" type="text" name="username">
-                                </div>
-    
-                                <div class="mb-3">
-                                    <label class="form-check-label" for="email-edituser">Email</label>
-                                    <input id="email-edituser" type="email" name="email">
-                                    </div>
-    
-                                <div class="mb-3">
-                                  <label for="password-edituser" class="form-label">Password</label>
-                                  <input id="password-edituser" type="password" name="encodedPassword">
-                                </div>
-    
-                                <div class="mb-3">
-                                    <label class="form-check-label" for="exampleCheck1">Rol</label>
-                                    <select id="abledSelect" class="form-select">
-                                        <option>Base</option>
-                                        <option>Asociación</option>
-                                        <option>Admin</option>
-                                        <option>Actual</option>
-                                      </select>
-                                  </div>
-    
-                                <button type="submit" class="btn btn-primary">Aceptar</button>
-                              </form> -->
 
-                              <div class="container-fluid py-5">
-                                <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5">
-                                  
-                                  <div class="form-group py-2">
-                                    <select class="custom-select" id="asociacion">
-                                      <option value="BASE" selected>Base</option>
-                                      <option value="ASO">Asociación</option>
-                                      <option value="ADMIN">Admin</option>
+                        <div class="container-fluid py-5">
+                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5">
+                                <h2>Modificar Usuario</h2>
+                                <hr/>
+                                
+                                <div class='d-sm-flex py-sm-2'>
+                                <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                    <label for="eventName">UserName</label>
+                                    <input type="text" class="form-control" id="username" placeholder="New UserName" />
+                                </div>
+
+                                <div class="form-group py-2 py-sm-0 col-sm-5">
+                                    <label for="">Email</label>
+                                    <input type="text" class="form-control" id="email" placeholder="New Email" />
+                                </div>
+                                </div>
+
+                                <div class="form-group py-2">
+                                    <select class="custom-select" id="rol">
+                                        <option value="BASE" selected>BASE</option>
+                                        <option value="ASO">ASO</option>
+                                        <option value="ADMIN">ADMIN</option>
                                     </select>
-                                  </div>
-                                  <div class='d-sm-flex py-sm-2'>
-                                    <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
-                                        <label for="username" class="form-label">Nombre de Usuario</label>
-                                        <input id="username-edituser" type="text" name="username">
                                     </div>
-                                    <div class="form-group py-2 py-sm-0 col-sm-5">
-                                        <label class="form-check-label" for="email-edituser">Email</label>
-                                        <input id="email-edituser" type="email" name="email">
-                                        </div>
-                                    </div>
-                                  </div>
-                                  <div class="form-group py-2">
-                                    <label for="password-edituser" class="form-label">Password</label>
-                                    <input id="password-edituser" type="password" name="encodedPassword">
-                                  </div>
-                                  
-                                  <div class="d-flex py-2 w-100">
+                                
+                                <div class="d-flex py-2 w-100">
                                     <div class="flex-fill"></div>
-                                    <button type="submit" class="btn btn-danger px-4">Aceptar</button>
-                                  </div>
-                                </form>
-                              </div>
+                                    <button type="submit" class="btn btn-danger px-4">Modificar</button>
+                                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                                </div>
+                            </form>
+                        </div>
+  
                     </div>
 
                     
