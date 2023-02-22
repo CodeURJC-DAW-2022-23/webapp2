@@ -38,7 +38,7 @@ public class UserController {
 			model.addAttribute("user", user);
 
 			return "edituser";
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "/error"; 
@@ -66,7 +66,7 @@ public class UserController {
 
 		userService.deleteById(id);
 
-		return "redirect:/";
+		return "redirect:/editarUsuarios";
 	}
 
 }

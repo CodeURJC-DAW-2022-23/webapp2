@@ -118,8 +118,9 @@
                                             <td><form action="/editarUsuarios/{{id}}">
                                                 <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
                                             </form></td>
-                                            <td><form action="/editarUsuarios/{{id}}/delete" action="post">
+                                            <td><form action="/editarUsuarios/{{id}}/delete" method="post">
                                                 <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
+                                                <input type="hidden" name="_csrf" value="{{token}}"/>
                                             </form></td>
                                         </tr>
                                         {{/userlist}}
