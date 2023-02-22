@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.service.AsociationService;
@@ -30,7 +31,7 @@ public class AdminAsociationController {
 
     }
     
-    @GetMapping("/editAsociations/{id}")
+    @GetMapping("/adminAsoc/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id) {
 		/* 
 		Optional<Asociation> asoc = asoService.findById(id);
@@ -48,17 +49,22 @@ public class AdminAsociationController {
         }
 	}
 
-	/* 
-	@PostMapping("/editAsociations")
-	public String editProfile(Model model, Asociation asoc) throws IOException, SQLException {
-		userService.setUsername(newUser.getUsername());
-		newUser.getEncodedPassword();
-		if (!newUser.getEncodedPassword().equals("")){
-			userService.setEncodedPassword(passwordEncoder.encode(newUser.getEncodedPassword()));
-		}
-		userService.setRol(newUser.getRol());
-        userService.setAsoname(newUser.getAsoname());
-		userService.save(userService);
-		return "redirect:/";
-	}*/
+	@PostMapping("/adminAsoc/{id}")
+	public String editProfile(Model model, @PathVariable long id, Asociation newAsoc) throws IOException, SQLException {
+		try { Asociation asoc = asoService.findById(id).orElseThrow();
+			if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
+				return "redirect:adminAsoc";
+			}
+			else{
+				asoc.setName(newAsoc.getName());
+				asoc.setDescription(newAsoc.getDescription());
+				asoc.setFaculty(newAsoc.getFaculty());
+				asoc.setCampus(newAsoc.getCampus());
+				asoService.save(asoc);
+				return "redirect:adminAsoc";
+			}
+        } catch (Exception e) {
+            return "404";
+        }
+	}
 }
