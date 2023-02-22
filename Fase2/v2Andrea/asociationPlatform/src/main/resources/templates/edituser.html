@@ -84,12 +84,12 @@
                                 <div class='d-sm-flex py-sm-2'>
                                 <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
                                     <label for="eventName">UserName</label>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="New UserName" />
+                                    <input type="text" class="form-control" id="username" name="username" value="{{#user}}{{username}}{{/user}}"/>
                                 </div>
 
                                 <div class="form-group py-2 py-sm-0 col-sm-5">
                                     <label for="">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="New Email" />
+                                    <input type="text" class="form-control" id="email" name="email" value="{{#user}}{{email}}{{/user}}" />
                                 </div>
                                 </div>
 

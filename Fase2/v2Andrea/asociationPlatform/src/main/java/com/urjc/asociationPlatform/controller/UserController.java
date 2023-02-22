@@ -32,18 +32,23 @@ public class UserController {
 	
     @GetMapping("/editarUsuarios/{id}")
 	public String obtainUser(Model model, @PathVariable long id) {
+		try { 
 
-		Optional<User> user = userService.findById(id);
+			User user = userService.findById(id).orElseThrow();
+			model.addAttribute("user", user);
 
-		model.addAttribute("user", user);
-
-		return "edituser";
+			return "edituser";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/error"; 
+		}
 	}
 
 	@PostMapping("/editarUsuarios/{id}")
 	public String editProfile(Model model, User newUser,@PathVariable long id){ 
 		try { User user = userService.findById(id).orElseThrow();
-			
+
 			user.setUsername(newUser.getUsername());
 			user.setEmail(newUser.getEmail());
 			user.setRol(newUser.getRol());
