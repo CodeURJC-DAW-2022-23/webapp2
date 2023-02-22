@@ -75,15 +75,6 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Asociaciones</li>
                         </ol>
-                        
-                            <ul>
-                                {{#asocList}}
-                                <li>
-                                    {{name}} {{description}} {{faculty}} {{campus}}
-                                </li>
-                                {{/asocList}}
-                            </ul>
-
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
@@ -121,7 +112,7 @@
                                                 <td>{{description}}</td>
                                                 <td>{{faculty}}</td>
                                                 <td>{{campus}}</td>
-                                                <td><form action="/editAsociations" method="post">
+                                                <td><form action="/editAsociations/{{id}}" method="get">
                                                     <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success">
                                                     <input type="hidden" name="_csrf" value="{{token}}"/>
                                                 </form></td>
