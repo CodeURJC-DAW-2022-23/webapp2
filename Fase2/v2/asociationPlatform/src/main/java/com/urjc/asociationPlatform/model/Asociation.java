@@ -47,4 +47,8 @@ public class Asociation {
     public String getCampus(){
         return this.campus;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

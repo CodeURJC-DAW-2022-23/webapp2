@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.urjc.asociationPlatform.model.Asociation;
@@ -49,11 +51,30 @@ public class AdminAsociationController {
         }
 	}
 
-	@PostMapping("/adminAsoc/{id}")
-	public String editProfile(Model model, @PathVariable long id, Asociation newAsoc) throws IOException, SQLException {
+	@PutMapping("/adminAsoc/{id}")
+	public String editProfile(Model model, @PathVariable long id, @RequestBody Asociation newAsoc) throws IOException, SQLException {
+		try { asoService.findById(id).orElseThrow();
+			if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
+				System.out.print("\nVacio\n");
+				return "redirect:/adminAsoc";
+			}
+			else{
+				newAsoc.setId(id);
+				System.out.print("\n"+newAsoc.getName()+"\n");
+				asoService.save(newAsoc);
+				return "redirect:/adminAsoc";
+			}
+        } catch (Exception e) {
+			System.out.print("\nDead\n");
+            return "redirect:/404";
+        }
+	}
+
+	/*@PutMapping("/adminAsoc/{id}")
+	public String editProfile(Model model, @PathVariable long id, @RequestBody Asociation newAsoc) throws IOException, SQLException {
 		try { Asociation asoc = asoService.findById(id).orElseThrow();
 			if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
-				return "redirect:adminAsoc";
+				return "redirect:/adminAsoc";
 			}
 			else{
 				asoc.setName(newAsoc.getName());
@@ -61,10 +82,10 @@ public class AdminAsociationController {
 				asoc.setFaculty(newAsoc.getFaculty());
 				asoc.setCampus(newAsoc.getCampus());
 				asoService.save(asoc);
-				return "redirect:adminAsoc";
+				return "redirect:/adminAsoc";
 			}
         } catch (Exception e) {
-            return "404";
+            return "redirect:/404";
         }
-	}
+	}*/
 }
