@@ -13,7 +13,7 @@ import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.service.EventService;
 
 @Controller
-public class newEventController {
+public class NewEventController {
 
   @Autowired
     private EventService eventService;
