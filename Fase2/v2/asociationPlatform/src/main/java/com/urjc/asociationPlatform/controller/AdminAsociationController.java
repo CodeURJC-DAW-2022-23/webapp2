@@ -33,7 +33,7 @@ public class AdminAsociationController {
 
     }
     
-    @GetMapping("/adminAsoc/{id}")
+    @GetMapping("/editAsoc/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id) {
 		/* 
 		Optional<Asociation> asoc = asoService.findById(id);
@@ -51,8 +51,8 @@ public class AdminAsociationController {
         }
 	}
 
-	@PutMapping("/adminAsoc/{id}")
-	public String editProfile(Model model, @PathVariable long id, @RequestBody Asociation newAsoc) throws IOException, SQLException {
+	@PostMapping("/editAsoc/{id}")
+	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
 				System.out.print("\nVacio\n");
@@ -64,6 +64,26 @@ public class AdminAsociationController {
 				asoService.save(newAsoc);
 				return "redirect:/adminAsoc";
 			}
+        } catch (Exception e) {
+			System.out.print("\nDead\n");
+            return "redirect:/404";
+        }
+	}
+
+	@PostMapping("/adminAsoc/{id}/delete")
+	public String editProfile(Model model, @PathVariable long id){
+		try { asoService.findById(id).orElseThrow();
+			/*if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
+				System.out.print("\nVacio\n");
+				return "redirect:/adminAsoc";
+			}
+			else{
+				newAsoc.setId(id);
+				System.out.print("\n"+newAsoc.getName()+"\n");
+				asoService.save(newAsoc);
+				return "redirect:/adminAsoc";
+			}*/
+			return "redirect:/adminAsoc";
         } catch (Exception e) {
 			System.out.print("\nDead\n");
             return "redirect:/404";
