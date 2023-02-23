@@ -30,9 +30,10 @@ public class newEventController {
   public String createEvent(@RequestParam("name") String name, @RequestParam("date") String date,
                             @RequestParam("location") String location, @RequestParam("description") String description) {
     Date date2 = Date.valueOf(date.substring(0, date.length() - 6));
-    // String month1 = month[date.toString().substring(5, date.length() - 6)];
-    Event event = new Event(name, date2, "agosto", description, location, "association", null);                  
+    int monthN = Integer.parseInt(date.substring(6, date.length() - 9));
+    Event event = new Event(name, date2, month[monthN], description, location, "association", null);                  
     eventService.saveEvent(event);
+    
     return "redirect:/gestionarEvento/";
   }
 }
