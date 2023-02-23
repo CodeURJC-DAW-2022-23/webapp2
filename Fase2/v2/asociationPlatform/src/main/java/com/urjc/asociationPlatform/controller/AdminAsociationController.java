@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,13 +18,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.urjc.asociationPlatform.model.Asociation;
+import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.AsociationService;
+import com.urjc.asociationPlatform.service.UserService;
+
+import java.security.Principal;
 
 @Controller
 public class AdminAsociationController {
 
     @Autowired
     AsociationService asoService;
+
+	@Autowired
+	UserService userService;
+
+	User currentUser;
 
     @GetMapping("/adminAsoc")
     public String listAsociations(Model model){
@@ -34,22 +45,34 @@ public class AdminAsociationController {
     }
     
     @GetMapping("/editAsoc/{id}")
-	public String obtainAsoc(Model model, @PathVariable long id) {
-		/* 
-		Optional<Asociation> asoc = asoService.findById(id);
-		if(asoc.isPresent() == false)
-			return "404";
-		else{
-			model.addAttribute("asociation", asoc);
-			return "editAsociations";
-		}*/
+	public String obtainAsoc(Model model, @PathVariable long id, HttpServletRequest request) {
+
 		try { Asociation asoc = asoService.findById(id).orElseThrow();
-			model.addAttribute("asociation", asoc);
-			return "editAsociations";
+			Principal principal = request.getUserPrincipal();
+			userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
+			if(currentUser != null && (currentUser.getRol() == "admin" || (currentUser.getRol() == "aso" && currentUser.getAsociation().getId() == asoc.getId()))){
+				model.addAttribute("asociation", asoc);
+				return "editAsociations";
+			}
+			else{
+				return "404";
+			}
+			
         } catch (Exception e) {
             return "404";
         }
 	}
+
+	// @GetMapping("/editAsoc/{id}")
+	// public String obtainAsoc(Model model, @PathVariable long id) {
+
+	// 	try { Asociation asoc = asoService.findById(id).orElseThrow();
+	// 		model.addAttribute("asociation", asoc);
+	// 		return "editAsociations";
+    //     } catch (Exception e) {
+    //         return "404";
+    //     }
+	// }
 
 	@PostMapping("/editAsoc/{id}")
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
