@@ -49,16 +49,18 @@ public class AdminAsociationController {
 
 		try { Asociation asoc = asoService.findById(id).orElseThrow();
 			Principal principal = request.getUserPrincipal();
-			userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
-			if(currentUser != null && (currentUser.getRol() == "admin" || (currentUser.getRol() == "aso" && currentUser.getAsociation().getId() == asoc.getId()))){
-				model.addAttribute("asociation", asoc);
-				return "editAsociations";
+			if(principal != null){
+				userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
+				if(currentUser != null && (currentUser.getRol() == "admin" || (currentUser.getRol() == "aso" && currentUser.getAsociation().getId() == asoc.getId()))){
+					model.addAttribute("asociation", asoc);
+					return "editAsociations";
+				}
+				else{
+					return "404";
+				}
 			}
-			else{
-				return "404";
-			}
-			
-        } catch (Exception e) {
+			else return "404";
+		} catch (Exception e) {
             return "404";
         }
 	}
