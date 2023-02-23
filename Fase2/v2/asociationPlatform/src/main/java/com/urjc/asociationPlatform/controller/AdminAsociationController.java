@@ -55,17 +55,14 @@ public class AdminAsociationController {
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
-				System.out.print("\nVacio\n");
 				return "redirect:/adminAsoc";
 			}
 			else{
 				newAsoc.setId(id);
-				System.out.print("\n"+newAsoc.getName()+"\n");
 				asoService.save(newAsoc);
 				return "redirect:/adminAsoc";
 			}
         } catch (Exception e) {
-			System.out.print("\nDead\n");
             return "redirect:/404";
         }
 	}
@@ -76,7 +73,6 @@ public class AdminAsociationController {
 			asoService.deleteById(id);
 			return "redirect:/adminAsoc";
         } catch (Exception e) {
-			System.out.print("\nDead\n");
             return "redirect:/404";
         }
 	}
