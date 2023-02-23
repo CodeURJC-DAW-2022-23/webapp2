@@ -40,4 +40,8 @@ public class AsociationService {
 	 	Optional<Asociation> asociation = findByName(name);
 	 	return asociation.isPresent();
 	}
+
+    public void deleteById(long id) {
+		asociations.deleteById(id);
+    }
 }

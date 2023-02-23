@@ -54,7 +54,7 @@ public class AdminAsociationController {
 	@PostMapping("/editAsoc/{id}")
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
-			if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
+			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
 				System.out.print("\nVacio\n");
 				return "redirect:/adminAsoc";
 			}
@@ -73,16 +73,7 @@ public class AdminAsociationController {
 	@PostMapping("/adminAsoc/{id}/delete")
 	public String editProfile(Model model, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
-			/*if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
-				System.out.print("\nVacio\n");
-				return "redirect:/adminAsoc";
-			}
-			else{
-				newAsoc.setId(id);
-				System.out.print("\n"+newAsoc.getName()+"\n");
-				asoService.save(newAsoc);
-				return "redirect:/adminAsoc";
-			}*/
+			asoService.deleteById(id);
 			return "redirect:/adminAsoc";
         } catch (Exception e) {
 			System.out.print("\nDead\n");
