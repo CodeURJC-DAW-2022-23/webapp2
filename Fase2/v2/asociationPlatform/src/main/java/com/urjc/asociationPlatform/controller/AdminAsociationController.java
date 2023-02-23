@@ -51,7 +51,7 @@ public class AdminAsociationController {
         }
 	}
 
-	@PostMapping("/editAsoc/{id}")
+	@PostMapping("/adminAsoc/{id}")
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
@@ -76,23 +76,4 @@ public class AdminAsociationController {
             return "redirect:/404";
         }
 	}
-
-	/*@PutMapping("/adminAsoc/{id}")
-	public String editProfile(Model model, @PathVariable long id, @RequestBody Asociation newAsoc) throws IOException, SQLException {
-		try { Asociation asoc = asoService.findById(id).orElseThrow();
-			if(newAsoc.getCampus() == null || newAsoc.getCampus() == null || newAsoc.getName() == null ){
-				return "redirect:/adminAsoc";
-			}
-			else{
-				asoc.setName(newAsoc.getName());
-				asoc.setDescription(newAsoc.getDescription());
-				asoc.setFaculty(newAsoc.getFaculty());
-				asoc.setCampus(newAsoc.getCampus());
-				asoService.save(asoc);
-				return "redirect:/adminAsoc";
-			}
-        } catch (Exception e) {
-            return "redirect:/404";
-        }
-	}*/
 }
