@@ -16,7 +16,7 @@ public class User {
     private String username;
     private String encodedPassword;
     private String rol;
-    @OneToOne
+    @ManyToOne
     private Asociation asociation;
     
     public User(){}

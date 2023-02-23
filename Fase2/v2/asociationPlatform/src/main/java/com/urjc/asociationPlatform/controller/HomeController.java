@@ -28,7 +28,6 @@ public class HomeController {
 	    Principal principal = request.getUserPrincipal();
 
 	 	if(principal != null) {
-
 	 		model.addAttribute("logged", true);
 
              if(request.isUserInRole("ASO")){
@@ -61,20 +60,4 @@ public class HomeController {
 	public String exito() {
 		return "exito";
 	}
-
-    @GetMapping("/miEspacio")
-	public String miespacio(Model model, HttpServletRequest request) {
-
-        Principal principal = request.getUserPrincipal();
-
-        if(principal != null){
-        userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
-        model.addAttribute("asociation", currentUser.getAsociation());
-		return "myAso";
-        }
-        else
-        return "404";
-	}
-
-
 }
