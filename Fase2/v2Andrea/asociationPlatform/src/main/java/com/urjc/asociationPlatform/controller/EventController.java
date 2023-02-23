@@ -1,23 +1,19 @@
-/* 
+
 package com.urjc.asociationPlatform.controller;
 
-import java.security.Principal;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import com.urjc.asociationPlatform.service.EventService;
-import com.urjc.asociationPlatform.model.Evento;
-
-import antlr.collections.List;
+import com.urjc.asociationPlatform.model.Event;
 
 @Controller
 public class EventController {
@@ -27,47 +23,43 @@ public class EventController {
     
     @GetMapping("/editarEventos")
     public String listaEventos(Model model){
-        List<Evento> lista = eventService.findAll();
-        model.addAttribute("lista", lista);
+        List<Event> eventlist = eventService.findAll();
+        model.addAttribute("eventlist", eventlist);
         return "events"; 
     }
 
+
     @GetMapping("/editarEventos/{id}")
 	public String obtainEvent(Model model, @PathVariable long id) {
-
-		Evento event = eventService.findById(id);
+		Optional<Event> event = eventService.findById(id);
 
 		model.addAttribute("event", event);
 
-		return "";
+		return "editevent";
 	}
 
+	@PostMapping("/editarEventos/{id}")
+	public String editEvents(Model model, Event newEvent,@PathVariable long id){ 
+		try { Event event = eventService.findById(id).orElseThrow();
+			
+			event.setName(newEvent.getName());
+			event.setDate(newEvent.getDate());
+			event.setLocation(newEvent.getLocation());
+			event.setAsociation(newEvent.getAsociation());
+			eventService.save(event);
 
-    @GetMapping("/editarEvento/{id}")
-	public String obtainEvent(Model model, @PathVariable long id) {
-		Evento event = eventService.findById(id);
-		if (event.getId().equals(eventService.getId())) {
-			model.addAttribute("event", event);
-			return "";
+			return "redirect:/editarUsuarios";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/error"; 
 		}
-		return "redirect:/404";
 	}
 
-	@PostMapping("/editarEvento")
-	public String editEvent(Model model, Evento newEvent) throws IOException, SQLException {
-		eventService.setName(newEvent.getName());
-		eventService.setDate(newEvent.getDate());
-        eventService.setDescription(newEvent.getDescription());
-		eventService.setAso(newEvent.getAso());
-        eventService.setImage(newEvent.getImage());
-        eventService.setPlace(newEvent.getPlace());
-        eventService.setCapacity(newEvent.getCapacity());
-        eventService.setReservations(newEvent.getReservations());
+	@PostMapping("/editarEventos/{id}/delete")
+	public String deleteProfile(Model model, Event newEvent,@PathVariable long id){
 
-        
-		eventService.save(eventService);
+		eventService.deleteById(id);
+
 		return "redirect:/";
 	}
-
 }
-*/
