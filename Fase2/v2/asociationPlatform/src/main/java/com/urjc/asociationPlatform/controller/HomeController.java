@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.UserService;
 
 @Controller
 public class HomeController {
+
     @Autowired
     private UserService userService;
+
+    User currentUser;
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -24,6 +28,7 @@ public class HomeController {
 	    Principal principal = request.getUserPrincipal();
 
 	 	if(principal != null) {
+
 	 		model.addAttribute("logged", true);
 
              if(request.isUserInRole("ASO")){
@@ -57,9 +62,18 @@ public class HomeController {
 		return "exito";
 	}
 
-    @RequestMapping("/miEspacio")
-	public String miespacio() {
+    @GetMapping("/miEspacio")
+	public String miespacio(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if(principal != null){
+        userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
+        model.addAttribute("asociation", currentUser.getAsociation());
 		return "myAso";
+        }
+        else
+        return "404";
 	}
 
 

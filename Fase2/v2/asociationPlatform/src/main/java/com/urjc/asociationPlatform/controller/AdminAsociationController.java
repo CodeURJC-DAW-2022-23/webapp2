@@ -51,7 +51,7 @@ public class AdminAsociationController {
 			Principal principal = request.getUserPrincipal();
 			if(principal != null){
 				userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
-				if(currentUser != null && (currentUser.getRol() == "admin" || (currentUser.getRol() == "aso" && currentUser.getAsociation().getId() == asoc.getId()))){
+				if(currentUser.getRol() == "admin" || (currentUser.getRol() == "aso" && currentUser.getAsociation().getId() == asoc.getId())){
 					model.addAttribute("asociation", asoc);
 					return "editAsociations";
 				}
