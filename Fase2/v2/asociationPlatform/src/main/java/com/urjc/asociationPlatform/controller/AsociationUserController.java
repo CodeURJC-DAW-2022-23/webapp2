@@ -51,20 +51,4 @@ public class AsociationUserController {
 	public String miespacio(Model model) {
 		return "myAso";
 	}
-
-    @PostMapping("/miEspacio/{id}")
-	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
-		try { asoService.findById(id).orElseThrow();
-			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
-				return "redirect:/";
-			}
-			else{
-				newAsoc.setId(id);
-				asoService.save(newAsoc);
-				return "redirect:/";
-			}
-        } catch (Exception e) {
-            return "redirect:/404";
-        }
-	}
 }
