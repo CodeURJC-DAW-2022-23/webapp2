@@ -87,6 +87,39 @@
                             <li class="breadcrumb-item active">Mi Asociación</li>
                         </ol>
                         
+                        <div class="container-fluid py-5">
+                                <h2>Editar asociación</h2>
+                                <hr/>
+                                <div class='d-sm-flex py-sm-2 row'>
+                                    <div class="row separate">
+                                        <div class="form-group py-2 py-sm-0 col-sm-7">
+                                            <h1 class="mt-4">{{#asociation}}{{name}}{{/asociation}}</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row separate">
+                                        <div class="form-group py-2 py-sm-0 col-sm-7">
+                                            <p>{{#asociation}}{{description}}{{/asociation}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row separate">
+                                        <div class="form-group py-2 py-sm-0 col-sm-7">
+                                            <p>{{#asociation}}{{faculty}}{{/asociation}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row separate">
+                                        <div class="form-group py-2 py-sm-0 col-sm-7">
+                                            <p>{{#asociation}}{{campus}}{{/asociation}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex py-2 w-100">
+                                    <div class="flex-fill"></div>
+                                    <td><form action="/editAsoc/{{#asociation}}{{id}}{{/asociation}}">
+                                        <input type="submit" value="Modificar" class="btn btn-sm btn-outline-danger">
+                                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                                    </form></td>
+                                </div>
+                        </div>
                     
                 </main>
                 <footer class="py-4 bg-light mt-auto">

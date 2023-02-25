@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/style3.css">
+    <link rel="stylesheet" href="../css/style4.css">
+    <link rel="stylesheet" href="../css/style5.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header class="nav container_fluid d-block">
+      <div class="">
+        <a href="home.html"><img class="logo" src="../img/URJ_logo_BN_NEG_corona_roja.png" alt="" /></a>
+
+        <div id="mainListDiv" class="main_list">
+          <ul class="navlinks">
+            <li><a href="#">Asociaciones</a></li>
+          </ul>
+        </div>
+        <span class="navTrigger">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+    </header>
+
+    <div class="container-fluid py-5" style="height: 95vh; background-color: rgb(242, 243, 248);">
+      <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5">
+        <h2>Crear Evento</h2>
+        <hr/>
+        <div class="form-group py-2">
+          <select class="custom-select" id="asociacion">
+            <option value="" selected>Asociación</option>
+            <option value="All">Todas</option>
+            <option value="BIC">BIC</option>
+            <option value="ARJE">ARJE</option>
+            <option value="ADEMED URJC">ADEMED URJC</option>
+            <option value="APOE">APOE</option>
+            <option value="ANGER">ANGER</option>
+            <option value="ESN URJC">ESN URJC</option>
+            <option value="I+b ingeniería biomédica">I+b ingeniería biomédica</option>
+            <option value="IURIS URJC">IURIS URJC</option>
+            <option value="ASOLSE">ASOLSE</option>
+            <option value="Asociación Aeroespacial Cosmos">Asociación Aeroespacial Cosmos </option>
+            <option value="ALOA">ALOA</option>
+            <option value="ASESP">ASESP</option>
+            <option value="ADHUE">ADHUE</option>
+          </select>
+        </div>
+        <div class='d-sm-flex py-sm-2'>
+          <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+            <label for="eventName">Nombre</label>
+            <input type="text" class="form-control" id="eventName" placeholder="Nombre del evento" />
+          </div>
+          <div class="form-group py-2 py-sm-0 col-sm-5">
+            <label for="">Fecha y hora</label>
+            <input type="datetime-local" class="form-control" id="eventDate" />
+          </div>
+        </div>
+        <div class="form-group py-2">
+          <label for="">Ubicación</label>
+          <input type="text" class="form-control" id="eventPlace" />
+        </div>
+        <div class="form-group py-2">
+          <label for="">Descripción</label>
+          <textarea type="text" class="form-control" style=" height: 10em;"> </textarea>
+        </div>
+        <div class="d-flex py-2 w-100">
+          <div class="flex-fill"></div>
+          <button type="submit" class="btn btn-danger px-4">Crear</button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="container-fluid">
+      <div class="container">
+        <p>
+          2021 &copy; PGCA -
+          <a href="#">Anger</a>
+          -
+          <a href="#">Universidad Rey Juan Carlos</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

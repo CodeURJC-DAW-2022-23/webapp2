@@ -1,58 +1,74 @@
 package com.urjc.asociationPlatform.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.repository.EventRepository;
 
-
 @Service
 public class EventService {
-    @Autowired
-    private EventRepository eventRepository;
-    
-    public List<Event> getEventsByFilters(String name, String month, String campus, String asociation){
-        /*
-        if(name.equals("")){
-            name="*";
-        }else{
-            name='"'+name+'"';
-        }
-        if(month.equals("")){
-            month="*";
-        }else{
-            month='"'+month+'"';
-        }
-        if(campus.equals("")){
-            campus="*";
-        }else{
-            campus='"'+campus+'"';
-        }
-        if(asociation.equals("")){
-            asociation="*";
-        }else{
-            asociation='"'+asociation+'"';
-        }
-        return events.getEvents(name, month, campus, asociation);*/
 
+  @Autowired
+  private EventRepository eventRepository;
+  
+	public void save(Event event) {
+		events.save(event);
+	}
+
+	public Optional<Event> findByName(String name) {
+		return events.findByName(name);
+	}
+
+	public List<Event> findAll() {
+		return events.findAll();
+	}
+
+	public Optional<Event> findById(long id) {
+		Optional<Event> findById = events.findById(id);
+		return findById;
+	}
+
+    public void deleteById(long id){
+		events.deleteById(id);
+	}
+
+	//query ruben
+	/* 
+	public List<Event> getEventsByFilters(String name, String month, String campus, String asociation){
+
+        if(name.equals("")  name.equals("ALL")){
+            name="*";
+        }
+        if(month.equals("")  month.equals("ALL")){
+            month="";
+        }
+        if(campus.equals("") || campus.equals("ALL")){
+            campus="";
+        }
+        if(asociation.equals("") || asociation.equals("ALL")){
+            asociation="";
+        }
+        return events.getEvents(name, month, campus, asociation);
+        /
         //SELECT * FROM event WHERE CONTAINS(name, :name) AND month = :month AND campus = :campus AND asociation = :asociation
         String query="SELECT * FROM event";
         if(!name.equals("")){
-            query+=" WHERE CONTAINS(name, '"+name+"')";
+            query+=" WHERE name LIKE '"+name+"'";
         }
         if(!month.equals("")){
             query+=" AND month = '"+month+"'";
         }
         if(!campus.equals("")){
-            query+=" AND campus = '"+campus+"'";
+            query+=" AND location = '"+campus+"'";
         }
         if(!asociation.equals("")){
             query+=" AND asociation = '"+asociation+"'";
         }
-        return eventRepository.launchQuery(query);
+        System.out.println(query);
+        return events.launchQuery(query);*/
     }
 
     public void saveEvent(Event event) {

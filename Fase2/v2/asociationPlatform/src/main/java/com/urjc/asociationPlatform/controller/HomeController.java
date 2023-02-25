@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.UserService;
 
 @Controller
 public class HomeController {
+
     @Autowired
     private UserService userService;
+
+    User currentUser;
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -55,10 +59,5 @@ public class HomeController {
     @RequestMapping("/exito")
 	public String exito() {
 		return "exito";
-	}
-
-    @RequestMapping("/miEspacio")
-	public String miespacio() {
-		return "myAso";
 	}
 }
