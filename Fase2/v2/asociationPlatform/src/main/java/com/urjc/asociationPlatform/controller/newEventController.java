@@ -31,7 +31,8 @@ public class NewEventController {
                             @RequestParam("location") String location, @RequestParam("description") String description) {
     Date date2 = Date.valueOf(date.substring(0, date.length() - 6));
     int monthN = Integer.parseInt(date.substring(6, date.length() - 9));
-    Event event = new Event(name, date2, month[monthN], description, location, "association", null);                  
+    //------MODIFICAR!!------
+    Event event = new Event(name, date2, month[monthN], description, location, "association", null, false, false, description, null);                  
     eventService.saveEvent(event);
     
     return "redirect:/gestionarEvento/";

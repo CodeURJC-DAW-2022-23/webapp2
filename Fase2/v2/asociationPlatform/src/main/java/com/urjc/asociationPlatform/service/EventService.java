@@ -15,34 +15,38 @@ public class EventService {
   private EventRepository eventRepository;
   
 	public void save(Event event) {
-		events.save(event);
+		eventRepository.save(event);
 	}
 
 	public Optional<Event> findByName(String name) {
-		return events.findByName(name);
+		return eventRepository.findByName(name);
 	}
 
 	public List<Event> findAll() {
-		return events.findAll();
+		return eventRepository.findAll();
 	}
 
 	public Optional<Event> findById(long id) {
-		Optional<Event> findById = events.findById(id);
+		Optional<Event> findById = eventRepository.findById(id);
 		return findById;
 	}
 
     public void deleteById(long id){
-		events.deleteById(id);
+		eventRepository.deleteById(id);
 	}
 
+    public void saveEvent(Event event) {
+        eventRepository.save(event);
+    }
+
 	//query ruben
-	/* 
+
 	public List<Event> getEventsByFilters(String name, String month, String campus, String asociation){
 
-        if(name.equals("")  name.equals("ALL")){
+        if(name.equals("") || name.equals("ALL")){
             name="*";
         }
-        if(month.equals("")  month.equals("ALL")){
+        if(month.equals("") || month.equals("ALL")){
             month="";
         }
         if(campus.equals("") || campus.equals("ALL")){
@@ -51,8 +55,9 @@ public class EventService {
         if(asociation.equals("") || asociation.equals("ALL")){
             asociation="";
         }
-        return events.getEvents(name, month, campus, asociation);
-        /
+        return eventRepository.getEvents(name, month, campus, asociation);
+        
+        /* 
         //SELECT * FROM event WHERE CONTAINS(name, :name) AND month = :month AND campus = :campus AND asociation = :asociation
         String query="SELECT * FROM event";
         if(!name.equals("")){
@@ -71,7 +76,4 @@ public class EventService {
         return events.launchQuery(query);*/
     }
 
-    public void saveEvent(Event event) {
-      eventRepository.save(event);
-    }
 }

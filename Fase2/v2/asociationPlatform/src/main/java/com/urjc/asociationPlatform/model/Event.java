@@ -13,8 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-import com.mysql.cj.jdbc.Blob; //Comentar quizas?
-
 import java.util.List;
 
 @Entity
