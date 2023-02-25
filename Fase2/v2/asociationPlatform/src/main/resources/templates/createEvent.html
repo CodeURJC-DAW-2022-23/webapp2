@@ -16,7 +16,7 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html"><img class="logo" src="/URJ_logo_BN_NEG_corona_roja.png" alt=""></a>
+            <a class="navbar-brand ps-3" href="index.html"><img class="logo" src="/img/URJ_logo_BN_NEG_corona_roja.png" alt=""></a>
 
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -27,13 +27,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li>
-                            <form action="/logout" method="post">
-                                <input type="submit" value="Cerrar Sesión" style="text-decoration:none;">
-                                <input type="hidden" name="_csrf" value="{{token}}"/>
-                            </form>
-                        </li>
-                            <!-- <a class="dropdown-item" href="/logout">Cerrar Sesión</a></li> -->
+                        <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -82,45 +76,35 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Mi Asociación</h1>
+                        <h1 class="mt-4">Crear Evento</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Mi Asociación</li>
+                            <li class="breadcrumb-item active">Crear Evento</li>
                         </ol>
-                        
-                        <div class="container-fluid py-5">
-                                <h2>Editar asociación</h2>
-                                <hr/>
-                                <div class='d-sm-flex py-sm-2 row'>
-                                    <div class="row separate">
-                                        <div class="form-group py-2 py-sm-0 col-sm-7">
-                                            <h1 class="mt-4">{{#asociation}}{{name}}{{/asociation}}</h1>
-                                        </div>
-                                    </div>
-                                    <div class="row separate">
-                                        <div class="form-group py-2 py-sm-0 col-sm-7">
-                                            <p>{{#asociation}}{{description}}{{/asociation}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row separate">
-                                        <div class="form-group py-2 py-sm-0 col-sm-7">
-                                            <p>{{#asociation}}{{faculty}}{{/asociation}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row separate">
-                                        <div class="form-group py-2 py-sm-0 col-sm-7">
-                                            <p>{{#asociation}}{{campus}}{{/asociation}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex py-2 w-100">
-                                    <div class="flex-fill"></div>
-                                    <td><form action="/editAsoc/{{#asociation}}{{id}}{{/asociation}}">
-                                        <input type="submit" value="Modificar" class="btn btn-sm btn-outline-danger">
-                                        <input type="hidden" name="_csrf" value="{{token}}"/>
-                                    </form></td>
-                                </div>
-                        </div>
-                    
+                        <form action="/newEvent" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post">
+                            <div class='d-sm-flex py-sm-2'>
+                              <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                <label for="eventName">Nombre</label>
+                                <input name="name" type="text" class="form-control" id="eventName" placeholder="Nombre del evento" />
+                              </div>
+                              <div class="form-group py-2 py-sm-0 col-sm-5">
+                                <label for="">Fecha y hora</label>
+                                <input name="date" type="datetime-local" class="form-control" id="eventDate" />
+                              </div>
+                            </div>
+                            <div class="form-group py-2">
+                              <label for="">Ubicación</label>
+                              <input name="location" type="text" class="form-control" id="eventPlace" />
+                            </div>
+                            <div class="form-group py-2">
+                              <label for="">Descripción</label>
+                              <textarea name="description" type="text" class="form-control" style=" height: 10em;"> </textarea>
+                            </div>
+                            <div class="d-flex py-2 w-100">
+                              <div class="flex-fill"></div>
+                              <button type="submit" class="btn btn-danger px-4">Crear</button>
+                              <input type="hidden" name="_csrf" value="{{token}}"/>
+                            </div>
+                          </form>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
