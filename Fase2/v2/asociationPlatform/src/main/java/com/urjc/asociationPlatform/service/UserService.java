@@ -40,4 +40,8 @@ public class UserService {
 	 	Optional<User> user = findByEmail(email);
 	 	return user.isPresent();
 	}
+
+	public void deleteById(long id){
+		users.deleteById(id);
+	}
 }

@@ -20,7 +20,7 @@ public class EventController {
     private EventService eventService;
  
     
-    @GetMapping("/editarEventos")
+    @GetMapping("/admin/editarEventos")
     public String listaEventos(Model model){
         List<Event> eventlist = eventService.findAll();
         model.addAttribute("eventlist", eventlist);

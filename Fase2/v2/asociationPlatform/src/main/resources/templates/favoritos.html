@@ -8,7 +8,9 @@
         <meta name="author" content="" />
         <title>User</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- <link rel="stylesheet" href="/css/cards.css"> -->
         <link href="/css/styles.css" rel="stylesheet" />
+        
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
 
@@ -76,38 +78,83 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Mi Cuenta</h1>
+                        <h1 class="mt-4">Favoritos</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Mi Cuenta</li>
+                            <li class="breadcrumb-item active">Favoritos</li>
                         </ol>
-                        
-                        <div class="container-fluid py-5">
-                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/miCuenta/{{#user}}{{id}}{{/user}}">
-                                <h2>Editar Cuenta</h2>
-                                <hr/>
-                                <div class='d-sm-flex py-sm-2 row'>
-                                    <div class="row separate">
-                                        <div class="form-group py-2 py-sm-0 col-sm-7">
-                                            <label for="eventName">Nombre</label>
-                                            <input type="text" class="form-control" id="name" name="username" value="{{#user}}{{username}}{{/user}}" />
-                                        </div>
-                                    </div>
-                                    <div class="row separate">
-                                        <div class="form-group py-2 py-sm-0 col-sm-7">
-                                            <label for="">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" value="{{#user}}{{email}}{{/user}}" />
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="d-flex py-2 w-100">
-                                    <div class="flex-fill"></div>
-                                    <button type="submit" class="btn btn-success px-4">Modificar</button>
-                                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                        {{#favoritesList}}
+                            <div class='widget'>
+                                <div class='widget__photo'></div>
+                                <div class='widget__button'>
+                                    Más Info
                                 </div>
-                            </form>
-                        </div>
-                    
+                                <div class='widget__details'>
+                                    <div class='widget__name'>
+                                        Evento Apertura
+                                    </div>
+                                    <div class='widget__type'>
+                                        Anger
+                                    </div>
+                                    <div class='widget__info'>
+                                        <span>
+                                            Universidad Rey Juan Carlos
+                                        </span>
+                                        <span>
+                                            Móstoles
+                                        </span>
+                                    </div>
+                                    <div class='widget__hidden'>
+                                        <hr>
+                                        <table class='widget__table'>
+                                            <tr>
+                                                <td>
+                                                    Fecha
+                                                </td>
+                                                <td>
+                                                    17 de febrero 2021
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Horario
+                                                </td>
+                                                <td>
+                                                    9-12
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Lugar
+                                                </td>
+                                                <td>
+                                                    Salón de actos
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Reserva
+                                                </td>
+                                                <td>
+                                                    Si
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Creditos
+                                                </td>
+                                                <td>
+                                                    No
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        {{/favoritesList}}
+                        
+                    </div>     
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">

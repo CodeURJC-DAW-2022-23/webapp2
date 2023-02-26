@@ -1,5 +1,6 @@
 package com.urjc.asociationPlatform.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -18,6 +19,9 @@ public class User {
     private String rol;
     @ManyToOne
     private Asociation asociation;
+
+    @OneToMany
+        private List<Event> favoritos = new ArrayList<>();
     
     public User(){}
 
@@ -44,7 +48,29 @@ public class User {
         this.rol = "aso";
     }
 
-    
+    public void setId(long id){
+        this.id=id;
+    }
+
+    public long getId(){
+        return this.id;
+    }
+
+    public List<Event> getFavoritos(){
+        return this.favoritos;
+    }
+
+    public void setFavoritos(List<Event> favoritos){
+        this.favoritos = favoritos;
+    }
+
+    public void addFavoritos(Event event){
+        this.favoritos.add(event);
+    }
+
+    public void removeFavoritos(Event event){
+        this.favoritos.remove(event);
+    }
 
     public String getUsername(){
         return this.username;

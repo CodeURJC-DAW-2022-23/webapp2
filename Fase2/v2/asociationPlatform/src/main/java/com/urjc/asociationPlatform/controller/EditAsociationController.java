@@ -55,7 +55,7 @@ public class EditAsociationController {
 			}
 	}
 
-    @GetMapping("/adminAsoc")
+    @GetMapping("/admin/adminAsoc")
     public String listAsociations(Model model){
 
         List<Asociation> list = asoService.findAll();

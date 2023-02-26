@@ -1,0 +1,84 @@
+package com.urjc.asociationPlatform.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.urjc.asociationPlatform.model.Event;
+import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.EventService;
+import com.urjc.asociationPlatform.service.UserService;
+
+@Controller
+public class FavoritesController {
+    @Autowired
+	private UserService userService;
+    User currentUser;
+
+    @Autowired
+	private EventService eventService;
+
+    @ModelAttribute
+	public void addAttributes(Model model, HttpServletRequest request) {
+
+	    Principal principal = request.getUserPrincipal();
+
+	 	if(principal != null) {
+            userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
+            model.addAttribute("user", currentUser);
+            model.addAttribute("favoritesList", currentUser.getFavoritos());
+	 	}
+	}
+
+    @GetMapping("/{userId}/añadirFavoritos/{eventId}")
+    public String addFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){
+        try {
+            Event event = eventService.findById(eventId).orElseThrow();
+            User user = userService.findById(userId).orElseThrow();
+
+            if(!user.equals(currentUser)){
+                return "404";
+            }
+
+            if(!currentUser.getFavoritos().contains(event)){
+                currentUser.addFavoritos(event);
+            }
+
+            return "redirect:/";
+            
+        } catch (Exception e) {
+            return "404";
+        }
+    }
+
+    @GetMapping("/{userId}/eliminarFavoritos/{eventId}")
+    public String removeFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){
+        try {
+            Event event = eventService.findById(eventId).orElseThrow();
+            User user = userService.findById(userId).orElseThrow();
+
+            if(!user.equals(currentUser)){
+                return "404";
+            }
+
+            if(currentUser.getFavoritos().contains(event)){
+                currentUser.removeFavoritos(event);
+            }
+
+            return "redirect:/";
+            
+        } catch (Exception e) {
+            return "404";
+        }
+    }
+
+    @GetMapping("/miCuenta/favoritos")
+    public String showFavorites(Model model){
+        return "favoritos";
+    }
+}
