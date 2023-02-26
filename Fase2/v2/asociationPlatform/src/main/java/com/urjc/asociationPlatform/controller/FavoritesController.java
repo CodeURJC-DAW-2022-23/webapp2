@@ -76,26 +76,41 @@ public class FavoritesController {
     //     }
     // }
 
-    @GetMapping("/{userId}/eliminarFavoritos/{eventId}")
-    public String removeFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){
-        try {
-            Event event = eventService.findById(eventId).orElseThrow();
-            User user = userService.findById(userId).orElseThrow();
+    @GetMapping("/eliminarFavoritos/{id}")
+    public String deleteFavorites(Model model, @PathVariable long id ,HttpServletRequest request ){
+        Principal principal = request.getUserPrincipal();
 
-            if(!user.equals(currentUser)){
-                return "404";
-            }
-
-            if(currentUser.getFavoritos().contains(event)){
-                currentUser.removeFavoritos(event);
-            }
-
-            return "redirect:/";
+        if(principal != null){
+            User user = userService.findByUsername(principal.getName()).orElseThrow();
+            Event event = eventService.findById(id).orElseThrow();
             
-        } catch (Exception e) {
-            return "404";
+            user.removeFavoritos(event);
+            userService.save(user);
+               
         }
+        return "redirect:/miCuenta/favoritos";
     }
+
+    // @GetMapping("/{userId}/eliminarFavoritos/{eventId}")
+    // public String removeFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){
+    //     try {
+    //         Event event = eventService.findById(eventId).orElseThrow();
+    //         User user = userService.findById(userId).orElseThrow();
+
+    //         if(!user.equals(currentUser)){
+    //             return "404";
+    //         }
+
+    //         if(currentUser.getFavoritos().contains(event)){
+    //             currentUser.removeFavoritos(event);
+    //         }
+
+    //         return "redirect:/";
+            
+    //     } catch (Exception e) {
+    //         return "404";
+    //     }
+    // }
 
     @GetMapping("/miCuenta/favoritos")
     public String showFavorites(Model model){

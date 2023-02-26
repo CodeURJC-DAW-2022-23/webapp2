@@ -35,19 +35,5 @@ public class EventDetailsController {
         return "detalles";
     }
 
-    // @PostMapping("agregarFavoritos/{id}")
-    // public String agregarFavoritos(Model model, @PathVariable long id, HttpServletRequest request){
-
-    //     Principal principal = request.getUserPrincipal();
-
-    //     if(principal != null){
-    //         User user = userService.findByUsername(principal.getName()).orElseThrow();
-    //         user.addFavoritos(eventService.findById(id).orElseThrow());
-    //         return "redirect:/infoEvento/{id}";
-            
-    //     } else {
-    //         return "/login";
-    //     } 
-    // }
     
 }

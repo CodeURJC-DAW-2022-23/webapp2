@@ -18,7 +18,7 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html"><img class="logo" src="/URJ_logo_BN_NEG_corona_roja.png" alt=""></a>
+            <a class="navbar-brand ps-3" href="/"><img class="logo" src="/img/URJ_logo_BN_NEG_corona_roja.png" alt=""></a>
 
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -35,7 +35,6 @@
                                 <input type="hidden" name="_csrf" value="{{token}}"/>
                             </form>
                         </li>
-                            <!-- <a class="dropdown-item" href="/logout">Cerrar Sesión</a></li> -->
                     </ul>
                 </li>
             </ul>
@@ -83,13 +82,23 @@
                             <li class="breadcrumb-item active">Favoritos</li>
                         </ol>
 
-                        {{#favoritesList}}
-                           <ul>
-                               <li>{{name}}</li>
-                               <li>{{location}}</li>
-                               <li>{{description}}</li>
-                           </ul>
-                        {{/favoritesList}}
+                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                            {{#favoritesList}}
+                            <div class="col">
+                              <div class="card h-100">
+                                <img src="https://imagenes.elpais.com/resizer/sE6109hW7QyrGSJTJ4xOx2lDo2U=/414x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/O6HT55I7NJMMJQQN3RIPCLQ3UQ.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{name}}</h5>
+                                  <p class="card-text">{{description}}</p>
+                                  <a href="/infoEvento/{{id}}" class="btn btn-sm btn-outline-primary">Más info</a>
+                                  <a href="/eliminarFavoritos/{{id}}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                </div>
+                              </div>
+                            </div>
+                            {{/favoritesList}}
+
+                        </div>
+                       
                         
                     </div>     
                 </main>
