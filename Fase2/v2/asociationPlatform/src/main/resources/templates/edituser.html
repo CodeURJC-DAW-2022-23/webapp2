@@ -27,7 +27,12 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <input type="submit" value="Cerrar Sesión" style="text-decoration:none;">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -42,16 +47,16 @@
 
                             <div class="sb-sidenav-menu-heading">Core</div>
 
-                            <a class="nav-link" href="events.html">
+                            <a class="nav-link" href="/admin/editarEventos">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Eventos
                             </a>
 
-                            <a class="nav-link" href="asociations.html">
+                            <a class="nav-link" href="/admin/adminAsoc">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Asociaciones
                             </a>
-                            <a class="nav-link" href="users.html">
+                            <a class="nav-link" href="/admin/editarUsuarios">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Usuarios
                             </a>
@@ -60,7 +65,7 @@
                     <div class="sb-sidenav-footer">
 
                         <div class="small">Logged in as:</div>
-                        Admin
+                        {{#currentuser}}{{username}}{{/currentuser}}
                         
                     </div>
                     
@@ -77,7 +82,7 @@
                         </ol>     
 
                         <div class="container-fluid py-5">
-                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/editarUsuarios/{{id}}">
+                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/admin/editarUsuarios/{{id}}">
                                 <h2>Modificar Usuario {{id}}</h2>
                                 <hr/>
                                 

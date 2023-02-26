@@ -27,7 +27,12 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <input type="submit" value="Cerrar Sesión" style="text-decoration:none;">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -42,16 +47,16 @@
 
                             <div class="sb-sidenav-menu-heading">Core</div>
 
-                            <a class="nav-link" href="events.html">
+                            <a class="nav-link" href="/admin/editarEventos">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Eventos
                             </a>
 
-                            <a class="nav-link" href="asociations.html">
+                            <a class="nav-link" href="/admin/adminAsoc">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Asociaciones
                             </a>
-                            <a class="nav-link" href="users.html">
+                            <a class="nav-link" href="/admin/editarUsuarios">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Usuarios
                             </a>
@@ -60,7 +65,7 @@
                     <div class="sb-sidenav-footer">
 
                         <div class="small">Logged in as:</div>
-                        Admin
+                        {{#user}}{{username}}{{/user}}
                         
                     </div>
                     
@@ -77,29 +82,29 @@
                         </ol>     
 
                         <div class="container-fluid py-5">
-                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/editarEventos/{{id}}">
+                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/admin/editarEventos/{{id}}">
                                 <h2>Modificar Evento {{id}}</h2>
                                 <hr/>
                                 
                                 <div class='d-sm-flex py-sm-2'>
                                 <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
                                     <label for="eventName">Nombre</label>
-                                    <input type="text" class="form-control" id="name" value="{{#event}}{{name}}{{/event}}" />
+                                    <input type="text" class="form-control" id="name" name="name" value="{{#event}}{{name}}{{/event}}" />
                                 </div>
 
                                 <div class="form-group py-2 py-sm-0 col-sm-5">
                                     <label for="">Fecha</label>
-                                    <input type="text" class="form-control" id="date" value="{{#event}}{{date}}{{/event}}" />
+                                    <input type="text" class="form-control" id="date" name="date" value="{{#event}}{{date}}{{/event}}" />
                                 </div>
 
                                 <div class="form-group py-2 py-sm-0 col-sm-5">
                                     <label for="">Localización</label>
-                                    <input type="text" class="form-control" id="location" value="{{#event}}{{location}}{{/event}}" />
+                                    <input type="text" class="form-control" id="location" name="location"  value="{{#event}}{{location}}{{/event}}" />
                                 </div>
 
                                 <div class="form-group py-2 py-sm-0 col-sm-5">
                                     <label for="">Asociación</label>
-                                    <input type="text" class="form-control" id="asociation" value="{{#event}}{{asociation}}{{/event}}" />
+                                    <input type="text" class="form-control" id="asociation" name="asociation" value="{{#event}}{{asociation}}{{/event}}" />
                                 </div>
                                 </div>
 

@@ -30,12 +30,14 @@ public class HomeController {
 	 	if(principal != null) {
 	 		model.addAttribute("logged", true);
 
-             if(request.isUserInRole("ASO")){
-                 model.addAttribute("aso",true);
-             }else if(request.isUserInRole("BASE")){
-                 model.addAttribute("base",true);
+            if(request.isUserInRole("ASO")){
+                model.addAttribute("aso",true);
+            }else if(request.isUserInRole("BASE")){
+                model.addAttribute("base",true);
+            }else if(request.isUserInRole("ADMIN")){
+                model.addAttribute("admin", true);
             }
-			//model.addAttribute("admin", request.isUserInRole("ADMIN"));
+			
 	 	} else {
 	 		model.addAttribute("logged", false);
 		}

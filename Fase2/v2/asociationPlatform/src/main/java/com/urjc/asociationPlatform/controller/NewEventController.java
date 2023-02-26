@@ -35,6 +35,6 @@ public class NewEventController {
     Event event = new Event(name, date2, month[monthN], description, location, "association", null, false, false, description, null);                  
     eventService.saveEvent(event);
     
-    return "redirect:/gestionarEvento/";
+    return "redirect:/miEspacio";
   }
 }

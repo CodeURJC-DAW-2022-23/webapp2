@@ -44,7 +44,8 @@ public class EditAsociationController {
 	    Principal principal = request.getUserPrincipal();
 			if(principal != null){
 				userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
-				System.out.print("\n"+currentUser.getRol()+"\n");
+           		model.addAttribute("user", currentUser);
+				// System.out.print("\n"+currentUser.getRol()+"\n");
 				if(Objects.equals(currentUser.getRol(), "ASO")){
 					isAsociation = true;
 				}
@@ -64,7 +65,7 @@ public class EditAsociationController {
 
     }
     
-    @GetMapping("/editAsoc/{id}")
+    @GetMapping("/admin/editAsoc/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id, HttpServletRequest request) {
 
 		try { Asociation asoc = asoService.findById(id).orElseThrow();
@@ -84,7 +85,7 @@ public class EditAsociationController {
 				System.out.print("\nAsociation\n");
 			}
 			else{
-				result = "redirect:/adminAsoc";
+				result = "redirect:/admin/adminAsoc";
 				System.out.print("\nOtro\n");
 			}
 			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
@@ -100,11 +101,36 @@ public class EditAsociationController {
         }
 	}
 
-	@PostMapping("/adminAsoc/{id}/delete")
+	@PostMapping("/admin/editAsoc/{id}")
+	public String editProfile2(Model model, Asociation newAsoc, @PathVariable long id){
+		try { asoService.findById(id).orElseThrow();
+			String result;
+			if(isAsociation){
+				result = "redirect:/miEspacio";
+				System.out.print("\nAsociation\n");
+			}
+			else{
+				result = "redirect:/admin/adminAsoc";
+				System.out.print("\nOtro\n");
+			}
+			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
+				return result;
+			}
+			else{
+				newAsoc.setId(id);
+				asoService.save(newAsoc);
+				return result;
+			}
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
+	}
+
+	@PostMapping("/admin/adminAsoc/{id}/delete")
 	public String editProfile(Model model, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			asoService.deleteById(id);
-			return "redirect:/adminAsoc";
+			return "redirect:/admin/adminAsoc";
         } catch (Exception e) {
             return "redirect:/404";
         }

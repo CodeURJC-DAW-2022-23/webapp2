@@ -27,7 +27,12 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <input type="submit" value="Cerrar Sesión" style="text-decoration:none;">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -60,7 +65,7 @@
                     <div class="sb-sidenav-footer">
 
                         <div class="small">Logged in as:</div>
-                        Admin
+                        {{#user}}{{username}}{{/user}}
                         
                     </div>
                     
@@ -75,6 +80,62 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Eventos</li>
                         </ol>
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Tabla Eventos
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Fecha</th>
+                                            <th>Localización</th>
+                                            <th>Asociación</th>
+                                            <th>Modificar</th>
+                                            <th>Eliminar</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Fecha</th>
+                                            <th>Localización</th>
+                                            <th>Asociación</th>
+                                            <th>Modificar</th>
+                                            <th>Eliminar</th>
+                                            
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {{#eventlist}}
+                                        <tr>
+                                            <td>{{id}}</td>
+                                            <td>{{name}}</td>
+                                            <td>{{date}}</td>
+                                            <td>{{location}}</td>
+                                            <td>{{asociation}}</td>
+                                            <td><form action="/admin/editarEventos/{{id}}">
+                                                <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
+                                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                                            </form></td>
+                                            <td><form action="/admin/editarEventos/{{id}}/delete" method="post">
+                                                <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
+                                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                                            </form></td>
+                                        </tr>
+                                        {{/eventlist}}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                         
                     
                 </main>

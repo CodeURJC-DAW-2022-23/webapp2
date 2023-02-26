@@ -27,7 +27,12 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar Sesion</a></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                <input type="submit" value="Cerrar Sesión" style="text-decoration:none;">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -60,7 +65,7 @@
                     <div class="sb-sidenav-footer">
 
                         <div class="small">Logged in as:</div>
-                        Admin
+                        {{#user}}{{username}}{{/user}}
                         
                     </div>
                     
@@ -114,11 +119,11 @@
                                                 <td>{{description}}</td>
                                                 <td>{{faculty}}</td>
                                                 <td>{{campus}}</td>
-                                                <td><form action="/editAsoc/{{id}}">
+                                                <td><form action="/admin/editAsoc/{{id}}">
                                                     <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success">
                                                     <input type="hidden" name="_csrf" value="{{token}}"/>
                                                 </form></td>
-                                                <td><form action="/adminAsoc/{{id}}/delete" method="post">
+                                                <td><form action="/admin/adminAsoc/{{id}}/delete" method="post">
                                                     <input type="submit" value="Eliminar" class="btn btn-sm btn-outline-danger">
                                                     <input type="hidden" name="_csrf" value="{{token}}"/>
                                                 </form></td>
