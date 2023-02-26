@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="css/footer.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 <body>
 
@@ -46,8 +45,8 @@
 
 
     <div class="hero container-fluid">
-        <form  class="search-form"  method="post" id="buscador" action="searchCoincidence">
-            <input type="search" value="" placeholder="Busca eventos o categorías" class="search-input" name="searchBar">
+        <form class="search-form"  method="post" id="buscador" action="searchCoincidence">
+            <input type="search" value="{{seachBarContent}}" placeholder="Busca eventos o categorías" class="search-input" name="searchBar">
             <button type="submit" class="search-button" name="_csrf" value="{{token}}">
                 <svg class="submit-button">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
@@ -72,8 +71,13 @@
     <div class="filters-container">
         <div class="filter">
             <div class="select-container">
+                <script>
+                    function submitAso() {
+                        document.getElementById("submitAso").click();
+                    }
+                </script>
                 <form id="asoForm" method="post"  action="asociationOption">
-                    <select class="custom-select" id="asociacion" name="asociationValue" onchange="this.form.submit()">
+                    <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitAso').click();">
                         <option value="" selected>Asociación</option>
                         <option value="All">Todas</option>
                         <option value="BIC">BIC</option>
@@ -97,26 +101,17 @@
                         </svg>
                     </button>
                    
+                   
                 </form>
+                
                 
             </div>
             <div class="select-container">
                 <form method="post" action="monthOption">
-                    <select class="custom-select" id="mes" name="monthValue">
-                        <option value="" selected>Mes</option>
-                        <option value="All">Todos</option>
-                        <option value="ENERO">Enero</option>
-                        <option value="FEBRERO">Febrero</option>
-                        <option value="MARZO">Marzo</option>
-                        <option value="ABRIL">Abril</option>
-                        <option value="MAYO">Mayo</option>
-                        <option value="JUNIO">Junio</option>
-                        <option value="JULIO">Julio</option>
-                        <option value="AGOSTO">Agosto</option>
-                        <option value="SEPTIEMBRE">Septiembre</option>
-                        <option value="OCTUBRE">Octubre</option>
-                        <option value="NOVIEMBRE">Noviembre</option>
-                        <option value="DICIEMBRE">Diciembre</option>
+                    <select class="custom-select" id="mes" name="monthSelect" >
+                        {{#monthsValues}}
+                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                        {{/monthsValues}}
                     </select>
                     <input type="submit" value="Submit" name="_csrf" value="{{token}}"/>
                 </form>
@@ -125,14 +120,9 @@
             <div class="select-container">
                 <form method="post" action="campusOption">
                     <select class="custom-select" id="campus" name="campusValue">
-                        <option value="" selected>Campus</option>
-                        <option value="All">Todos</option>
-                        <option value="ALCORCON">Alconrcón</option>
-                        <option value="ARANJUEZ">Aranjuez</option>
-                        <option value="FUENLABRADA">Fuenlabrada</option>
-                        <option value="MOSTOLES">Móstoles</option>
-                        <option value="MADRID-VICALVARO">Madrid-Vicalvaro</option>
-                        <option value="MADRID-QUINTANA">Madrid-Quintana</option>
+                        {{#campusValues}}
+                        <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                        {{/campusValues}}
                     </select>
                     <input type="submit" value="Submit" name="_csrf" value="{{token}}"/>
                 </form>

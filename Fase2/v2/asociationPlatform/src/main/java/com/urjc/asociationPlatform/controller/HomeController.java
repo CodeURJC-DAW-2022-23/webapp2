@@ -1,6 +1,7 @@
 package com.urjc.asociationPlatform.controller;
 
 import java.security.Principal;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,11 @@ public class HomeController {
     private String searchInfo="";//the value "" indicates that match with all the coincidences
     private String asociation = "";
     private String month = "";
-    private String campus= "";
+    private String[] monthsValue={"", "All", "ENERO", "FEBRERO", "MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
+    private String[] monthsContent={"Mes","Todos", "Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+    private String campus= "ALCORCON";
+    private String[] campusValue={"", "All","ALCORCON","ARANJUEZ","FUENLABRADA","MOSTOLES","MADRID-VICALVARO","MADRID-QUINTANA"};
+    private String[] campusContent={"Campus","Todos","Alcorcón","Aranjuez","Fuenlabrada","Móstoles","Madrid-Vicalvaro","Madrid-Quintana"};
 
     @Autowired
     private UserService userService;
@@ -51,10 +56,12 @@ public class HomeController {
     
     @GetMapping("/")
     public String goHome(Model model){
-        searchInfo="";
-        asociation = "";
-        month = "";
-        campus= "";
+        //searchInfo="";
+        //asociation = "";
+        //month = "";
+        //campus= "";
+        model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        generateFiltersOptions(model);
         return "home";
     }
 
@@ -82,6 +89,7 @@ public class HomeController {
     public String searchCoincidence(Model model, @RequestParam String searchBar){
         searchInfo=searchBar;
         model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        generateFiltersOptions(model);
         return "redirect:/";
     }
     //options
@@ -89,20 +97,46 @@ public class HomeController {
     public String asociationOption(Model model, @RequestParam String asociationValue){
         asociation=asociationValue;
         model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        return "home";
+        generateFiltersOptions(model);
+        return "redirect:/";
     }
     @PostMapping("/monthOption")
-    public String monthOption(Model model, @RequestParam String monthValue){
-        month=monthValue;
+    public String monthOption(Model model, @RequestParam String monthSelect){
+        month=monthSelect;
         model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        return "home";
+        generateFiltersOptions(model);
+        return "redirect:/";
     }
     @PostMapping("/campusOption")
     public String campusOption(Model model, @RequestParam String campusValue){
         campus=campusValue;
         model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        return "home";
+        generateFiltersOptions(model);
+        return "redirect:/";
     }
 
+    public void generateFiltersOptions(Model model){
+        List<Map<String, Object>> months = new ArrayList<>();
+        for(int i=0;i<monthsValue.length;i++){
+            Map<String, Object> option = new HashMap<>();
+            option.put("value", monthsValue[i].toString());
+            option.put("selected", monthsValue[i].equals(month));
+            option.put("content", monthsContent[i]);
+            months.add(option);
+        }
+        model.addAttribute("monthsValues", months);
 
+
+        List<Map<String, Object>> campusL = new ArrayList<>();
+        for(int i=0;i<campusValue.length;i++){
+            Map<String, Object> option = new HashMap<>();
+            option.put("value", campusValue[i].toString());
+            option.put("selected", campusValue[i].equals(campus));
+            option.put("content", campusContent[i]);
+            campusL.add(option);
+        }
+        model.addAttribute("campusValues", campusL);
+
+        model.addAttribute("seachBarContent", searchInfo);
+    }
 }

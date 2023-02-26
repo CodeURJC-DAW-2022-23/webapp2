@@ -16,16 +16,16 @@ public class EventService {
    
     public List<Event> getEventsByFilters(String name, String month, String campus, String asociation){
         
-        if(name.equals("") || name.equals("ALL")){
+        if(name.equals("") || name.equals("All")){
             name="*";
         }
-        if(month.equals("") || month.equals("ALL")){
+        if(month.equals("") || month.equals("All")){
             month="*";
         }
-        if(campus.equals("") || campus.equals("ALL")){
+        if(campus.equals("") || campus.equals("All")){
             campus="*";
         }
-        if(asociation.equals("") || asociation.equals("ALL")){
+        if(asociation.equals("") || asociation.equals("All")){
             asociation="*";
         }
         return events.getEvents(name, month, campus, asociation);
