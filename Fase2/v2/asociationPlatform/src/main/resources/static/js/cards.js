@@ -23,291 +23,291 @@ var elemento = document.getElementById('elemento');
 //     }
 //   };
 
-function inicio() {
-    elemento.innerHTML = `
-    <button id="prev" class="btn">
-    <i class="bx bxs-chevron-left"></i>
-  </button>
-  <div class="con-cards">
-    <div class='widget'>
-    <div class='widget__photo'></div>
-    <div class='widget__button'>
-        <a href="detalles.html">Más Info</a>
-    </div>
-    <div class='widget__details'>
-        <div class='widget__name'>
-            Evento Apertura
-        </div>
-        <div class='widget__type'>
-            Anger
-        </div>
-        <div class='widget__info'>
-            <span>
-                Universidad Rey Juan Carlos
-            </span>
-            <span>
-                Móstoles
-            </span>
-        </div>
-        <div class='widget__hidden'>
-            <hr>
-            <table class='widget__table'>
-                <tr>
-                    <td>
-                        Fecha
-                    </td>
-                    <td>
-                        17 de febrero 2021
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Horario
-                    </td>
-                    <td>
-                        9-12
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Lugar
-                    </td>
-                    <td>
-                        Salón de actos
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Reserva
-                    </td>
-                    <td>
-                        Si
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Creditos
-                    </td>
-                    <td>
-                        No
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-<div class='widget'>
-            <div class='widget__photo'></div>
-            <div class='widget__button'>
-                <a href="detalles.html">Más Info</a>
-            </div>
-            <div class='widget__details'>
-                <div class='widget__name'>
-                    Evento Apertura
-                </div>
-                <div class='widget__type'>
-                    Anger
-                </div>
-                <div class='widget__info'>
-                    <span>
-                        Universidad Rey Juan Carlos
-                    </span>
-                    <span>
-                        Móstoles
-                    </span>
-                </div>
-                <div class='widget__hidden'>
-                    <hr>
-                    <table class='widget__table'>
-                        <tr>
-                            <td>
-                                Fecha
-                            </td>
-                            <td>
-                                17 de febrero 2021
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Horario
-                            </td>
-                            <td>
-                                9-12
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Lugar
-                            </td>
-                            <td>
-                                Salón de actos
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Reserva
-                            </td>
-                            <td>
-                                Si
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Creditos
-                            </td>
-                            <td>
-                                No
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class='widget'>
-            <div class='widget__photo'></div>
-            <div class='widget__button'>
-                <a href="detalles.html">Más Info</a>
-            </div>
-            <div class='widget__details'>
-                <div class='widget__name'>
-                    Evento Apertura
-                </div>
-                <div class='widget__type'>
-                    Anger
-                </div>
-                <div class='widget__info'>
-                    <span>
-                        Universidad Rey Juan Carlos
-                    </span>
-                    <span>
-                        Móstoles
-                    </span>
-                </div>
-                <div class='widget__hidden'>
-                    <hr>
-                    <table class='widget__table'>
-                        <tr>
-                            <td>
-                                Fecha
-                            </td>
-                            <td>
-                                17 de febrero 2021
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Horario
-                            </td>
-                            <td>
-                                9-12
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Lugar
-                            </td>
-                            <td>
-                                Salón de actos
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Reserva
-                            </td>
-                            <td>
-                                Si
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Creditos
-                            </td>
-                            <td>
-                                No
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class='widget'>
-            <div class='widget__photo'></div>
-            <div class='widget__button'>
-                <a href="detalles.html">Más Info</a>
-            </div>
-            <div class='widget__details'>
-                <div class='widget__name'>
-                    Evento Apertura
-                </div>
-                <div class='widget__type'>
-                    Anger
-                </div>
-                <div class='widget__info'>
-                    <span>
-                        Universidad Rey Juan Carlos
-                    </span>
-                    <span>
-                        Móstoles
-                    </span>
-                </div>
-                <div class='widget__hidden'>
-                    <hr>
-                    <table class='widget__table'>
-                        <tr>
-                            <td>
-                                Fecha
-                            </td>
-                            <td>
-                                17 de febrero 2021
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Horario
-                            </td>
-                            <td>
-                                9-12
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Lugar
-                            </td>
-                            <td>
-                                Salón de actos
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Reserva
-                            </td>
-                            <td>
-                                Si
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Creditos
-                            </td>
-                            <td>
-                                No
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+// function inicio() {
+//     elemento.innerHTML = `
+//     <button id="prev" class="btn">
+//     <i class="bx bxs-chevron-left"></i>
+//   </button>
+//   <div class="con-cards">
+//     <div class='widget'>
+//     <div class='widget__photo'></div>
+//     <div class='widget__button'>
+//         <a href="detalles.html">Más Info</a>
+//     </div>
+//     <div class='widget__details'>
+//         <div class='widget__name'>
+//             Evento Apertura
+//         </div>
+//         <div class='widget__type'>
+//             Anger
+//         </div>
+//         <div class='widget__info'>
+//             <span>
+//                 Universidad Rey Juan Carlos
+//             </span>
+//             <span>
+//                 Móstoles
+//             </span>
+//         </div>
+//         <div class='widget__hidden'>
+//             <hr>
+//             <table class='widget__table'>
+//                 <tr>
+//                     <td>
+//                         Fecha
+//                     </td>
+//                     <td>
+//                         17 de febrero 2021
+//                     </td>
+//                 </tr>
+//                 <tr>
+//                     <td>
+//                         Horario
+//                     </td>
+//                     <td>
+//                         9-12
+//                     </td>
+//                 </tr>
+//                 <tr>
+//                     <td>
+//                         Lugar
+//                     </td>
+//                     <td>
+//                         Salón de actos
+//                     </td>
+//                 </tr>
+//                 <tr>
+//                     <td>
+//                         Reserva
+//                     </td>
+//                     <td>
+//                         Si
+//                     </td>
+//                 </tr>
+//                 <tr>
+//                     <td>
+//                         Creditos
+//                     </td>
+//                     <td>
+//                         No
+//                     </td>
+//                 </tr>
+//             </table>
+//         </div>
+//     </div>
+// </div>
+// <div class='widget'>
+//             <div class='widget__photo'></div>
+//             <div class='widget__button'>
+//                 <a href="detalles.html">Más Info</a>
+//             </div>
+//             <div class='widget__details'>
+//                 <div class='widget__name'>
+//                     Evento Apertura
+//                 </div>
+//                 <div class='widget__type'>
+//                     Anger
+//                 </div>
+//                 <div class='widget__info'>
+//                     <span>
+//                         Universidad Rey Juan Carlos
+//                     </span>
+//                     <span>
+//                         Móstoles
+//                     </span>
+//                 </div>
+//                 <div class='widget__hidden'>
+//                     <hr>
+//                     <table class='widget__table'>
+//                         <tr>
+//                             <td>
+//                                 Fecha
+//                             </td>
+//                             <td>
+//                                 17 de febrero 2021
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Horario
+//                             </td>
+//                             <td>
+//                                 9-12
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Lugar
+//                             </td>
+//                             <td>
+//                                 Salón de actos
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Reserva
+//                             </td>
+//                             <td>
+//                                 Si
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Creditos
+//                             </td>
+//                             <td>
+//                                 No
+//                             </td>
+//                         </tr>
+//                     </table>
+//                 </div>
+//             </div>
+//         </div>
+//         <div class='widget'>
+//             <div class='widget__photo'></div>
+//             <div class='widget__button'>
+//                 <a href="detalles.html">Más Info</a>
+//             </div>
+//             <div class='widget__details'>
+//                 <div class='widget__name'>
+//                     Evento Apertura
+//                 </div>
+//                 <div class='widget__type'>
+//                     Anger
+//                 </div>
+//                 <div class='widget__info'>
+//                     <span>
+//                         Universidad Rey Juan Carlos
+//                     </span>
+//                     <span>
+//                         Móstoles
+//                     </span>
+//                 </div>
+//                 <div class='widget__hidden'>
+//                     <hr>
+//                     <table class='widget__table'>
+//                         <tr>
+//                             <td>
+//                                 Fecha
+//                             </td>
+//                             <td>
+//                                 17 de febrero 2021
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Horario
+//                             </td>
+//                             <td>
+//                                 9-12
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Lugar
+//                             </td>
+//                             <td>
+//                                 Salón de actos
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Reserva
+//                             </td>
+//                             <td>
+//                                 Si
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Creditos
+//                             </td>
+//                             <td>
+//                                 No
+//                             </td>
+//                         </tr>
+//                     </table>
+//                 </div>
+//             </div>
+//         </div>
+//         <div class='widget'>
+//             <div class='widget__photo'></div>
+//             <div class='widget__button'>
+//                 <a href="detalles.html">Más Info</a>
+//             </div>
+//             <div class='widget__details'>
+//                 <div class='widget__name'>
+//                     Evento Apertura
+//                 </div>
+//                 <div class='widget__type'>
+//                     Anger
+//                 </div>
+//                 <div class='widget__info'>
+//                     <span>
+//                         Universidad Rey Juan Carlos
+//                     </span>
+//                     <span>
+//                         Móstoles
+//                     </span>
+//                 </div>
+//                 <div class='widget__hidden'>
+//                     <hr>
+//                     <table class='widget__table'>
+//                         <tr>
+//                             <td>
+//                                 Fecha
+//                             </td>
+//                             <td>
+//                                 17 de febrero 2021
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Horario
+//                             </td>
+//                             <td>
+//                                 9-12
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Lugar
+//                             </td>
+//                             <td>
+//                                 Salón de actos
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Reserva
+//                             </td>
+//                             <td>
+//                                 Si
+//                             </td>
+//                         </tr>
+//                         <tr>
+//                             <td>
+//                                 Creditos
+//                             </td>
+//                             <td>
+//                                 No
+//                             </td>
+//                         </tr>
+//                     </table>
+//                 </div>
+//             </div>
+//         </div>
         
-        </div>
-        <button id="next" class="btn">
-          <i class="bx bxs-chevron-right"></i>
-        </button>`
-}
-inicio();
+//         </div>
+//         <button id="next" class="btn">
+//           <i class="bx bxs-chevron-right"></i>
+//         </button>`
+// }
+// inicio();
 
-eventos.addEventListener('click', cargar);
+// eventos.addEventListener('click', cargar);
 
-agenda.addEventListener('click', cargar);
+// agenda.addEventListener('click', cargar);
 
 // manejar carrusel botones
 const next = document.querySelector('#next')
@@ -330,20 +330,20 @@ function handleScrollPrev() {
 next.addEventListener('click', handleScrollNext);
 prev.addEventListener('click', handleScrollPrev);
 
-function cargar(e) {
+// function cargar(e) {
 
-    let p = e.target.id
+//     let p = e.target.id
 
-    switch (p) {
-        case 'eventos': 
-            inicio();
-            next.addEventListener('click', handleScrollNext);
-            prev.addEventListener('click', handleScrollPrev);
+//     switch (p) {
+//         case 'eventos': 
+//             inicio();
+//             next.addEventListener('click', handleScrollNext);
+//             prev.addEventListener('click', handleScrollPrev);
 
-            break;
-        case 'agenda': elemento.innerHTML = '<p>Proximamente</p>';
-            break;
+//             break;
+//         case 'agenda': elemento.innerHTML = '<p>Proximamente</p>';
+//             break;
 
-    }
-}
+//     }
+// }
 

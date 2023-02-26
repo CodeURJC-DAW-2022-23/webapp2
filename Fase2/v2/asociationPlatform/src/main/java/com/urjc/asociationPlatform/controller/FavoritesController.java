@@ -35,26 +35,46 @@ public class FavoritesController {
 	 	}
 	}
 
-    @GetMapping("/{userId}/añadirFavoritos/{eventId}")
-    public String addFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){
-        try {
-            Event event = eventService.findById(eventId).orElseThrow();
-            User user = userService.findById(userId).orElseThrow();
+    @GetMapping("agregarFavoritos/{id}")
+    public String agregarFavoritos(Model model, @PathVariable long id, HttpServletRequest request){
 
-            if(!user.equals(currentUser)){
-                return "404";
-            }
+        Principal principal = request.getUserPrincipal();
 
-            if(!currentUser.getFavoritos().contains(event)){
-                currentUser.addFavoritos(event);
-            }
-
-            return "redirect:/";
+        if(principal != null){
+            User user = userService.findByUsername(principal.getName()).orElseThrow();
+            Event event = eventService.findById(id).orElseThrow();
             
-        } catch (Exception e) {
-            return "404";
-        }
+            if(!user.getFavoritos().contains(event)){
+                user.addFavoritos(event);
+                userService.save(user);
+            }
+            return "redirect:/infoEvento/{id}";
+            
+        } else {
+            return "/login";
+        } 
     }
+
+    // @GetMapping("/{userId}/añadirFavoritos/{eventId}")
+    // public String addFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){
+    //     try {
+    //         Event event = eventService.findById(eventId).orElseThrow();
+    //         User user = userService.findById(userId).orElseThrow();
+
+    //         if(!user.equals(currentUser)){
+    //             return "404";
+    //         }
+
+    //         if(!currentUser.getFavoritos().contains(event)){
+    //             currentUser.addFavoritos(event);
+    //         }
+
+    //         return "redirect:/";
+            
+    //     } catch (Exception e) {
+    //         return "404";
+    //     }
+    // }
 
     @GetMapping("/{userId}/eliminarFavoritos/{eventId}")
     public String removeFavorites(Model model, @PathVariable long userId, @PathVariable long eventId){

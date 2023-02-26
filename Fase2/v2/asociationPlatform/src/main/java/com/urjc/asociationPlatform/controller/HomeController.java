@@ -1,6 +1,7 @@
 package com.urjc.asociationPlatform.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,9 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
 @Controller
@@ -20,6 +24,9 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private EventService eventService;
+
     User currentUser;
 
     @ModelAttribute
@@ -27,9 +34,13 @@ public class HomeController {
 
 	    Principal principal = request.getUserPrincipal();
 
+        List<Event> eventList = eventService.findAll();
+
+        model.addAttribute("eventList", eventList);
+
 	 	if(principal != null) {
 	 		model.addAttribute("logged", true);
-
+            
             if(request.isUserInRole("ASO")){
                 model.addAttribute("aso",true);
             }else if(request.isUserInRole("BASE")){
@@ -42,7 +53,7 @@ public class HomeController {
 	 		model.addAttribute("logged", false);
 		}
 	}
-    
+
     @GetMapping("/")
     public String goHome(Model model){
         return "home";

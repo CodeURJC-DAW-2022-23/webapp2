@@ -133,83 +133,94 @@
 
     <div class="options">
         <ul>
-            <li><a href="#eventos" id="eventos">Próximos Eventos</a> </li>
+            <li><a href="#eventos" id="eventos" class="focus">Próximos Eventos</a> </li>
             <li><a href="#agenda" id="agenda">Agenda</a></li>
         </ul>
     </div>
 
     <div class='content' id="elemento">
 
-        <!-- <div class='widget'>
-            <div class='widget__photo'></div>
-            <div class='widget__button'>
-                Más Info
+        <button id="prev" class="btn">
+            <i class="bx bxs-chevron-left"></i>
+        </button>
+
+        <div class="con-cards">
+
+        {{#eventList}}
+            <div class='widget'>
+                <div class='widget__photo'></div>
+                <div class='widget__button'>
+                    <a href="/infoEvento/{{id}}">Más Info</a> 
+                </div>
+                <div class='widget__details'>
+                    <div class='widget__name'>
+                        {{name}}
+                    </div>
+                    <div class='widget__type'>
+                        Anger
+                    </div>
+                    <div class='widget__info'>
+                        <span>
+                            Universidad Rey Juan Carlos
+                        </span>
+                        <span>
+                            {{location}}
+                        </span>
+                    </div>
+                    <div class='widget__hidden'>
+                        <hr>
+                        <table class='widget__table'>
+                            <tr>
+                                <td>
+                                    Fecha
+                                </td>
+                                <td>
+                                    17 de febrero 2021
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Horario
+                                </td>
+                                <td>
+                                    9-12
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Lugar
+                                </td>
+                                <td>
+                                    Salón de actos
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Reserva
+                                </td>
+                                <td>
+                                    Si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Creditos
+                                </td>
+                                <td>
+                                    No
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class='widget__details'>
-                <div class='widget__name'>
-                    Evento Apertura
-                </div>
-                <div class='widget__type'>
-                    Anger
-                </div>
-                <div class='widget__info'>
-                    <span>
-                        Universidad Rey Juan Carlos
-                    </span>
-                    <span>
-                        Móstoles
-                    </span>
-                </div>
-                <div class='widget__hidden'>
-                    <hr>
-                    <table class='widget__table'>
-                        <tr>
-                            <td>
-                                Fecha
-                            </td>
-                            <td>
-                                17 de febrero 2021
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Horario
-                            </td>
-                            <td>
-                                9-12
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Lugar
-                            </td>
-                            <td>
-                                Salón de actos
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Reserva
-                            </td>
-                            <td>
-                                Si
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Creditos
-                            </td>
-                            <td>
-                                No
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+        {{/eventList}}
+                    
         </div>
-        </div> -->
 
-
+        <button id="next" class="btn">
+             <i class="bx bxs-chevron-right"></i>
+        </button>
     </div>
 
     <footer class="container-fluid">
