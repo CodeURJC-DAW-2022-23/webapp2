@@ -1,28 +1,36 @@
 package com.urjc.asociationPlatform.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.urjc.asociationPlatform.model.Coment;
+import com.urjc.asociationPlatform.repository.ComentRepository;
+
 public class ComentService {
 
     @Autowired
     private ComentRepository comentRepository;
 
-    public void save(Event event) {
-		eventRepository.save(event);
+    public void save(Coment coment) {
+		comentRepository.save(coment);
 	}
 
-	public Optional<Event> findByName(String name) {
-		return eventRepository.findByName(name);
+	public Optional<Coment> findByName(String name) {
+		return comentRepository.findByName(name);
 	}
 
-	public List<Event> findAll() {
-		return eventRepository.findAll();
+	public List<Coment> findAll() {
+		return comentRepository.findAll();
 	}
 
-	public Optional<Event> findById(long id) {
-		Optional<Event> findById = eventRepository.findById(id);
+	public Optional<Coment> findById(long id) {
+		Optional<Coment> findById = comentRepository.findById(id);
 		return findById;
 	}
 
     public void deleteById(long id){
-		eventRepository.deleteById(id);
+		comentRepository.deleteById(id);
 	}
 }
