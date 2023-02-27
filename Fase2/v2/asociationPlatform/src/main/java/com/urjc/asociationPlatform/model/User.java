@@ -20,8 +20,8 @@ public class User {
     @ManyToOne
     private Asociation asociation;
 
-    @OneToMany
-        private List<Event> favoritos = new ArrayList<>();
+    @ManyToMany
+    private List<Event> favoritos = new ArrayList<>();
     
     public User(){}
 
