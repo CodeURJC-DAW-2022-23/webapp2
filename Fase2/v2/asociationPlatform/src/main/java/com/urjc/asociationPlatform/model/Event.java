@@ -1,19 +1,9 @@
 package com.urjc.asociationPlatform.model;
 
-
 import java.sql.Blob;
 import java.sql.Date;
-
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,8 +23,8 @@ public class Event {
     private boolean creditos;
     private boolean reserva;
     private String duracion;
-    @ManyToMany
-    private List<Comment> favoritos = new ArrayList<>();
+    @OneToMany
+    private List<Comment> comments = new ArrayList<>();
     
     @Lob
     private Blob image;
@@ -143,6 +133,22 @@ public class Event {
     }
     public void setImgUrl(Blob image) {
         this.image = image;
+    }
+
+    public List<Comment> getComments(){
+        return this.comments;
+    }
+
+    public void setComments(List<Comment> comments){
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment){
+        this.comments.add(comment);
+    }
+
+    public void removeComment(Comment comment){
+        this.comments.remove(comment);
     }
     
 }
