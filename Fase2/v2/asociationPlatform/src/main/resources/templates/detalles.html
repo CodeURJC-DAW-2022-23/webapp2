@@ -7,9 +7,10 @@
     <title>Más información</title>
     <link rel="icon" href="/img/logo.png">
     <link rel="stylesheet" href="/css/detalles.css">
-    <link rel="stylesheet" href="/css/coment.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/comments.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
@@ -68,27 +69,6 @@
 
           </div>
       </div>
-       <!-- Contenedor Principal -->
-        <div class="comments-container">
-            <h1>Comentarios </h1>
-                <li>
-                    <div class="comment-main-level">
-                        <!-- Contenedor del Comentario -->
-                        <div class="comment-box">
-                            <div class="comment-head">
-                                <h6 class="comment-name">{{#currentuser}}{{username}}{{/currentuser}}</h6>
-                                
-                                <i class="fa fa-reply"></i>
-                                <i class="fa fa-heart"></i>
-                            </div>
-                            <div class="comment-content">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
   </section>
   
   <section class="row1">  
@@ -102,12 +82,56 @@
        <a href="/agregarFavoritos/{{#event}}{{id}}{{/event}}">Añadir favoritos</a>
     </div>
 
-       <!-- <form action="/agregarFavoritos/{{#event}}{{id}}{{/event}}" method="post">
-        <input type="submit" value="Añadir favoritos">
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-        </form> -->
+   </section>
+
+   <section class="comments-container">
+    <h1>Comentarios</h1>
+
+    <ul id="comments-list" class="comments-list">
+
+        <li>
+            <div class="comment-main-level">
+                <!-- Contenedor del Comentario -->
+                <div class="comment-box">
+                    <div class="comment-head">
+                        <h6 class="comment-name"><a href="">Lorena Rojero</a></h6>
+                        <span>hace 10 minutos</span>
+                        <i class='bx bxs-heart'></i>
+                    </div>
+                    <div class="comment-content">
+                        El que ha escrito el comentario de abajo no le sabe
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="comment-main-level">
+                <!-- Contenedor del Comentario -->
+                <div class="comment-box">
+                    <div class="comment-head">
+                        <h6 class="comment-name"><a href="">Lorena Rojero</a></h6>
+                        <span>hace 10 minutos</span>
+                        <i class='bx bxs-heart'></i>
+                    </div>
+                    <div class="comment-content">
+                        Hola Este es mi primer comentario no sean malos conmigo pls
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="comment-form">
+        <form class="form" name="form">
+            <div class="form-row">
+            <textarea class="input" placeholder="Añadir Comentario..." required></textarea>
+            </div>
     
-    
+            <div class="form-row">
+            <input type="submit" value="Añadir Comentario">
+            </div>
+        </form>
+    </div>
    </section>
 
    <footer class="container-fluid">
@@ -124,7 +148,6 @@
   
       <script src="/js/jquery.js"></script>
       <script src="/js/script.js"></script>
-      <script src="/js/coment.js"></script>
     
 </body>
 </html>
