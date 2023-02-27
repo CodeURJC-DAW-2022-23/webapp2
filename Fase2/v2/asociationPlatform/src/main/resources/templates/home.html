@@ -45,9 +45,9 @@
 
 
     <div class="hero container-fluid">
-        <form class="search-form"  method="post" id="buscador" action="searchCoincidence">
+        <form class="search-form"  method="post" id="buscador" action="globalFormSubmit">
             <input type="search" value="{{seachBarContent}}" placeholder="Busca eventos o categorías" class="search-input" name="searchBar">
-            <button type="submit" class="search-button" name="_csrf" value="{{token}}">
+            <button id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
                 <svg class="submit-button">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
                 </svg>
@@ -71,13 +71,9 @@
     <div class="filters-container">
         <div class="filter">
             <div class="select-container">
-                <script>
-                    function submitAso() {
-                        document.getElementById("submitAso").click();
-                    }
-                </script>
-                <form id="asoForm" method="post"  action="asociationOption">
-                    <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitAso').click();">
+                
+                <form id="asoForm" method="post" action="globalFormSubmit">
+                    <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitBtn').click();">
                         <option value="" selected>Asociación</option>
                         <option value="All">Todas</option>
                         <option value="BIC">BIC</option>
@@ -95,11 +91,11 @@
                         <option value="ADHUE">ADHUE</option>
                     </select>
                     
-                    <button  id="submitAso" type="submit" class="search-button" name="_csrf" value="{{token}}">
+                    <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
                         <svg class="submit-button">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
                         </svg>
-                    </button>
+                    </button> -->
                    
                    
                 </form>
@@ -107,24 +103,32 @@
                 
             </div>
             <div class="select-container">
-                <form method="post" action="monthOption">
-                    <select class="custom-select" id="mes" name="monthSelect" >
+                <form method="post" action="globalFormSubmit">
+                    <select class="custom-select" id="mes" name="monthSelect" onchange="document.getElementById('submitBtn').click();">
                         {{#monthsValues}}
                             <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
                         {{/monthsValues}}
                     </select>
-                    <input type="submit" value="Submit" name="_csrf" value="{{token}}"/>
+                    <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
+                        <svg class="submit-button">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                        </svg>
+                    </button> -->
                 </form>
                 
             </div>
             <div class="select-container">
-                <form method="post" action="campusOption">
-                    <select class="custom-select" id="campus" name="campusValue">
+                <form method="post" action="globalFormSubmit">
+                    <select class="custom-select" id="campus" name="campusValue" onchange="document.getElementById('submitBtn').click();">
                         {{#campusValues}}
                         <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
                         {{/campusValues}}
                     </select>
-                    <input type="submit" value="Submit" name="_csrf" value="{{token}}"/>
+                    <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
+                        <svg class="submit-button">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                        </svg>
+                    </button> -->
                 </form>
                 
             </div>
@@ -228,7 +232,7 @@
             </p>
         </div>
     </footer>
-
+    <script src="js/sendFormsFilters.js"></script>
     <script src="js/cards.js"></script>
 
 </body>

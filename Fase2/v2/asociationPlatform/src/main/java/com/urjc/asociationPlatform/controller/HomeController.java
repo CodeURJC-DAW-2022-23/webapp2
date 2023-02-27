@@ -25,7 +25,7 @@ public class HomeController {
     private String month = "";
     private String[] monthsValue={"", "All", "ENERO", "FEBRERO", "MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
     private String[] monthsContent={"Mes","Todos", "Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
-    private String campus= "ALCORCON";
+    private String campus= "";
     private String[] campusValue={"", "All","ALCORCON","ARANJUEZ","FUENLABRADA","MOSTOLES","MADRID-VICALVARO","MADRID-QUINTANA"};
     private String[] campusContent={"Campus","Todos","Alcorcón","Aranjuez","Fuenlabrada","Móstoles","Madrid-Vicalvaro","Madrid-Quintana"};
 
@@ -84,32 +84,21 @@ public class HomeController {
 	public String miespacio() {
 		return "myAso";
 	}
-    //seach bar
-    @PostMapping("/searchCoincidence")
-    public String searchCoincidence(Model model, @RequestParam String searchBar){
-        searchInfo=searchBar;
-        model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        generateFiltersOptions(model);
-        return "redirect:/";
-    }
-    //options
-    @PostMapping("/asociationOption")
-    public String asociationOption(Model model, @RequestParam String asociationValue){
-        asociation=asociationValue;
-        model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        generateFiltersOptions(model);
-        return "redirect:/";
-    }
-    @PostMapping("/monthOption")
-    public String monthOption(Model model, @RequestParam String monthSelect){
-        month=monthSelect;
-        model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        generateFiltersOptions(model);
-        return "redirect:/";
-    }
-    @PostMapping("/campusOption")
-    public String campusOption(Model model, @RequestParam String campusValue){
-        campus=campusValue;
+    @PostMapping("/globalFormSubmit")
+    public String globalFormSubmit(Model model, @RequestParam Map<String,String> formData){
+        if(formData.containsKey("searchBar")){
+            searchInfo=formData.get("searchBar");
+        }
+        if(formData.containsKey("monthSelect")){
+            month=formData.get("monthSelect");
+        }
+        if(formData.containsKey("campusValue")){
+            campus=formData.get("campusValue");
+        }
+        if(formData.containsKey("asociationValue")){
+            asociation=formData.get("asociationValue");
+        }
+
         model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
         generateFiltersOptions(model);
         return "redirect:/";
