@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.urjc.asociationPlatform.model.Coment;
 import com.urjc.asociationPlatform.repository.ComentRepository;
 
+import antlr.debug.Event;
+
 public class ComentService {
 
     @Autowired
@@ -17,8 +19,8 @@ public class ComentService {
 		comentRepository.save(coment);
 	}
 
-	public Optional<Coment> findByName(String name) {
-		return comentRepository.findByName(name);
+	public Optional<Coment> findByEvent(Event event) {
+		return comentRepository.findByEvent(event);
 	}
 
 	public List<Coment> findAll() {
