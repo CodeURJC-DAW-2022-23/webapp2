@@ -63,8 +63,11 @@ public class NewEventController {
     Principal principal = request.getUserPrincipal();
 
 	 	if(principal != null) {
-	 		userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
-      association = currentUser.getAsoname();
+	 		userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
+      if(currentUser!=null){
+        association = currentUser.getAsociation().getName();
+      }
+      
 	 	} 
 
     if (credits.equals("no")) creditsBool = false;
@@ -82,7 +85,7 @@ public class NewEventController {
       e.printStackTrace();
     }
     
-    return "redirect:/gestionarEvento/";
+    return "redirect:/miEspacio/";
   }
 
     public Blob getBlob(MultipartFile file) throws SQLException, IOException {

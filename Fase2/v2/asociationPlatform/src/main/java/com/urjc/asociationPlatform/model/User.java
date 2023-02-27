@@ -1,5 +1,6 @@
 package com.urjc.asociationPlatform.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -16,10 +17,11 @@ public class User {
     private String username;
     private String encodedPassword;
     private String rol;
-    private String asoname;
+    @ManyToOne
+    private Asociation asociation;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
+    @OneToMany
+        private List<Event> favoritos = new ArrayList<>();
     
     public User(){}
 
@@ -46,7 +48,29 @@ public class User {
         this.rol = "aso";
     }
 
-    
+    public void setId(long id){
+        this.id=id;
+    }
+
+    public Long getId(){
+        return this.id;
+    }
+
+    public List<Event> getFavoritos(){
+        return this.favoritos;
+    }
+
+    public void setFavoritos(List<Event> favoritos){
+        this.favoritos = favoritos;
+    }
+
+    public void addFavoritos(Event event){
+        this.favoritos.add(event);
+    }
+
+    public void removeFavoritos(Event event){
+        this.favoritos.remove(event);
+    }
 
     public String getUsername(){
         return this.username;
@@ -64,8 +88,8 @@ public class User {
         return this.rol;
     }
 
-    public String getAsoname(){
-        return this.asoname;
+    public Asociation getAsociation(){
+        return this.asociation;
     }
 
     public void setUsername(String username){
@@ -84,16 +108,8 @@ public class User {
         this.rol =  rol;
     }
 
-    public void setAsoname(String asoname){
-        this.asoname = asoname;
-    }
-
-    public List<String> getRoles(){
-        return this.roles;
-    }
-
-    public void setRoles(String ... roles){
-        this.roles = List.of(roles);
+    public void setAsoname(Asociation asociation){
+        this.asociation = asociation;
     }
 
 }
