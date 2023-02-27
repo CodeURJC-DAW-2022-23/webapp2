@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class Event {
     private boolean creditos;
     private boolean reserva;
     private String duracion;
+    @ManyToMany
+    private List<Comment> favoritos = new ArrayList<>();
     
     @Lob
     private Blob image;

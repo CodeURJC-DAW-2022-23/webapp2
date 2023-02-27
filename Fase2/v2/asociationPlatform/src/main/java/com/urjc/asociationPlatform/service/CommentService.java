@@ -5,30 +5,30 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.urjc.asociationPlatform.model.Coment;
-import com.urjc.asociationPlatform.repository.ComentRepository;
+import com.urjc.asociationPlatform.model.Comment;
+import com.urjc.asociationPlatform.repository.CommentRepository;
 
 import antlr.debug.Event;
 
-public class ComentService {
+public class CommentService {
 
     @Autowired
-    private ComentRepository comentRepository;
+    private CommentRepository comentRepository;
 
-    public void save(Coment coment) {
+    public void save(Comment coment) {
 		comentRepository.save(coment);
 	}
 
-	public Optional<Coment> findByEvent(Event event) {
+	public Optional<Comment> findByEvent(Event event) {
 		return comentRepository.findByEvent(event);
 	}
 
-	public List<Coment> findAll() {
+	public List<Comment> findAll() {
 		return comentRepository.findAll();
 	}
 
-	public Optional<Coment> findById(long id) {
-		Optional<Coment> findById = comentRepository.findById(id);
+	public Optional<Comment> findById(long id) {
+		Optional<Comment> findById = comentRepository.findById(id);
 		return findById;
 	}
 

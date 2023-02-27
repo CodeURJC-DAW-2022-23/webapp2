@@ -3,27 +3,27 @@ package com.urjc.asociationPlatform.model;
 import javax.persistence.*;
 
 @Entity
-public class Coment {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="Id")
     private Long id;
 
-    private String coment_user;
+    private String comment_user;
     private String description;
     private String time;
     
-    public Coment(String coment_user, String description, String time){
-    this.coment_user = coment_user;
+    public Comment(String comment_user, String description, String time){
+    this.comment_user = comment_user;
     this.description = description;
     this.time = time;
     }
 
-    public String getComentUser() {
-        return coment_user;
+    public String getCommentUser() {
+        return comment_user;
     }
-    public void setComentUser(String coment_user) {
-        this.coment_user = coment_user;
+    public void setCommentUser(String comment_user) {
+        this.comment_user = comment_user;
     }
 
     public String getDescription() {
