@@ -148,7 +148,7 @@
 
         {{#eventList}}
             <div class='widget'>
-                <div class='widget__photo'></div>
+                <div style='background: url(/{{id}}/image) no-repeat center/cover;' class='widget__photo'></div>
                 <div class='widget__button'>
                     <a href="/infoEvento/{{id}}">Más Info</a> 
                 </div>
@@ -157,14 +157,14 @@
                         {{name}}
                     </div>
                     <div class='widget__type'>
-                        Anger
+                        {{asociation}}
                     </div>
                     <div class='widget__info'>
                         <span>
                             Universidad Rey Juan Carlos
                         </span>
                         <span>
-                            {{location}}
+                            {{campus}}
                         </span>
                     </div>
                     <div class='widget__hidden'>
@@ -175,7 +175,7 @@
                                     Fecha
                                 </td>
                                 <td>
-                                    17 de febrero 2021
+                                    {{date}}
                                 </td>
                             </tr>
                             <tr>
@@ -183,7 +183,7 @@
                                     Horario
                                 </td>
                                 <td>
-                                    9-12
+                                    {{duracion}}
                                 </td>
                             </tr>
                             <tr>
@@ -191,7 +191,7 @@
                                     Lugar
                                 </td>
                                 <td>
-                                    Salón de actos
+                                    {{location}}
                                 </td>
                             </tr>
                             <tr>
@@ -199,7 +199,8 @@
                                     Reserva
                                 </td>
                                 <td>
-                                    Si
+                                    {{#reserva}}Si{{/reserva}}
+                                    {{^reserva}}No{{/reserva}}
                                 </td>
                             </tr>
                             <tr>
@@ -207,7 +208,8 @@
                                     Creditos
                                 </td>
                                 <td>
-                                    No
+                                    {{#creditos}}Si{{/creditos}}
+                                    {{^creditos}}No{{/creditos}}
                                 </td>
                             </tr>
                         </table>
