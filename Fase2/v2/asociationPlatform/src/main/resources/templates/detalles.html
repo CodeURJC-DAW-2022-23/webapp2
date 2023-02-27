@@ -7,6 +7,7 @@
     <title>Más información</title>
     <link rel="icon" href="/img/logo.png">
     <link rel="stylesheet" href="/css/detalles.css">
+    <link rel="stylesheet" href="/css/coment.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/footer.css">
 </head>
@@ -67,6 +68,27 @@
 
           </div>
       </div>
+       <!-- Contenedor Principal -->
+        <div class="comments-container">
+            <h1>Comentarios </h1>
+                <li>
+                    <div class="comment-main-level">
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name">{{#currentuser}}{{username}}{{/currentuser}}</h6>
+                                
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
   </section>
   
   <section class="row1">  
@@ -102,6 +124,7 @@
   
       <script src="/js/jquery.js"></script>
       <script src="/js/script.js"></script>
+      <script src="/js/coment.js"></script>
     
 </body>
 </html>

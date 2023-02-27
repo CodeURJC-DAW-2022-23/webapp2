@@ -32,6 +32,10 @@ public class EventDetailsController {
 
         model.addAttribute("event", event);
 
+        //List<Event> eventlist = eventService.findAll();
+        //findByEvent (id del evento)
+        model.addAttribute("eventlist", eventlist);
+
         return "detalles";
     }
 
