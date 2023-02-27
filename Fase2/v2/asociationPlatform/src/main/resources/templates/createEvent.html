@@ -7,6 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Aso</title>
+        <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -80,24 +81,68 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Crear Evento</li>
                         </ol>
-                        <form action="/newEvent" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post">
-                            <div class='d-sm-flex py-sm-2'>
-                              <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                        <form action="/newEvent" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
+                            <div class="form-group py-2">
                                 <label for="eventName">Nombre</label>
-                                <input name="name" type="text" class="form-control" id="eventName" placeholder="Nombre del evento" />
-                              </div>
-                              <div class="form-group py-2 py-sm-0 col-sm-5">
+                                <input name="name" type="text" class="form-control" id="eventName" placeholder="Nombre del evento" required/>
+                            </div>
+                            <div class="form-group py-2">
                                 <label for="">Fecha y hora</label>
-                                <input name="date" type="datetime-local" class="form-control" id="eventDate" />
-                              </div>
+                                <div class='d-flex align-items-center gap-2'>
+                                    <input name="date" type="date" class="form-control bootstrap-date" id="eventDate" required/>
+                                    <span>de</span>
+                                    <input name="startTime" type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
+                                    <span>hasta</span>
+                                    <input name="endTime" type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
+                                </div>
+                            </div>
+                            <div>
+                                <label for='form-select'>Campus</label>
+                                <select name="campus" class="form-select" aria-label="Default select example">
+                                    <option value="1">ALCORCÓN</option>
+                                    <option value="2">ARANJUEZ</option>
+                                    <option value="3">FUENLABRADA</option>
+                                    <option value="2">MÓSTOLES</option>
+                                    <option value="3">MADRID-VICALVARO</option>
+                                    <option value="2">MADRID-QUINTANA</option>
+                                </select>
                             </div>
                             <div class="form-group py-2">
                               <label for="">Ubicación</label>
-                              <input name="location" type="text" class="form-control" id="eventPlace" />
+                              <input name="location" type="text" class="form-control" id="eventPlace" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for='form-check'>¿Se darán créditos por la asistencia?</label>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="credits" id="yes" value="yes" checked>
+                                      <label class="form-check-label" for="yes">Si</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="credits" id="no" value="no">
+                                      <label class="form-check-label" for="no">No</label>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="form-group">
+                                <label for='form-check'>¿Hará falta reservar?</label>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="reservation" id="yes" value="yes" checked>
+                                      <label class="form-check-label" for="yes">Si</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="reservation" id="no" value="no">
+                                      <label class="form-check-label" for="no">No</label>
+                                    </div>
+                                  </div>
                             </div>
                             <div class="form-group py-2">
                               <label for="">Descripción</label>
-                              <textarea name="description" type="text" class="form-control" style=" height: 10em;"> </textarea>
+                              <textarea name="description" type="text" class="form-control" style=" height: 10em;" required> </textarea>
+                            </div>
+                            <div>
+                                <input name="image" class="form-control" type="file" accept="image/*" required/>
                             </div>
                             <div class="d-flex py-2 w-100">
                               <div class="flex-fill"></div>

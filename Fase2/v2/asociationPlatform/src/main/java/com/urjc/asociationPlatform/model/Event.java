@@ -1,7 +1,7 @@
 package com.urjc.asociationPlatform.model;
 
 
-
+import java.sql.Blob;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -12,8 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-
-import com.mysql.cj.jdbc.Blob;
 
 import java.util.List;
 
@@ -30,22 +28,32 @@ public class Event {
     private String description;
     private String location;
     private String asociation;
+    private String campus;
+    private boolean creditos;
+    private boolean reserva;
+    private String duracion;
     
     @Lob
     private Blob image;
 
     //@ElementCollection(fetch = FetchType.EAGER)
-    //private List<eventReview> reviews;
-    public Event(String name, Date date, String month, String description, String location, String asociation, Blob imgUrl) {
+    //private List<EventReview> reviews;
+    public Event(){}
+    
+    public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean creditos, boolean reserva, String duracion, Blob imgUrl) {
         this.name = name;
         this.date = date;
         this.month = month;
         this.description = description;
         this.location = location;
         this.asociation=asociation;
+        this.campus=campus;
+        this.creditos=creditos;
+        this.reserva=reserva;
+        this.duracion=duracion;
         this.image = imgUrl;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -56,6 +64,11 @@ public class Event {
     public Date getDate() {
         return date;
     }
+    
+    public String getDateString(){
+        return date.toString();
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }
@@ -84,12 +97,49 @@ public class Event {
     public void setAsociation(String asociation) {
         this.asociation = asociation;
     }
+    
+    public String getCampus() {
+        return campus;
+    }
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
+    public boolean isCreditos() {
+        return creditos;
+    }
+    public void setCreditos(boolean creditos) {
+        this.creditos = creditos;
+    }
+    public String getCreditosString(){
+        if(creditos){
+            return "Si";
+        }
+        return "No";
+    }
+    public boolean isReserva() {
+        return reserva;
+    }
+    public void setReserva(boolean reserva) {
+        this.reserva = reserva;
+    }
+    public String getReservaString(){
+        if(reserva){
+            return "Si";
+        }
+        return "No";
+    }
+    public String getDuracion() {
+        return duracion;
+    }
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+    
     public Blob getImage() {
         return image;
     }
     public void setImgUrl(Blob image) {
         this.image = image;
     }
-    
     
 }
