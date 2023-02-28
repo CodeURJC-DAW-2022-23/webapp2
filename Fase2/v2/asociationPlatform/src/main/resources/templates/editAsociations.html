@@ -83,34 +83,46 @@
                         </ol>
 
                             <div class="container-fluid py-5">
-                                <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/admin/editAsoc/{{id}}">
+                                <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="editAsoc/{{id}}">
                                     <h2>Editar asociación</h2>
                                     <hr/>
                                     <div class='d-sm-flex py-sm-2 row'>
-                                        <div class="row separate">
-                                            <div class="form-group py-2 py-sm-0 col-sm-7">
+                                        <div class='d-sm-flex py-sm-2'>
+                                            <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
                                                 <label for="eventName">Nombre</label>
                                                 <input type="text" class="form-control" id="name" name="name" value="{{#asociation}}{{name}}{{/asociation}}" />
                                             </div>
-                                        </div>
-                                        <div class="row separate">
-                                            <div class="form-group py-2 py-sm-0 col-sm-7">
-                                                <label for="">Descripción</label>
-                                                <textarea type="text" class="form-control" id="description" name="description">{{#asociation}}{{description}}{{/asociation}}</textarea>
+                                            <div class='d-sm-flex py-sm-2'>
+                                                <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                                    <label for='form-select'>Campus</label>
+                                                    <select name="campus" class="form-select" aria-label="Default select example">
+                                                        <option value="1">ALCORCÓN</option>
+                                                        <option value="2">ARANJUEZ</option>
+                                                        <option value="3">FUENLABRADA</option>
+                                                        <option value="2">MÓSTOLES</option>
+                                                        <option value="3">MADRID-VICALVARO</option>
+                                                        <option value="2">MADRID-QUINTANA</option>
+                                                    </select>
                                             </div>
-                                        </div>
-                                        <div class="row separate">
-                                            <div class="form-group py-2 py-sm-0 col-sm-7">
-                                                <label for="">Facultad</label>
-                                                <input type="text" class="form-control" id="faculty" name="faculty" value="{{#asociation}}{{faculty}}{{/asociation}}" />
+                                            <div class='d-sm-flex py-sm-2'>
+                                                <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                                    <label for='form-select'>Facultad</label>
+                                                    <select name="faculty" class="form-select" aria-label="Default select example">
+                                                        <option value="1">Facultad de Artes y Humanidades</option>
+                                                        <option value="2">Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares</option>
+                                                        <option value="3">Facultad de Ciencias de la Comunicación</option>
+                                                        <option value="2">Facultad de Ciencias de la Economía y de la Empresa</option>
+                                                        <option value="3">Facultad de Ciencias de la Salud</option>
+                                                        <option value="2">Facultad de Ciencias Jurídicas y Políticas</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row separate">
-                                            <div class="form-group py-2 py-sm-0 col-sm-7">
-                                                <label for="">Campus</label>
-                                                <input type="text" class="form-control" id="campus" name="campus" value="{{#asociation}}{{campus}}{{/asociation}}" />
+                                            <div class='d-sm-flex py-sm-2'>
+                                                <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                                    <label for="">Descripción</label>
+                                                    <textarea type="text" class="form-control" id="description" name="description">{{#asociation}}{{description}}{{/asociation}}</textarea>
                                             </div>
-                                        </div>
+                                            
                                     </div>
 
                                     <div class="d-flex py-2 w-100">
