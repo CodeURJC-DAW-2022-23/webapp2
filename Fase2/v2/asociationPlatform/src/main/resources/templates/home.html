@@ -77,21 +77,9 @@
                 
                 <form id="asoForm" method="post" action="globalFormSubmit">
                     <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitBtn').click();">
-                        <option value="" selected>Asociación</option>
-                        <option value="All">Todas</option>
-                        <option value="BIC">BIC</option>
-                        <option value="ARJE">ARJE</option>
-                        <option value="ADEMED URJC">ADEMED URJC</option>
-                        <option value="APOE">APOE</option>
-                        <option value="ANGER">ANGER</option>
-                        <option value="ESN URJC">ESN URJC</option>
-                        <option value="I+b ingeniería biomédica">I+b ingeniería biomédica</option>
-                        <option value="IURIS URJC">IURIS URJC</option>
-                        <option value="ASOLSE">ASOLSE</option>
-                        <option value="Asociación Aeroespacial Cosmos">Asociación Aeroespacial Cosmos </option>
-                        <option value="ALOA">ALOA</option>
-                        <option value="ASESP">ASESP</option>
-                        <option value="ADHUE">ADHUE</option>
+                        {{#asoValues}}
+                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                        {{/asoValues}}
                     </select>
                     
                     <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">

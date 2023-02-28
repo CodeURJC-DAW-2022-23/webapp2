@@ -30,7 +30,7 @@ public class RegisterController {
 	    Principal principal = request.getUserPrincipal();
 
 	 	if(principal != null) {
-	 		userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
+	 		//userService.findByEmail(principal.getName()).ifPresent(u -> currentUser = u);
 	 		model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));

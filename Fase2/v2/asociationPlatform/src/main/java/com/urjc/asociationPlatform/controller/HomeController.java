@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -38,7 +40,13 @@ public class HomeController {
     @Autowired
     private EventService eventService;
 
+    @Autowired
+    private AsociationService asociationService;
+
     User currentUser;
+    private List<Asociation> asociations;
+    private List<String> asoValues=new ArrayList<>();
+    private List<String> asoContenet=new ArrayList<>();
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -71,7 +79,17 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        model.addAttribute("eventList",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        //model.addAttribute("eventList",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        asociations = asociationService.findAll();
+        asoValues.add("");
+        asoValues.add("All");
+        asoContenet.add("Asociación");
+        asoContenet.add("Todas");
+        for(int i=0;i<asociations.size();i++){
+            asoValues.add(asociations.get(i).getName());
+            asoContenet.add(asociations.get(i).getName());
+        }
+
         generateFiltersOptions(model);
         return "home";
     }
@@ -136,6 +154,16 @@ public class HomeController {
             campusL.add(option);
         }
         model.addAttribute("campusValues", campusL);
+
+        List<Map<String, Object>> asoL = new ArrayList<>();
+        for(int i=0;i<asoValues.size();i++){
+            Map<String, Object> option = new HashMap<>();
+            option.put("value", asoValues.get(i).toString());
+            option.put("selected", asoValues.get(i).equals(asociation));
+            option.put("content", asoContenet.get(i));
+            asoL.add(option);
+        }
+        model.addAttribute("asoValues", asoL);
 
         model.addAttribute("seachBarContent", searchInfo);
     }

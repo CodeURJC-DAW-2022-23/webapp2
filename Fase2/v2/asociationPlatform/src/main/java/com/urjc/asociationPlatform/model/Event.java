@@ -125,7 +125,7 @@ public class Event {
         }
         return "No";
     }
-    public String getDuracion() {
+    public String getDuration() {
         return duration;
     }
     public void setDuration(String duration) {
