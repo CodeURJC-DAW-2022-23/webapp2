@@ -2,6 +2,7 @@ package com.urjc.asociationPlatform.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
-import com.urjc.asociationPlatform.service.UserService;
+
 
 @Controller
 public class EventDetailsController {
@@ -23,7 +26,7 @@ public class EventDetailsController {
     private EventService eventService;
 
     @Autowired
-    private UserService userService;
+    private CommentService commentService;
 
     @GetMapping("/infoEvento/{id}")
     public String infoEvento(Model model, @PathVariable long id){
@@ -32,9 +35,9 @@ public class EventDetailsController {
 
         model.addAttribute("event", event);
 
-        //List<Event> eventlist = eventService.findAll();
-        //findByEvent(id)
-        //model.addAttribute("eventlist", eventlist);
+        List<Comment> commentsList = commentService.findAll();
+        
+        model.addAttribute("commentsList", commentsList);
 
         return "detalles";
     }

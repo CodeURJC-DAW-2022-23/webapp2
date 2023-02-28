@@ -1,6 +1,9 @@
 package com.urjc.asociationPlatform.controller;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -20,14 +23,22 @@ public class CommentController {
     @Autowired
 	private EventService eventService;
 
-    @PostMapping("/crearComentario")
-	public String addComment(Model model, Comment newComent, @PathVariable long id){
-		commentService.save(newComent);
-        
-        Event event = eventService.findById(id).orElseThrow();
-        event.addComment(newComent);
-        eventService.save(event);
-		return "redirect:/";
+    @PostMapping("/crearComentario/{id}")
+	public String addComment(Model model, Comment newComent, @PathVariable long id, HttpServletRequest request){
+
+        Principal principal = request.getUserPrincipal();
+
+        if(principal != null){
+            commentService.save(newComent);
+            
+            Event event = eventService.findById(id).orElseThrow();
+            event.addComment(newComent);
+            eventService.save(event);
+            return "detalles";
+        } else {
+            return "/login";
+        } 
+		
 	}
 
     @PostMapping("/admin/editarComentarios/{id}/delete")

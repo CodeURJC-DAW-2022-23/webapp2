@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -91,17 +92,16 @@
 
         <li>
             <div class="comment-main-level">
-                <!-- Contenedor del Comentario -->
+                {{#commentsList}}
                 <div class="comment-box">
                     <div class="comment-head">
-                        <h6 class="comment-name"><a href="">Lorena Rojero</a></h6>
-                        <span>hace 10 minutos</span>
+                        <h6 class="comment-name"><a href="">{{comment_user}}</a></h6>
+                        <span>{{time}}</span>
                         <i class='bx bxs-heart'></i>
                     </div>
-                    <div class="comment-content">
-                        El que ha escrito el comentario de abajo no le sabe
-                    </div>
+                    <div class="comment-content">{{description}}</div>
                 </div>
+                {{/commentsList}}
             </div>
         </li>
         <li>
@@ -122,13 +122,14 @@
     </ul>
 
     <div class="comment-form">
-        <form class="form" name="form">
+        <form class="form" name="form" method="post" action="/crearComentario/{{#event}}{{id}}{{/event}}">
             <div class="form-row">
             <textarea class="input" placeholder="Añadir Comentario..." required></textarea>
             </div>
     
             <div class="form-row">
             <input type="submit" value="Añadir Comentario">
+            <input type="hidden" name="_csrf" value="{{token}}"/>
             </div>
         </form>
     </div>

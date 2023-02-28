@@ -23,14 +23,12 @@ public class Event {
     private boolean creditos;
     private boolean reserva;
     private String duracion;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Comment> comments = new ArrayList<>();
     
     @Lob
     private Blob image;
 
-    //@ElementCollection(fetch = FetchType.EAGER)
-    //private List<EventReview> reviews;
     public Event(){}
     
     public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean creditos, boolean reserva, String duracion, Blob imgUrl) {
