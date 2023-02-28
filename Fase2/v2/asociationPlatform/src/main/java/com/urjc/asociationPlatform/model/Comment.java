@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -19,7 +20,7 @@ public class Comment {
     private String description;
     private String time;
     @OneToMany
-    private HashSet<User> favorites = new HashSet<>();
+    private Set<User> favorites = new HashSet<>();
     
     public Comment (){}
     

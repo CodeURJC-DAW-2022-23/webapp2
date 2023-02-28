@@ -66,11 +66,16 @@ public class EventDetailsController {
         try{
             Comment comment = commentService.findById(id2).orElseThrow();
             if(currentUser != null){
+                System.out.print("\nHOLA\n");
                 if(comment.isUserInFavorites(currentUser)){
-                    comment.addFavorites(currentUser);
-                }else
+                    System.out.print("\nMe quito\n");
                     comment.removeFavorites(currentUser);
-                    commentService.save(comment);
+                }else{
+                    System.out.print("\nMe inserto\n");
+                    comment.addFavorites(currentUser);
+                }
+                    
+                commentService.save(comment);
             }
             return "redirect:/infoEvento/"+id;
         }
