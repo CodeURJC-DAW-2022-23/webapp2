@@ -31,9 +31,9 @@ public class Event {
     private String location;
     private String asociation;
     private String campus;
-    private boolean creditos;
-    private boolean reserva;
-    private String duracion;
+    private boolean credits;
+    private boolean booking;
+    private String duration;
 
     @Lob
     private Blob image;
@@ -41,7 +41,7 @@ public class Event {
     //@ElementCollection(fetch = FetchType.EAGER)
     //private List<EventReview> reviews;
     public Event(){}
-    public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean creditos, boolean reserva, String duracion, Blob imgUrl) {
+    public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean credits, boolean booking, String duration, Blob imgUrl) {
         this.name = name;
         this.date = date;
         this.month = month;
@@ -49,9 +49,9 @@ public class Event {
         this.location = location;
         this.asociation=asociation;
         this.campus=campus;
-        this.creditos=creditos;
-        this.reserva=reserva;
-        this.duracion=duracion;
+        this.credits=credits;
+        this.booking=booking;
+        this.duration=duration;
         this.image = imgUrl;
     }
     public String getName() {
@@ -101,35 +101,35 @@ public class Event {
     public void setCampus(String campus) {
         this.campus = campus;
     }
-    public boolean isCreditos() {
-        return creditos;
+    public boolean getCredits() {
+        return credits;
     }
-    public void setCreditos(boolean creditos) {
-        this.creditos = creditos;
+    public void setCredits(boolean credits) {
+        this.credits = credits;
     }
-    public String getCreditosString(){
-        if(creditos){
+    public String getCreditsString(){
+        if(credits){
             return "Si";
         }
         return "No";
     }
-    public boolean isReserva() {
-        return reserva;
+    public boolean getBooking() {
+        return booking;
     }
-    public void setReserva(boolean reserva) {
-        this.reserva = reserva;
+    public void setReserva(boolean booking) {
+        this.booking = booking;
     }
     public String getReservaString(){
-        if(reserva){
+        if(booking){
             return "Si";
         }
         return "No";
     }
     public String getDuracion() {
-        return duracion;
+        return duration;
     }
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
+    public void setDuracion(String duration) {
+        this.duration = duration;
     }
     public Blob getImage() {
         return image;
