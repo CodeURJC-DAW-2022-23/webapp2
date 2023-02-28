@@ -13,26 +13,22 @@ import antlr.debug.Event;
 public class CommentService {
 
     @Autowired
-    private CommentRepository comentRepository;
+    private CommentRepository commentRepository;
 
-    public void save(Comment coment) {
-		comentRepository.save(coment);
-	}
-
-	public Optional<Comment> findByEvent(Event event) {
-		return comentRepository.findByEvent(event);
+    public void save(Comment comment) {
+		commentRepository.save(comment);
 	}
 
 	public List<Comment> findAll() {
-		return comentRepository.findAll();
+		return commentRepository.findAll();
 	}
 
 	public Optional<Comment> findById(long id) {
-		Optional<Comment> findById = comentRepository.findById(id);
+		Optional<Comment> findById = commentRepository.findById(id);
 		return findById;
 	}
 
     public void deleteById(long id){
-		comentRepository.deleteById(id);
+		commentRepository.deleteById(id);
 	}
 }

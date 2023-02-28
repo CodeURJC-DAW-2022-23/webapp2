@@ -15,14 +15,14 @@ import com.urjc.asociationPlatform.service.EventService;
 
 public class CommentController {
     @Autowired
-    private CommentService comentService;
+    private CommentService commentService;
 
     @Autowired
 	private EventService eventService;
 
     @PostMapping("/crearComentario")
 	public String addComment(Model model, Comment newComent, @PathVariable long id){
-		comentService.save(newComent);
+		commentService.save(newComent);
         
         Event event = eventService.findById(id).orElseThrow();
         event.addComment(newComent);
@@ -32,7 +32,7 @@ public class CommentController {
 
     @PostMapping("/admin/editarComentarios/{id}/delete")
 	public String deleteComment(Model model, Comment newComent,@PathVariable long id){
-		comentService.deleteById(id);
+		commentService.deleteById(id);
 		return "redirect:/";
 	}
 
