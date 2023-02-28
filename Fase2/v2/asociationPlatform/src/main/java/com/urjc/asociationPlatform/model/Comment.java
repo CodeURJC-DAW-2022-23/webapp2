@@ -1,8 +1,12 @@
 package com.urjc.asociationPlatform.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import javax.persistence.*;
+
 
 @Entity
 public class Comment {
@@ -14,6 +18,8 @@ public class Comment {
     private String comment_user;
     private String description;
     private String time;
+    @OneToMany
+    private HashSet<User> favorites = new HashSet<>();
     
     public Comment (){}
     
@@ -21,6 +27,22 @@ public class Comment {
     this.comment_user = comment_user;
     this.description = description;
     this.time = time;
+    }
+
+    public boolean isUserInFavorites(User user){
+        return favorites.contains(user);
+    }
+
+    public int getTotalFavorites(){
+        return favorites.size();
+    }
+
+    public boolean addFavorites(User user){
+        return favorites.add(user);
+    }
+
+    public boolean removeFavorites(User user){
+        return favorites.remove(user);
     }
 
     public String getCommentUser() {
