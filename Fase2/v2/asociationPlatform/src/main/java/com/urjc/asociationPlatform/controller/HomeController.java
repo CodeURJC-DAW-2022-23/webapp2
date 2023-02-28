@@ -71,7 +71,7 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        model.addAttribute("eventList",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        model.addAttribute("event",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
         generateFiltersOptions(model);
         return "home";
     }
@@ -110,7 +110,7 @@ public class HomeController {
             asociation=formData.get("asociationValue");
         }
 
-        model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        model.addAttribute("event",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
         generateFiltersOptions(model);
         return "redirect:/";
     }

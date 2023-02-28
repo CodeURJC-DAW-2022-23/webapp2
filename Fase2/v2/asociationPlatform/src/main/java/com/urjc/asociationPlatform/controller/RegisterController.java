@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.urjc.asociationPlatform.email.EmailDetails;
+import com.urjc.asociationPlatform.email.EmailServiceImpl;
 import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -22,7 +24,12 @@ public class RegisterController {
     @Autowired
 	private PasswordEncoder passwordEncoder;
 
+    @Autowired
+	private EmailServiceImpl emailService;
+
     User currentUser;
+
+    private String correo = "danigadeu@gmail.com";
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -43,7 +50,14 @@ public class RegisterController {
     public String register(Model model, User user){
         if(!userService.existEmail(user.getEmail())){
             user.setencodedPassword(passwordEncoder.encode(user.getencodedPassword()));
-            userService.save(user);
+            System.out.println(user.getRol());
+            if(user.getRol().equals("ASO")){
+                EmailDetails emailDetails = new EmailDetails(correo,"Hola esto es una prueba","Prueba");
+
+                emailService.sendSimpleMail(emailDetails);
+            }else{
+                userService.save(user);
+            }
             return "redirect:/login"; 
         }else{
             return "logerror";    
