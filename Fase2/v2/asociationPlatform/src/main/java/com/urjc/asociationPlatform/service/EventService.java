@@ -47,13 +47,13 @@ public class EventService {
             name="*";
         }
         if(month.equals("") || month.equals("ALL")){
-            month="";
+            month="*";
         }
         if(campus.equals("") || campus.equals("ALL")){
-            campus="";
+            campus="*";
         }
         if(asociation.equals("") || asociation.equals("ALL")){
-            asociation="";
+            asociation="*";
         }
         return eventRepository.getEvents(name, month, campus, asociation);
         
@@ -75,5 +75,4 @@ public class EventService {
         System.out.println(query);
         return events.launchQuery(query);*/
     }
-
 }
