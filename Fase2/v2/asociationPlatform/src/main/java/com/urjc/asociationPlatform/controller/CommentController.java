@@ -2,6 +2,7 @@ package com.urjc.asociationPlatform.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,7 +33,8 @@ public class CommentController {
         Principal principal = request.getUserPrincipal();
 
         if(principal != null){
-            LocalDateTime fecha = LocalDateTime.now();
+            String fecha = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
+                    .format(LocalDateTime.now());
             newComent.setTime(fecha.toString());
 
             newComent.setCommentUser(principal.getName());
