@@ -89,10 +89,9 @@
     <h1>Comentarios</h1>
 
     <ul id="comments-list" class="comments-list">
-
+        {{#commentsList}}
         <li>
-            <div class="comment-main-level">
-                {{#commentsList}}
+            <div class="comment-main-level"> 
                 <div class="comment-box">
                     <div class="comment-head">
                         <h6 class="comment-name"><a href="">{{comment_user}}</a></h6>
@@ -100,31 +99,16 @@
                         <i class='bx bxs-heart'></i>
                     </div>
                     <div class="comment-content">{{description}}</div>
-                </div>
-                {{/commentsList}}
+                </div>  
             </div>
         </li>
-        <li>
-            <div class="comment-main-level">
-                <!-- Contenedor del Comentario -->
-                <div class="comment-box">
-                    <div class="comment-head">
-                        <h6 class="comment-name"><a href="">Lorena Rojero</a></h6>
-                        <span>hace 10 minutos</span>
-                        <i class='bx bxs-heart'></i>
-                    </div>
-                    <div class="comment-content">
-                        Hola Este es mi primer comentario no sean malos conmigo pls
-                    </div>
-                </div>
-            </div>
-        </li>
+        {{/commentsList}}
     </ul>
 
     <div class="comment-form">
-        <form class="form" name="form" method="post" action="/crearComentario/{{#event}}{{id}}{{/event}}">
+        <form class="form" method="post" action="/crearComentario/{{#event}}{{id}}{{/event}}">
             <div class="form-row">
-            <textarea class="input" placeholder="Añadir Comentario..." required></textarea>
+            <textarea class="input" name="description" placeholder="Añadir Comentario..."></textarea>
             </div>
     
             <div class="form-row">

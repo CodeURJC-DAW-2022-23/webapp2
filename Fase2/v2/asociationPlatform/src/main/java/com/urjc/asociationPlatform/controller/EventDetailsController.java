@@ -8,13 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
-import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 
@@ -35,7 +32,7 @@ public class EventDetailsController {
 
         model.addAttribute("event", event);
 
-        List<Comment> commentsList = commentService.findAll();
+        List<Comment> commentsList = event.getComments();
         
         model.addAttribute("commentsList", commentsList);
 

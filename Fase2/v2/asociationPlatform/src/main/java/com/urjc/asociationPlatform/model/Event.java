@@ -45,6 +45,10 @@ public class Event {
         this.image = imgUrl;
     }
 
+    public Long getId(long id){
+        return this.id;
+    }
+
     public String getName() {
         return name;
     }

@@ -1,5 +1,7 @@
 package com.urjc.asociationPlatform.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,8 @@ public class Comment {
     private String comment_user;
     private String description;
     private String time;
+    
+    public Comment (){}
     
     public Comment(String comment_user, String description, String time){
     this.comment_user = comment_user;
@@ -39,7 +43,6 @@ public class Comment {
     public void setTime(String time) {
         this.time = time;
     }
-    
-  
+     
 }
 

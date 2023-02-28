@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 
+@Controller
 public class CommentController {
     @Autowired
     private CommentService commentService;
@@ -26,15 +28,23 @@ public class CommentController {
     @PostMapping("/crearComentario/{id}")
 	public String addComment(Model model, Comment newComent, @PathVariable long id, HttpServletRequest request){
 
+        
         Principal principal = request.getUserPrincipal();
 
         if(principal != null){
+            LocalDateTime fecha = LocalDateTime.now();
+            newComent.setTime(fecha.toString());
+
+            newComent.setCommentUser(principal.getName());
+            
             commentService.save(newComent);
             
             Event event = eventService.findById(id).orElseThrow();
+            System.out.println(event.getId(id));
             event.addComment(newComent);
             eventService.save(event);
-            return "detalles";
+
+            return "redirect:/infoEvento/{id}";
         } else {
             return "/login";
         } 
@@ -46,10 +56,4 @@ public class CommentController {
 		commentService.deleteById(id);
 		return "redirect:/";
 	}
-
-    public String actualDateTime(){
-        LocalDateTime fecha = LocalDateTime.now();
-        
-        return fecha.toString();
-    }
 }
