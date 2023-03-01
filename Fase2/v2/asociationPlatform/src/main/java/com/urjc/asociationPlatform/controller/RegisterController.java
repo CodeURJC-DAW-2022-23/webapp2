@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.urjc.asociationPlatform.email.EmailDetails;
@@ -29,7 +30,7 @@ public class RegisterController {
 
     User currentUser;
 
-    private String correo = "danigadeu@gmail.com";
+    private String correo = "federicogarciaagapito@gmail.com";
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -52,7 +53,8 @@ public class RegisterController {
             user.setencodedPassword(passwordEncoder.encode(user.getencodedPassword()));
             System.out.println(user.getRol());
             if(user.getRol().equals("ASO")){
-                EmailDetails emailDetails = new EmailDetails(correo,"Hola esto es una prueba","Prueba");
+                EmailDetails emailDetails = new EmailDetails();
+                emailDetails.adminMode(user.getUsername(), user.getEmail());
 
                 emailService.sendSimpleMail(emailDetails);
             }else{
@@ -62,5 +64,21 @@ public class RegisterController {
         }else{
             return "logerror";    
         }      
+    }
+
+    @PostMapping("/accepted/{email}")
+    public String accepted(Model model,@PathVariable String email){
+        EmailDetails emailDetails = new EmailDetails();
+        emailDetails.acceptedMode(email);
+        emailService.sendSimpleMail(emailDetails);
+        return "redirect:/";
+    }
+
+    @PostMapping("/rejected/{email}")
+    public String rejected(Model model,@PathVariable String email){
+        EmailDetails emailDetails = new EmailDetails();
+        emailDetails.rejectedMode(email);
+        emailService.sendSimpleMail(emailDetails);
+        return "redirect:/";
     }
 }

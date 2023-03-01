@@ -19,4 +19,22 @@ public class EmailDetails {
 	private String recipient;
 	private String msgBody;
 	private String subject;
+
+	public void adminMode(String username, String email){
+		this.recipient = "danigadeu@gmail.com";
+		this.msgBody = "El usuario "+ username +" con el correo "+email +" quiere darse de alta como ASO\n\n https://127.0.0.1:8080/gestionarCreacion/"+email;
+		this.subject = "Validar Creación Cuenta Aso";
+	}
+
+	public void acceptedMode(String email){
+		this.recipient = email;
+		this.msgBody = "Tu petición ha sido aceptada.\n \n Entre en el siguiente enlace para acabar de darse de alta:\n \n \nUn saludo,\nPlataformaAsociacionesUrjc. ";
+		this.subject = "Creación Cuenta Aso Aceptada";
+	}
+
+	public void rejectedMode(String email){
+		this.recipient = email;
+		this.msgBody = "Tu petición ha sido rechazada.\n \nUn saludo,\nPlataformaAsociacionesUrjc. ";
+		this.subject = "Creación Cuenta Aso Denegada";
+	}
 }
