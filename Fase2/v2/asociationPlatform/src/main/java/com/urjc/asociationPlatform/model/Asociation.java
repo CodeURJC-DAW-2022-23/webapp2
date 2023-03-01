@@ -16,6 +16,13 @@ public class Asociation {
     
     public Asociation(){}
 
+    public Asociation(String name, String descripcion, String campus, String faculty){
+        this.name = name;
+        this.description = descripcion;
+        this.campus = campus;
+        this.faculty = faculty;
+    }
+
     public void setName(String name){
         this.name = name;
     }
@@ -52,7 +59,7 @@ public class Asociation {
         this.id = id;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 }

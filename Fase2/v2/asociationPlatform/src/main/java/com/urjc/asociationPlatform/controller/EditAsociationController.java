@@ -65,7 +65,18 @@ public class EditAsociationController {
 
     }
     
-    @GetMapping("/admin/editAsoc/{id}")
+    @GetMapping("editAsoc/{id}")
+	public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
+
+		try { Asociation asoc = asoService.findById(id).orElseThrow();
+			model.addAttribute("asociation", asoc);
+			return "editAsociations";
+		} catch (Exception e) {
+            return "404";
+        }
+	}
+
+	@GetMapping("/admin/editAsoc/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id, HttpServletRequest request) {
 
 		try { Asociation asoc = asoService.findById(id).orElseThrow();
@@ -81,11 +92,11 @@ public class EditAsociationController {
 		try { asoService.findById(id).orElseThrow();
 			String result;
 			if(isAsociation){
-				result = "redirect:/miEspacio";
+				result = "myAso";
 				System.out.print("\nAsociation\n");
 			}
 			else{
-				result = "redirect:/admin/adminAsoc";
+				result = "home";
 				System.out.print("\nOtro\n");
 			}
 			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
