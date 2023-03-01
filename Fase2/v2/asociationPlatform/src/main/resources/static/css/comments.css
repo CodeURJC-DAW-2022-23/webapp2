@@ -226,6 +226,14 @@ body {
   top: 1px;
 }
 
+.comment-box .comment-head .likesNumberRight {
+  text-align: right;
+}
+
+.comment-box .comment-head .bx {
+  top: 8px;
+}
+
 .comment-box .comment-content {
   background: #FFF;
   padding: 12px;
@@ -316,3 +324,5 @@ body {
    -o-transition: 350ms box-shadow;
    transition: 350ms box-shadow;
  }
+
+ 

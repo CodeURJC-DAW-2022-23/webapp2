@@ -19,7 +19,7 @@ public class Comment {
     private String comment_user;
     private String description;
     private String time;
-    @OneToMany
+    @ManyToMany
     private Set<User> favorites = new HashSet<>();
     
     public Comment (){}

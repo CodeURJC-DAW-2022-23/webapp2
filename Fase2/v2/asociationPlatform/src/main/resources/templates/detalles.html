@@ -97,14 +97,8 @@
                     <div class="comment-head">
                         <h6 class="comment-name"><a href="">{{comment_user}}</a></h6>
                         <span>{{time}}</span>
-                        <p>{{totalLikes}}</p>
-                        <form action="/infoEvento/{{/comment}}{{#event}}{{id}}{{/event}}/{{#comment}}{{id}}/like" method="post">
-                            <input type="submit">
-                            {{#like}}<i class='bx bxs-heart'></i>{{/like}}
-                            {{^like}}<i class='bx bx-heart'></i>{{/like}}
-                            </input>
-                            <input type="hidden" name="_csrf" value="{{token}}"/>
-                        </form>
+                        <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/{{#event}}{{id}}{{/event}}/{{id}}/like"><i class='bx {{#like}}bxs-heart{{/like}}{{^like}}bx-heart{{/like}}'></i></a></p>
+                        
                         
                     </div>
                     <div class="comment-content">{{description}}</div>

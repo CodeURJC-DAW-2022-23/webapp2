@@ -61,9 +61,11 @@ public class EventDetailsController {
         return "detalles";
     }
 
-    @PostMapping("/infoEvento/{id}/{id2}/like")
+    @GetMapping("/infoEvento/{id}/{id2}/like")
     public String likeButton(Model model, @PathVariable long id, @PathVariable long id2){
         try{
+            System.out.print("\nEvento"+id+"\n");
+            System.out.print("\nComentario"+id2+"\n");
             Comment comment = commentService.findById(id2).orElseThrow();
             if(currentUser != null){
                 System.out.print("\nHOLA\n");
@@ -76,6 +78,9 @@ public class EventDetailsController {
                 }
                     
                 commentService.save(comment);
+            }
+            else{
+                
             }
             return "redirect:/infoEvento/"+id;
         }
