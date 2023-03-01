@@ -64,25 +64,19 @@ public class EventDetailsController {
     @GetMapping("/infoEvento/{id}/{id2}/like")
     public String likeButton(Model model, @PathVariable long id, @PathVariable long id2){
         try{
-            System.out.print("\nEvento"+id+"\n");
-            System.out.print("\nComentario"+id2+"\n");
             Comment comment = commentService.findById(id2).orElseThrow();
             if(currentUser != null){
-                System.out.print("\nHOLA\n");
                 if(comment.isUserInFavorites(currentUser)){
-                    System.out.print("\nMe quito\n");
                     comment.removeFavorites(currentUser);
                 }else{
-                    System.out.print("\nMe inserto\n");
                     comment.addFavorites(currentUser);
                 }
-                    
                 commentService.save(comment);
+                return "redirect:/infoEvento/"+id;
             }
             else{
-                
+                return "redirect:/login";
             }
-            return "redirect:/infoEvento/"+id;
         }
         catch (Exception e) {}
         return "redirect:/infoEvento/"+id;
