@@ -50,7 +50,7 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(Model model, User user){
-        if(!userService.existEmail(user.getEmail())){
+        if(!userService.existEmail(user.getEmail()) && !userService.existUsername(user.getUsername())){
 
             user.setencodedPassword(passwordEncoder.encode(user.getencodedPassword()));
 

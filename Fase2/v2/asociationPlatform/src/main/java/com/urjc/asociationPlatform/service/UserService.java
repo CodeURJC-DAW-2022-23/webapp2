@@ -41,6 +41,11 @@ public class UserService {
 	 	return user.isPresent();
 	}
 
+	public boolean existUsername(String username) {
+		Optional<User> user = findByUsername(username);
+		return user.isPresent();
+   }
+
 	public void deleteById(long id){
 		users.deleteById(id);
 	}
