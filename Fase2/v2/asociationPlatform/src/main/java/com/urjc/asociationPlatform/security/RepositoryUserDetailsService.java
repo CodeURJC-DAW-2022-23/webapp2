@@ -27,6 +27,10 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+		
+		if (!user.getValidated()) {
+			throw new UsernameNotFoundException("User not activated");
+		}     
 
 		List<GrantedAuthority> roles = new ArrayList<>();
 		// for (String role : user.getRoles()) {
@@ -38,4 +42,5 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 				user.getencodedPassword(), roles);
 
 	}
+		
 }

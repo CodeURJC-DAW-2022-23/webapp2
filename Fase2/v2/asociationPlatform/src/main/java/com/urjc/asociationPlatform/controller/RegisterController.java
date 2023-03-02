@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +32,6 @@ public class RegisterController {
 	private EmailServiceImpl emailService;
 
     User currentUser;
-
-    private String correo = "federicogarciaagapito@gmail.com";
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
