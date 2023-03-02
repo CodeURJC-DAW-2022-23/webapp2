@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.urjc.asociationPlatform.auxiliar.CommentView;
+import com.urjc.asociationPlatform.auxiliar.EventView;
 import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
@@ -52,13 +53,57 @@ public class EventDetailsController {
     public String infoEvento(Model model, @PathVariable long id){
 
         Event event = eventService.findById(id).orElseThrow();
-
-        model.addAttribute("event", event);
+        EventView view = generateEventView(currentUser, event);
+        model.addAttribute("view", view);
 
         List<CommentView> commentsView = generateCommentViews(currentUser,event.getComments());
         model.addAttribute("commentsList", commentsView);
 
         return "detalles";
+    }
+
+    @GetMapping("/infoEvento/{id}/like")
+    public String likeEvent(Model model, @PathVariable long id){
+        try{
+            Event event = eventService.findById(id).orElseThrow();
+            if(currentUser != null){
+                if(event.isUserInLikes(currentUser)){
+                    event.removeLike(currentUser);
+                }else{
+                    event.removeDislike(currentUser);
+                    event.addLike(currentUser);
+                }
+                eventService.save(event);
+                return "redirect:/infoEvento/"+id;
+            }
+            else{
+                return "redirect:/login";
+            }
+        }
+        catch (Exception e) {}
+        return "redirect:/infoEvento/"+id;
+    }
+
+    @GetMapping("/infoEvento/{id}/dislike")
+    public String dislikeEvent(Model model, @PathVariable long id){
+        try{
+            Event event = eventService.findById(id).orElseThrow();
+            if(currentUser != null){
+                if(event.isUserInDislikes(currentUser)){
+                    event.removeDislike(currentUser);
+                }else{
+                    event.removeLike(currentUser);
+                    event.addDislike(currentUser);
+                }
+                eventService.save(event);
+                return "redirect:/infoEvento/"+id;
+            }
+            else{
+                return "redirect:/login";
+            }
+        }
+        catch (Exception e) {}
+        return "redirect:/infoEvento/"+id;
     }
 
     @GetMapping("/infoEvento/{id}/{id2}/like")
@@ -92,6 +137,15 @@ public class EventDetailsController {
                 list.add(new CommentView(comments.get(i), comments.get(i).isUserInFavorites(user)));
         }
         return list;
+    }
+
+    private EventView generateEventView(User user, Event event) {
+        if(user == null){
+            return new EventView(event,false,false);
+        }
+        else
+            return new EventView(event,event.isUserInLikes(user),event.isUserInDislikes(user));
+        
     }
 
     

@@ -4,7 +4,9 @@ import java.sql.Blob;
 import java.sql.Date;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Event {
@@ -25,6 +27,10 @@ public class Event {
     private String duracion;
     @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Comment> comments = new ArrayList<>();
+    @ManyToMany
+    private Set<User> likeList = new HashSet<>();
+    @ManyToMany
+    private Set<User> dislikeList = new HashSet<>();
     
     @Lob
     private Blob image;
@@ -43,6 +49,38 @@ public class Event {
         this.reserva=reserva;
         this.duracion=duracion;
         this.image = imgUrl;
+    }
+
+    public boolean isUserInLikes(User user){
+        return likeList.contains(user);
+    }
+
+    public int getTotalLikes(){
+        return likeList.size();
+    }
+
+    public boolean addLike(User user){
+        return likeList.add(user);
+    }
+
+    public boolean removeLike(User user){
+        return likeList.remove(user);
+    }
+
+    public boolean isUserInDislikes(User user){
+        return dislikeList.contains(user);
+    }
+
+    public int getTotalDislikes(){
+        return dislikeList.size();
+    }
+
+    public boolean addDislike(User user){
+        return dislikeList.add(user);
+    }
+
+    public boolean removeDislike(User user){
+        return dislikeList.remove(user);
     }
 
     public Long getId(long id){
