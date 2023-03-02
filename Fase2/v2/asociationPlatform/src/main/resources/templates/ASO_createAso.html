@@ -18,7 +18,7 @@
                 <main>
                     <div class="container-fluid px-4">
                         
-                        <form action="/newAso" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
+                        <form action="/newAso/{{email}}" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
                             <h1 class="mt-4">Crear Asociacion</h1>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">Crear Asociacion</li>
@@ -32,46 +32,30 @@
                             <div>
                                 <label for='form-select'>Campus</label>
                                 <select name="campus" class="form-select" aria-label="Default select example">
-                                    <option value="1">ALCORCÓN</option>
-                                    <option value="2">ARANJUEZ</option>
-                                    <option value="3">FUENLABRADA</option>
-                                    <option value="2">MÓSTOLES</option>
-                                    <option value="3">MADRID-VICALVARO</option>
-                                    <option value="2">MADRID-QUINTANA</option>
+                                    <option value="Alcorcón">ALCORCÓN</option>
+                                    <option value="Aranjuez">ARANJUEZ</option>
+                                    <option value="Fuenlabrada">FUENLABRADA</option>
+                                    <option value="Móstoles">MÓSTOLES</option>
+                                    <option value="Madrid-Vicalvaro">MADRID-VICALVARO</option>
+                                    <option value="Madrid-Quintana">MADRID-QUINTANA</option>
                                 </select>
                             </div>
 
                             <div>
                                 <label for='form-select'>Facultad</label>
                                 <select name="faculty" class="form-select" aria-label="Default select example">
-                                    <option value="1">Facultad de Artes y Humanidades</option>
-                                    <option value="2">Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares</option>
-                                    <option value="3">Facultad de Ciencias de la Comunicación</option>
-                                    <option value="2">Facultad de Ciencias de la Economía y de la Empresa</option>
-                                    <option value="3">Facultad de Ciencias de la Salud</option>
-                                    <option value="2">Facultad de Ciencias Jurídicas y Políticas</option>
+                                    <option value="Facultad de Artes y Humanidades">Facultad de Artes y Humanidades</option>
+                                    <option value="Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares">Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares</option>
+                                    <option value="Facultad de Ciencias de la Comunicación">Facultad de Ciencias de la Comunicación</option>
+                                    <option value="Facultad de Ciencias de la Economía y de la Empresa">Facultad de Ciencias de la Economía y de la Empresa</option>
+                                    <option value="Facultad de Ciencias de la Salud">Facultad de Ciencias de la Salud</option>
+                                    <option value="Facultad de Ciencias Jurídicas y Políticas">Facultad de Ciencias Jurídicas y Políticas</option>
                                 </select>
                             </div>
                             
                             <div class="form-group py-2">
                               <label for="">Descripción</label>
                               <textarea name="description" type="text" class="form-control" style=" height: 10em;" required> </textarea>
-                            </div>
-                            
-
-                            <h1 class="mt-4">Crear usuario</h1>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active">Crear usuario</li>
-                            </ol>
-
-                            <div class="form-group py-2">
-                                <label for="eventName">Nombre</label>
-                                <input name="name" type="text" class="form-control" name="username" id="username" required/>
-                            </div>
-
-                            <div class="form-group py-2">
-                                <label for="eventName">Contraseña</label>
-                                <input name="name" type="password" class="form-control" name="encodedPassword" id="encodedPassword" required/>
                             </div>
 
                             <div class="d-flex py-2 w-100">

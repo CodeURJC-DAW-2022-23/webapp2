@@ -33,6 +33,7 @@
           <form action="/rejected/{{email}}" method="post">
             <input class="button-box red" type="submit" value="Enviar"></input>
             <input type="hidden" name="_csrf" value="{{token}}"/>
+            <input type="hidden" name="email" value="{{email}}"/>
         </form>
         </div>
       </div>

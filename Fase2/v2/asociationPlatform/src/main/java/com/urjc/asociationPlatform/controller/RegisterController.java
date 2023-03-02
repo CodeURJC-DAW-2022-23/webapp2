@@ -1,6 +1,7 @@
 package com.urjc.asociationPlatform.controller;
 
 import java.security.Principal;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,16 +52,21 @@ public class RegisterController {
     @PostMapping("/register")
     public String register(Model model, User user){
         if(!userService.existEmail(user.getEmail())){
+
             user.setencodedPassword(passwordEncoder.encode(user.getencodedPassword()));
-            System.out.println(user.getRol());
+
             if(user.getRol().equals("ASO")){
+
                 EmailDetails emailDetails = new EmailDetails();
                 emailDetails.adminMode(user.getUsername(), user.getEmail());
 
                 emailService.sendSimpleMail(emailDetails);
             }else{
-                userService.save(user);
+
+                user.setValidated(true);
             }
+            userService.save(user);
+
             return "redirect:/login"; 
         }else{
             return "logerror";    
@@ -68,9 +75,17 @@ public class RegisterController {
 
     @PostMapping("/accepted/{email}")
     public String accepted(Model model,@PathVariable String email){
+
+        User user = userService.findByEmail(email).orElseThrow();
+        String random = UUID.randomUUID().toString();
+
+        user.setCheckToken(random);
+        userService.save(user);
+
         EmailDetails emailDetails = new EmailDetails();
-        emailDetails.acceptedMode(email);
+        emailDetails.acceptedMode(email, random);
         emailService.sendSimpleMail(emailDetails);
+
         return "redirect:/";
     }
 
@@ -80,5 +95,18 @@ public class RegisterController {
         emailDetails.rejectedMode(email);
         emailService.sendSimpleMail(emailDetails);
         return "redirect:/";
+    }
+
+    @GetMapping("/confirmarCreacion/{email}/{token}")
+    public String doConfirmation(Model model, @PathVariable String email, @PathVariable String token){
+        User user = userService.findByEmail(email).orElseThrow();
+        String checkToken = user.getCheckToken();
+
+        if(checkToken.equals(token)){
+            model.addAttribute("email", email);
+            return "ASO_createAso";
+        }else{
+            return "404";
+        }  
     }
 }

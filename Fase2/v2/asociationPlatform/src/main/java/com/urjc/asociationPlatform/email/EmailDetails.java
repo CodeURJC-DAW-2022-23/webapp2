@@ -26,9 +26,9 @@ public class EmailDetails {
 		this.subject = "Validar Creación Cuenta Aso";
 	}
 
-	public void acceptedMode(String email){
+	public void acceptedMode(String email, String token){
 		this.recipient = email;
-		this.msgBody = "Tu petición ha sido aceptada.\n \n Entre en el siguiente enlace para acabar de darse de alta:\n \n \nUn saludo,\nPlataformaAsociacionesUrjc. ";
+		this.msgBody = "Tu petición ha sido aceptada.\n \n Entre en el siguiente enlace para acabar de darse de alta:\n\n https://127.0.0.1:8080/confirmarCreacion/"+email+"/"+token+ "\nUn saludo,\nPlataformaAsociacionesUrjc. ";
 		this.subject = "Creación Cuenta Aso Aceptada";
 	}
 
