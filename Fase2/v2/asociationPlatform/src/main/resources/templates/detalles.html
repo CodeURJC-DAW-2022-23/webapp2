@@ -95,9 +95,6 @@
                 </div>
                 
             </div>
-            
-            
-            {{/view}}
         </div>
     </section>
 
@@ -111,7 +108,7 @@
             <span class="linea4"></span>
             <a href="/agregarFavoritos/{{#event}}{{id}}{{/event}}">Añadir favoritos</a>
         </div>
-
+        {{/view}}
    </section>
 
    
@@ -128,7 +125,7 @@
                     <div class="comment-head">
                         <h6 class="comment-name"><a href="">{{comment_user}}</a></h6>
                         <span>{{time}}</span>
-                        <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/{{#event}}{{id}}{{/event}}/{{id}}/like"><i class='bx {{#like}}bxs-heart{{/like}}{{^like}}bx-heart{{/like}}'></i></a></p>
+                        <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}/{{id}}/like"><i class='bx {{#like}}bxs-heart{{/like}}{{^like}}bx-heart{{/like}}'></i></a></p>
                         
                         
                     </div>
@@ -141,7 +138,7 @@
     </ul>
 
     <div class="comment-form">
-        <form class="form" method="post" action="/crearComentario/{{#event}}{{id}}{{/event}}">
+        <form class="form" method="post" action="/crearComentario/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}">
             <div class="form-row">
             <textarea class="input" name="description" placeholder="Añadir Comentario..."></textarea>
             </div>
