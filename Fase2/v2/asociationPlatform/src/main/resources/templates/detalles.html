@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/comments.css">
     <link rel="stylesheet" href="/css/likesBar.css">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
 <body>
 
@@ -66,23 +67,7 @@
                     
                     <p>Universidad Rey Juan Carlos Campus de Alcorcón, Avenida de Atenas, Alcorcón, España</p>
 
-                    <div id="puntuation">
-                        <input type="hidden" id="likeValue" value={{totalLikes}}>
-                        <input type="hidden" id="dislikeValue" value={{totalDislikes}}>
-                        <div>
-                            <p><a href="/infoEvento/{{#event}}{{id}}{{/event}}/like"><i class='bx {{#like}}bxs-happy{{/like}}{{^like}}bx-happy{{/like}}'></i></a>{{totalLikes}}</p>
-                        </div>
-                        <div>
-                            <div id="bar">
-                                <div id="likeArea"></div>
-                                <div id="dislikeArea"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <p>{{totalDislikes}}<a href="/infoEvento/{{#event}}{{id}}{{/event}}/dislike"><i class='bx {{#dislike}}bxs-sad{{/dislike}}{{^dislike}}bx-sad{{/dislike}}'></i></a></p>
-                        </div>
-                        {{/view}}
-                    </div>
+                    
                 </div>
                 
             </div>
@@ -90,7 +75,30 @@
     </section>
   
     <section>
-        
+        <div id="puntuation">
+            <input type="hidden" id="likeValue" value={{totalLikes}}>
+            <input type="hidden" id="dislikeValue" value={{totalDislikes}}>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <a href="/infoEvento/{{#event}}{{id}}{{/event}}/like"><i class='bx {{#like}}bxs-happy{{/like}}{{^like}}bx-happy{{/like}}'></i></a>{{totalLikes}}
+                    </div>
+                    <div class="col-sm">
+                        <div id="bar">
+                            <div id="likeArea"></div>
+                            <div id="dislikeArea"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        {{totalDislikes}}<a href="/infoEvento/{{#event}}{{id}}{{/event}}/dislike"><i class='bx {{#dislike}}bxs-sad{{/dislike}}{{^dislike}}bx-sad{{/dislike}}'></i></a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+            {{/view}}
+        </div>
     </section>
 
     <section class="row1">  
@@ -160,7 +168,6 @@
   
       <script src="/js/jquery.js"></script>
       <script src="/js/script.js"></script>
-    
+      <script src="/js/likes.js"></script>
 </body>
-<script src="/js/likes.js"></script>
 </html>
