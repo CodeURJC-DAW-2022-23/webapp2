@@ -81,3 +81,65 @@ El formulario de asociación permite configurar párámetros relacionados con la
 
 ![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/eventform.PNG?raw=true)
 El formulario de administración permite configurar párámetros relacionados con la creación, modificación y borrado de todos los eventos. Además, también puede cambiar la configuración del resto de usuarios e incluso borrar usuarios.
+
+## Fase 2: 
+
+### Navegación
+
+**Home:**
+
+![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/home.PNG?raw=true)
+La aplicación tiene un menú inicial común para los tres tipos de usuarios (administradores, asociaciones o usuarios base). 
+
+**Registro:**
+Esta pantalla permitirá a los usuarios registrarse y dependiendo de su rol tener unos privilegios u otros.
+
+Registro usuario BASE: 
+Este tipo de usuario sólo requiere un correo electrónico, nombre de usuario y contraseña correctos para poder registrarse.
+
+Registro usuario ASOCIACIÓN: 
+Este tipo de usuario va a necesitar la validación de un administrador para que su registro quede completado y confirmado.
+
+Registro usuario ADMINISTRADOR: 
+
+**Login:**
+
+![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/loginAsociaciones.PNG?raw=true)
+Una vez registrado, el usuario deberá introducir unas credenciales válidas, su nombre de usuario y contraseña. De lo contrario se mostrará un mensaje de error.
+
+**Más información sobre un evento:**
+
+![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/detalles.PNG?raw=true)
+La página de detalles de eventos muestra información adicional de un evento. Consiste de un texto descriptivo, lugar y horario. También cuenta con un botón de seguir evento para poder recibir avisos sobre este. Además, se ha añadido una sección de comentarios donde los usuarios podrán opinar. También se ha implementado dar like a otros comentarios, dislike a un evento o poner en tu lista de favoritos el evento que elijas.
+
+**Menú de usuario base:**
+
+Ver favoritos: 
+Aquí el usuario podrá consultar su listado de eventos favoritos.
+
+Editar su información personal:
+El usuario podrá modificar sus datos personales.
+
+**Menú de asociación:**
+
+Crear eventos: 
+En esta vista se podrán crear eventos a través de un formulario.
+
+Gestionar eventos: 
+Aquí el usuario asociación podrá modificar o eliminar los datos que precisen.
+
+Gestionar asociación:
+En esta vista se podrá modificar los datos propios de su asociación.
+
+**Menú de administrador:**
+
+Gestionar usuarios: 
+Aquí el administrador podrá consultar, modificar o eliminar cualquier usuario de la plataforma.
+
+Gestionar eventos: 
+En esta vista el administrador podrá consultar, modificar o eliminar cualquier evento de la plataforma.
+
+Gestionar asociaciones: 
+El administrador podrá consultar, modificar o eliminar cualquier asociación de la plataforma.
+
+
