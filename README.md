@@ -154,5 +154,12 @@ El administrador podrá consultar, modificar o eliminar cualquier asociación de
 
 Email: 
 ![email](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/email.PNG?raw=true)
-Esta es la tecnología que hemos decidido implementar, consiste en el uso de un email para validar las cuentas del los usuarios dueños de asociaciones. Esta validación la tiene que hacer obligatoriamente un usuario administrador. En caso de que se rechace la validación la cuenta no se creará. Por el contrario, si se acepta la creación del usuario asociación, este ya podrá crear su asociación.
+Esta es la tecnología que hemos decidido implementar consiste en el uso de un email para validar las cuentas del los usuarios dueños de asociaciones. Esta validación la tiene que hacer obligatoriamente un usuario administrador. En caso de que se rechace la validación la cuenta no se creará. Por el contrario, si se acepta la creación del usuario asociación, este ya podrá crear su asociación.
 
+### Instrucciones de ejecución
+
+- Acceder al repositorio mediante este enlace: CodeURJC-DAW-2022-23 /webapp2
+- Descargar el zip del proyecto
+- Nosotros hemos utilizado VisualStudio para trabajar instalando las correspondientes librerías de Spring
+- Nuestra versión Maven , SpringBoot , MySQL y Java 11.
+- Para consultar los datos hemos usado WorkBench. 
