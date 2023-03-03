@@ -1,0 +1,22 @@
+#likeArea{
+	height:5px;
+	width:50%;
+	background:#12df0b;
+	float:left;
+}
+#dislikeArea{
+	height:5px;
+	width:50%;
+	background:#d41212;
+	float:right;
+}
+
+#bar{
+	margin:0 auto;
+	width:40%;
+}
+
+#puntuation{
+	width:100%;
+	margin: 0 auto; /*centers the website*/
+}

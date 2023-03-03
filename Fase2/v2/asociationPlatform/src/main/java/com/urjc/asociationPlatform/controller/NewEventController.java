@@ -86,6 +86,7 @@ public class NewEventController {
     }
     
     return "redirect:/miEspacio/";
+
   }
 
     public Blob getBlob(MultipartFile file) throws SQLException, IOException {
