@@ -167,3 +167,9 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 - Nuestra versión Maven 4.0.0, SpringBoot 2.7.8, MySQL y Java 11.
 ![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.PNG?raw=true)
 - Para consultar los datos hemos usado WorkBench 8.0 CE. 
+
+### Diagrama con las entidades de la base de datos
+
+### Diagrama de clases y templates
+
+### Participación de miembros
