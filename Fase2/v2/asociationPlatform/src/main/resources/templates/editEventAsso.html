@@ -62,7 +62,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="/newEvent">Crear Evento</a>
-                                    <a class="nav-link" href="/eventManagerAso">Gestionar Eventos</a>
+                                    <a class="nav-link" href="gestionarEvento.html">Gestionar Eventos</a>
                                 </nav>
                             </div>
                         </div>
@@ -81,49 +81,46 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Crear Evento</h1>
+                        <h1 class="mt-4">Editar Evento</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Crear Evento</li>
+                            <li class="breadcrumb-item active">Editar Evento</li>
                         </ol>
-                        <form action="/newEvent" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
+                        <form action="/editEvent" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
                             <div class="form-group py-2">
                                 <label for="eventName">Nombre</label>
-                                <input name="name" type="text" class="form-control" id="eventName" placeholder="Nombre del evento" required/>
+                                <input name="name" type="text"  value="{{name}}" class="form-control" id="eventName" placeholder="Nombre del evento" required/>
                             </div>
                             <div class="form-group py-2">
                                 <label for="">Fecha y hora</label>
                                 <div class='d-flex align-items-center gap-2'>
-                                    <input name="date"  type="date" class="form-control bootstrap-date" id="eventDate" required/>
+                                    <input name="date" value="{{date}}" type="date" class="form-control bootstrap-date" id="eventDate" required/>
                                     <span>de</span>
-                                    <input name="startTime" type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
+                                    <input name="startTime" value="{{startTime}}"  type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
                                     <span>hasta</span>
-                                    <input name="endTime" type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
+                                    <input name="endTime" value="{{endTime}}" type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
                                 </div>
                             </div>
                             <div>
                                 <label for='form-select'>Campus</label>
                                 <select name="campus" class="form-select" aria-label="Default select example">
-                                    <option value="ALCORCÓN">ALCORCÓN</option>
-                                    <option value="ARANJUEZ">ARANJUEZ</option>
-                                    <option value="FUENLABRADA">FUENLABRADA</option>
-                                    <option value="MÓSTOLES">MÓSTOLES</option>
-                                    <option value="MADRID-VICALVARO">MADRID-VICALVARO</option>
-                                    <option value="MADRID-QUINTANA">MADRID-QUINTANA</option>
+                                    {{#campus}}
+                                        <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                                    {{/campus}}
                                 </select>
                             </div>
                             <div class="form-group py-2">
                               <label for="">Ubicación</label>
-                              <input name="location" type="text" value="location" class="form-control" id="eventPlace" required/>
+                              <input name="location" value="{{location}}" type="text" class="form-control" id="eventPlace" required/>
                             </div>
                             <div class="form-group">
                                 <label for='form-check'>¿Se darán créditos por la asistencia?</label>
                                 <div class="form-group">
                                     <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="credits" id="yes" value="yes" checked>
+                                      <input class="form-check-input" type="radio" name="credits" id="yes" value="yes"  {{#credits}}checked{{/credits}}>
                                       <label class="form-check-label" for="yes">Si</label>
                                     </div>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="credits" id="no" value="no" >
+                                      <input class="form-check-input" type="radio" name="credits" id="no" value="no" {{^credits}}checked{{/credits}}>
                                       <label class="form-check-label" for="no">No</label>
                                     </div>
                                   </div>
@@ -132,25 +129,25 @@
                                 <label for='form-check'>¿Hará falta reservar?</label>
                                 <div class="form-group">
                                     <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="reservation" id="yes" value="yes" checked>
+                                      <input class="form-check-input" type="radio" name="reservation" id="yes" value="yes" {{#reservation}}checked{{/reservation}}>
                                       <label class="form-check-label" for="yes">Si</label>
                                     </div>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="reservation" id="no" value="no" >
+                                      <input class="form-check-input" type="radio" name="reservation" id="no" value="no" {{^reservation}}checked{{/reservation}}>
                                       <label class="form-check-label" for="no">No</label>
                                     </div>
                                   </div>
                             </div>
                             <div class="form-group py-2">
                               <label for="">Descripción</label>
-                              <textarea name="description" type="text" class="form-control" style=" height: 10em;" required></textarea>
+                              <textarea name="description" type="text" class="form-control" style=" height: 10em;" required> {{description}}</textarea>
                             </div>
                             <div>
-                                <input name="image" class="form-control" type="file" accept="image/*" required/>
+                                <input name="image" class="form-control" type="file" accept="image/*"/>
                             </div>
                             <div class="d-flex py-2 w-100">
                               <div class="flex-fill"></div>
-                              <button type="submit" class="btn btn-danger px-4">Crear</button>
+                              <button type="submit" class="btn btn-danger px-4">Guardar cambios</button>
                               <input type="hidden" name="_csrf" value="{{token}}"/>
                             </div>
                         </form>

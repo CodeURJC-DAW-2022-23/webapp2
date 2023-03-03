@@ -29,6 +29,9 @@ public class EventService {
 	public List<Event> findAll() {
 		return eventRepository.findAll();
 	}
+    public List<Event> findAllbyAsociation(String asociation) {
+		return eventRepository.findAllByAsociation(asociation);
+	}
 
 	public Optional<Event> findById(long id) {
 		Optional<Event> findById = eventRepository.findById(id);

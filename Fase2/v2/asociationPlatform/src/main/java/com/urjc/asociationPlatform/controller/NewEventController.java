@@ -35,8 +35,6 @@ public class NewEventController {
   private String[] month = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
                             "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
 
-  private String[] campusList = {"ALCORCON", "ARANJUEZ", "FUENLABRADA", "MOSTOLES", "VICALVARO", "QUINTANA"};
-
   @GetMapping("/newEvent")
   public String newEvent() {
     return "createEvent";
@@ -77,7 +75,7 @@ public class NewEventController {
 
     try {
       Event event = new Event(name, date2, month[monthN-1], description, location, association,
-                              campusList[Integer.parseInt(campus) - 1], creditsBool, reservationBool, duration, getBlob(image));                  
+                              campus, creditsBool, reservationBool, duration, getBlob(image), startTime, endTime);                  
       eventService.saveEvent(event);
     } catch (SQLException e) {
       e.printStackTrace();

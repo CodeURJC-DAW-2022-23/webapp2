@@ -16,4 +16,7 @@ public interface EventRepository extends JpaRepository<Event, Long>, CustomEvent
     @Query(value = ":query",nativeQuery = true)
     List<Event> launchQuery(@Param("query") String query);
 
+    @Query(value = "SELECT * FROM event WHERE asociation = :name", nativeQuery=true)
+    List<Event> findAllByAsociation(@Param("name") String name);
+
 }

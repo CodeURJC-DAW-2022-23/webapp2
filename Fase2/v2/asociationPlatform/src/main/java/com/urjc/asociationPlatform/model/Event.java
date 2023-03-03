@@ -31,6 +31,8 @@ public class Event {
     private String campus;
     private boolean credits;
     private boolean booking;
+    private String startTime;
+    private String endTime;
     private String duration;
 
     @Lob
@@ -39,7 +41,7 @@ public class Event {
     //@ElementCollection(fetch = FetchType.EAGER)
     //private List<EventReview> reviews;
     public Event(){}
-    public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean credits, boolean booking, String duration, Blob imgUrl) {
+    public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean credits, boolean booking, String duration, Blob imgUrl, String startTime, String endTime) {
         this.name = name;
         this.date = date;
         this.month = month;
@@ -51,6 +53,8 @@ public class Event {
         this.booking=booking;
         this.duration=duration;
         this.image = imgUrl;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
     public void setId(Long id){
         this.id=id;
@@ -127,6 +131,18 @@ public class Event {
             return "Si";
         }
         return "No";
+    }
+    public String getStartTime(){
+        return startTime;
+    }
+    public void setStartTime(String startTime){
+        this.startTime=startTime;
+    }
+    public String getEndTime(){
+        return endTime;
+    }
+    public void setEndTime(String endTime){
+        this.endTime=endTime;
     }
     public String getDuration() {
         return duration;
