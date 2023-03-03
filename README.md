@@ -117,31 +117,40 @@ La página de detalles de eventos muestra información adicional de un evento. C
 **Menú de usuario base:**
 
 Ver favoritos: 
+![favorites](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/detalles.PNG?raw=true)
 Aquí el usuario podrá consultar su listado de eventos favoritos.
 
 Editar su información personal:
+![edituser](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/baseeditarcuenta.PNG?raw=true)
 El usuario podrá modificar sus datos personales.
 
 **Menú de asociación:**
 
 Crear eventos: 
+![asocreatevent](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asocrearevento.PNG?raw=true)
 En esta vista se podrán crear eventos a través de un formulario.
 
 Gestionar eventos: 
+![asoeditevent](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditarevento.PNG?raw=true)
 Aquí el usuario asociación podrá modificar o eliminar los datos que precisen.
 
 Gestionar asociación:
+![asoeditaso](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditaraso.PNG?raw=true)
 En esta vista se podrá modificar los datos propios de su asociación.
 
 **Menú de administrador:**
 
 Gestionar usuarios: 
+![admineditusers](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarusuarios.PNG?raw=true)
 Aquí el administrador podrá consultar, modificar o eliminar cualquier usuario de la plataforma.
 
 Gestionar eventos: 
+![admineditevents](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editareventos.PNG?raw=true)
 En esta vista el administrador podrá consultar, modificar o eliminar cualquier evento de la plataforma.
 
 Gestionar asociaciones: 
+![admineditasos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarasos.PNG?raw=true)
 El administrador podrá consultar, modificar o eliminar cualquier asociación de la plataforma.
+
 
 
