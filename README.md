@@ -158,8 +158,12 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 ### Instrucciones de ejecución
 
+![git](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/git.PNG?raw=true)
 - Acceder al repositorio mediante este enlace: CodeURJC-DAW-2022-23 /webapp2
 - Descargar el zip del proyecto
+![extensiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/sb.PNG?raw=true)
 - Nosotros hemos utilizado VisualStudio para trabajar instalando las correspondientes librerías de Spring
-- Nuestra versión Maven , SpringBoot , MySQL y Java 11.
-- Para consultar los datos hemos usado WorkBench. 
+![versiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/versiones.PNG?raw=true)
+- Nuestra versión Maven 4.0.0, SpringBoot 2.7.8, MySQL y Java 11.
+![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.PNG?raw=true)
+- Para consultar los datos hemos usado WorkBench 8.0 CE. 
