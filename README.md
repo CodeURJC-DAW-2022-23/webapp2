@@ -88,10 +88,12 @@ El formulario de administración permite configurar párámetros relacionados co
 
 **Home:**
 
-![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/home.PNG?raw=true)
+![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/home.PNG?raw=true)
 La aplicación tiene un menú inicial común para los tres tipos de usuarios (administradores, asociaciones o usuarios base). 
 
 **Registro:**
+
+![register](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/registro.PNG?raw=true)
 Esta pantalla permitirá a los usuarios registrarse y dependiendo de su rol tener unos privilegios u otros.
 
 Registro usuario BASE: 
@@ -104,7 +106,7 @@ Registro usuario ADMINISTRADOR:
 
 **Login:**
 
-![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/loginAsociaciones.PNG?raw=true)
+![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/login.PNG?raw=true)
 Una vez registrado, el usuario deberá introducir unas credenciales válidas, su nombre de usuario y contraseña. De lo contrario se mostrará un mensaje de error.
 
 **Más información sobre un evento:**
