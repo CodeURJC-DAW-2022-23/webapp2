@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.urjc.asociationPlatform.model.Event;
 
-public interface EventRepository extends JpaRepository<Event, Long> {
+public interface EventRepository extends JpaRepository<Event, Long>, CustomEventRepository{
 
     @Query(value = "SELECT * FROM event WHERE name LIKE :name AND month = :month AND campus = :campus AND asociation = :asociation",nativeQuery = true)
     List<Event> getEvents(@Param("name") String name, @Param("month") String month, @Param("campus") String campus, @Param("asociation") String asociation);

@@ -79,16 +79,20 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        //model.addAttribute("eventList",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
-        asociations = asociationService.findAll();
-        asoValues.add("");
-        asoValues.add("All");
-        asoContenet.add("Asociación");
-        asoContenet.add("Todas");
-        for(int i=0;i<asociations.size();i++){
-            asoValues.add(asociations.get(i).getName());
-            asoContenet.add(asociations.get(i).getName());
+        List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation);
+        model.addAttribute("events",events);
+        if(asociations==null){
+            asociations = asociationService.findAll();
+            asoValues.add("");
+            asoValues.add("All");
+            asoContenet.add("Asociación");
+            asoContenet.add("Todas");
+            for(int i=0;i<asociations.size();i++){
+                asoValues.add(asociations.get(i).getName());
+                asoContenet.add(asociations.get(i).getName());
+            }
         }
+        
 
         generateFiltersOptions(model);
         return "home";
@@ -128,7 +132,7 @@ public class HomeController {
             asociation=formData.get("asociationValue");
         }
 
-        model.addAttribute("eventos",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        model.addAttribute("events",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
         generateFiltersOptions(model);
         return "redirect:/";
     }

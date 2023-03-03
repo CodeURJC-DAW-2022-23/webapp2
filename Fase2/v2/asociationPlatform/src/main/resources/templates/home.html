@@ -146,7 +146,7 @@
 
         <div class="con-cards">
 
-        {{#eventList}}
+        {{#events}}
             <div class='widget'>
                 <div style='background: url(/{{id}}/image) no-repeat center/cover;' class='widget__photo'></div>
                 <div class='widget__button'>
@@ -183,7 +183,7 @@
                                     Horario
                                 </td>
                                 <td>
-                                    {{duracion}}
+                                    {{duration}}
                                 </td>
                             </tr>
                             <tr>
@@ -199,8 +199,8 @@
                                     Reserva
                                 </td>
                                 <td>
-                                    {{#reserva}}Si{{/reserva}}
-                                    {{^reserva}}No{{/reserva}}
+                                    {{#booking}}Si{{/booking}}
+                                    {{^booking}}No{{/booking}}
                                 </td>
                             </tr>
                             <tr>
@@ -208,15 +208,15 @@
                                     Creditos
                                 </td>
                                 <td>
-                                    {{#creditos}}Si{{/creditos}}
-                                    {{^creditos}}No{{/creditos}}
+                                    {{#credits}}Si{{/credits}}
+                                    {{^credits}}No{{/credits}}
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-        {{/eventList}}
+        {{/events}}
                     
         </div>
 

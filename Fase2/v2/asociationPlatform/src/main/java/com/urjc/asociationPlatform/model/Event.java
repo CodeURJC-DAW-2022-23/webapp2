@@ -52,6 +52,9 @@ public class Event {
         this.duration=duration;
         this.image = imgUrl;
     }
+    public void setId(Long id){
+        this.id=id;
+    }
     public String getName() {
         return name;
     }
@@ -116,10 +119,10 @@ public class Event {
     public boolean getBooking() {
         return booking;
     }
-    public void setReserva(boolean booking) {
+    public void setBooking(boolean booking) {
         this.booking = booking;
     }
-    public String getReservaString(){
+    public String getBookingString(){
         if(booking){
             return "Si";
         }
