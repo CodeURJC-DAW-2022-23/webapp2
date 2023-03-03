@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/comments.css">
     <link rel="stylesheet" href="/css/likesBar.css">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
 
@@ -73,26 +74,23 @@
         </div>
     </section>
   
-    <section>
+    <section class="row1">
+        <input type="hidden" id="likeValue" value={{totalLikes}}>
+        <input type="hidden" id="dislikeValue" value={{totalDislikes}}>
         <div id="puntuation">
-            <input type="hidden" id="likeValue" value={{totalLikes}}>
-            <input type="hidden" id="dislikeValue" value={{totalDislikes}}>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
+            <div class="container barLikes">
+                    <div class="like">
                         <a href="/infoEvento/{{#event}}{{id}}{{/event}}/like"><i class='bx {{#like}}bxs-happy{{/like}}{{^like}}bx-happy{{/like}}'></i></a>{{totalLikes}}
                     </div>
-                    <div class="col-sm">
+                    <div class="barGraph">
                         <div id="bar">
                             <div id="likeArea"></div>
                             <div id="dislikeArea"></div>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="dislike">
                         {{totalDislikes}}<a href="/infoEvento/{{#event}}{{id}}{{/event}}/dislike"><i class='bx {{#dislike}}bxs-sad{{/dislike}}{{^dislike}}bx-sad{{/dislike}}'></i></a>
                     </div>
-                </div>
-                
             </div>
         </div>
     </section>
