@@ -1,3 +1,3 @@
 INSERT INTO `asociation` VALUES (1,'Mostoles','Hola xD','ETSII','Roleros en linea'),(2,'Fuenla','Desc','Medicina','Anger');
-INSERT INTO `user` VALUES (1,NULL,'asociation@gmail.com','$2a$10$zdzp7tWaxcBA6P2ZaSSZ6OStLe5cMXoyNQTXTIPNF5nU8WXhs/wpy','ASO','asociation',1),(2,NULL,'user1@gmail.com','$2a$10$c7CrHL6WyuiT5OjBEOZ8WuwC7pgyAYN15XZ2CIBuwE3DBYT6aiPui','BASE','user1',NULL),(3,NULL,'admin@gmail.com','$2a$10$eQF4AGaB.iDwUodfG40pyO.414YFAmFm9SHQMMxpQk1bRl9USC7ou','ADMIN','admin',NULL);
-INSERT INTO `event` VALUES (1,'association',NULL,_binary '\0','2023-06-02',' Ven a disfrutar con nosotros.','4 horas',NULL,'Mostoles','JULIO','Partida de rol para novatos',_binary '\0');
+INSERT INTO `event` VALUES (1,'Roleros en linea','1','ARANJUEZ','1','2024-12-23',' Texto aqu�.','5h 0min',?,'Aulario 3','FEBRERO','Rol para novatos');
+INSERT INTO `user` VALUES (1,'asociation@gmail.com','$2a$10$zdzp7tWaxcBA6P2ZaSSZ6OStLe5cMXoyNQTXTIPNF5nU8WXhs/wpy','ASO','asociation',1),(2,'user1@gmail.com','$2a$10$c7CrHL6WyuiT5OjBEOZ8WuwC7pgyAYN15XZ2CIBuwE3DBYT6aiPui','BASE','user1',NULL),(3,'admin@gmail.com','$2a$10$eQF4AGaB.iDwUodfG40pyO.414YFAmFm9SHQMMxpQk1bRl9USC7ou','ADMIN','admin',NULL);

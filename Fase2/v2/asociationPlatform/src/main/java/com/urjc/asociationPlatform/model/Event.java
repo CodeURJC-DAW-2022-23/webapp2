@@ -1,19 +1,12 @@
 package com.urjc.asociationPlatform.model;
 
-
 import java.sql.Blob;
 import java.sql.Date;
-
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Event {
@@ -33,11 +26,16 @@ public class Event {
     private boolean booking;
     private String duration;
 
+    @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+    private List<Comment> comments = new ArrayList<>();
+    @ManyToMany
+    private Set<User> likeList = new HashSet<>();
+    @ManyToMany
+    private Set<User> dislikeList = new HashSet<>();
+
     @Lob
     private Blob image;
 
-    //@ElementCollection(fetch = FetchType.EAGER)
-    //private List<EventReview> reviews;
     public Event(){}
     public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean credits, boolean booking, String duration, Blob imgUrl) {
         this.name = name;
@@ -52,9 +50,47 @@ public class Event {
         this.duration=duration;
         this.image = imgUrl;
     }
+
     public void setId(Long id){
         this.id=id;
     }
+
+    public boolean isUserInLikes(User user){
+        return likeList.contains(user);
+    }
+
+    public int getTotalLikes(){
+        return likeList.size();
+    }
+
+    public boolean addLike(User user){
+        return likeList.add(user);
+    }
+
+    public boolean removeLike(User user){
+        return likeList.remove(user);
+    }
+
+    public boolean isUserInDislikes(User user){
+        return dislikeList.contains(user);
+    }
+
+    public int getTotalDislikes(){
+        return dislikeList.size();
+    }
+
+    public boolean addDislike(User user){
+        return dislikeList.add(user);
+    }
+
+    public boolean removeDislike(User user){
+        return dislikeList.remove(user);
+    }
+
+    public Long getId(long id){
+        return this.id;
+    }
+
     public String getName() {
         return name;
     }
@@ -139,6 +175,22 @@ public class Event {
     }
     public void setImgUrl(Blob image) {
         this.image = image;
+    }
+
+    public List<Comment> getComments(){
+        return this.comments;
+    }
+
+    public void setComments(List<Comment> comments){
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment){
+        this.comments.add(comment);
+    }
+
+    public void removeComment(Comment comment){
+        this.comments.remove(comment);
     }
     
     
