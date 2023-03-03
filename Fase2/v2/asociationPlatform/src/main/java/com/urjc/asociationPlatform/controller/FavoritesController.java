@@ -2,7 +2,13 @@ package com.urjc.asociationPlatform.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -115,5 +121,18 @@ public class FavoritesController {
     @GetMapping("/miCuenta/favoritos")
     public String showFavorites(Model model){
         return "favoritos";
+    }
+
+    @GetMapping("/{id}/image")
+    public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException{
+        Event event = eventService.findById(id).orElseThrow();
+
+        if(event.getImage()!= null){
+            Resource file = new InputStreamResource(event.getImage().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").contentLength(event.getImage().length()).body(file);
+        } else{
+            return ResponseEntity.notFound().build();
+        }
     }
 }

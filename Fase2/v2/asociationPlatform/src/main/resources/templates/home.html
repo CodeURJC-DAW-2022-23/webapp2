@@ -13,9 +13,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
-
 <body>
 
     <header class="nav container_fluid">
@@ -50,9 +48,9 @@
 
 
     <div class="hero container-fluid">
-        <form class="search-form" id="buscador">
-            <input type="search" value="" placeholder="Busca eventos o categorías" class="search-input">
-            <button type="submit" class="search-button">
+        <form class="search-form"  method="post" id="buscador" action="globalFormSubmit">
+            <input type="search" value="{{seachBarContent}}" placeholder="Busca eventos o categorías" class="search-input" name="searchBar">
+            <button id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
                 <svg class="submit-button">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
                 </svg>
@@ -62,6 +60,7 @@
                     <input name="type" type="radio" value="type-users" id="type-users">
                 </div>
             </div>
+            
         </form>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
@@ -75,53 +74,54 @@
     <div class="filters-container">
         <div class="filter">
             <div class="select-container">
-                <select class="custom-select" id="asociacion">
-                    <option value="" selected>Asociación</option>
-                    <option value="All">Todas</option>
-                    <option value="BIC">BIC</option>
-                    <option value="ARJE">ARJE</option>
-                    <option value="ADEMED URJC">ADEMED URJC</option>
-                    <option value="APOE">APOE</option>
-                    <option value="ANGER">ANGER</option>
-                    <option value="ESN URJC">ESN URJC</option>
-                    <option value="I+b ingeniería biomédica">I+b ingeniería biomédica</option>
-                    <option value="IURIS URJC">IURIS URJC</option>
-                    <option value="ASOLSE">ASOLSE</option>
-                    <option value="Asociación Aeroespacial Cosmos">Asociación Aeroespacial Cosmos </option>
-                    <option value="ALOA">ALOA</option>
-                    <option value="ASESP">ASESP</option>
-                    <option value="ADHUE">ADHUE</option>
-                </select>
+                
+                <form id="asoForm" method="post" action="globalFormSubmit">
+                    <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitBtn').click();">
+                        {{#asoValues}}
+                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                        {{/asoValues}}
+                    </select>
+                    
+                    <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
+                        <svg class="submit-button">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                        </svg>
+                    </button> -->
+                   
+                   
+                </form>
+                
+                
             </div>
             <div class="select-container">
-                <select class="custom-select" id="mes">
-                    <option value="" selected>Mes</option>
-                    <option value="All">Todos</option>
-                    <option value="ENERO">Enero</option>
-                    <option value="FEBRERO">Febrero</option>
-                    <option value="MARZO">Marzo</option>
-                    <option value="ABRIL">Abril</option>
-                    <option value="MAYO">Mayo</option>
-                    <option value="JUNIO">Junio</option>
-                    <option value="JULIO">Julio</option>
-                    <option value="AGOSTO">Agosto</option>
-                    <option value="SEPTIEMBRE">Septiembre</option>
-                    <option value="OCTUBRE">Octubre</option>
-                    <option value="NOVIEMBRE">Noviembre</option>
-                    <option value="DICIEMBRE">Diciembre</option>
-                </select>
+                <form method="post" action="globalFormSubmit">
+                    <select class="custom-select" id="mes" name="monthSelect" onchange="document.getElementById('submitBtn').click();">
+                        {{#monthsValues}}
+                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                        {{/monthsValues}}
+                    </select>
+                    <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
+                        <svg class="submit-button">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                        </svg>
+                    </button> -->
+                </form>
+                
             </div>
             <div class="select-container">
-                <select class="custom-select" id="campus">
-                    <option value="" selected>Campus</option>
-                    <option value="All">Todos</option>
-                    <option value="ALCORCON">Alconrcón</option>
-                    <option value="ARANJUEZ">Aranjuez</option>
-                    <option value="FUENLABRADA">Fuenlabrada</option>
-                    <option value="MOSTOLES">Móstoles</option>
-                    <option value="MADRID-VICALVARO">Madrid-Vicalvaro</option>
-                    <option value="MADRID-QUINTANA">Madrid-Quintana</option>
-                </select>
+                <form method="post" action="globalFormSubmit">
+                    <select class="custom-select" id="campus" name="campusValue" onchange="document.getElementById('submitBtn').click();">
+                        {{#campusValues}}
+                        <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                        {{/campusValues}}
+                    </select>
+                    <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
+                        <svg class="submit-button">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
+                        </svg>
+                    </button> -->
+                </form>
+                
             </div>
 
             <!-- <div class="boton">
@@ -146,9 +146,9 @@
 
         <div class="con-cards">
 
-        {{#eventList}}
+        {{#events}}
             <div class='widget'>
-                <div class='widget__photo'></div>
+                <div style='background: url(/{{id}}/image) no-repeat center/cover;' class='widget__photo'></div>
                 <div class='widget__button'>
                     <a href="/infoEvento/{{id}}">Más Info</a> 
                 </div>
@@ -157,14 +157,14 @@
                         {{name}}
                     </div>
                     <div class='widget__type'>
-                        Anger
+                        {{asociation}}
                     </div>
                     <div class='widget__info'>
                         <span>
                             Universidad Rey Juan Carlos
                         </span>
                         <span>
-                            {{location}}
+                            {{campus}}
                         </span>
                     </div>
                     <div class='widget__hidden'>
@@ -175,7 +175,7 @@
                                     Fecha
                                 </td>
                                 <td>
-                                    17 de febrero 2021
+                                    {{date}}
                                 </td>
                             </tr>
                             <tr>
@@ -183,7 +183,7 @@
                                     Horario
                                 </td>
                                 <td>
-                                    9-12
+                                    {{duration}}
                                 </td>
                             </tr>
                             <tr>
@@ -191,7 +191,7 @@
                                     Lugar
                                 </td>
                                 <td>
-                                    Salón de actos
+                                    {{location}}
                                 </td>
                             </tr>
                             <tr>
@@ -199,7 +199,8 @@
                                     Reserva
                                 </td>
                                 <td>
-                                    Si
+                                    {{#booking}}Si{{/booking}}
+                                    {{^booking}}No{{/booking}}
                                 </td>
                             </tr>
                             <tr>
@@ -207,14 +208,15 @@
                                     Creditos
                                 </td>
                                 <td>
-                                    No
+                                    {{#credits}}Si{{/credits}}
+                                    {{^credits}}No{{/credits}}
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-        {{/eventList}}
+        {{/events}}
                     
         </div>
 
@@ -234,7 +236,7 @@
             </p>
         </div>
     </footer>
-
+    <script src="js/sendFormsFilters.js"></script>
     <script src="js/cards.js"></script>
 
 </body>

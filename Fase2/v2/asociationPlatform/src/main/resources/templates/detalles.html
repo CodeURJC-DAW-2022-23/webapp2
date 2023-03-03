@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/comments.css">
     <link rel="stylesheet" href="/css/likesBar.css">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-    
 </head>
 <body>
 
@@ -111,7 +110,6 @@
         {{/view}}
    </section>
 
-   
 
    <section class="comments-container">
     <h1>Comentarios</h1>
@@ -141,11 +139,11 @@
         <form class="form" method="post" action="/crearComentario/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}">
             <div class="form-row">
             <textarea class="input" name="description" placeholder="Añadir Comentario..."></textarea>
+
             </div>
     
             <div class="form-row">
             <input type="submit" value="Añadir Comentario">
-            <input type="hidden" name="_csrf" value="{{token}}"/>
             </div>
         </form>
     </div>
