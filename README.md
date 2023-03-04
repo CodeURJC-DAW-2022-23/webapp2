@@ -173,7 +173,7 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 ![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.png?raw=true)
 
 ### Diagrama con las entidades de la base de datos
-![basededatos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/base_de_datos.png?raw=true)
+![basededatos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/bd.png?raw=true)
 
 ### Diagrama de clases y templates
 
