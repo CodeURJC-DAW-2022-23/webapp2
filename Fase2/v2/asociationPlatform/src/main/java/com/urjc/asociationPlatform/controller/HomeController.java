@@ -119,7 +119,7 @@ public class HomeController {
 	public String miespacio() {
 		return "myAso";
 	}
-    @PostMapping("/globalFormSubmit")
+    @PostMapping("/globalFormSubmit") 
     public String globalFormSubmit(Model model, @RequestParam Map<String,String> formData){
         if(formData.containsKey("searchBar")){
             searchInfo=formData.get("searchBar");
