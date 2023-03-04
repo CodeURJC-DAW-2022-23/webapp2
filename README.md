@@ -160,15 +160,18 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 ### Instrucciones de ejecución
 
-![git](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/git.png?raw=true)
 - Acceder al repositorio mediante este enlace: CodeURJC-DAW-2022-23 /webapp2
 - Descargar el zip del proyecto
-![extensiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/sb.png?raw=true)
+![git](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/git.png?raw=true)
+
 - Nosotros hemos utilizado VisualStudio para trabajar instalando las correspondientes librerías de Spring
-![versiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/versiones.png?raw=true)
+![extensiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/sb.png?raw=true)
+
 - Nuestra versión Maven 4.0.0, SpringBoot 2.7.8, MySQL y Java 11.
-![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.png?raw=true)
+![versiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/versiones.png?raw=true)
+
 - Para consultar los datos hemos usado WorkBench 8.0 CE. 
+![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.png?raw=true)
 
 ### Diagrama con las entidades de la base de datos
 
