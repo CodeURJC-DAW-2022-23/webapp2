@@ -102,8 +102,6 @@ Este tipo de usuario sólo requiere un correo electrónico, nombre de usuario y 
 Registro usuario ASOCIACIÓN: 
 Este tipo de usuario va a necesitar la validación de un administrador para que su registro quede completado y confirmado.
 
-Registro usuario ADMINISTRADOR: 
-
 **Login:**
 
 ![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/login.png?raw=true)
@@ -111,9 +109,8 @@ Una vez registrado, el usuario deberá introducir unas credenciales válidas, su
 
 **Más información sobre un evento:**
 
-![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/detalles.png?raw=true)
-![fav](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/favoritos.png?raw=true)
-![comments](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/comments.png?raw=true)
+![detallesnuevo](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/detalles.png?raw=true)
+
 La página de detalles de eventos muestra información adicional de un evento. Consiste de un texto descriptivo, lugar y horario. También cuenta con un botón de seguir evento para poder recibir avisos sobre este. Además, se ha añadido una sección de comentarios donde los usuarios podrán opinar. También se ha implementado dar like a otros comentarios, dislike a un evento o poner en tu lista de favoritos el evento que elijas.
 
 **Menú de usuario base:**
