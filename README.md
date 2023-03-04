@@ -93,7 +93,7 @@ La aplicación tiene un menú inicial común para los tres tipos de usuarios (ad
 
 **Registro:**
 
-![register](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/registro.PNG?raw=true)
+![register](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/registro.png?raw=true)
 Esta pantalla permitirá a los usuarios registrarse y dependiendo de su rol tener unos privilegios u otros.
 
 Registro usuario BASE: 
@@ -106,66 +106,66 @@ Registro usuario ADMINISTRADOR:
 
 **Login:**
 
-![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/login.PNG?raw=true)
+![login](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/login.png?raw=true)
 Una vez registrado, el usuario deberá introducir unas credenciales válidas, su nombre de usuario y contraseña. De lo contrario se mostrará un mensaje de error.
 
 **Más información sobre un evento:**
 
-![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/detalles.PNG?raw=true)
+![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/detalles.png?raw=true)
 La página de detalles de eventos muestra información adicional de un evento. Consiste de un texto descriptivo, lugar y horario. También cuenta con un botón de seguir evento para poder recibir avisos sobre este. Además, se ha añadido una sección de comentarios donde los usuarios podrán opinar. También se ha implementado dar like a otros comentarios, dislike a un evento o poner en tu lista de favoritos el evento que elijas.
 
 **Menú de usuario base:**
 
 Ver favoritos: 
-![favorites](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/detalles.PNG?raw=true)
+![favorites](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/detalles.png?raw=true)
 Aquí el usuario podrá consultar su listado de eventos favoritos.
 
 Editar su información personal:
-![edituser](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/baseeditarcuenta.PNG?raw=true)
+![edituser](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/baseeditarcuenta.png?raw=true)
 El usuario podrá modificar sus datos personales.
 
 **Menú de asociación:**
 
 Crear eventos: 
-![asocreatevent](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asocrearevento.PNG?raw=true)
+![asocreatevent](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asocrearevento.png?raw=true)
 En esta vista se podrán crear eventos a través de un formulario.
 
 Gestionar eventos: 
-![asoeditevent](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditarevento.PNG?raw=true)
+![asoeditevent](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditarevento.png?raw=true)
 Aquí el usuario asociación podrá modificar o eliminar los datos que precisen.
 
 Gestionar asociación:
-![asoeditaso](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditaraso.PNG?raw=true)
+![asoeditaso](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditaraso.png?raw=true)
 En esta vista se podrá modificar los datos propios de su asociación.
 
 **Menú de administrador:**
 
 Gestionar usuarios: 
-![admineditusers](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarusuarios.PNG?raw=true)
+![admineditusers](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarusuarios.png?raw=true)
 Aquí el administrador podrá consultar, modificar o eliminar cualquier usuario de la plataforma.
 
 Gestionar eventos: 
-![admineditevents](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editareventos.PNG?raw=true)
+![admineditevents](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editareventos.png?raw=true)
 En esta vista el administrador podrá consultar, modificar o eliminar cualquier evento de la plataforma.
 
 Gestionar asociaciones: 
-![admineditasos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarasos.PNG?raw=true)
+![admineditasos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarasos.png?raw=true)
 El administrador podrá consultar, modificar o eliminar cualquier asociación de la plataforma.
 
 Email: 
-![email](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/email.PNG?raw=true)
+![email](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/email.png?raw=true)
 Esta es la tecnología que hemos decidido implementar consiste en el uso de un email para validar las cuentas del los usuarios dueños de asociaciones. Esta validación la tiene que hacer obligatoriamente un usuario administrador. En caso de que se rechace la validación la cuenta no se creará. Por el contrario, si se acepta la creación del usuario asociación, este ya podrá crear su asociación.
 
 ### Instrucciones de ejecución
 
-![git](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/git.PNG?raw=true)
+![git](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/git.png?raw=true)
 - Acceder al repositorio mediante este enlace: CodeURJC-DAW-2022-23 /webapp2
 - Descargar el zip del proyecto
-![extensiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/sb.PNG?raw=true)
+![extensiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/sb.png?raw=true)
 - Nosotros hemos utilizado VisualStudio para trabajar instalando las correspondientes librerías de Spring
-![versiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/versiones.PNG?raw=true)
+![versiones](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/versiones.png?raw=true)
 - Nuestra versión Maven 4.0.0, SpringBoot 2.7.8, MySQL y Java 11.
-![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.PNG?raw=true)
+![wb](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/workbench.png?raw=true)
 - Para consultar los datos hemos usado WorkBench 8.0 CE. 
 
 ### Diagrama con las entidades de la base de datos
