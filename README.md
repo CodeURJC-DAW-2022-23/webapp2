@@ -118,7 +118,7 @@ La página de detalles de eventos muestra información adicional de un evento. C
 **Menú de usuario base:**
 
 Ver favoritos: 
-![favorites](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/userfavoritos.png?raw=true)
+![favuser](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/userfavoritos.png?raw=true)
 Aquí el usuario podrá consultar su listado de eventos favoritos.
 
 Editar su información personal:
