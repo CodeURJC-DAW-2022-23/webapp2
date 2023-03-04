@@ -88,7 +88,7 @@ El formulario de administración permite configurar párámetros relacionados co
 
 **Home:**
 
-![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/home.PNG?raw=true)
+![landing](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/home.png?raw=true)
 La aplicación tiene un menú inicial común para los tres tipos de usuarios (administradores, asociaciones o usuarios base). 
 
 **Registro:**
