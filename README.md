@@ -112,12 +112,14 @@ Una vez registrado, el usuario deberá introducir unas credenciales válidas, su
 **Más información sobre un evento:**
 
 ![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/detalles.png?raw=true)
+![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/favoritos.png?raw=true)
+![detalles](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase1/screenshot/comments.png?raw=true)
 La página de detalles de eventos muestra información adicional de un evento. Consiste de un texto descriptivo, lugar y horario. También cuenta con un botón de seguir evento para poder recibir avisos sobre este. Además, se ha añadido una sección de comentarios donde los usuarios podrán opinar. También se ha implementado dar like a otros comentarios, dislike a un evento o poner en tu lista de favoritos el evento que elijas.
 
 **Menú de usuario base:**
 
 Ver favoritos: 
-![favorites](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/detalles.png?raw=true)
+![favorites](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/x.png?raw=true)
 Aquí el usuario podrá consultar su listado de eventos favoritos.
 
 Editar su información personal:
