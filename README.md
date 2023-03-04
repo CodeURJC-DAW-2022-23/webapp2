@@ -221,7 +221,7 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	|  |
+| 1	| 	| [home.html](src/main/resources/templates/home.html) |
 | 2	| 	|  |
 | 3 | 	|  |
 |	4 |  |  |
