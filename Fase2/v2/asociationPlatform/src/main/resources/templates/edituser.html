@@ -100,9 +100,9 @@
 
                                 <div class="form-group py-2">
                                     <select class="custom-select" id="rol" name="rol">
-                                        <option value="BASE" selected>BASE</option>
-                                        <option value="ASO">ASO</option>
-                                        <option value="ADMIN">ADMIN</option>
+                                        {{#userRoles}}
+                                        <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                                        {{/userRoles}}
                                     </select>
                                     </div>
                                 

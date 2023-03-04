@@ -35,12 +35,12 @@ public class NewEventController {
   private String[] month = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
                             "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
 
-  @GetMapping("/newEvent")
+  @GetMapping("/aso/newEvent")
   public String newEvent() {
     return "createEvent";
   }
 
-  @PostMapping("/newEvent")
+  @PostMapping("/aso/newEvent")
   public String createEvent(@RequestParam("name") String name, @RequestParam("date") String date, 
                             @RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime,
                             @RequestParam("location") String location, @RequestParam("description") 
@@ -83,7 +83,7 @@ public class NewEventController {
       e.printStackTrace();
     }
     
-    return "redirect:/miEspacio/";
+    return "redirect:/aso/miEspacio/";
 
   }
 

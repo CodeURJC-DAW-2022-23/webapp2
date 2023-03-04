@@ -23,7 +23,7 @@ public class EventManagerController{
 
 		User currentUser;
 		
-  @GetMapping("/eventManagerAso")   
+  @GetMapping("/aso/eventManagerAso")   
 	public String miespacio(Model model, HttpServletRequest request) {
 		String association = " ";
 

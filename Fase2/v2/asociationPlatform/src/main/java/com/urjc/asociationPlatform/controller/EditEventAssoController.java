@@ -45,7 +45,7 @@ public class EditEventAssoController {
                             "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
   private String[] campusValue={"ALCORCON","ARANJUEZ","FUENLABRADA","MOSTOLES","MADRID-VICALVARO","MADRID-QUINTANA"};
 
-  @GetMapping("/editEvent/{id}")
+  @GetMapping("/aso/editEvent/{id}")
   public ModelAndView editEvent(ModelMap model, @PathVariable long id) {
     this.event = eventService.findById(id);
     if (event.isEmpty())
@@ -73,7 +73,7 @@ public class EditEventAssoController {
     return new ModelAndView("editEventAsso", model);
   }
 
-  @PostMapping("/editEvent")
+  @PostMapping("/aso/editEvent")
   public String editEvent(@RequestParam("name") String name, @RequestParam("date") String date, 
                             @RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime,
                             @RequestParam("location") String location, @RequestParam("description") 
@@ -117,13 +117,13 @@ public class EditEventAssoController {
       //eventService.updateById(newEvent, newEvent.getId());
       eventService.save(newEvent);
     }
-    return "redirect:eventManagerAso";
+    return "redirect:/aso/eventManagerAso";
   }
   
-  @GetMapping("/deleteEvent/{id}")
+  @GetMapping("/aso/deleteEvent/{id}")
   public String deleteEvent(@PathVariable long id) {
     eventService.deleteById(id);
-    return "redirect:/eventManagerAso";
+    return "redirect:/aso/eventManagerAso";
   }
 
   public Blob getBlob(MultipartFile file) throws SQLException, IOException {

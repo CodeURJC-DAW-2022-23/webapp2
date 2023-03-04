@@ -93,11 +93,9 @@ public class EditAsociationController {
 			String result;
 			if(isAsociation){
 				result = "myAso";
-				System.out.print("\nAsociation\n");
 			}
 			else{
 				result = "home";
-				System.out.print("\nOtro\n");
 			}
 			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
 				return result;
@@ -118,11 +116,9 @@ public class EditAsociationController {
 			String result;
 			if(isAsociation){
 				result = "redirect:/miEspacio";
-				System.out.print("\nAsociation\n");
 			}
 			else{
 				result = "redirect:/admin/adminAsoc";
-				System.out.print("\nOtro\n");
 			}
 			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
 				return result;

@@ -83,6 +83,7 @@ public class HomeController {
         model.addAttribute("events",events);
         if(asociations==null){
             asociations = asociationService.findAll();
+            System.out.println("Numero de asociaciones: "+asociations.size());
             asoValues.add("");
             asoValues.add("All");
             asoContenet.add("Asociación");

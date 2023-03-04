@@ -47,7 +47,7 @@ public class AsociationUserController {
 	 	}
 	}
 
-    @GetMapping("/miEspacio")
+    @GetMapping("/aso/miEspacio")
 	public String miespacio(Model model) {
 		return "myAso";
 	}

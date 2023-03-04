@@ -1,7 +1,10 @@
 package com.urjc.asociationPlatform.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,6 +58,17 @@ public class UserController {
 		try { 
 
 			User user = userService.findById(id).orElseThrow();
+			user.getRol();
+			String[] roles={"BASE", "ASO", "ADMIN"};
+			List<Map<String, Object>> rolesL = new ArrayList<>();
+        	for(int i=0;i<roles.length;i++){
+            	Map<String, Object> option = new HashMap<>();
+            	option.put("value", roles[i].toString());
+            	option.put("selected", roles[i].equals(user.getRol()));
+            	option.put("content", roles[i]);
+            	rolesL.add(option);
+        	}
+        	model.addAttribute("userRoles", rolesL);
 			model.addAttribute("user", user);
 
 			return "edituser";
