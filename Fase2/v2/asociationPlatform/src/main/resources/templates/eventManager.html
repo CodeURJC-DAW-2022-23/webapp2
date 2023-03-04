@@ -45,27 +45,32 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
 
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Mi Asociación</div>
 
-                            <a class="nav-link" href="/admin/editarEventos">
+                            <a class="nav-link" href="myAso.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Eventos
+                                Asociacion
                             </a>
 
-                            <a class="nav-link" href="/admin/adminAsoc">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Asociaciones
+                            <div class="sb-sidenav-menu-heading">Mis Eventos</div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Eventos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="/admin/editarUsuarios">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Usuarios
-                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="/newEvent">Crear Evento</a>
+                                    <a class="nav-link" href="/eventManagerAso">Gestionar Eventos</a>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
 
                         <div class="small">Logged in as:</div>
-                        {{#user}}{{username}}{{/user}}
+                        Asociación
                         
                     </div>
                     
@@ -94,7 +99,6 @@
                                             <th>Nombre</th>
                                             <th>Fecha</th>
                                             <th>Localización</th>
-                                            <th>Asociación</th>
                                             <th>Modificar</th>
                                             <th>Eliminar</th>
                                            
@@ -106,7 +110,6 @@
                                             <th>Nombre</th>
                                             <th>Fecha</th>
                                             <th>Localización</th>
-                                            <th>Asociación</th>
                                             <th>Modificar</th>
                                             <th>Eliminar</th>
                                             
@@ -119,12 +122,11 @@
                                             <td>{{name}}</td>
                                             <td>{{date}}</td>
                                             <td>{{location}}</td>
-                                            <td>{{asociation}}</td>
                                             <td><form action="/editEvent/{{id}}">
                                                 <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
                                                 <input type="hidden" name="_csrf" value="{{token}}"/>
                                             </form></td>
-                                            <td><form action="/admin/editarEventos/{{id}}/delete" method="post">
+                                            <td><form action="/deleteEvent/{{id}}">
                                                 <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
                                                 <input type="hidden" name="_csrf" value="{{token}}"/>
                                             </form></td>

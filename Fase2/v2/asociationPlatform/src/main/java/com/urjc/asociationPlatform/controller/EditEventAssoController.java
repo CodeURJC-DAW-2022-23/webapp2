@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +36,7 @@ import com.urjc.asociationPlatform.service.UserService;
 public class EditEventAssoController {
 
   @Autowired
-    private EventService eventService;
+  private EventService eventService;
 
   User currentUser;
   Optional<Event> event;
@@ -100,7 +101,7 @@ public class EditEventAssoController {
       else reservationBool = true;
 
       blob = newEvent.getImage();
-      if (image.isEmpty()) {
+      if (!image.isEmpty()) {
         newImage = image.get();
         try {
           blob = getBlob(newImage);
@@ -113,18 +114,26 @@ public class EditEventAssoController {
 
       changeEvent(newEvent, name, date2, month[monthN-1], description, location, campus, creditsBool, 
       reservationBool, duration, blob, startTime, endTime);
-  }
-    return "miEspacio";
-  }
-
-    public Blob getBlob(MultipartFile file) throws SQLException, IOException {
-      Blob myBlob;
-      byte[] bytes = file.getBytes();
-      myBlob = new SerialBlob(bytes);
-      return myBlob;
+      //eventService.updateById(newEvent, newEvent.getId());
+      eventService.save(newEvent);
     }
+    return "redirect:eventManagerAso";
+  }
+  
+  @GetMapping("/deleteEvent/{id}")
+  public String deleteEvent(@PathVariable long id) {
+    eventService.deleteById(id);
+    return "redirect:/eventManagerAso";
+  }
 
-    public void changeEvent(Event newEvent, String name, Date date, String month, String description, 
+  public Blob getBlob(MultipartFile file) throws SQLException, IOException {
+    Blob myBlob;
+    byte[] bytes = file.getBytes();
+    myBlob = new SerialBlob(bytes);
+    return myBlob;
+  }
+
+  public void changeEvent(Event newEvent, String name, Date date, String month, String description, 
     String location, String campus, boolean credits, boolean booking, String duration, 
     Blob imgUrl, String startTime, String endTime) {
       newEvent.setName(name);
@@ -139,5 +148,5 @@ public class EditEventAssoController {
       newEvent.setMonth(month);
       newEvent.setStartTime(startTime);
       newEvent.setEndTime(endTime);
-    }
+  }
 }
