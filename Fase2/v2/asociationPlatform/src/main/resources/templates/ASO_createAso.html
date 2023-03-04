@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Aso</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="/css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        
+                        <form action="/newAso/{{email}}" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
+                            <h1 class="mt-4">Crear Asociacion</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">Crear Asociacion</li>
+                            </ol>
+                            
+                            <div class="form-group py-2">
+                                <label for="eventName">Nombre</label>
+                                <input name="name" type="text" class="form-control" id="name" placeholder="Nombre de la Asociacion" required/>
+                            </div>
+        
+                            <div>
+                                <label for='form-select'>Campus</label>
+                                <select name="campus" class="form-select" aria-label="Default select example">
+                                    <option value="Alcorcón">ALCORCÓN</option>
+                                    <option value="Aranjuez">ARANJUEZ</option>
+                                    <option value="Fuenlabrada">FUENLABRADA</option>
+                                    <option value="Móstoles">MÓSTOLES</option>
+                                    <option value="Madrid-Vicalvaro">MADRID-VICALVARO</option>
+                                    <option value="Madrid-Quintana">MADRID-QUINTANA</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for='form-select'>Facultad</label>
+                                <select name="faculty" class="form-select" aria-label="Default select example">
+                                    <option value="Facultad de Artes y Humanidades">Facultad de Artes y Humanidades</option>
+                                    <option value="Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares">Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares</option>
+                                    <option value="Facultad de Ciencias de la Comunicación">Facultad de Ciencias de la Comunicación</option>
+                                    <option value="Facultad de Ciencias de la Economía y de la Empresa">Facultad de Ciencias de la Economía y de la Empresa</option>
+                                    <option value="Facultad de Ciencias de la Salud">Facultad de Ciencias de la Salud</option>
+                                    <option value="Facultad de Ciencias Jurídicas y Políticas">Facultad de Ciencias Jurídicas y Políticas</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group py-2">
+                              <label for="">Descripción</label>
+                              <textarea name="description" type="text" class="form-control" style=" height: 10em;" required> </textarea>
+                            </div>
+
+                            <div class="d-flex py-2 w-100">
+                                <div class="flex-fill"></div>
+                                <button type="submit" class="btn btn-danger px-4">Crear</button>
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                              </div>
+                        </form>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

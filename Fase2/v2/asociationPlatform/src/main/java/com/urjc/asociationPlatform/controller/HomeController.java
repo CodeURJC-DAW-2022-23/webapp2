@@ -100,6 +100,7 @@ public class HomeController {
 
     @GetMapping("/login")
     public String goLogin(Model model){
+        
         return "login";
     }
 

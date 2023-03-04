@@ -35,6 +35,13 @@ public class UserController {
             model.addAttribute("currentuser", currentUser);
 	 	}
 	}
+
+	@GetMapping("/gestionarCreacion/{email}")
+	public String validation(Model model, @PathVariable String email){
+		model.addAttribute("email", email);
+
+		return "ADMIN_validationView";
+	}
     
     @GetMapping("/admin/editarUsuarios")
     public String listaUsuarios(Model model){

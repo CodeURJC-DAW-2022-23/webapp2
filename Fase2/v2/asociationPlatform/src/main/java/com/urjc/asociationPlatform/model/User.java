@@ -22,6 +22,9 @@ public class User {
 
     @ManyToMany
     private List<Event> favoritos = new ArrayList<>();
+
+    private Boolean validated;
+    private String checkToken;
     
     public User(){}
 
@@ -30,22 +33,27 @@ public class User {
         this.username = username;
         this.email = email;
         this.encodedPassword = encodedPassword;
-        this.rol = "base";
     }
 
-    //admin user
-     public User(String username, String encodedPassword){
-        this.username = username;
-        this.encodedPassword = encodedPassword;
-        this.rol = "admin";
-     }
+    public void setCheckToken(String token){
+        this.checkToken=token;
+    }
 
-    //aso user
-    public User(String username, String email, String encodedPassword,String asoname){
-        this.username = username;
-        this.email = email;
-        this.encodedPassword = encodedPassword;
-        this.rol = "aso";
+    public String getCheckToken(){
+        return this.checkToken;
+    }
+
+    public void setValidated(Boolean validated){
+        this.validated=validated;
+    }
+
+    public Boolean getValidated(){
+        return this.validated;
+    }
+
+
+    public void setAso(Asociation aso){
+        this.asociation =aso;
     }
 
     public void setId(long id){

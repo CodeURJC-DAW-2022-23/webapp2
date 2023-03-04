@@ -22,9 +22,9 @@ public class EventService {
 		eventRepository.save(event);
 	}
 
-	//public Optional<Event> findByName(String name) {
-		//return eventRepository.findByName(name);
-	//}
+	// public Optional<Event> findByName(String name) {
+	// 	return eventRepository.findByName(name);
+	// }
 
 	public List<Event> findAll() {
 		return eventRepository.findAll();
