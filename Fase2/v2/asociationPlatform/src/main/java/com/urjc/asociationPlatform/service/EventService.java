@@ -29,6 +29,23 @@ public class EventService {
 	public List<Event> findAll() {
 		return eventRepository.findAll();
 	}
+    public List<Event> findAllbyAsociation(String asociation) {
+		return eventRepository.findAllByAsociation(asociation);
+	}
+    
+    public void updateById(Event event, long id){
+        int booking=0;
+        int credits=0;
+        if(event.getBooking()){
+            booking=1;
+        }
+        if(event.getCredits()){
+            credits=1;
+        }
+        eventRepository.updateEvent(id,event.getName(),event.getDate().toString(),event.getStartTime(),event.getEndTime(),
+                                    event.getCampus(),event.getLocation(),event.getCredits(),event.getBooking(),
+                                    event.getDescription(),event.getImage());
+    }
 
 	public Optional<Event> findById(long id) {
 		Optional<Event> findById = eventRepository.findById(id);
@@ -53,7 +70,6 @@ public class EventService {
         List<Event> eventsList=new ArrayList<>();
 
         for(Object[] obj : eventsObj){
-            
             Event event=new Event();
             if(obj[0] instanceof BigInteger){
                 event.setId(((BigInteger)obj[0]).longValue());
@@ -79,17 +95,23 @@ public class EventService {
             if(obj[7] instanceof String){
                 event.setDuration((String)obj[7]);
             }
-            if(obj[8] instanceof Blob){
-                event.setImgUrl((Blob)obj[8]);
+            if(obj[8] instanceof String){
+                event.setEndTime((String)obj[8]);
             }
-            if(obj[9] instanceof String){
-                event.setLocation((String)obj[9]);
+            if(obj[9] instanceof Blob){
+                event.setImgUrl((Blob)obj[9]);
             }
             if(obj[10] instanceof String){
-                event.setMonth((String)obj[10]);
+                event.setLocation((String)obj[10]);
             }
             if(obj[11] instanceof String){
-                event.setName((String)obj[11]);
+                event.setMonth((String)obj[11]);
+            }
+            if(obj[12] instanceof String){
+                event.setName((String)obj[12]);
+            }
+            if(obj[13] instanceof String){
+                event.setStartTime((String)obj[13]);
             }
             eventsList.add(event);
         
