@@ -178,3 +178,27 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 ### Diagrama de clases y templates
 
 ### Participación de miembros
+
+**Daniel Gallardo de Eugenio:**
+
+- Tareas realizadas: 
+
+- 5 commits más significativos: 
+
+| Commit	| Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	| 	|  |
+| 2	| 	|  |
+| 3 | 	|  |
+|	4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	| 	|  |
+| 2	| 	|  |
+| 3 | 	|  |
+|	4 |  |  |
+| 5	|  |  |
