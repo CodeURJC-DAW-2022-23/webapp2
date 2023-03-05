@@ -51,4 +51,34 @@ public class AsociationUserController {
 	public String miespacio(Model model) {
 		return "myAso";
 	}
+
+    @GetMapping("editAsoc/{id}")
+	public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
+
+		try { Asociation asoc = asoService.findById(id).orElseThrow();
+			model.addAttribute("asociation", asoc);
+			return "editAsociations";
+		} catch (Exception e) {
+            return "404";
+        }
+	}
+
+	@PostMapping("editAsoc/{id}")
+	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
+		try { asoService.findById(id).orElseThrow();
+			String result;
+			result = "myAso";
+
+			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
+				return result;
+			}
+			else{
+				newAsoc.setId(id);
+				asoService.save(newAsoc);
+				return result;
+			}
+        } catch (Exception e) {
+            return "redirect:/404";
+        }
+	}
 }

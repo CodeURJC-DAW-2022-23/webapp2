@@ -1,3 +1,4 @@
+
 package com.urjc.asociationPlatform.controller;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ import com.urjc.asociationPlatform.service.UserService;
 import java.security.Principal;
 
 @Controller
-public class EditAsociationController {
+public class AdminUserController {
 
     @Autowired
     AsociationService asoService;
@@ -45,14 +46,6 @@ public class EditAsociationController {
 			if(principal != null){
 				userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
            		model.addAttribute("user", currentUser);
-				// System.out.print("\n"+currentUser.getRol()+"\n");
-				if(Objects.equals(currentUser.getRol(), "ASO")){
-					isAsociation = true;
-				}
-				else{
-					isAsociation = false;
-				}
-				System.out.print("\n"+isAsociation+"\n");
 			}
 	}
 
@@ -65,16 +58,7 @@ public class EditAsociationController {
 
     }
     
-    @GetMapping("editAsoc/{id}")
-	public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
-
-		try { Asociation asoc = asoService.findById(id).orElseThrow();
-			model.addAttribute("asociation", asoc);
-			return "editAsociations";
-		} catch (Exception e) {
-            return "404";
-        }
-	}
+    
 
 	@GetMapping("/admin/editAsoc/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id, HttpServletRequest request) {
@@ -87,47 +71,15 @@ public class EditAsociationController {
         }
 	}
 
-	@PostMapping("editAsoc/{id}")
-	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
-		try { asoService.findById(id).orElseThrow();
-			String result;
-			if(isAsociation){
-				result = "myAso";
-			}
-			else{
-				result = "home";
-			}
-			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
-				return result;
-			}
-			else{
-				newAsoc.setId(id);
-				asoService.save(newAsoc);
-				return result;
-			}
-        } catch (Exception e) {
-            return "redirect:/404";
-        }
-	}
-
-	@PostMapping("/admin/editAsoc/{id}/adminPost")
+	@PostMapping("/admin/editAsoc/{id}/modify")
 	public String editProfile2(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
-			String result;
-			if(isAsociation){
-				result = "redirect:/miEspacio";
-			}
-			else{
-				result = "redirect:/admin/adminAsoc";
-			}
-			if(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty()){
-				return result;
-			}
-			else{
+			
+			if(!(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty())){
 				newAsoc.setId(id);
 				asoService.save(newAsoc);
-				return result;
 			}
+			return "redirect:/admin/adminAsoc";
         } catch (Exception e) {
             return "redirect:/404";
         }
