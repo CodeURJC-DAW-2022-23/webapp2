@@ -1,26 +1,16 @@
 package com.urjc.asociationPlatform.controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.User;
-import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.UserService;
 
 import java.security.Principal;
@@ -61,7 +51,7 @@ public class UserSpaceController {
             return "redirect:/miCuenta";
 	 		
          } catch (Exception e) {
-             return "redirect:/404";
+             return "404";
          }
 	}
 }

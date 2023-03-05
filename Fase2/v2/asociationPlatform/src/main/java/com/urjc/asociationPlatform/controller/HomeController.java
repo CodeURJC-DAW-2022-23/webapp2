@@ -110,11 +110,6 @@ public class HomeController {
 		return "loginerror";
 	}
 
-    @RequestMapping("/exito")
-	public String exito() {
-		return "exito";
-	}
-
     @RequestMapping("/miEspacio")
 	public String miespacio() {
 		return "myAso";
