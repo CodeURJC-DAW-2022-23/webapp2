@@ -63,7 +63,7 @@ public class AsociationUserController {
         }
 	}
 
-	@PostMapping("editAsoc/{id}")
+	@PostMapping("editAsoc/{id}/modify")
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			String result;
