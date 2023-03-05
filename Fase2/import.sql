@@ -1,0 +1,3 @@
+INSERT INTO `asociation` VALUES (1,'Mostoles','Hola xD','ETSII','Roleros en linea'),(2,'Fuenla','Desc','Medicina','Anger');
+INSERT INTO `event` VALUES (1,'Roleros en linea','1','ARANJUEZ','1','2024-12-23',' Texto aqu�.','5h 0min',?,'Aulario 3','FEBRERO','Rol para novatos');
+INSERT INTO `user` VALUES (1,NULL,'admin@gmail.com','$2a$10$yMrEp.aQS7jPr.m6dTPSge/i5c0Tk.jFflmWYggFsUuhIRjCYFZT6','ADMIN','admin',TRUE,NULL),(2,NULL,'user1@gmail.com','$2a$10$2qBZq0zbzRwQsJwAd8dqsOv2kICns.l/7DUWdMhtZ2anxTx/3bPzO','BASE','user1',TRUE,NULL),(3,NULL,'asociation@gmail.com','$2a$10$fFOE0amCpdIskxvCG8g7kuU0FmAdID8m7CvpWGB/4Du95ciM4mP5G','ASO','asociation',TRUE,1);
