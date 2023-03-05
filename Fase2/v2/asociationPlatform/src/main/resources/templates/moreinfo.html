@@ -48,27 +48,32 @@
                     <h3>{{#view}}{{#event}}{{name}}{{/event}}</h3>
                     <img src="" alt="">
                 </div>
-  
+                {{#events}}
                 <div class="parrafo">
+                    <p>{{asociation}}</p>
+                    
+                    <p>{{campus}}</p>
+
                     <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    {{description}}
                     </p>
 
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-
-                    <h3>Horarios</h3>
-  
-                    <p>13-02-2023 15:30</p>
+                    <h3>Horario</h3>
                     
-                    <p>Universidad Rey Juan Carlos Campus de Alcorcón, Avenida de Atenas, Alcorcón, España</p>
+                    <p>{{startTime}} - {{endTime}}</p>
 
-                    
+                    <p>Fecha: {{date}}</p>
+
+                    <p>Lugar: {{location}}</p>
+
+                    <p>Reserva: {{#booking}}Si{{/booking}}
+                        {{^booking}}No{{/booking}}</p>
+
+                    <p>Creditos: {{#credits}}Si{{/credits}}
+                        {{^credits}}No{{/credits}}</p>
+                     
                 </div>
+                {{/events}}
                 
             </div>
         </div>
