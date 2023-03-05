@@ -34,8 +34,8 @@
         </div>
     </header>
 
-    <div class="hero detalles">
-      <div class="titulo">
+    <div class="hero moreinfo">
+      <div class="titleName">
           <h2></h2>
       </div> 
     </div>
@@ -44,12 +44,12 @@
       <div class="container">
           <div class="container1">
 
-                <div class="titulo">
+                <div class="titleName">
                     <h3>{{#view}}{{#event}}{{name}}{{/event}}</h3>
                     <img src="" alt="">
                 </div>
                 {{#events}}
-                <div class="parrafo">
+                <div class="info">
                     <p>{{asociation}}</p>
                     
                     <p>{{campus}}</p>
@@ -103,11 +103,11 @@
     <section class="row1">  
         <div class="seccion">
    
-        <div class="boton-linea-ext">
-            <span class="linea1"></span>
-            <span class="linea2"></span>
-            <span class="linea3"></span>
-            <span class="linea4"></span>
+        <div class="button-line-ext">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+            <span class="line4"></span>
             <a href="/agregarFavoritos/{{#event}}{{id}}{{/event}}">Añadir favoritos</a>
         </div>
         {{/view}}
