@@ -18,6 +18,8 @@ public class Event {
     private String name;
     private Date date;
     private String month;
+    @Lob
+    @Column( length = 100000 )
     private String description;
     private String location;
     private String asociation;

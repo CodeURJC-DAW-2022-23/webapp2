@@ -10,6 +10,8 @@ public class Asociation {
     private Long id;
 
     private String name;
+    @Lob
+    @Column( length = 100000 )
     private String description;
     private String faculty;
     private String campus;
