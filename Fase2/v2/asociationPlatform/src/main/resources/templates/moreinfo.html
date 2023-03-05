@@ -43,37 +43,32 @@
     <section class="intro">
       <div class="container">
           <div class="container1">
-
                 <div class="titleName">
                     <h3>{{#view}}{{#event}}{{name}}{{/event}}</h3>
-                    <img src="" alt="">
+                    <img src="/{{#event}}{{id}}{{/event}}/image" alt="">
                 </div>
-                {{#events}}
                 <div class="info">
-                    <p>{{asociation}}</p>
+                    <h3>{{#event}}{{asociation}}{{/event}}</h3>
                     
-                    <p>{{campus}}</p>
-
                     <p>
-                    {{description}}
+                        {{#event}}{{description}}{{/event}}
                     </p>
-
-                    <h3>Horario</h3>
                     
-                    <p>{{startTime}} - {{endTime}}</p>
+                    <p>Horario: {{#event}}{{startTime}} - {{endTime}}{{/event}}</p>
 
-                    <p>Fecha: {{date}}</p>
+                    <p>Fecha: {{#event}}{{date}}{{/event}}</p>
 
-                    <p>Lugar: {{location}}</p>
+                    <p>Lugar: {{#event}}{{location}}{{/event}}</p>
 
-                    <p>Reserva: {{#booking}}Si{{/booking}}
-                        {{^booking}}No{{/booking}}</p>
+                    <p>Campus: {{#event}}{{campus}}{{/event}}</p>
 
-                    <p>Creditos: {{#credits}}Si{{/credits}}
-                        {{^credits}}No{{/credits}}</p>
+                    <p>Reserva: {{#event}}{{#booking}}Si{{/booking}}{{/event}}
+                        {{#event}}{{^booking}}No{{/booking}}{{/event}}</p>
+
+                    <p>Creditos: {{#event}}{{#credits}}Si{{/credits}}{{/event}}
+                        {{#event}}{{^credits}}No{{/credits}}{{/event}}</p>
                      
                 </div>
-                {{/events}}
                 
             </div>
         </div>
