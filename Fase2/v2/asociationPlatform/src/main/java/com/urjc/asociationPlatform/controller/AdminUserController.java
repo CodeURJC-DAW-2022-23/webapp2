@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.User;
@@ -78,8 +81,8 @@ public class AdminUserController {
         }
 	}
 
-	@PostMapping("/admin/editAsoc/{id}/modify")
-	public String editProfile2(Model model, Asociation newAsoc, @PathVariable long id){
+	@RequestMapping(value = "/admin/editAsoc/{id}/modify", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public String editProfile2(HttpServletRequest request, Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			
 			if(!(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty())){
