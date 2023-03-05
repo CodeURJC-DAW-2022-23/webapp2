@@ -136,7 +136,7 @@ Gestionar eventos:
 Aquí el usuario asociación podrá modificar o eliminar los datos que precisen.
 
 Gestionar asociación:
-![asoeditaso](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditaraso.png?raw=true)
+![asoeditaso](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/asoeditaraso.PNG?raw=true)
 En esta vista se podrá modificar los datos propios de su asociación.
 
 **Menú de administrador:**
