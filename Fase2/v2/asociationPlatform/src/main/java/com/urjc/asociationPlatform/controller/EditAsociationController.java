@@ -87,7 +87,7 @@ public class EditAsociationController {
         }
 	}
 
-	@PostMapping("/editAsoc/{id}")
+	@PostMapping("editAsoc/{id}")
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			String result;
@@ -110,7 +110,7 @@ public class EditAsociationController {
         }
 	}
 
-	@PostMapping("/admin/editAsoc/{id}")
+	@PostMapping("/admin/editAsoc/{id}/adminPost")
 	public String editProfile2(Model model, Asociation newAsoc, @PathVariable long id){
 		try { asoService.findById(id).orElseThrow();
 			String result;
