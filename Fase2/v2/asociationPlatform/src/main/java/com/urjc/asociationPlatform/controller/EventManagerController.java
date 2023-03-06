@@ -28,6 +28,7 @@ public class EventManagerController{
 	AsociationService asoService;
 
 		User currentUser;
+		Asociation asoc;
 		
   @GetMapping("/aso/eventManagerAso")   
 	public String miespacio(Model model, HttpServletRequest request) {
@@ -37,15 +38,13 @@ public class EventManagerController{
 
 	 	if(principal != null) {
 	 		userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
-      if(currentUser!=null){
-		Optional<Asociation> asociation;
-		asoService.findByOwner(currentUser).ifPresent(a -> asociation = a);
-		if(asociation != null)
-        	association = asociation.getName();
-      }   
+      		if(currentUser!=null){
+				asoc = asoService.findByOwner(currentUser).get();
+				if(asoc != null)
+        			association = asoc.getName();
+      		}   
 	 	} 
 		model.addAttribute("eventlist", eventService.findAllbyAsociation(association));
-
 		return "eventManager";
 	}
 }

@@ -32,9 +32,9 @@ public class Event {
 
     @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Comment> comments = new ArrayList<>();
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private Set<User> likeList = new HashSet<>();
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     private Set<User> dislikeList = new HashSet<>();
 
     @Lob

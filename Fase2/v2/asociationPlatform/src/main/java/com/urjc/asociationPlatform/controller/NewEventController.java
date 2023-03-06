@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -30,7 +32,11 @@ public class NewEventController {
   @Autowired
     private UserService userService;
 
+  @Autowired
+  private AsociationService asoService;
+
   User currentUser;
+  Asociation asoc;
 
   private String[] month = {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO",
                             "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"};
@@ -60,13 +66,14 @@ public class NewEventController {
 
     Principal principal = request.getUserPrincipal();
 
-	 	if(principal != null) {
-	 		userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
-      if(currentUser!=null){
-        association = currentUser.getAsociation().getName();
-      }
-      
-	 	} 
+    if(principal != null) {
+      userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
+         if(currentUser!=null){
+       asoc = asoService.findByOwner(currentUser).get();
+       if(asoc != null)
+             association = asoc.getName();
+         }   
+    }  
 
     if (credits.equals("no")) creditsBool = false;
     else creditsBool = true;

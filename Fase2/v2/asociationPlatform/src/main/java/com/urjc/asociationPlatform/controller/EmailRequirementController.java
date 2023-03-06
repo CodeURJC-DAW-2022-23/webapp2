@@ -41,7 +41,7 @@ public class EmailRequirementController {
 
         User user = userService.findByEmail(email).orElseThrow();
         
-        user.setAso(aso);
+        aso.setOwner(user);
         user.setValidated(true);
         user.setCheckToken(null);
 
