@@ -83,6 +83,7 @@ public class AdminUserController {
 		try { asoService.findById(id).orElseThrow();
 			
 			if(!(newAsoc.getCampus().trim().isEmpty() || newAsoc.getFaculty().trim().isEmpty() || newAsoc.getName().trim().isEmpty())){
+				newAsoc.setOwner(asoService.findById(id).get().getOwner());
 				newAsoc.setId(id);
 				asoService.save(newAsoc);
 			}

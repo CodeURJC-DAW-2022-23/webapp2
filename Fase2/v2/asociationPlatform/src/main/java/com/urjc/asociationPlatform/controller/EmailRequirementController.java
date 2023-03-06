@@ -37,11 +37,10 @@ public class EmailRequirementController {
     @PostMapping("/newAso/{email}")
     public String createAso(Model model, Asociation aso, @PathVariable String email) {
 
-        asoService.save(aso);
-
         User user = userService.findByEmail(email).orElseThrow();
         
         aso.setOwner(user);
+        asoService.save(aso);
         user.setValidated(true);
         user.setCheckToken(null);
 
