@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Event;
@@ -79,11 +81,15 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation);
-        model.addAttribute("events",events);
+        System.out.println("carrusel: "+model.containsAttribute("eventsMore"));
+        if(!model.containsAttribute("eventsMore")){
+            List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,3);
+            model.addAttribute("eventsMore",events);
+        }
+        
         if(asociations==null){
             asociations = asociationService.findAll();
-            System.out.println("Numero de asociaciones: "+asociations.size());
+           
             asoValues.add("");
             asoValues.add("All");
             asoContenet.add("Asociación");
@@ -121,6 +127,7 @@ public class HomeController {
         }
         if(formData.containsKey("monthSelect")){
             month=formData.get("monthSelect");
+            System.out.println();
         }
         if(formData.containsKey("campusValue")){
             campus=formData.get("campusValue");
@@ -129,9 +136,20 @@ public class HomeController {
             asociation=formData.get("asociationValue");
         }
 
-        model.addAttribute("events",eventService.getEventsByFilters(searchInfo, month, campus, asociation));
+        
+
+        model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,1));
         generateFiltersOptions(model);
         return "redirect:/";
+    }
+    @GetMapping("/loadMore/{page}") 
+    public String LoadMore(Model model, @PathVariable int page){
+
+        model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,page));
+        generateFiltersOptions(model);
+        //goHome(model);
+        return "redirect:/";
+        //return "/home";
     }
 
     public void generateFiltersOptions(Model model){

@@ -6,12 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.mysql.cj.protocol.ValueEncoder;
+
 public class CustomEventRepositoryImpl implements CustomEventRepository{
     @PersistenceContext
     private EntityManager entityManager;
 
+    private final int pageSize=1;
+    
     @Override
-    public List<Object[]> customQuery(String name, String month, String campus, String asociation) {
+    public List<Object[]> customQuery(String name, String month, String campus, String asociation, int page) {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT * FROM event");
         int conditions=0;
@@ -50,6 +54,8 @@ public class CustomEventRepositoryImpl implements CustomEventRepository{
             conditions++;
             sb.append(" asociation = '"+asociation+"'");
         }
+        int value=page*pageSize;
+        sb.append(" LIMIT "+value+" OFFSET 0");
         System.out.println(sb.toString());
 
         Query query = entityManager.createNativeQuery(sb.toString());

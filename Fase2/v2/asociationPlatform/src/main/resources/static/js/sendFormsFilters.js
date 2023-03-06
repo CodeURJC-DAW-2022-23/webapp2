@@ -6,7 +6,7 @@ submitBtn.addEventListener('click', function() {
     const elements = form.elements;
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
-      formData.append(element.name, element.value);
+      formData.append(element.name, element.value);   
     }
   });
   fetch('/globalFormSubmit', {

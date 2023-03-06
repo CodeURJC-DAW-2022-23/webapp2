@@ -62,10 +62,10 @@ public class EventService {
 
 	//query ruben
 
-	public List<Event> getEventsByFilters(String name, String month, String campus, String asociation){
+	public List<Event> getEventsByFilters(String name, String month, String campus, String asociation, int page){
 
 
-        List<Object[]> eventsObj = eventRepository.customQuery(name, month, campus, asociation);
+        List<Object[]> eventsObj = eventRepository.customQuery(name, month, campus, asociation, page);
         
         List<Event> eventsList=new ArrayList<>();
 
