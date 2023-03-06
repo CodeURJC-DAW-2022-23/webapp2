@@ -43,7 +43,7 @@ public class AsociationUserController {
 
 	 	if(principal != null) {
             userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
-            model.addAttribute("asociation", currentUser.getAsociation());
+            model.addAttribute("asociation", asoService.findByOwner(currentUser));
 	 	}
 	}
 

@@ -1,6 +1,7 @@
 package com.urjc.asociationPlatform.controller;
 
 import java.security.Principal;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 
+import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -21,6 +24,9 @@ public class EventManagerController{
 	@Autowired
     private UserService userService;
 
+	@Autowired
+	AsociationService asoService;
+
 		User currentUser;
 		
   @GetMapping("/aso/eventManagerAso")   
@@ -32,7 +38,10 @@ public class EventManagerController{
 	 	if(principal != null) {
 	 		userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
       if(currentUser!=null){
-        association = currentUser.getAsociation().getName();
+		Optional<Asociation> asociation;
+		asoService.findByOwner(currentUser).ifPresent(a -> asociation = a);
+		if(asociation != null)
+        	association = asociation.getName();
       }   
 	 	} 
 		model.addAttribute("eventlist", eventService.findAllbyAsociation(association));

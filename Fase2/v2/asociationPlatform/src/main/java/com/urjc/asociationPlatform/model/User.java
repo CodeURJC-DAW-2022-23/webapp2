@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.urjc.asociationPlatform.repository.UserRepository;
+
 @Entity
 public class User {
 
@@ -17,8 +21,6 @@ public class User {
     private String username;
     private String encodedPassword;
     private String rol;
-    @ManyToOne
-    private Asociation asociation;
 
     @ManyToMany
     private List<Event> favoritos = new ArrayList<>();
@@ -49,11 +51,6 @@ public class User {
 
     public Boolean getValidated(){
         return this.validated;
-    }
-
-
-    public void setAso(Asociation aso){
-        this.asociation =aso;
     }
 
     public void setId(long id){
@@ -96,10 +93,6 @@ public class User {
         return this.rol;
     }
 
-    public Asociation getAsociation(){
-        return this.asociation;
-    }
-
     public void setUsername(String username){
         this.username = username;
     }
@@ -115,9 +108,4 @@ public class User {
     public void setRol(String rol){
         this.rol =  rol;
     }
-
-    public void setAsoname(Asociation asociation){
-        this.asociation = asociation;
-    }
-
 }
