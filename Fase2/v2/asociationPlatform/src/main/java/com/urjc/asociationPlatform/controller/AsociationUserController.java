@@ -43,7 +43,7 @@ public class AsociationUserController {
 
 	 	if(principal != null) {
             userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
-            model.addAttribute("asociation", currentUser.getAsociation());
+            model.addAttribute("asociation", asoService.findByOwner(currentUser).get());
 	 	}
 	}
 
@@ -74,6 +74,7 @@ public class AsociationUserController {
 			}
 			else{
 				newAsoc.setId(id);
+				newAsoc.setOwner(currentUser);
 				asoService.save(newAsoc);
 				return result;
 			}

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.urjc.asociationPlatform.model.Asociation;
+import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.repository.AsociationRepository;
 
 @Service
@@ -26,6 +27,10 @@ public class AsociationService {
 	public Optional<Asociation> findByCampus(String campus) {
 	 	return asociations.findByCampus(campus);
 	}
+
+	public Optional<Asociation> findByOwner(User owner) {
+		return asociations.findByOwner(owner);
+   }
 
 	public List<Asociation> findAll() {
 		return asociations.findAll();

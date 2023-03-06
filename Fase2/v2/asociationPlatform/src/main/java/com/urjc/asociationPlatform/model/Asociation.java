@@ -1,6 +1,13 @@
 package com.urjc.asociationPlatform.model;
 
+import java.util.List;
+
+import javax.annotation.PreDestroy;
 import javax.persistence.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.urjc.asociationPlatform.repository.UserRepository;
 
 @Entity
 public class Asociation {
@@ -15,7 +22,9 @@ public class Asociation {
     private String description;
     private String faculty;
     private String campus;
-    
+    @OneToOne(cascade = CascadeType.ALL)
+    private User owner;
+
     public Asociation(){}
 
     public Asociation(String name, String descripcion, String campus, String faculty){
@@ -63,5 +72,9 @@ public class Asociation {
 
     public Long getId() {
         return this.id;
+    }
+
+    public void setOwner(User user) {
+        this.owner = user;
     }
 }
