@@ -74,6 +74,7 @@ public class AsociationUserController {
 			}
 			else{
 				newAsoc.setId(id);
+				newAsoc.setOwner(currentUser);
 				asoService.save(newAsoc);
 				return result;
 			}
