@@ -68,7 +68,7 @@ public class RegisterController {
 
             return "redirect:/login"; 
         }else{
-            return "logerror";    
+            return "loginerror";    
         }      
     }
 

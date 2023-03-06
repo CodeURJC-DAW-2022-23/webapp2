@@ -59,7 +59,7 @@ public class EventDetailsController {
         List<CommentView> commentsView = generateCommentViews(currentUser,event.getComments());
         model.addAttribute("commentsList", commentsView);
 
-        return "detalles";
+        return "moreinfo";
     }
 
     @GetMapping("/infoEvento/{id}/like")

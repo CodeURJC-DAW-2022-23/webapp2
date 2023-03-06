@@ -75,7 +75,7 @@ public class UserController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "/error"; 
+			return "404"; 
 		}
 	}
 
