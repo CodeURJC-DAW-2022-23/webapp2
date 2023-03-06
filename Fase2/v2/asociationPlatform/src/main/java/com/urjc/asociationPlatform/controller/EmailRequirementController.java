@@ -39,12 +39,14 @@ public class EmailRequirementController {
 
         User user = userService.findByEmail(email).orElseThrow();
         
-        aso.setOwner(user);
-        asoService.save(aso);
+        
         user.setValidated(true);
         user.setCheckToken(null);
 
         userService.save(user);
+        
+        aso.setOwner(user);
+        asoService.save(aso);
         
         return "redirect:/";
     }
