@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Event;
@@ -81,7 +83,6 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        System.out.println("carrusel: "+model.containsAttribute("eventsMore"));
         if(!model.containsAttribute("eventsMore")){
             List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,3);
             model.addAttribute("eventsMore",events);
@@ -138,17 +139,18 @@ public class HomeController {
 
         
 
-        model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,1));
-        generateFiltersOptions(model);
+        //model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,1));
+        //generateFiltersOptions(model);
         return "redirect:/";
     }
     @GetMapping("/loadMore/{page}") 
-    public String LoadMore(Model model, @PathVariable int page){
+    public RedirectView LoadMore(final RedirectAttributes redirectAttributes, @PathVariable int page){
 
-        model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,page));
-        generateFiltersOptions(model);
+        redirectAttributes.addFlashAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,page));
+        final RedirectView redirectView = new RedirectView("/", true);
+        //generateFiltersOptions(model);
         //goHome(model);
-        return "redirect:/";
+        return redirectView;
         //return "/home";
     }
 
