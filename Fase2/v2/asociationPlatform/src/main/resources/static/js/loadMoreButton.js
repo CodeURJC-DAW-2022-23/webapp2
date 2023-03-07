@@ -1,13 +1,21 @@
 var page=6;
 const site = document.getElementById('cardsSite');
+
 const moreEvents = document.getElementById('moreEvents');
 moreEvents.addEventListener('click', getMoreEvents);
 
 function getMoreEvents(){
-  fetch('/loadMore/'+ page, {
-        method: 'GET',
-      }).then(response => response.text()).then(data =>{
-        site.innerHTML = data;
-      })
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", '/loadMore/'+ page);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // console.log(xhr.responseText);
+      site.innerHTML = xhr.responseText;
+    }
+    else {
+      console.log("Request failed. Status: " + xhr.status);
+    }
+  };
+  xhr.send();
   page+=6;
 }

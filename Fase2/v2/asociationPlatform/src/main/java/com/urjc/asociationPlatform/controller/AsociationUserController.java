@@ -52,16 +52,16 @@ public class AsociationUserController {
 		return "myAso";
 	}
 
-    @GetMapping("editAsoc/{id}")
-	public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
+    // @GetMapping("editAsoc/{id}")
+	// public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
 
-		try { Asociation asoc = asoService.findById(id).orElseThrow();
-			model.addAttribute("asociation", asoc);
-			return "editAsociations";
-		} catch (Exception e) {
-            return "404";
-        }
-	}
+	// 	try { Asociation asoc = asoService.findById(id).orElseThrow();
+	// 		model.addAttribute("asociation", asoc);
+	// 		return "editAsociations";
+	// 	} catch (Exception e) {
+    //         return "404";
+    //     }
+	// }
 
 	@PostMapping("editAsoc/{id}")
 	public String editProfile(Model model, Asociation newAsoc, @PathVariable long id){
