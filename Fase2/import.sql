@@ -1,3 +1,3 @@
 INSERT INTO `user` VALUES (1,NULL,'admin@gmail.com','$2a$10$yMrEp.aQS7jPr.m6dTPSge/i5c0Tk.jFflmWYggFsUuhIRjCYFZT6','ADMIN','admin',TRUE),(2,NULL,'user1@gmail.com','$2a$10$2qBZq0zbzRwQsJwAd8dqsOv2kICns.l/7DUWdMhtZ2anxTx/3bPzO','BASE','user1',TRUE),(3,NULL,'asociation@gmail.com','$2a$10$fFOE0amCpdIskxvCG8g7kuU0FmAdID8m7CvpWGB/4Du95ciM4mP5G','ASO','asociation',TRUE);
 INSERT INTO `asociation` VALUES (1,'Móstoles','Hola xD','ETSII','Roleros en linea',3),(2,'Fuenlabrada','Desc','Medicina','Anger',NULL);
-INSERT INTO `event` VALUES (1,'Roleros en linea','1','MÓSTOLES','1','2025-02-23','Sample text :3','6h 0min','18:00',?,'Aulario 3','FEBRERO','Rol para principiantes','12:00');
+INSERT INTO `event` VALUES (1,'Roleros en linea',TRUE,'MÓSTOLES',TRUE,'2025-02-23','Sample text :3','6h 0min','18:00',NULL,'Aulario 3','FEBRERO','Rol para principiantes','12:00');
