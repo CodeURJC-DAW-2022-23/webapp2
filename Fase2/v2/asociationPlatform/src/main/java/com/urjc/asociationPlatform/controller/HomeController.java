@@ -84,7 +84,7 @@ public class HomeController {
         //month = "";
         //campus= "";
         if(!model.containsAttribute("eventsMore")){
-            List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,3);
+            List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,1);
             model.addAttribute("eventsMore",events);
         }
         
@@ -122,20 +122,13 @@ public class HomeController {
 		return "myAso";
 	}
     @PostMapping("/globalFormSubmit") 
-    public String globalFormSubmit(Model model, @RequestParam Map<String,String> formData){
-        if(formData.containsKey("searchBar")){
-            searchInfo=formData.get("searchBar");
-        }
-        if(formData.containsKey("monthSelect")){
-            month=formData.get("monthSelect");
-            System.out.println();
-        }
-        if(formData.containsKey("campusValue")){
-            campus=formData.get("campusValue");
-        }
-        if(formData.containsKey("asociationValue")){
-            asociation=formData.get("asociationValue");
-        }
+    public String globalFormSubmit(Model model, @RequestParam("searchBar") String searchBar, 
+                                    @RequestParam("asociationValue") String asociationValue, @RequestParam("monthSelect") String monthSelect,
+                                    @RequestParam("campusValue") String campusValue){
+        searchInfo=searchBar;
+        month=monthSelect;
+        asociation=asociationValue;
+        campus=campusValue;
 
         
 
