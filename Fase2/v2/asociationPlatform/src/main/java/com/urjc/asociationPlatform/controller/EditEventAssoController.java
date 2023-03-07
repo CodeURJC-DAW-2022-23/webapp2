@@ -126,14 +126,14 @@ public class EditEventAssoController {
     return "redirect:/aso/eventManagerAso";
   }
 
-  public Blob getBlob(MultipartFile file) throws SQLException, IOException {
+  private Blob getBlob(MultipartFile file) throws SQLException, IOException {
     Blob myBlob;
     byte[] bytes = file.getBytes();
     myBlob = new SerialBlob(bytes);
     return myBlob;
   }
 
-  public void changeEvent(Event newEvent, String name, Date date, String month, String description, 
+  private void changeEvent(Event newEvent, String name, Date date, String month, String description, 
     String location, String campus, boolean credits, boolean booking, String duration, 
     Blob imgUrl, String startTime, String endTime) {
       newEvent.setName(name);

@@ -82,7 +82,77 @@
                         </ol>     
 
                         <div class="container-fluid py-5">
-                            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/admin/editarEventos/{{id}}">
+                            <form action="/admin/editarEventos/{{id}}" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" enctype="multipart/form-data">
+                                <div class="form-group py-2">
+                                    <label for="asociation">Asociación</label>
+                                    <input name="asociation" type="text"  value="{{asociation}}" class="form-control" id="asociation" required/>
+                                </div>
+                                <div class="form-group py-2">
+                                    <label for="eventName">Nombre</label>
+                                    <input name="name" type="text"  value="{{name}}" class="form-control" id="eventName" required/>
+                                </div>
+                                <div class="form-group py-2">
+                                    <label for="">Fecha y hora</label>
+                                    <div class='d-flex align-items-center gap-2'>
+                                        <input name="date" value="{{date}}" type="date" class="form-control bootstrap-date" id="eventDate" required/>
+                                        <span>de</span>
+                                        <input name="startTime" value="{{startTime}}"  type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
+                                        <span>hasta</span>
+                                        <input name="endTime" value="{{endTime}}" type="time" class="form-control bootstrap-datetimepicker" id="eventDate" required/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for='form-select'>Campus</label>
+                                    <select name="campus" class="form-select" aria-label="Default select example">
+                                        {{#campus}}
+                                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
+                                        {{/campus}}
+                                    </select>
+                                </div>
+                                <div class="form-group py-2">
+                                  <label for="">Ubicación</label>
+                                  <input name="location" value="{{location}}" type="text" class="form-control" id="eventPlace" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for='form-check'>¿Se darán créditos por la asistencia?</label>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="credits" id="yes" value="yes"  {{#credits}}checked{{/credits}}>
+                                          <label class="form-check-label" for="yes">Si</label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="credits" id="no" value="no" {{^credits}}checked{{/credits}}>
+                                          <label class="form-check-label" for="no">No</label>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for='form-check'>¿Hará falta reservar?</label>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="reservation" id="yes" value="yes" {{#reservation}}checked{{/reservation}}>
+                                          <label class="form-check-label" for="yes">Si</label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="reservation" id="no" value="no" {{^reservation}}checked{{/reservation}}>
+                                          <label class="form-check-label" for="no">No</label>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="form-group py-2">
+                                  <label for="">Descripción</label>
+                                  <textarea name="description" type="text" class="form-control" style=" height: 10em;" required> {{description}}</textarea>
+                                </div>
+                                <div>
+                                    <input name="image" class="form-control" type="file" accept="image/*"/>
+                                </div>
+                                <div class="d-flex py-2 w-100">
+                                  <div class="flex-fill"></div>
+                                  <button type="submit" class="btn btn-danger px-4">Guardar cambios</button>
+                                  <input type="hidden" name="_csrf" value="{{token}}"/>
+                                </div>
+                            </form>
+                            <!-- <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/admin/editarEventos/{{id}}">
                                 <h2>Modificar Evento {{id}}</h2>
                                 <hr/>
                                 
@@ -113,7 +183,7 @@
                                     <button type="submit" class="btn btn-danger px-4">Modificar</button>
                                     <input type="hidden" name="_csrf" value="{{token}}"/>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
   
                     </div>
