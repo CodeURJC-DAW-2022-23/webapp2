@@ -1,10 +1,13 @@
+var page=6;
+const site = document.getElementById('cardsSite');
 const moreEvents = document.getElementById('moreEvents');
-submitBtn.addEventListener('click', getMoreEvents());
-
-var page=1;
+moreEvents.addEventListener('click', getMoreEvents);
 
 function getMoreEvents(){
-    fetch('/eventsMore/'+page, {
+  fetch('/loadMore/'+ page, {
         method: 'GET',
+      }).then(response => response.text()).then(data =>{
+        site.innerHTML = data;
       })
+  page+=6;
 }
