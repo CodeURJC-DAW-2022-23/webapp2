@@ -56,18 +56,16 @@ public class EditAsociationController {
 			}
 	}
 
-    @GetMapping("/admin/adminAsoc")
-    public String listAsociations(Model model){
+  @GetMapping("/admin/adminAsoc")
+  public String listAsociations(Model model){
+		List<Asociation> list = asoService.findAll();
+    model.addAttribute("asocList", list);
+    return "asociations"; 
 
-        List<Asociation> list = asoService.findAll();
-        model.addAttribute("asocList", list);
-        return "asociations"; 
-
-    }
+  }
     
-    @GetMapping("editAsoc/{id}")
+  @GetMapping("editAsoc/{id}")
 	public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
-
 		try { Asociation asoc = asoService.findById(id).orElseThrow();
 			model.addAttribute("asociation", asoc);
 			return "editAsociations";
