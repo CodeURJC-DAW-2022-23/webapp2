@@ -59,16 +59,6 @@ public class AdminUserController {
     return "asociations"; 
 
   }
-    
-  @GetMapping("editAsoc/{id}")
-	public String obtainAsociation(Model model, @PathVariable long id, HttpServletRequest request) {
-		try { Asociation asoc = asoService.findById(id).orElseThrow();
-			model.addAttribute("asociation", asoc);
-			return "editAsociations";
-		} catch (Exception e) {
-            return "404";
-        }
-	}
 
 	@GetMapping("/admin/editAsoc/{id}")
 	public String obtainAsoc(Model model, @PathVariable long id, HttpServletRequest request) {
