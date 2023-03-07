@@ -155,7 +155,7 @@ a{
 }
 
 .widget {
-    width: 100%;
+    /* width: 20%; */
     min-width         : 430px;
     height            : 440px;
     border            : 1px solid rgba(0, 0, 0, 0.2);

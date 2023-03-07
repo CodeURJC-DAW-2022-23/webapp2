@@ -69,3 +69,25 @@
     /* color: #fff; */
     padding: 10px;
 }
+
+/**
+.more_events_div{
+    display: flex; 
+    justify-content: center;
+    margin-bottom: 25px;
+}
+button{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    width: 100px;
+    height: 50px;
+    color: white;
+}
+button.more_events_button{
+  
+    background-color: red;
+   
+}

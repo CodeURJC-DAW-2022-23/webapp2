@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Más información</title>
     <link rel="icon" href="/img/logo.png">
-    <link rel="stylesheet" href="/css/detalles.css">
+    <link rel="stylesheet" href="/css/moreinfo.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/comments.css">
@@ -34,8 +34,8 @@
         </div>
     </header>
 
-    <div class="hero detalles">
-      <div class="titulo">
+    <div class="hero moreinfo">
+      <div class="titleName">
           <h2></h2>
       </div> 
     </div>
@@ -43,31 +43,31 @@
     <section class="intro">
       <div class="container">
           <div class="container1">
-
-                <div class="titulo">
+                <div class="titleName">
                     <h3>{{#view}}{{#event}}{{name}}{{/event}}</h3>
-                    <img src="" alt="">
+                    <img src="/{{#event}}{{id}}{{/event}}/image" alt="">
                 </div>
-  
-                <div class="parrafo">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    </p>
-
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-
-                    <h3>Horarios</h3>
-  
-                    <p>13-02-2023 15:30</p>
+                <div class="info">
+                    <h3>{{#event}}{{asociation}}{{/event}}</h3>
                     
-                    <p>Universidad Rey Juan Carlos Campus de Alcorcón, Avenida de Atenas, Alcorcón, España</p>
-
+                    <p>
+                        {{#event}}{{description}}{{/event}}
+                    </p>
                     
+                    <p>Horario: {{#event}}{{startTime}} - {{endTime}}{{/event}}</p>
+
+                    <p>Fecha: {{#event}}{{date}}{{/event}}</p>
+
+                    <p>Lugar: {{#event}}{{location}}{{/event}}</p>
+
+                    <p>Campus: {{#event}}{{campus}}{{/event}}</p>
+
+                    <p>Reserva: {{#event}}{{#booking}}Si{{/booking}}{{/event}}
+                        {{#event}}{{^booking}}No{{/booking}}{{/event}}</p>
+
+                    <p>Creditos: {{#event}}{{#credits}}Si{{/credits}}{{/event}}
+                        {{#event}}{{^credits}}No{{/credits}}{{/event}}</p>
+                     
                 </div>
                 
             </div>
@@ -98,11 +98,11 @@
     <section class="row1">  
         <div class="seccion">
    
-        <div class="boton-linea-ext">
-            <span class="linea1"></span>
-            <span class="linea2"></span>
-            <span class="linea3"></span>
-            <span class="linea4"></span>
+        <div class="button-line-ext">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+            <span class="line4"></span>
             <a href="/agregarFavoritos/{{#event}}{{id}}{{/event}}">Añadir favoritos</a>
         </div>
         {{/view}}

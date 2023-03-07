@@ -94,7 +94,7 @@ public class FavoritesController {
             userService.save(user);
                
         }
-        return "redirect:/miCuenta/favoritos";
+        return "redirect:/miCuenta/favorites";
     }
 
     // @GetMapping("/{userId}/eliminarFavoritos/{eventId}")
@@ -120,7 +120,7 @@ public class FavoritesController {
 
     @GetMapping("/miCuenta/favoritos")
     public String showFavorites(Model model){
-        return "favoritos";
+        return "favorites";
     }
 
     @GetMapping("/{id}/image")

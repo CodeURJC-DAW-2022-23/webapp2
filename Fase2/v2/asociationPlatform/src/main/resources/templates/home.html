@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/filters.css">
     <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/cardsSite.css">
     <link rel="stylesheet" href="css/footer.css">
+    
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -146,7 +148,7 @@
 
         <div class="con-cards">
 
-        {{#events}}
+        {{#eventsCarrusel}}
             <div class='widget'>
                 <div style='background: url(/{{id}}/image) no-repeat center/cover;' class='widget__photo'></div>
                 <div class='widget__button'>
@@ -216,7 +218,7 @@
                     </div>
                 </div>
             </div>
-        {{/events}}
+        {{/eventsCarrusel}}
                     
         </div>
 
@@ -224,6 +226,21 @@
              <i class="bx bxs-chevron-right"></i>
         </button>
     </div>
+    <div class="cardsSite" id="cardsSite">
+        
+    </div>
+    
+    <section class="row1">  
+        <div class="seccion">
+   
+        <div class="button-line-ext" id="moreEvents">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+            <span class="line4"></span>
+            <a>Cargar más</a>
+        </div>
+   </section>
 
     <footer class="container-fluid">
         <div class="container">
@@ -238,6 +255,7 @@
     </footer>
     <script src="js/sendFormsFilters.js"></script>
     <script src="js/cards.js"></script>
+    <script src="js/loadMoreButton.js"></script>
 
 </body>
 
