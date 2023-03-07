@@ -83,7 +83,6 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        System.out.println("carrusel: "+model.containsAttribute("eventsMore"));
         if(!model.containsAttribute("eventsMore")){
             List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,3);
             model.addAttribute("eventsMore",events);
@@ -140,8 +139,8 @@ public class HomeController {
 
         
 
-        model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,1));
-        generateFiltersOptions(model);
+        //model.addAttribute("eventsMore",eventService.getEventsByFilters(searchInfo, month, campus, asociation,1));
+        //generateFiltersOptions(model);
         return "redirect:/";
     }
     @GetMapping("/loadMore/{page}") 
