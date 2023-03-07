@@ -9,6 +9,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.repository.EventRepository;
 
@@ -17,6 +19,9 @@ public class EventService {
 
   @Autowired
   private EventRepository eventRepository;
+
+  @Autowired
+  AsociationService asociationService;
   
 	public void save(Event event) {
 		eventRepository.save(event);
@@ -29,8 +34,8 @@ public class EventService {
 	public List<Event> findAll() {
 		return eventRepository.findAll();
 	}
-    public List<Event> findAllbyAsociation(String asociation) {
-		return eventRepository.findAllByAsociation(asociation);
+    public List<Event> findAllbyAsociation(Asociation asociation) {
+		return eventRepository.findAllByAsociation(asociation.getId());
 	}
     
     public void updateById(Event event, long id){
@@ -74,44 +79,44 @@ public class EventService {
             if(obj[0] instanceof BigInteger){
                 event.setId(((BigInteger)obj[0]).longValue());
             }
-            if(obj[1] instanceof String){
-                event.setAsociation((String)obj[1]);
+            if(obj[1] instanceof Boolean){
+                event.setBooking((boolean)obj[1]);
             }
-            if(obj[2] instanceof Boolean){
-                event.setBooking((boolean)obj[2]);
+            if(obj[2] instanceof String){
+                event.setCampus((String)obj[2]);
             }
-            if(obj[3] instanceof String){
-                event.setCampus((String)obj[3]);
+            if(obj[3] instanceof Boolean){
+                event.setCredits((boolean)obj[3]);
             }
-            if(obj[4] instanceof Boolean){
-                event.setCredits((boolean)obj[4]);
+            if(obj[4] instanceof Date){
+                event.setDate((Date)obj[4]);
             }
-            if(obj[5] instanceof Date){
-                event.setDate((Date)obj[5]);
+            if(obj[5] instanceof String){
+                event.setDescription((String)obj[5]);
             }
             if(obj[6] instanceof String){
-                event.setDescription((String)obj[6]);
+                event.setDuration((String)obj[6]);
             }
             if(obj[7] instanceof String){
-                event.setDuration((String)obj[7]);
+                event.setEndTime((String)obj[7]);
             }
-            if(obj[8] instanceof String){
-                event.setEndTime((String)obj[8]);
+            if(obj[8] instanceof Blob){
+                event.setImgUrl((Blob)obj[8]);
             }
-            if(obj[9] instanceof Blob){
-                event.setImgUrl((Blob)obj[9]);
+            if(obj[9] instanceof String){
+                event.setLocation((String)obj[9]);
             }
             if(obj[10] instanceof String){
-                event.setLocation((String)obj[10]);
+                event.setMonth((String)obj[10]);
             }
             if(obj[11] instanceof String){
-                event.setMonth((String)obj[11]);
+                event.setName((String)obj[11]);
             }
             if(obj[12] instanceof String){
-                event.setName((String)obj[12]);
+                event.setStartTime((String)obj[12]);
             }
             if(obj[13] instanceof String){
-                event.setStartTime((String)obj[13]);
+                event.setAsociation(asociationService.findByName((String)obj[13]).get()); //Probably works
             }
             eventsList.add(event);
         

@@ -42,7 +42,6 @@ public class CommentController {
             commentService.save(newComent);
             
             Event event = eventService.findById(id).orElseThrow();
-            System.out.println(event.getId(id));
             event.addComment(newComent);
             eventService.save(event);
 

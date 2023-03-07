@@ -3,6 +3,13 @@ package com.urjc.asociationPlatform.model;
 import java.sql.Blob;
 import java.sql.Date;
 import javax.persistence.*;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.urjc.asociationPlatform.service.AsociationService;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +29,9 @@ public class Event {
     @Column( length = 100000 )
     private String description;
     private String location;
-    private String asociation;
+    @ManyToOne (cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Asociation asociation;
     private String campus;
     private boolean credits;
     private boolean booking;
@@ -41,13 +50,12 @@ public class Event {
     private Blob image;
 
     public Event(){}
-    public Event(String name, Date date, String month, String description, String location, String asociation, String campus, boolean credits, boolean booking, String duration, Blob imgUrl, String startTime, String endTime) {
+    public Event(String name, Date date, String month, String description, String location, Asociation asociation, String campus, boolean credits, boolean booking, String duration, Blob imgUrl, String startTime, String endTime) {
         this.name = name;
         this.date = date;
         this.month = month;
         this.description = description;
         this.location = location;
-        this.asociation=asociation;
         this.campus=campus;
         this.credits=credits;
         this.booking=booking;
@@ -55,6 +63,8 @@ public class Event {
         this.image = imgUrl;
         this.startTime = startTime;
         this.endTime = endTime;
+
+        this.asociation=asociation;
     }
 
     public void setId(Long id){
@@ -93,7 +103,7 @@ public class Event {
         return dislikeList.remove(user);
     }
 
-    public Long getId(long id){
+    public Long getId(){
         return this.id;
     }
 
@@ -134,10 +144,10 @@ public class Event {
     public void setLocation(String location) {
         this.location = location;
     }
-    public String getAsociation() {
+    public Asociation getAsociation() {
         return asociation;
     }
-    public void setAsociation(String asociation) {
+    public void setAsociation(Asociation asociation) {
         this.asociation = asociation;
     }
     public String getCampus() {

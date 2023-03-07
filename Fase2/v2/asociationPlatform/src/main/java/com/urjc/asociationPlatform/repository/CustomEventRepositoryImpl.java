@@ -6,11 +6,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.mysql.cj.protocol.ValueEncoder;
+import com.urjc.asociationPlatform.service.AsociationService;
 
 public class CustomEventRepositoryImpl implements CustomEventRepository{
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    AsociationService asoService;
 
     private final int pageSize=1;
     
@@ -52,7 +58,7 @@ public class CustomEventRepositoryImpl implements CustomEventRepository{
                 sb.append(" AND");
             }
             conditions++;
-            sb.append(" asociation = '"+asociation+"'");
+            sb.append(" asociation_id = '"+asoService.findByName(asociation).get().getId().toString()+"'");
         }
         int value=page*pageSize;
         sb.append(" LIMIT "+value+" OFFSET 0");

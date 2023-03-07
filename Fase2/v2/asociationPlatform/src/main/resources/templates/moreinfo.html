@@ -48,7 +48,7 @@
                     <img src="/{{#event}}{{id}}{{/event}}/image" alt="">
                 </div>
                 <div class="info">
-                    <h3>{{#event}}{{asociation}}{{/event}}</h3>
+                    <h3>{{#event}}{{#asociation}}{{name}}{{/asociation}}{{/event}}</h3>
                     
                     <p>
                         {{#event}}{{description}}{{/event}}

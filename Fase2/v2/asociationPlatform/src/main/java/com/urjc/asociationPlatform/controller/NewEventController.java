@@ -68,11 +68,8 @@ public class NewEventController {
 
     if(principal != null) {
       userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
-         if(currentUser!=null){
-       asoc = asoService.findByOwner(currentUser).get();
-       if(asoc != null)
-             association = asoc.getName();
-         }   
+         if(currentUser!=null)
+            asoc = asoService.findByOwner(currentUser).get();
     }  
 
     if (credits.equals("no")) creditsBool = false;
@@ -81,7 +78,7 @@ public class NewEventController {
     else reservationBool = true;
 
     try {
-      Event event = new Event(name, date2, month[monthN-1], description, location, association,
+      Event event = new Event(name, date2, month[monthN-1], description, location, asoc,
                               campus, creditsBool, reservationBool, duration, getBlob(image), startTime, endTime);                  
       eventService.saveEvent(event);
     } catch (SQLException e) {

@@ -83,10 +83,13 @@ public class HomeController {
         //asociation = "";
         //month = "";
         //campus= "";
-        if(!model.containsAttribute("eventsMore")){
+        List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,1);
+        model.addAttribute("eventsMore",events);
+        model.addAttribute("asociations",getAsociations(events));
+        /*if(!model.containsAttribute("eventsMore")){
             List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,1);
             model.addAttribute("eventsMore",events);
-        }
+        }*/
         
         if(asociations==null){
             asociations = asociationService.findAll();
@@ -179,5 +182,14 @@ public class HomeController {
         model.addAttribute("asoValues", asoL);
 
         model.addAttribute("seachBarContent", searchInfo);
+    }
+
+    private List<Asociation> getAsociations(List<Event> events){
+        List<Asociation> asocs = new ArrayList<Asociation>();
+        for(int i = 0; i < events.size();i++){
+            asocs.add(events.get(i).getAsociation());
+            System.out.print("\n"+events.get(i).getAsociation().getName()+"\n");
+        }
+        return asocs;
     }
 }

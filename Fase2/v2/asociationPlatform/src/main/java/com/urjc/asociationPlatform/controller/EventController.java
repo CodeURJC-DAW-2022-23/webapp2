@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 import com.urjc.asociationPlatform.model.Event;
@@ -37,8 +38,11 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-	@Autowired
+	  @Autowired
     private UserService userService;
+
+    @Autowired
+    AsociationService asociationService;
 
     User currentUser;
 
@@ -173,7 +177,7 @@ public class EventController {
   private void changeEvent(Event newEvent, String asociation, String name, Date date, String month, String description, 
     String location, String campus, boolean credits, boolean booking, String duration, 
     Blob imgUrl, String startTime, String endTime) {
-      newEvent.setAsociation(asociation);;
+      newEvent.setAsociation(asociationService.findByName(asociation).get());;
       newEvent.setName(name);
       newEvent.setCredits(credits);
       newEvent.setBooking(booking);
