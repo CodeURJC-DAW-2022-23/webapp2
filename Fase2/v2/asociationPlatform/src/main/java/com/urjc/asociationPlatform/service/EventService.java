@@ -116,6 +116,7 @@ public class EventService {
                 event.setStartTime((String)obj[12]);
             }
             if(obj[13] instanceof String){
+                System.out.print("\n"+asociationService.findByName((String)obj[13]).get()+" en EventService\n");
                 event.setAsociation(asociationService.findByName((String)obj[13]).get()); //Probably works
             }
             eventsList.add(event);
