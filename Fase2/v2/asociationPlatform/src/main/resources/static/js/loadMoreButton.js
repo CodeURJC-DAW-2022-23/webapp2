@@ -4,6 +4,13 @@ const site = document.getElementById('cardsSite');
 const moreEvents = document.getElementById('moreEvents');
 moreEvents.addEventListener('click', getMoreEvents);
 
+window.addEventListener('load',inicialize());
+
+function inicialize(){
+  page=6;
+  getMoreEvents();
+}
+
 function getMoreEvents(){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", '/loadMore/'+ page);

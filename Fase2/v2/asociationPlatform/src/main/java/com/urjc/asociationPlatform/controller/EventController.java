@@ -99,15 +99,6 @@ public class EventController {
     return new ModelAndView("editevent");
   }
 
-  //   @GetMapping("/admin/editarEventos/{id}")
-	// public String obtainEvent(Model model, @PathVariable long id) {
-	// 	Event event = eventService.findById(id).orElseThrow();
-
-	// 	model.addAttribute("event", event);
-
-	// 	return "editevent";
-	// }
-
   @PostMapping("/admin/editarEventos/{id}")
   public String editEvents(@RequestParam("asociation") String asociation, @RequestParam("name") String name, @RequestParam("date") String date, 
                             @RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime,
@@ -151,28 +142,6 @@ public class EventController {
       return "redirect:/admin/editarEventos";
   }
 
-	// @PostMapping("/admin/editarEventos/{id}")
-	// public String editEvents(Model model, Event event, @PathVariable long id) { 
-	// 	try { event = eventService.findById(id).orElseThrow();
-  //     event.setName(event.getName());
-  //     event.setCredits(event.getCredits());
-  //     event.setBooking(event.getBooking());
-  //     event.setCampus(event.getCampus());
-  //     event.setDate(event.getDate());
-  //     event.setImgUrl(event.getImage());
-  //     event.setDuration(event.getDuration());
-  //     event.setDescription(event.getDescription());
-  //     event.setLocation(event.getLocation());
-  //     event.setMonth(event.getMonth());
-  //     event.setStartTime(event.getStartTime());
-  //     event.setEndTime(event.getEndTime());
-
-	// 		return "redirect:/admin/editarEventos";
-	// 	} catch (Exception e) {
-	// 		e.printStackTrace();
-	// 		return "404"; 
-	// 	}
-	// }
 
   private void changeEvent(Event newEvent, String asociation, String name, Date date, String month, String description, 
     String location, String campus, boolean credits, boolean booking, String duration, 
