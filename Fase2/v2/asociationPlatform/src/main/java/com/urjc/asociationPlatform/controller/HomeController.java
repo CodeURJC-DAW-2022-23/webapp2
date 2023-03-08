@@ -86,7 +86,7 @@ public class HomeController {
         if(!model.containsAttribute("eventsMore")){
             List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,1);
             model.addAttribute("eventsMore",events);
-            model.addAttribute("asociations",getAsociations(events));
+            //model.addAttribute("asociations",getAsociations(events));
         }
         
         if(asociations==null){
@@ -140,8 +140,8 @@ public class HomeController {
     @GetMapping("/loadMore/{page}") 
     public String LoadMore(Model model, @PathVariable int page){
         List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,page);
+        //List<Event> events = eventService.findAll();
         model.addAttribute("eventsMore",events);
-        model.addAttribute("asociations",getAsociations(events));
         generateFiltersOptions(model);
         //goHome(model);
         return "cardsTemplate";
@@ -187,7 +187,6 @@ public class HomeController {
         List<Asociation> asocs = new ArrayList<Asociation>();
         for(int i = 0; i < events.size();i++){
             asocs.add(events.get(i).getAsociation());
-            System.out.print("\n"+events.get(i).getAsociation().getName()+"\n");
         }
         return asocs;
     }

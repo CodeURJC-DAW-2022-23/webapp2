@@ -58,11 +58,10 @@ public class CustomEventRepositoryImpl implements CustomEventRepository{
                 sb.append(" AND");
             }
             conditions++;
-            sb.append(" asociation_id = '"+asoService.findByName(asociation).get().getId().toString()+"'");
+            sb.append(" asociation_id = "+asoService.findByName(asociation).get().getId().toString()+"");
         }
         int value=page*pageSize;
         sb.append(" LIMIT "+value+" OFFSET 0");
-        System.out.println(sb.toString());
 
         Query query = entityManager.createNativeQuery(sb.toString());
 

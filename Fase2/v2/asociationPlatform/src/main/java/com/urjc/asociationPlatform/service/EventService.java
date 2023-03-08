@@ -115,9 +115,9 @@ public class EventService {
             if(obj[12] instanceof String){
                 event.setStartTime((String)obj[12]);
             }
-            if(obj[13] instanceof String){
-                System.out.print("\n"+asociationService.findByName((String)obj[13]).get()+" en EventService\n");
-                event.setAsociation(asociationService.findByName((String)obj[13]).get()); //Probably works
+            if(obj[13] instanceof BigInteger){
+                event.setAsociation(asociationService.findById(((BigInteger)obj[13]).longValue()).get()); //Probably works
+                //event.setAsociation(asociationService.findByName((String)obj[13]).get());
             }
             eventsList.add(event);
         
