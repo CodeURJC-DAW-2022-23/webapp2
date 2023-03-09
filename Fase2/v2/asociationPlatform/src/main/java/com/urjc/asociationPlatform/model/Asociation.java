@@ -1,13 +1,17 @@
 package com.urjc.asociationPlatform.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.urjc.asociationPlatform.repository.UserRepository;
+import com.urjc.asociationPlatform.service.EventService;
 
 @Entity
 public class Asociation {
@@ -23,7 +27,10 @@ public class Asociation {
     private String faculty;
     private String campus;
     @OneToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User owner;
+
+    
 
     public Asociation(){}
 

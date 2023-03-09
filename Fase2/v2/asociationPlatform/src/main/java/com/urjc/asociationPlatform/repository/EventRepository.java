@@ -14,15 +14,15 @@ import com.urjc.asociationPlatform.model.Event;
 public interface EventRepository extends JpaRepository<Event, Long>, CustomEventRepository{
 
 
-    @Query(value = "SELECT * FROM event WHERE name LIKE :name AND month = :month AND campus = :campus AND asociation = :asociation",nativeQuery = true)
+    @Query(value = "SELECT * FROM event WHERE name LIKE :name AND month = :month AND campus = :campus AND asociation_id = :num",nativeQuery = true)
 
-    List<Event> getEvents(@Param("name") String name, @Param("month") String month, @Param("campus") String campus, @Param("asociation") String asociation);
+    List<Event> getEvents(@Param("name") String name, @Param("month") String month, @Param("campus") String campus, @Param("num") Long num);
 
     @Query(value = ":query",nativeQuery = true)
     List<Event> launchQuery(@Param("query") String query);
 
-    @Query(value = "SELECT * FROM event WHERE asociation = :name", nativeQuery=true)
-    List<Event> findAllByAsociation(@Param("name") String name);
+    @Query(value = "SELECT * FROM event WHERE asociation_id = :num", nativeQuery=true)
+    List<Event> findAllByAsociation(@Param("num") Long num);
 
     @Transactional
     @Modifying(clearAutomatically = true)
