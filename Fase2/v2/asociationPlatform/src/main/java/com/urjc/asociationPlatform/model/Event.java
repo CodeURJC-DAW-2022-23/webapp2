@@ -39,11 +39,13 @@ public class Event {
     private String endTime;
     private String duration;
 
-    @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
     @ManyToMany(cascade=CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<User> likeList = new HashSet<>();
     @ManyToMany(cascade=CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<User> dislikeList = new HashSet<>();
 
     @Lob
@@ -214,12 +216,20 @@ public class Event {
     }
 
     public void addComment(Comment comment){
+        comment.setEvent(this);
         this.comments.add(comment);
     }
 
     public void removeComment(Comment comment){
+        comment.setEvent(null);
         this.comments.remove(comment);
     }
     
     
+    private void clearComments(){
+        for (Comment comment : comments) {
+            System.out.print("\nHola\n");
+            removeComment(comment);
+        }
+    }
 }

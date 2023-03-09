@@ -8,6 +8,9 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 
 @Entity
 public class Comment {
@@ -15,11 +18,14 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="Id")
     private Long id;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Event event;
     private String comment_user;
     private String description;
     private String time;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<User> favorites = new HashSet<>();
     
     public Comment (){}
@@ -65,6 +71,10 @@ public class Comment {
     }
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
      
 }
