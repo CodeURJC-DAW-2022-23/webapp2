@@ -279,15 +279,23 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 - Tareas realizadas: 
 
+Ha cubierto varios aspectos del desarrollo de la aplicación, siendo los más destacados los relacionados con el desarrollo de las clases "evento", "asociación" y la implementación de MySQL.
+
+En el desarrollo de la clase "evento" ha implementado el sistema de puntuaje tanto para los comentarios como para los eventos, llegando a implementar una barra de "me gusta" y "no me gusta" que funciona de forma similar a la de sitios como Youtube. Además, mejoró el sistema de referencias entre las clases "asociación" y "evento", haciendo que la clase evento pueda acceder en todo momento al objeto asociación al que pertenece con tal de tener su nombre siempre actualizado.
+
+En la clase "asociación", se ha encargado de gestionar los formularios de modificación y eliminación de asociaciones desde el menú de los distintos usuarios.
+
+Por último, ha sido el principal responsable de implementar el servidor MySQL tanto en local (usando las herramientas oficiales de MySQL) como en la nube (con CleverCloud).
+
 - 5 commits más significativos: 
 
-| Commit	| Descripcion	| Link |
+| Commit | Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| Principal implementación de la relación directa entre las clases "evento" y "asociación". | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/ade271c2f431b9546f164eee1c766eb02d3e2368 |
+| 2	| Se implementa el sistema de "me gusta" en los comentarios. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/c72fae0dc3f9ae8bc30bd6ef1f7fd40564732ac3 |
+| 3 | Se implementa la barra de "me gusta" en eventos junto con su sistema funcional. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b849e9f0359c88aa0becfd077efae9a6015983f4 |
+| 4 | Commit principal en la gestión de una asociación por parte del administrador. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b0df8d86fc11290823e384611d14099e51764c9e |
+| 5	| Commit principal en la gestión de una asociación por parte del usuario asociación. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/23e34faab57440016ca7a6cbc28b6b4c6f1ce6fb |
 
 - 5 ficheros que más ha participado: 
 
