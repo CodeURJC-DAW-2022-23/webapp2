@@ -301,8 +301,8 @@ Por último, ha sido el principal responsable de implementar el servidor MySQL t
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| AdminUserController.java	|
+| 2	| EventDetailsController.java |
+| 3 | AsociationUserController.java	|  
+|	4 | Event.java |  
+| 5	| myAso.html | 
