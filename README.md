@@ -150,7 +150,7 @@ Gestionar eventos:
 En esta vista el administrador podrá consultar, modificar o eliminar cualquier evento de la plataforma.
 
 Gestionar asociaciones: 
-![admineditasos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/editarasos.png?raw=true)
+![admineditasos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/admineditasos.png?raw=true)
 El administrador podrá consultar, modificar o eliminar cualquier asociación de la plataforma.
 
 Email: 
