@@ -236,21 +236,21 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 | Commit	| Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| Añadida la versión preliminar de los filtros	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/02ecb12bc0f58b4f1ebf35c2e78febdb9bd0279d |
+| 2	| Agrupación de los datos de los filtros para en envio	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/d19f409ddcddc35db47663f9215e0a9015507f7d |
+| 3 | Filtros funcionales con Query dinamica	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/fb65dc0cd7ec5e54abf657a918936c0d1a70d6a3 |
+|	4 | Iniciada la implementación de AJAX con paginación en la Query | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/38a536cc18f37c0f72c25ed028265217e5cb7f46 |
+| 5	| Funcionamiento del envio de los datos de los filtros en Firefox | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/25546e24943e5fe7318d894a5b53cad9271f354c |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| 	HomeController.java  |
+| 2	| 	Event.java  |
+| 3 | 	EventService.java  |
+|	4 |  CustomEventRepositoryImpl.java  |
+| 5	|  Home.html  |
 
 **Fiorella Victoria Hernandez Mejía:**
 
