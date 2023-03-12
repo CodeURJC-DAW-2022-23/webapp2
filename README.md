@@ -206,27 +206,27 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 **Andrea Cardenal Millán:**
 
-- Tareas realizadas: 
+- Tareas realizadas: He participado en la creacion de los modelos, repositorios y controladores relativos con los eventos y los usuarios. También todo lo relacionado con los formularios de crear y editar eventos y usuarios. La vista de mas información acerca de los eventos, su sección de comentarios y el ajax de la vista home en relación con cargar más eventos.
 
 - 5 commits más significativos: 
 
 | Commit	| Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| Añadir seccion de comentarios	| CommentController.java |
+| 2	| Formulario para editar eventos para asociaciones	| editevent.html |
+| 3 | Formulario para crear eventos para asociaciones	| createEvent.html |
+|	4 | Vista dedicada a mas informacion sobre un evento | moreinfo.html |
+| 5	| Ajax relacionado con cargar mas eventos | home.html |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	| [home.html](src/main/resources/templates/home.html) |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| 	| CommentController.java |
+| 2	| 	| editevent.html |
+| 3 | 	| moreinfo.html |
+|	4 |  | home.html |
+| 5	|  | UserController.java |
 
 **Rubén González de Pablo:**
 
