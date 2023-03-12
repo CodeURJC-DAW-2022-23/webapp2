@@ -262,7 +262,7 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 | --- | :---: | :---: |
 | 1	| Crear eventos	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/74361c93b69a3d878d114899a52d4aef100eca7c |
 | 2	| Edicion de los eventos desde ASO 	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/7f10c2e0c8d590ddda4db76ec3a4a396cfd89bd1 |
-| 3 | Eliminación de los eventos y terminada la edicion | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/532a9cb6afd4ea851d1f44f61436baf97e5d82a6 |
+| 3 | Eliminar evento como asociación | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/532a9cb6afd4ea851d1f44f61436baf97e5d82a6 |
 |	4 | Remodelación de la edición de eventos del admin | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/eee106b63ef04e612fc317742968e594fdc2717b |
 | 5	| Edición de la asociacion | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/068fb30fc7dd0062b315cd9a42194626b6191f75 |
 
