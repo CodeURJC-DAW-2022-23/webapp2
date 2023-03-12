@@ -176,6 +176,7 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 ![basededatos](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/bd.png?raw=true)
 
 ### Diagrama de clases y templates
+![diagramaclases](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/Documentos/Fase2/screenshot/diagramaclases.png?raw=true)
 
 ### Participación de miembros
 
