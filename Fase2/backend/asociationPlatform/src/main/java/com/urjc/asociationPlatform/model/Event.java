@@ -30,7 +30,7 @@ public class Event {
     @Column( length = 100000 )
     private String description;
     private String location;
-    @ManyToOne ()
+    @ManyToOne
     //@OnDelete(action = OnDeleteAction.CASCADE)
     private Asociation asociation;
     private String campus;
@@ -221,6 +221,7 @@ public class Event {
 
     public void removeComment(Comment comment){
         comment.setEvent(null);
+        comment.getFavorites().clear();
         this.comments.remove(comment);
     }
     
@@ -230,10 +231,12 @@ public class Event {
             removeComment(comment);
         }
     }
-    private void clearLikes(){
-        Iterator it= likeList.iterator();
-        while(it.hasNext()){
 
+    public void clear(){
+        for (Comment comment : comments) {
+            removeComment(comment);
         }
+        likeList.clear();
+        dislikeList.clear();
     }
 }

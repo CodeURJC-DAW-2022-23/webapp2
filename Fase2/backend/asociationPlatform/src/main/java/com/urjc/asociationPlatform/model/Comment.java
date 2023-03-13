@@ -18,14 +18,12 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="Id")
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne
     private Event event;
     private String comment_user;
     private String description;
     private String time;
-    @ManyToMany(cascade=CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToMany
     private Set<User> favorites = new HashSet<>();
     
     public Comment (){}
@@ -34,6 +32,10 @@ public class Comment {
     this.comment_user = comment_user;
     this.description = description;
     this.time = time;
+    }
+
+    public Set<User> getFavorites(){
+        return this.favorites;
     }
 
     public boolean isUserInFavorites(User user){
@@ -76,6 +78,14 @@ public class Comment {
     public void setEvent(Event event) {
         this.event = event;
     }
-     
+    
+    public void clear(){
+        this.favorites.clear();
+        this.event = null;
+    }
+
+    public long getId() {
+        return this.id;
+    }
 }
 
