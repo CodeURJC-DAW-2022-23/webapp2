@@ -198,11 +198,11 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	| login.html |
-| 2	| 	| EmailRequirementController.java |
-| 3 | 	| FavoritesController.java |
-|	4 |  | RegisterController.java |
-| 5	|  | HomeController.java |
+| 1	| Login.html |
+| 2	| EmailRequirementController.java |
+| 3 | FavoritesController.java |
+|	4 | RegisterController.java |
+| 5	| HomeController.java |
 
 **Andrea Cardenal Millán:**
 
