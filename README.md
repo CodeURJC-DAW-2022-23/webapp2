@@ -182,27 +182,27 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 **Daniel Gallardo de Eugenio:**
 
-- Tareas realizadas: 
+- Tareas realizadas: Mi trabajo ha consistido en crear las vistas y la lógica del registro y el login de la aplicación, además de implementar la comprobación por correo electrónico de las cuentas de asociación. También me he encargado de la función de seguridad. En la vista de moreinfo he hecho la lógica de agregar eventos favoritos. Por último, también he implementado la lógica del administrador.
 
 - 5 commits más significativos: 
 
 | Commit	| Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| implementacion de la comprobacion de correo electrónico	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/1ed5c0a3e8089e4569d4763e5ef5d7d49139e293 |
+| 2	| agregar eventos favoritos de un usuario	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/73477c32835c9550bddb94f23deda72e31be05ba |
+| 3 | login y registro	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/5d3cc99c14f99a7da64c5135e1a416aff2004bbf |
+|	4 | funcion de seguridad | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/5d3cc99c14f99a7da64c5135e1a416aff2004bbf |
+| 5	| aceptar y rechazar creacion de una cuenta | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/5d3cc99c14f99a7da64c5135e1a416aff2004bbf |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	|  |
-| 2	| 	|  |
-| 3 | 	|  |
-|	4 |  |  |
-| 5	|  |  |
+| 1	| 	| login.html |
+| 2	| 	| EmailRequirementController.java |
+| 3 | 	| FavoritesController.java |
+|	4 |  | RegisterController.java |
+| 5	|  | HomeController.java |
 
 **Andrea Cardenal Millán:**
 
@@ -212,11 +212,11 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 | Commit	| Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| Añadir seccion de comentarios	| CommentController.java |
-| 2	| Formulario para editar eventos para asociaciones	| editevent.html |
-| 3 | Formulario para crear eventos para asociaciones	| createEvent.html |
-|	4 | Vista dedicada a mas informacion sobre un evento | moreinfo.html |
-| 5	| Ajax relacionado con cargar mas eventos | home.html |
+| 1	| Añadir seccion de comentarios	| CommentController.java https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/02ecb12bc0f58b4f1ebf35c2e78febdb9bd0279d|
+| 2	| Vista del menu de un usuario asociacion	| [editevent.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/5fc6753a2ebee6b986c6ad98194426aa392284e8) |
+| 3 | Formulario para crear asociacion	| [createEvent.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/77e9077b6f1062929573ee98fb61f0786f857700) |
+|	4 | Vista dedicada a mas informacion sobre un evento | [moreinfo.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/c033e7794add513e29e25ed55235a0b78f1c5008) |
+| 5	| Ajax relacionado con cargar mas eventos | [home.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/746b0bafa1cbd2352cb96d198c71d9fb49985fbe) |
 
 - 5 ficheros que más ha participado: 
 
