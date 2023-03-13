@@ -212,20 +212,20 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 | Commit	| Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| Añadir seccion de comentarios	| CommentController.java https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/02ecb12bc0f58b4f1ebf35c2e78febdb9bd0279d|
-| 2	| Vista del menu de un usuario asociacion	| [editevent.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/5fc6753a2ebee6b986c6ad98194426aa392284e8) |
-| 3 | Formulario para crear asociacion	| [createEvent.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/77e9077b6f1062929573ee98fb61f0786f857700) |
-|	4 | Vista dedicada a mas informacion sobre un evento | [moreinfo.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/c033e7794add513e29e25ed55235a0b78f1c5008) |
-| 5	| Ajax relacionado con cargar mas eventos | [home.html](https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/746b0bafa1cbd2352cb96d198c71d9fb49985fbe) |
+| 1	| Añadir seccion de comentarios	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/02ecb12bc0f58b4f1ebf35c2e78febdb9bd0279d|
+| 2	| Vista del menu de un usuario asociacion	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/5fc6753a2ebee6b986c6ad98194426aa392284e8 |
+| 3 | Formulario para crear asociacion	| https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/77e9077b6f1062929573ee98fb61f0786f857700 |
+|	4 | Vista dedicada a mas informacion sobre un evento | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/c033e7794add513e29e25ed55235a0b78f1c5008 |
+| 5	| Ajax relacionado con cargar mas eventos | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/746b0bafa1cbd2352cb96d198c71d9fb49985fbe |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
 | 1	| 	| CommentController.java |
-| 2	| 	| editevent.html |
-| 3 | 	| moreinfo.html |
-|	4 |  | home.html |
+| 2	| 	| Editevent.html |
+| 3 | 	| Moreinfo.html |
+|	4 |  | Home.html |
 | 5	|  | UserController.java |
 
 **Rubén González de Pablo:**
