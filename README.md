@@ -222,11 +222,11 @@ Esta es la tecnología que hemos decidido implementar consiste en el uso de un e
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	| 	| CommentController.java |
-| 2	| 	| Editevent.html |
-| 3 | 	| Moreinfo.html |
-|	4 |  | Home.html |
-| 5	|  | UserController.java |
+| 1	| CommentController.java |
+| 2	| Editevent.html |
+| 3 | Moreinfo.html |
+|	4 | Home.html |
+| 5	| UserController.java |
 
 **Rubén González de Pablo:**
 
