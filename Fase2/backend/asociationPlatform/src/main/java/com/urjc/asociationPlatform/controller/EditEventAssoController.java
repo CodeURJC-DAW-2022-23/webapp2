@@ -27,10 +27,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
-import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -39,9 +37,6 @@ public class EditEventAssoController {
 
   @Autowired
   private EventService eventService;
-
-  @Autowired
-  CommentService commentService;
 
   User currentUser;
   Optional<Event> event;
@@ -127,18 +122,6 @@ public class EditEventAssoController {
   
   @GetMapping("/aso/deleteEvent/{id}")
   public String deleteEvent(@PathVariable long id) {
-    Event event = eventService.findById(id).orElseThrow();
-    System.out.print("\n"+event.getName()+"\n");
-    event.getComments();
-    for(Comment comment:event.getComments()){
-      comment.clear();
-      commentService.save(comment);
-      System.out.print("\n borrando "+comment.getId()+"\n");
-      commentService.deleteById(comment.getId());
-    }
-    event.clear();
-    eventService.save(event);
-    System.out.print("\n borrando "+event.getName()+"\n");
     eventService.deleteById(id);
     return "redirect:/aso/eventManagerAso";
   }
