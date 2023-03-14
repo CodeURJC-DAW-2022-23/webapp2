@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Blob;
@@ -25,8 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.urjc.asociationPlatform.service.AsociationService;
+import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
+import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 
@@ -43,6 +46,9 @@ public class EventController {
 
     @Autowired
     AsociationService asociationService;
+
+    @Autowired
+    CommentService commentService;
 
     User currentUser;
 
@@ -162,12 +168,28 @@ public class EventController {
   }
 
 	@PostMapping("/admin/editarEventos/{id}/delete")
-	public String deleteProfile(Model model, Event newEvent,@PathVariable long id){
+	/*public String deleteProfile(Model model, Event newEvent,@PathVariable long id){
 
 		eventService.deleteById(id);
 
 		return "redirect:/admin/editarEventos";
-	}
+	}*/
+  public String deleteEvent(@PathVariable long id) {
+    Event event = eventService.findById(id).orElseThrow();
+    System.out.print("\n"+event.getName()+"\n");
+    List<Comment> events=event.getComments();
+    for(Comment comment:events){
+      comment.clear();
+      commentService.save(comment);
+      System.out.print("\n borrando "+comment.getId()+"\n");
+      commentService.deleteById(comment.getId());
+    }
+    event.clear();
+    eventService.save(event);
+    System.out.print("\n borrando "+event.getName()+"\n");
+    eventService.deleteById(id);
+    return "redirect:/admin/editarEventos";
+  }
 
   public Blob getBlob(MultipartFile file) throws SQLException, IOException {
     Blob myBlob;

@@ -19,7 +19,6 @@ public class Comment {
     @Column(name ="Id")
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Event event;
     private String comment_user;
     private String description;
@@ -75,6 +74,14 @@ public class Comment {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public void clear(){
+        this.favorites.clear();
+    }
+
+    public Long getId(){
+        return this.id;
     }
      
 }

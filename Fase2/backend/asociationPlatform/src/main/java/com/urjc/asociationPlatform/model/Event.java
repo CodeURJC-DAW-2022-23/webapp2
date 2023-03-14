@@ -230,10 +230,8 @@ public class Event {
             removeComment(comment);
         }
     }
-    private void clearLikes(){
-        Iterator it= likeList.iterator();
-        while(it.hasNext()){
-
-        }
+    public void clear() {
+        likeList.clear();
+        dislikeList.clear();
     }
 }
