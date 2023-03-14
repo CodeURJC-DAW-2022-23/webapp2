@@ -109,15 +109,21 @@ public class UserController {
 
 	@PostMapping("/admin/editarUsuarios/{id}/delete")
 	public String deleteProfile(Model model, User newUser,@PathVariable long id){
-		User user = userService.findById(id).orElseThrow();
-			System.out.print("\n usuario detectado \n");
+		try { User user = userService.findById(id).orElseThrow();
+			List<Event> events= eventService.findAll();
+			for(Event event:events){
+				List<Comment> eventComments = event.deleteUserReferences(user);
+				for(Comment comment: eventComments){
+					commentService.save(comment);
+				}
+			}
 			if(user.getRol().equals("ASO")){
 				Asociation asociation = asoService.findByOwner(user).orElseThrow();
-				List<Event> events= eventService.findAllbyAsociation(asociation);
-				for(Event event : events){
+				List<Event> asoEvents= eventService.findAllbyAsociation(asociation);
+				for(Event asoEvent : asoEvents){
 					System.out.print("\n borrando evento \n");
-					event = clearEvent(event);
-					eventService.deleteById(event.getId());
+					asoEvent = clearEvent(asoEvent);
+					eventService.deleteById(asoEvent.getId());
 				}
 				System.out.print("\n borrando asociacion \n");
 				asoService.deleteById(asociation.getId());
@@ -126,6 +132,9 @@ public class UserController {
 				userService.deleteById(id);
 			}
 			return "redirect:/admin/editarUsuarios";
+		} catch (Exception e) {
+			return "redirect:/error"; 
+		}
 	}
 
 	private Event clearEvent(Event event){
