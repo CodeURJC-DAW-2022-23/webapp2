@@ -168,25 +168,9 @@ public class EventController {
   }
 
 	@PostMapping("/admin/editarEventos/{id}/delete")
-	/*public String deleteProfile(Model model, Event newEvent,@PathVariable long id){
-
-		eventService.deleteById(id);
-
-		return "redirect:/admin/editarEventos";
-	}*/
   public String deleteEvent(@PathVariable long id) {
     Event event = eventService.findById(id).orElseThrow();
-    System.out.print("\n"+event.getName()+"\n");
-    List<Comment> events=event.getComments();
-    for(Comment comment:events){
-      comment.clear();
-      commentService.save(comment);
-      System.out.print("\n borrando "+comment.getId()+"\n");
-      commentService.deleteById(comment.getId());
-    }
-    event.clear();
-    eventService.save(event);
-    System.out.print("\n borrando "+event.getName()+"\n");
+    event = clearEvent(event);
     eventService.deleteById(id);
     return "redirect:/admin/editarEventos";
   }
@@ -196,5 +180,25 @@ public class EventController {
     byte[] bytes = file.getBytes();
     myBlob = new SerialBlob(bytes);
     return myBlob;
+  }
+
+  private Event clearEvent(Event event){
+    List<User> users = userService.findAll();
+    for(User user:users){
+      if(user.isInFavorites(event)){
+        user.removeFavoritos(event);
+        userService.save(user);
+      }
+        
+    }
+    List<Comment> comments=event.getComments();
+    for(Comment comment:comments){
+      comment.clear();
+      commentService.save(comment);
+      commentService.deleteById(comment.getId());
+    }
+    event.clear();
+    eventService.save(event);
+    return event;
   }
 }

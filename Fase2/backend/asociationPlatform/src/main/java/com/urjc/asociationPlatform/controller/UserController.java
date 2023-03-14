@@ -18,13 +18,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import com.urjc.asociationPlatform.service.AsociationService;
+import com.urjc.asociationPlatform.service.CommentService;
+import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
+import com.urjc.asociationPlatform.model.Asociation;
+import com.urjc.asociationPlatform.model.Comment;
+import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 
 @Controller
 public class UserController {
     @Autowired
     private UserService userService;
+	@Autowired
+	private AsociationService asoService;
+	@Autowired
+	private EventService eventService;
+	@Autowired
+	private CommentService commentService;
 
 	User currentUser;
 
@@ -97,10 +109,43 @@ public class UserController {
 
 	@PostMapping("/admin/editarUsuarios/{id}/delete")
 	public String deleteProfile(Model model, User newUser,@PathVariable long id){
+		User user = userService.findById(id).orElseThrow();
+			System.out.print("\n usuario detectado \n");
+			if(user.getRol().equals("ASO")){
+				Asociation asociation = asoService.findByOwner(user).orElseThrow();
+				List<Event> events= eventService.findAllbyAsociation(asociation);
+				for(Event event : events){
+					System.out.print("\n borrando evento \n");
+					event = clearEvent(event);
+					eventService.deleteById(event.getId());
+				}
+				System.out.print("\n borrando asociacion \n");
+				asoService.deleteById(asociation.getId());
+			}
+			else{
+				userService.deleteById(id);
+			}
+			return "redirect:/admin/editarUsuarios";
+	}
 
-		userService.deleteById(id);
-
-		return "redirect:/admin/editarUsuarios";
+	private Event clearEvent(Event event){
+		List<User> users = userService.findAll();
+		for(User user:users){
+		  if(user.isInFavorites(event)){
+			user.removeFavoritos(event);
+			userService.save(user);
+		  }
+			
+		}
+		List<Comment> comments=event.getComments();
+		for(Comment comment:comments){
+		  comment.clear();
+		  commentService.save(comment);
+		  commentService.deleteById(comment.getId());
+		}
+		event.clear();
+		eventService.save(event);
+		return event;
 	}
 
 }

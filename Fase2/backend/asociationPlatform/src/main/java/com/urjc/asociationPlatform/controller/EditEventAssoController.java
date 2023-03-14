@@ -38,6 +38,9 @@ import com.urjc.asociationPlatform.service.UserService;
 public class EditEventAssoController {
 
   @Autowired
+  private UserService userService;
+
+  @Autowired
   private EventService eventService;
 
   @Autowired
@@ -132,17 +135,7 @@ public class EditEventAssoController {
   }*/
   public String deleteEvent(@PathVariable long id) {
     Event event = eventService.findById(id).orElseThrow();
-    System.out.print("\n"+event.getName()+"\n");
-    List<Comment> events=event.getComments();
-    for(Comment comment:events){
-      comment.clear();
-      commentService.save(comment);
-      System.out.print("\n borrando "+comment.getId()+"\n");
-      commentService.deleteById(comment.getId());
-    }
-    event.clear();
-    eventService.save(event);
-    System.out.print("\n borrando "+event.getName()+"\n");
+    event = clearEvent(event);
     eventService.deleteById(id);
     return "redirect:/aso/eventManagerAso";
   }
@@ -169,5 +162,25 @@ public class EditEventAssoController {
       newEvent.setMonth(month);
       newEvent.setStartTime(startTime);
       newEvent.setEndTime(endTime);
+  }
+
+  private Event clearEvent(Event event){
+    List<User> users = userService.findAll();
+    for(User user:users){
+      if(user.isInFavorites(event)){
+        user.removeFavoritos(event);
+        userService.save(user);
+      }
+        
+    }
+    List<Comment> comments=event.getComments();
+    for(Comment comment:comments){
+      comment.clear();
+      commentService.save(comment);
+      commentService.deleteById(comment.getId());
+    }
+    event.clear();
+    eventService.save(event);
+    return event;
   }
 }
