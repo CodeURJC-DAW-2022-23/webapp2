@@ -82,7 +82,7 @@ public class EventController {
   public ModelAndView obtainEvent(Model model, @PathVariable long id) {
     e = eventService.findById(id).orElseThrow();
     
-		model.addAttribute("asociation", e.getAsociation());
+		model.addAttribute("asociation", e.getAsociation().getName());
     model.addAttribute("name", e.getName());
     model.addAttribute("date", e.getDate());
     model.addAttribute("startTime", e.getStartTime());
@@ -152,7 +152,10 @@ public class EventController {
   private void changeEvent(Event newEvent, String asociation, String name, Date date, String month, String description, 
     String location, String campus, boolean credits, boolean booking, String duration, 
     Blob imgUrl, String startTime, String endTime) {
-      newEvent.setAsociation(asociationService.findByName(asociation).get());;
+      if(asociationService.findByName(asociation).isPresent())
+        newEvent.setAsociation(asociationService.findByName(asociation).get());
+      else
+        newEvent.setAsociation(asociationService.findAll().get(0));
       newEvent.setName(name);
       newEvent.setCredits(credits);
       newEvent.setBooking(booking);

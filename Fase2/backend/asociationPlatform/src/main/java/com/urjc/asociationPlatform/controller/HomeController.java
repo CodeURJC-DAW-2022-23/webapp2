@@ -50,7 +50,7 @@ public class HomeController {
     User currentUser;
     private List<Asociation> asociations;
     private List<String> asoValues=new ArrayList<>();
-    private List<String> asoContenet=new ArrayList<>();
+    private List<String> asoContent=new ArrayList<>();
 
     @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -88,8 +88,18 @@ public class HomeController {
             model.addAttribute("eventsMore",events);
             //model.addAttribute("asociations",getAsociations(events));
         }
-        
-        if(asociations==null){
+        asociations = asociationService.findAll();
+        asoValues.clear();
+        asoContent.clear();   
+        asoValues.add("");
+        asoValues.add("All");
+        asoContent.add("Asociación");
+        asoContent.add("Todas");
+        for(int i=0;i<asociations.size();i++){
+            asoValues.add(asociations.get(i).getName());
+            asoContent.add(asociations.get(i).getName());
+        }
+        /*if(asociations==null){
             asociations = asociationService.findAll();
            
             asoValues.add("");
@@ -100,7 +110,7 @@ public class HomeController {
                 asoValues.add(asociations.get(i).getName());
                 asoContenet.add(asociations.get(i).getName());
             }
-        }
+        }*/
         
 
         generateFiltersOptions(model);
@@ -175,7 +185,7 @@ public class HomeController {
             Map<String, Object> option = new HashMap<>();
             option.put("value", asoValues.get(i).toString());
             option.put("selected", asoValues.get(i).equals(asociation));
-            option.put("content", asoContenet.get(i));
+            option.put("content", asoContent.get(i));
             asoL.add(option);
         }
         model.addAttribute("asoValues", asoL);
