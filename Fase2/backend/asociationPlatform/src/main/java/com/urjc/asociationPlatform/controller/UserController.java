@@ -61,6 +61,7 @@ public class UserController {
     @GetMapping("/admin/editarUsuarios")
     public String listaUsuarios(Model model){
         List<User> userlist = userService.findAll();
+		userlist.remove(currentUser);
         model.addAttribute("userlist", userlist);
         return "users"; 
     }
