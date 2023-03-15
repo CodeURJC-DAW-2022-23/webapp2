@@ -65,6 +65,10 @@ public class User {
         return this.favoritos;
     }
 
+    public boolean isInFavorites(Event event){
+        return this.favoritos.contains(event);
+    }
+
     public void setFavoritos(List<Event> favoritos){
         this.favoritos = favoritos;
     }

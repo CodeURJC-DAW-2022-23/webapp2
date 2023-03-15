@@ -27,8 +27,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -36,7 +38,13 @@ import com.urjc.asociationPlatform.service.UserService;
 public class EditEventAssoController {
 
   @Autowired
+  private UserService userService;
+
+  @Autowired
   private EventService eventService;
+
+  @Autowired
+  private CommentService commentService;
 
   User currentUser;
   Optional<Event> event;
@@ -121,7 +129,13 @@ public class EditEventAssoController {
   }
   
   @GetMapping("/aso/deleteEvent/{id}")
+  /*public String deleteEvent(@PathVariable long id) {
+    eventService.deleteById(id);
+    return "redirect:/aso/eventManagerAso";
+  }*/
   public String deleteEvent(@PathVariable long id) {
+    Event event = eventService.findById(id).orElseThrow();
+    event = clearEvent(event);
     eventService.deleteById(id);
     return "redirect:/aso/eventManagerAso";
   }
@@ -148,5 +162,25 @@ public class EditEventAssoController {
       newEvent.setMonth(month);
       newEvent.setStartTime(startTime);
       newEvent.setEndTime(endTime);
+  }
+
+  private Event clearEvent(Event event){
+    List<User> users = userService.findAll();
+    for(User user:users){
+      if(user.isInFavorites(event)){
+        user.removeFavoritos(event);
+        userService.save(user);
+      }
+        
+    }
+    List<Comment> comments=event.getComments();
+    for(Comment comment:comments){
+      comment.clear();
+      commentService.save(comment);
+      commentService.deleteById(comment.getId());
+    }
+    event.clear();
+    eventService.save(event);
+    return event;
   }
 }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Blob;
@@ -25,8 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.urjc.asociationPlatform.service.AsociationService;
+import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
+import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 
@@ -43,6 +46,9 @@ public class EventController {
 
     @Autowired
     AsociationService asociationService;
+
+    @Autowired
+    CommentService commentService;
 
     User currentUser;
 
@@ -76,7 +82,7 @@ public class EventController {
   public ModelAndView obtainEvent(Model model, @PathVariable long id) {
     e = eventService.findById(id).orElseThrow();
     
-		model.addAttribute("asociation", e.getAsociation());
+		model.addAttribute("asociation", e.getAsociation().getName());
     model.addAttribute("name", e.getName());
     model.addAttribute("date", e.getDate());
     model.addAttribute("startTime", e.getStartTime());
@@ -146,7 +152,10 @@ public class EventController {
   private void changeEvent(Event newEvent, String asociation, String name, Date date, String month, String description, 
     String location, String campus, boolean credits, boolean booking, String duration, 
     Blob imgUrl, String startTime, String endTime) {
-      newEvent.setAsociation(asociationService.findByName(asociation).get());;
+      if(asociationService.findByName(asociation).isPresent())
+        newEvent.setAsociation(asociationService.findByName(asociation).get());
+      else
+        newEvent.setAsociation(asociationService.findAll().get(0));
       newEvent.setName(name);
       newEvent.setCredits(credits);
       newEvent.setBooking(booking);
@@ -162,17 +171,37 @@ public class EventController {
   }
 
 	@PostMapping("/admin/editarEventos/{id}/delete")
-	public String deleteProfile(Model model, Event newEvent,@PathVariable long id){
-
-		eventService.deleteById(id);
-
-		return "redirect:/admin/editarEventos";
-	}
+  public String deleteEvent(@PathVariable long id) {
+    Event event = eventService.findById(id).orElseThrow();
+    event = clearEvent(event);
+    eventService.deleteById(id);
+    return "redirect:/admin/editarEventos";
+  }
 
   public Blob getBlob(MultipartFile file) throws SQLException, IOException {
     Blob myBlob;
     byte[] bytes = file.getBytes();
     myBlob = new SerialBlob(bytes);
     return myBlob;
+  }
+
+  private Event clearEvent(Event event){
+    List<User> users = userService.findAll();
+    for(User user:users){
+      if(user.isInFavorites(event)){
+        user.removeFavoritos(event);
+        userService.save(user);
+      }
+        
+    }
+    List<Comment> comments=event.getComments();
+    for(Comment comment:comments){
+      comment.clear();
+      commentService.save(comment);
+      commentService.deleteById(comment.getId());
+    }
+    event.clear();
+    eventService.save(event);
+    return event;
   }
 }
