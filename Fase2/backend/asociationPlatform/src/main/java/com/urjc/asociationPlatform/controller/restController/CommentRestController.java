@@ -23,51 +23,15 @@ import com.urjc.asociationPlatform.service.EventService;
 public class CommentRestController {
     @Autowired
     private CommentService commentService;
-
-    @Autowired
-	private EventService eventService;
-
-    @GetMapping("/")
-	public ResponseEntity<Algo> funcion(HttpServletRequest request) {
-		Optional<User> currentUser = userService.findByMail(request.getUserPrincipal().getName());
-		if (currentUser.isPresent()) {
-			
-			return new ResponseEntity<>(userProfile, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-    /* click comentario */
-    /* 
-    @PostMapping("/crearComentario/{id}")
-	public String addComment(Model model, Comment newComent, @PathVariable long id, HttpServletRequest request){
-
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Review> getComment(@PathVariable long id) {
         
-        Principal principal = request.getUserPrincipal();
-
-        if(principal != null){
-            String fecha = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
-                    .format(LocalDateTime.now());
-            newComent.setTime(fecha.toString());
-
-            newComent.setCommentUser(principal.getName());
-            
-            commentService.save(newComent);
-            
-            Event event = eventService.findById(id).orElseThrow();
-            event.addComment(newComent);
-            eventService.save(event);
-
-            return "redirect:/infoEvento/{id}";
+        Optional<Comment> comment = commentService.findById(id);
+        if (comment.isPresent()) {
+            return new ResponseEntity<>(comment.get(), HttpStatus.OK);
         } else {
-            return "/login";
-        } 
-		
-	}
-
-    @PostMapping("/admin/editarComentarios/{id}/delete")
-	public String deleteComment(Model model, Comment newComent,@PathVariable long id){
-		commentService.deleteById(id);
-		return "redirect:/";
-	}*/
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
