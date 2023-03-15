@@ -230,10 +230,22 @@ public class Event {
             removeComment(comment);
         }
     }
-    private void clearLikes(){
-        Iterator it= likeList.iterator();
-        while(it.hasNext()){
-
+    public void clear() {
+        likeList.clear();
+        dislikeList.clear();
+    }
+    public List<Comment> deleteUserReferences(User user) {
+        if(likeList.contains(user))
+            removeLike(user);
+        if(dislikeList.contains(user))
+            removeDislike(user);
+        List<Comment> output = new ArrayList<>();
+        for(Comment comment:comments){
+            if(comment.isUserInFavorites(user)){
+                comment.removeFavorites(user);
+                output.add(comment);
+            } 
         }
+        return output;
     }
 }

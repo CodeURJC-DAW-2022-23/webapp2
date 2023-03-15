@@ -58,8 +58,8 @@ public class EventService {
 	}
 
     public void deleteById(long id){
-        Event event= eventRepository.findById(id).orElseThrow();
-        event.clearComments();
+        /*Event event= eventRepository.findById(id).orElseThrow();
+        event.clearComments();*/
 		eventRepository.deleteById(id);
 	}
 

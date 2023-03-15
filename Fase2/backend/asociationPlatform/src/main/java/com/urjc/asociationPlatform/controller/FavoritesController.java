@@ -27,6 +27,7 @@ public class FavoritesController {
     @Autowired
 	private UserService userService;
     User currentUser;
+    User modUser;
 
     @Autowired
 	private EventService eventService;
@@ -37,8 +38,9 @@ public class FavoritesController {
 	    Principal principal = request.getUserPrincipal();
 
 	 	if(principal != null) {
-            System.out.println(principal.getName());
+            System.out.println("\n"+principal.getName()+"\n");
             userService.findByUsername(principal.getName()).ifPresent(u -> currentUser = u);
+            currentUser = userService.findById(currentUser.getId()).get();
             model.addAttribute("user", currentUser);
             model.addAttribute("favoritesList", currentUser.getFavoritos());
 	 	}
@@ -123,6 +125,7 @@ public class FavoritesController {
 
     @GetMapping("/miCuenta/favoritos")
     public String showFavorites(Model model){
+
         return "favorites";
     }
 

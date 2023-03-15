@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.urjc.asociationPlatform.model.Asociation;
+import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.AsociationService;
+import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
@@ -43,6 +45,8 @@ public class AdminUserController {
 	UserService userService;
 	@Autowired
 	EventService eventService;
+	@Autowired
+	CommentService commentService;
 
 	User currentUser;
 	Boolean isAsociation = false;
@@ -103,6 +107,7 @@ public class AdminUserController {
 			Asociation aso= asoService.findById(id).orElseThrow();
 			List<Event> events= eventService.findAllbyAsociation(aso);
 			for(Event event : events){
+				event = clearEvent(event);
 				eventService.deleteById(event.getId());
 			}
 			asoService.deleteById(id);
@@ -122,5 +127,25 @@ public class AdminUserController {
 			list.add(option);
 		}
 		return list;
+	}
+
+	private Event clearEvent(Event event){
+		List<User> users = userService.findAll();
+		for(User user:users){
+		  if(user.isInFavorites(event)){
+			user.removeFavoritos(event);
+			userService.save(user);
+		  }
+			
+		}
+		List<Comment> comments=event.getComments();
+		for(Comment comment:comments){
+		  comment.clear();
+		  commentService.save(comment);
+		  commentService.deleteById(comment.getId());
+		}
+		event.clear();
+		eventService.save(event);
+		return event;
 	}
 }
