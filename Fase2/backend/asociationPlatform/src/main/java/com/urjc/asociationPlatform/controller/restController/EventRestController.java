@@ -33,7 +33,7 @@ public class EventRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/seach")
+    @GetMapping("/filters")
     public ResponseEntity<List<Event>> seachFilters(String name, String month, String campus, String asociation, int page){
         page=page*6;
         List<Event> events = eventService.getEventsByFilters(name,month,campus,asociation,page);
