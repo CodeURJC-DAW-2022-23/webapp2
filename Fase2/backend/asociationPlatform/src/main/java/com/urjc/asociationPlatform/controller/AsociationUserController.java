@@ -28,15 +28,15 @@ import java.security.Principal;
 @Controller
 public class AsociationUserController {
 
-    @Autowired
-    AsociationService asoService;
+  @Autowired
+  AsociationService asoService;
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    User currentUser;
+  User currentUser;
 
-    @ModelAttribute
+  @ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
 
 	    Principal principal = request.getUserPrincipal();
