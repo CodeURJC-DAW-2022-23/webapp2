@@ -16,6 +16,7 @@ import com.urjc.asociationPlatform.security.jwt.LoginRequest;
 import com.urjc.asociationPlatform.security.jwt.UserLoginService;
 import com.urjc.asociationPlatform.security.jwt.AuthResponse.Status;
 
+@RestController
 @RequestMapping("/api/auth")
 public class LoginRestController {
     @Autowired
