@@ -15,8 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.urjc.asociationPlatform.model.User;
@@ -98,6 +100,17 @@ public class UserRestController {
         }
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    //register
+    @PostMapping("/")
+    public ResponseEntity<User> register(@RequestParam String email,@RequestParam String name,@RequestParam String password,@RequestParam String rol){
+        if(!userService.existUsername(name) && !userService.existEmail(email)){
+            User user;
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     //change my password
