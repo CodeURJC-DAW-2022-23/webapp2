@@ -1,4 +1,4 @@
-package main.java.com.urjc.asociationPlatform.controller.restController;
+package com.urjc.asociationPlatform.controller.restController;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
