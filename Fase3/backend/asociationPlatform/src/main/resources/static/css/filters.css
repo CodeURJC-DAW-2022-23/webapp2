@@ -1,0 +1,93 @@
+.filters-container {
+    /* height: auto; */
+    position: absolute;
+    width   : 100%;
+
+}
+
+.filter {
+    position       : relative;
+    top            : -25px;
+    z-index        : 100;
+    margin         : 0 auto;
+    width          : 80%;
+    height         : 50px;
+    justify-content: center;
+    display        : flex;
+    flex-wrap      : nowrap;
+}
+
+.select-container {
+    width           : 28%;
+    margin          : 0 2px;
+    padding-right   : 10px;
+    box-shadow      : 0 4px 5px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    border-radius   : 3px;
+}
+
+.custom-select {
+    display         : inline-block;
+    width           : 100%;
+    height          : 2.3em;
+    padding         : .375rem .75rem;
+    margin-top      : 6px;
+    font-size       : 17px;
+    color           : #5a6674;
+    vertical-align  : middle;
+    background-color: #fff;
+    border          : none;
+    word-wrap       : none;
+
+}
+
+.boton {
+    width              : 54px;
+    /* height          : 50px; */
+    margin             : 0 12px;
+    padding-top: 4px;
+    padding-right      : 3px;
+    box-shadow         : 0 4px 5px rgba(0, 0, 0, 0.15);
+    background-color   : #fff;
+    /* background-color: red; */
+    border-radius      : 3px;
+    cursor: pointer;
+    transition   : all .25s ease;
+    outline      : none;
+    text-align: center;
+}
+
+.boton:hover {
+    /* transform : translate(0, 2px); */
+    transform: scale(.95);
+    box-shadow         : 2px 6px 7px rgba(0, 0, 0, 0.15);
+}
+
+.boton i{
+    font-size: 1.6rem;
+    color:red;
+    /* color: #fff; */
+    padding: 10px;
+}
+
+/**
+.more_events_div{
+    display: flex; 
+    justify-content: center;
+    margin-bottom: 25px;
+}
+button{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    width: 100px;
+    height: 50px;
+    color: white;
+}
+button.more_events_button{
+  
+    background-color: red;
+   
+}
