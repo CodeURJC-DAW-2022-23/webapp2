@@ -39,6 +39,12 @@ import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserRestController {
@@ -60,6 +66,15 @@ public class UserRestController {
     @Autowired
     private CommentService commentService;
 
+    @Operation(summary = "Get a user by admin")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "user found",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),        
+        @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
+            
+    })
     @GetMapping("/admin/{id}")
 	public ResponseEntity<User> getProfile(@PathVariable long id,HttpServletRequest request) {
         if(userService.findById(id).isPresent()){
@@ -75,6 +90,13 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @Operation(summary = "Get current user")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "user found",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content)
+            
+    })
     @GetMapping("/me")
     public ResponseEntity<User> me(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -86,7 +108,13 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    //modify my user
+    @Operation(summary = "Modify current user")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "user modified sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content)
+            
+    })
     @PatchMapping("/me")
     public ResponseEntity<User> modifyUser(@RequestParam String newName, @RequestParam String newEmail, HttpServletRequest request) throws IOException, SQLException {
         Principal principal = request.getUserPrincipal();
@@ -101,7 +129,16 @@ public class UserRestController {
      
     }
 
-    //admin modify
+    @Operation(summary = "Modify user by admin")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "user modified sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+        @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enough privileges or admin is modifying itself", content = @Content),
+        @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
+            
+    })
     @PatchMapping("/admin/{id}")
     public ResponseEntity<User> modifyUserbyAdmin(@PathVariable long id, @RequestParam String newName, @RequestParam String newEmail, @RequestParam String newRol, HttpServletRequest request) throws IOException, SQLException {
         if(userService.findById(id).isPresent()){
@@ -125,7 +162,14 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    //register
+    @Operation(summary = "Register a user")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "user created sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+        @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "403", description = "existing user or wrong role", content = @Content)
+            
+    })
     @PostMapping("/")
     public ResponseEntity<User> register(@RequestBody User user){
         if(!userService.existUsername(user.getUsername()) && !userService.existEmail(user.getEmail())){
@@ -153,37 +197,15 @@ public class UserRestController {
         else
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
-    /* 
-    public ResponseEntity<User> register(@RequestParam String email,@RequestParam String name,@RequestParam String password,@RequestParam String rol){
-        if(!userService.existUsername(name) && !userService.existEmail(email)){
-            User user = new User(email,name,passwordEncoder.encode(password));
-            user.setRol(rol);
-            if(user.getRol().equals("ASO")){
 
-                EmailDetails emailDetails = new EmailDetails();
-                emailDetails.adminMode(user.getUsername(), user.getEmail());
-
-                emailService.sendSimpleMail(emailDetails);
-            }else if(user.getRol().equals("BASE")){
-
-                user.setValidated(true);
-            }
-            else{
-                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-            }
-            userService.save(user);
-            URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/admin/{id}")
-                .buildAndExpand(user.getId())
-                .toUri();
-                return ResponseEntity.created(location).build();
-        }
-        else
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-    }*/
-
-    //change my password
+    @Operation(summary = "Modify my password")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "password modified sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "403", description = "wrong password", content = @Content)
+            
+    })
     @PatchMapping("/me/password")
     public ResponseEntity<User> modifyMyPassWord(@RequestBody ChangePassword password, HttpServletRequest request) throws IOException, SQLException {
         Principal principal = request.getUserPrincipal();
@@ -200,7 +222,16 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    //delete user
+    @Operation(summary = "Delete user by admin")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "user deleted sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+        @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enough privileges or admin is deleting itself", content = @Content),
+        @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
+            
+    })
     @DeleteMapping("/admin/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable long id,HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
@@ -231,7 +262,7 @@ public class UserRestController {
                         userService.deleteById(id);
                     }
 
-                    return new ResponseEntity<>(HttpStatus.OK);
+                    return new ResponseEntity<>(user,HttpStatus.OK);
                 }
                 else
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -254,7 +285,15 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }*/
 
-    @PostMapping("/me/favorites/{id}")
+    @Operation(summary = "Add event to current user's favorites")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "event added sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "400", description = "invalid event id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
     private ResponseEntity<Event> addFavorites(@PathVariable long id, HttpServletRequest request){
         if(request.getUserPrincipal() != null){
                 User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
@@ -273,6 +312,15 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @Operation(summary = "Remove event from current user's favorites")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "event removed sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "400", description = "invalid event id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
     @DeleteMapping("/me/favorites/{id}")
     private ResponseEntity<Event> removeFavorites(@PathVariable long id, HttpServletRequest request){
         if(request.getUserPrincipal() != null){
