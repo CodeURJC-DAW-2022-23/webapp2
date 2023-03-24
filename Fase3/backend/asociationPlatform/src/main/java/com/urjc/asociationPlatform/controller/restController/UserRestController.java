@@ -102,7 +102,7 @@ public class UserRestController {
             User user = userService.findById(id).get();
             try{
                 User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
-                if (userPrincipal != user) {
+                if (userPrincipal.getId() != user.getId()) {
                     user.setUsername(newName);
                     user.setEmail(newEmail);
                     user.setRol(newRol);
@@ -150,7 +150,7 @@ public class UserRestController {
     public ResponseEntity<User> modifyMyPassWord(@RequestParam String oldPassword, @RequestParam String newPassword, HttpServletRequest request) throws IOException, SQLException {
         try{
             User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
-            if(passwordEncoder.matches(userPrincipal.getencodedPassword(), oldPassword)){
+            if(passwordEncoder.matches(oldPassword,userPrincipal.getencodedPassword())){
                 userPrincipal.setencodedPassword(passwordEncoder.encode(newPassword));
                 userService.save(userPrincipal);
                 return new ResponseEntity<>(userPrincipal, HttpStatus.OK);
@@ -165,7 +165,8 @@ public class UserRestController {
     //delete user
     @DeleteMapping("/admin/{id}/delete")
     public ResponseEntity<User> deleteUser(@PathVariable long id,HttpServletRequest request){
-        try{
+        Principal principal = request.getUserPrincipal();
+        if(principal != null){
             User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
             try{
                 User user = userService.findById(id).orElseThrow();
@@ -199,10 +200,12 @@ public class UserRestController {
             }catch (NoSuchElementException e){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-        }catch (NoSuchElementException e){
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+        else
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
+    //private ResponseEntity<List<Event>>
 
     private Event clearEvent(Event event){
 		List<User> users = userService.findAll();
