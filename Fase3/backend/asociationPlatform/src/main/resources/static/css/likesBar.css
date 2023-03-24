@@ -1,0 +1,49 @@
+#likeArea{
+	height:5px;
+	width:50%;
+	background:#12df0b;
+	float:left;
+}
+#dislikeArea{
+	height:5px;
+	width:50%;
+	background:#d41212;
+	float:right;
+}
+
+#bar{
+	margin:0 auto;
+	width:100%;
+}
+
+#puntuation{
+	width:1000px;
+	margin: 0 auto; /*centers the website*/
+}
+
+.barLikes{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.barLikes .like{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 10%;
+	
+}
+
+.barLikes .dislike{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 10%;
+}
+
+.barLikes .barGraph{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+}
