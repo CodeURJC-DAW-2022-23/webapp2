@@ -9,7 +9,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.urjc.asociationPlatform.service.AsociationService;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,29 +18,6 @@ import java.util.Set;
 
 @Entity
 public class Event {
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Event other = (Event) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="Id")
@@ -55,7 +31,6 @@ public class Event {
     private String description;
     private String location;
     @ManyToOne ()
-    @JsonIgnore
     //@OnDelete(action = OnDeleteAction.CASCADE)
     private Asociation asociation;
     private String campus;
@@ -65,17 +40,13 @@ public class Event {
     private String endTime;
     private String duration;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
-    @JsonIgnore
     @ManyToMany()
     private Set<User> likeList = new HashSet<>();
-    @JsonIgnore
     @ManyToMany()
     private Set<User> dislikeList = new HashSet<>();
 
-    @JsonIgnore
     @Lob
     private Blob image;
 
@@ -148,7 +119,9 @@ public class Event {
         return date;
     }
     
-    
+    public String getDateString(){
+        return date.toString();
+    }
 
     public void setDate(Date date) {
         this.date = date;
@@ -175,9 +148,6 @@ public class Event {
     public Asociation getAsociation() {
         return asociation;
     }
-    public String getAsociationName(){
-        return asociation.getName();
-    }
     public void setAsociation(Asociation asociation) {
         this.asociation = asociation;
     }
@@ -193,14 +163,24 @@ public class Event {
     public void setCredits(boolean credits) {
         this.credits = credits;
     }
-    
+    public String getCreditsString(){
+        if(credits){
+            return "Si";
+        }
+        return "No";
+    }
     public boolean getBooking() {
         return booking;
     }
     public void setBooking(boolean booking) {
         this.booking = booking;
     }
-    
+    public String getBookingString(){
+        if(booking){
+            return "Si";
+        }
+        return "No";
+    }
     public String getStartTime(){
         return startTime;
     }
