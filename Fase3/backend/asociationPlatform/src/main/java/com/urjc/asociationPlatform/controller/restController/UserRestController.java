@@ -3,6 +3,7 @@ package com.urjc.asociationPlatform.controller.restController;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -78,21 +79,22 @@ public class UserRestController {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     //modify my user
     @PatchMapping("/me")
     public ResponseEntity<User> modifyUser(@RequestParam String newName, @RequestParam String newEmail, HttpServletRequest request) throws IOException, SQLException {
-            try{
-                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
-                userPrincipal.setUsername(newName);
-                userPrincipal.setEmail(newEmail);
-                userService.save(userPrincipal);
-                return new ResponseEntity<>(userPrincipal, HttpStatus.OK);
-            }catch (NoSuchElementException e){
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-            }
+        Principal principal = request.getUserPrincipal();
+        if(principal != null){
+            User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
+            userPrincipal.setUsername(newName);
+            userPrincipal.setEmail(newEmail);
+            userService.save(userPrincipal);
+            return new ResponseEntity<>(userPrincipal, HttpStatus.OK);
+        }else
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+     
     }
 
     //admin modify
@@ -148,7 +150,8 @@ public class UserRestController {
     //change my password
     @PatchMapping("/me/password")
     public ResponseEntity<User> modifyMyPassWord(@RequestParam String oldPassword, @RequestParam String newPassword, HttpServletRequest request) throws IOException, SQLException {
-        try{
+        Principal principal = request.getUserPrincipal();
+        if(principal != null){
             User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
             if(passwordEncoder.matches(oldPassword,userPrincipal.getencodedPassword())){
                 userPrincipal.setencodedPassword(passwordEncoder.encode(newPassword));
@@ -157,9 +160,8 @@ public class UserRestController {
             }
             else
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }catch (NoSuchElementException e){
+        }else
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
     }
 
     //delete user
@@ -205,7 +207,54 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    //private ResponseEntity<List<Event>>
+    /*@GetMapping("/me/favorites")
+    private ResponseEntity<List<Event>> getFavorites(HttpServletRequest request){
+        if(request.getUserPrincipal() != null){
+                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
+                List<Event> favs = userPrincipal.getFavoritos();
+                return new ResponseEntity<>(favs,HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }*/
+
+    @PostMapping("/me/favorites/{id}")
+    private ResponseEntity<Event> addFavorites(@PathVariable long id, HttpServletRequest request){
+        if(request.getUserPrincipal() != null){
+                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
+                try{
+                    Event event = eventService.findById(id).orElseThrow();
+                    userPrincipal.addFavoritos(event);
+                    userService.save(userPrincipal);
+                    return new ResponseEntity<>(event,HttpStatus.OK);
+                }
+                catch (NoSuchElementException e){
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+                
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+    @DeleteMapping("/me/favorites/{id}")
+    private ResponseEntity<Event> removeFavorites(@PathVariable long id, HttpServletRequest request){
+        if(request.getUserPrincipal() != null){
+                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
+                try{
+                    Event event = eventService.findById(id).orElseThrow();
+                    userPrincipal.removeFavoritos(event);
+                    userService.save(userPrincipal);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                }
+                catch (NoSuchElementException e){
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+                
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }  
 
     private Event clearEvent(Event event){
 		List<User> users = userService.findAll();
