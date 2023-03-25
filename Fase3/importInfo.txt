@@ -1,3 +1,0 @@
-user1:1234
-asociation:1234 (con asociación Id 1)
-admin:1234
