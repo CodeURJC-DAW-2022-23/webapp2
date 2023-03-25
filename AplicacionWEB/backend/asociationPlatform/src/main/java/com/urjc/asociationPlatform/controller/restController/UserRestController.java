@@ -192,7 +192,7 @@ public class UserRestController {
                 .path("/admin/{id}")
                 .buildAndExpand(user.getId())
                 .toUri();
-                return ResponseEntity.created(location).build();
+                return ResponseEntity.created(location).build(); 
         }
         else
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);

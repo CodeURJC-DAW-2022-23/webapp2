@@ -105,7 +105,7 @@ public class EventRestController {
     }
 
     @PostMapping("/new")//tested
-    public ResponseEntity<Event> createEvent(MultipartFile newImage, Event event, HttpServletRequest request) throws SQLException, IOException{
+    public ResponseEntity<Event> createEvent(MultipartFile newImage, Event event, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
         System.out.println(newImage==null);
         event.setImgUrl(getBlob(newImage));
         Principal principal = request.getUserPrincipal();
@@ -126,7 +126,8 @@ public class EventRestController {
                 event.setAsociation(asoOp.get());
             }
             eventService.save(event);
-            return new ResponseEntity<>(event,HttpStatus.CREATED);
+            URI location = new URI("https://127.0.0.1:8443/api/events/"+event.getId());
+            return ResponseEntity.created(location).body(event);
         }else if(user.getRol().equals("ADMIN")){
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
@@ -192,13 +193,11 @@ public class EventRestController {
             }
             event.setImgUrl(getBlob(newImage));
             eventService.save(event);
-            URI location = new URI("https://127.0.0.1:8443/api/events/image/"+id);
-            return ResponseEntity.created(location).body(null);
+            return new ResponseEntity<>(HttpStatus.OK);
         }else if(user.getRol().equals("ADMIN")){
             event.setImgUrl(getBlob(newImage));
             eventService.save(event);
-            URI location = new URI("https://127.0.0.1:8443/api/events/image/"+id);
-            return ResponseEntity.created(location).body(null);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         
