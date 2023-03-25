@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.model.Event;
+import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.EventService;
+import com.urjc.asociationPlatform.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -38,6 +40,9 @@ public class CommentRestController {
 
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private UserService userService;
     
     
     @Operation(summary = "Get Comment")
@@ -111,12 +116,18 @@ public class CommentRestController {
     })
 
     @DeleteMapping("/{id}")//tested
-	public ResponseEntity<Comment> deleteComment(@PathVariable long id){
-        try {
+	public ResponseEntity<Comment> deleteComment(@PathVariable long id, HttpServletRequest request){
+        Principal principal = request.getUserPrincipal();
+        User user = userService.findByUsername(principal.getName()).orElseThrow();
+        System.out.println(user.getRol());
+        if(!user.getRol().equals("ADMIN")){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        if(commentService.findById(id).isPresent()){
             commentService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 }
