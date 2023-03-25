@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +51,7 @@ public class CommentRestController {
             
     })
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")//tested
     public ResponseEntity<Comment> getComment(@PathVariable long id) {
         
         Optional<Comment> comment = commentService.findById(id);
@@ -72,9 +73,9 @@ public class CommentRestController {
             
     })
 
-    @PostMapping("/crearComentario/{id}")
-	public ResponseEntity<Comment> postComment(Model model, @RequestParam Comment newComent, @PathVariable long id, HttpServletRequest request){
-
+    @PostMapping("/new/{id}")//tested
+	public ResponseEntity<Comment> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request){
+        System.out.println("crear");
         Principal principal = request.getUserPrincipal();
 
         if(principal != null){
@@ -88,7 +89,7 @@ public class CommentRestController {
                 event.addComment(newComent);
                 eventService.save(event);
 
-                return new ResponseEntity<>(HttpStatus.OK);
+                return new ResponseEntity<>(newComent, HttpStatus.OK);
             } catch (NoSuchElementException e) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
@@ -109,8 +110,8 @@ public class CommentRestController {
             
     })
 
-    @PostMapping("/admin/editarComentarios/{id}/delete")
-	public ResponseEntity<Comment> deleteComment(Model model,@RequestParam Comment newComent, @PathVariable long id){
+    @DeleteMapping("/{id}")//tested
+	public ResponseEntity<Comment> deleteComment(@PathVariable long id){
         try {
             commentService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
