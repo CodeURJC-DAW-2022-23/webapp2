@@ -11,12 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.service.CommentService;
 
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping("/api/comments")
 public class CommentRestController {
     @Autowired
     private CommentService commentService;
-    /* 
+    
     @Operation(summary = "Get Comment")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "comment obtained sucessfully",content = {
@@ -26,7 +33,8 @@ public class CommentRestController {
         @ApiResponse(responseCode = "403", description = "not enough privileges or admin is modifying itself", content = @Content),
         @ApiResponse(responseCode = "404", description = "comment not found", content = @Content)
             
-    })*/
+    })
+
     @GetMapping("/{id}")
     public ResponseEntity<Comment> getComment(@PathVariable long id) {
         
