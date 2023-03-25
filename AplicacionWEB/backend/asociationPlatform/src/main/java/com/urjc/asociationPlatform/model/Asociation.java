@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.urjc.asociationPlatform.repository.UserRepository;
 import com.urjc.asociationPlatform.service.EventService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Asociation {
@@ -28,6 +29,7 @@ public class Asociation {
     private String campus;
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    //@JsonIgnore
     private User owner;
 
     
@@ -110,5 +112,8 @@ public class Asociation {
 
     public User getOwner() {
         return this.owner;
+    }
+    public long getOwnerId(){
+        return this.owner.getId();
     }
 }

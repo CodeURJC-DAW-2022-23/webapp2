@@ -136,7 +136,11 @@ public class EventRestController {
     @PutMapping("/{id}")//testeado
     public ResponseEntity<Event> editEvent(@PathVariable long id, Event event, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
-        Event eventDB=eventService.findById(id).orElseThrow();
+        Optional<Event> eventDBOp=eventService.findById(id);
+        if(eventDBOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event eventDB=eventDBOp.get();
         event.setAsociation(eventDB.getAsociation());
         if(principal==null){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -211,7 +215,6 @@ public class EventRestController {
         }
         Event event = eventOp.get();
         Resource image=getFile(event.getImage());
-        System.out.println("length: "+image.contentLength());
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").contentLength(image.contentLength()).body(image);
     }
 
@@ -226,7 +229,6 @@ public class EventRestController {
 
         byte[] data;
         Resource resource = null;
-        System.out.println("length1: "+image.length());
         data = image.getBytes(1, (int)image.length());
         resource = new ByteArrayResource(data);
         return resource;
