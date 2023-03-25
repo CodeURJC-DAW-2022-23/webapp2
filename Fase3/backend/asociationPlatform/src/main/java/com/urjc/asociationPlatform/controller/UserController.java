@@ -109,7 +109,7 @@ public class UserController {
 	}
 
 	@PostMapping("/admin/editarUsuarios/{id}/delete")
-	public String deleteProfile(Model model, User newUser,@PathVariable long id){
+	public String deleteProfile(Model model,@PathVariable long id){
 		try { User user = userService.findById(id).orElseThrow();
 			List<Event> events= eventService.findAll();
 			for(Event event:events){

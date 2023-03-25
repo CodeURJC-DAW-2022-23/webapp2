@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -28,6 +29,7 @@ public class CommentController {
     @PostMapping("/crearComentario/{id}")
 	public String addComment(Model model, Comment newComent, @PathVariable long id, HttpServletRequest request){
 
+        
         Principal principal = request.getUserPrincipal();
 
         if(principal != null){
