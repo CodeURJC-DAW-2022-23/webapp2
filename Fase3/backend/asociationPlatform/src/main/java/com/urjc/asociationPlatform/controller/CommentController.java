@@ -28,7 +28,6 @@ public class CommentController {
     @PostMapping("/crearComentario/{id}")
 	public String addComment(Model model, Comment newComent, @PathVariable long id, HttpServletRequest request){
 
-        
         Principal principal = request.getUserPrincipal();
 
         if(principal != null){

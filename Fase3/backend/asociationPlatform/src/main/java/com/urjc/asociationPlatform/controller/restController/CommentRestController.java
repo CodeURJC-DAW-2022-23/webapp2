@@ -16,7 +16,17 @@ import com.urjc.asociationPlatform.service.CommentService;
 public class CommentRestController {
     @Autowired
     private CommentService commentService;
-    
+    /* 
+    @Operation(summary = "Get Comment")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "comment obtained sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Comment.class))}),
+        @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "comment is not created", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enough privileges or admin is modifying itself", content = @Content),
+        @ApiResponse(responseCode = "404", description = "comment not found", content = @Content)
+            
+    })*/
     @GetMapping("/{id}")
     public ResponseEntity<Comment> getComment(@PathVariable long id) {
         
@@ -29,5 +39,5 @@ public class CommentRestController {
     }
 
     //añadir comentario
-    //añadir likes
+    //borrar
 }
