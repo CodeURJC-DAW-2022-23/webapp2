@@ -307,3 +307,33 @@ Por último, ha sido el principal responsable de implementar el servidor MySQL t
 | 3 | AsociationUserController.java	|  
 |	4 | Event.java |  
 | 5	| myAso.html | 
+
+## Fase 3: 
+
+### Participación de miembros
+
+**Daniel Pérez Moraleda:**
+
+- Tareas realizadas: 
+
+Ha implementado el sistema de seguridad y login para API rest, además de crear el controlador API REST para el usuario.
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	| Implementación de un body para el cambio de contraseñas. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/4e052cd94836df1735a1b9a0dd8dff1871fdd57f |
+| 2	| Añadir y quitar favoritos de un usuario. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/78ac97c7b089d583e295fa2c75544cfe6b4c32c1 |
+| 3 | Implementación de las seguridad para API REST + login. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/01f005dbe299af72443cec443285b4b5a29d1b2e |
+| 4 | Modificación de usuarios desde API REST. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/774a7fd6515311a5adb21e88fbc2c0264da9de32 |
+| 5	| Se añaden varios métodos al controlador de usuario de la API REST. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/32a4a66e1999affca2c0dbdb0c5e0ea1a25bcc23 |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	| ChangePassword.java	|
+| 2	| UserRestController.java |
+| 3 | LoginRestController.java	|  
+| 4 | RestSecurityConfig.java |  
+| 5	| LoginRequest.java | 
