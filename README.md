@@ -308,7 +308,7 @@ Por último, ha sido el principal responsable de implementar el servidor MySQL t
 |	4 | Event.java |  
 | 5	| myAso.html | 
 
-## Fase 2: 
+## Fase 3: 
 
 ### Participación de miembros
 
