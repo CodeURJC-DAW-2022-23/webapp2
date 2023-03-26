@@ -307,3 +307,33 @@ Por último, ha sido el principal responsable de implementar el servidor MySQL t
 | 3 | AsociationUserController.java	|  
 |	4 | Event.java |  
 | 5	| myAso.html | 
+
+## Fase 2: 
+
+### Participación de miembros
+
+**Daniel Pérez Moraleda:**
+
+- Tareas realizadas: 
+
+Ha implementado el sistema de seguridad y login para API rest, además de crear el controlador API REST para el usuario.
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	| Principal implementación de la relación directa entre las clases "evento" y "asociación". | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/ade271c2f431b9546f164eee1c766eb02d3e2368 |
+| 2	| Se implementa el sistema de "me gusta" en los comentarios. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/c72fae0dc3f9ae8bc30bd6ef1f7fd40564732ac3 |
+| 3 | Se implementa la barra de "me gusta" en eventos junto con su sistema funcional. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b849e9f0359c88aa0becfd077efae9a6015983f4 |
+| 4 | Commit principal en la gestión de una asociación por parte del administrador. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b0df8d86fc11290823e384611d14099e51764c9e |
+| 5	| Commit principal en la gestión de una asociación por parte del usuario asociación. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/23e34faab57440016ca7a6cbc28b6b4c6f1ce6fb |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	| ChangePassword.java	|
+| 2	| UserRestController.java |
+| 3 | LoginRestController.java	|  
+| 4 | RestSecurityConfig.java |  
+| 5	| myAso.html | 
