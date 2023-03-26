@@ -322,11 +322,11 @@ Ha implementado el sistema de seguridad y login para API rest, además de crear 
 
 | Commit | Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	| Principal implementación de la relación directa entre las clases "evento" y "asociación". | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/ade271c2f431b9546f164eee1c766eb02d3e2368 |
-| 2	| Se implementa el sistema de "me gusta" en los comentarios. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/c72fae0dc3f9ae8bc30bd6ef1f7fd40564732ac3 |
-| 3 | Se implementa la barra de "me gusta" en eventos junto con su sistema funcional. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b849e9f0359c88aa0becfd077efae9a6015983f4 |
-| 4 | Commit principal en la gestión de una asociación por parte del administrador. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b0df8d86fc11290823e384611d14099e51764c9e |
-| 5	| Commit principal en la gestión de una asociación por parte del usuario asociación. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/23e34faab57440016ca7a6cbc28b6b4c6f1ce6fb |
+| 1	| Implementación de un body para el cambio de contraseñas. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/4e052cd94836df1735a1b9a0dd8dff1871fdd57f |
+| 2	| Añadir y quitar favoritos de un usuario. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/78ac97c7b089d583e295fa2c75544cfe6b4c32c1 |
+| 3 | Implementación de las seguridad para API REST + login. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/01f005dbe299af72443cec443285b4b5a29d1b2e |
+| 4 | Modificación de usuarios desde API REST. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/774a7fd6515311a5adb21e88fbc2c0264da9de32 |
+| 5	| Se añaden varios métodos al controlador de usuario de la API REST. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/32a4a66e1999affca2c0dbdb0c5e0ea1a25bcc23 |
 
 - 5 ficheros que más ha participado: 
 
@@ -336,4 +336,4 @@ Ha implementado el sistema de seguridad y login para API rest, además de crear 
 | 2	| UserRestController.java |
 | 3 | LoginRestController.java	|  
 | 4 | RestSecurityConfig.java |  
-| 5	| myAso.html | 
+| 5	| LoginRequest.java | 
