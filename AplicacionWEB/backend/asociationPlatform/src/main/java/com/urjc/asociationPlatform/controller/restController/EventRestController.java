@@ -41,6 +41,12 @@ import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 
 @RestController
 @RequestMapping("/api/events")
@@ -56,6 +62,13 @@ public class EventRestController {
     private AsociationService asociationService;
 
     
+    @Operation(summary = "Get Event by id")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Event getted succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "404", description = "Event not found", content = @Content)
+            
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Event> getEvent(@PathVariable long id){
         Optional<Event> ev = eventService.findById(id);
@@ -64,13 +77,30 @@ public class EventRestController {
         }
         return new ResponseEntity<>(ev.get(), HttpStatus.OK);
     }
+    @Operation(summary = "Get events using filters")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Events getted succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            
+    })
     @GetMapping("/filters")
     public ResponseEntity<List<Event>> searchFilters(String name, String month, String campus, String asociation, int page){
         page=page*6;
         List<Event> events = eventService.getEventsByFilters(name,month,campus,asociation,page);
         return new ResponseEntity<>(events, HttpStatus.OK);
     }
-    
+
+
+
+    @Operation(summary = "Delete event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "event removed sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
     @DeleteMapping("/{id}")//tested
     public ResponseEntity<Event> deleteEvent(@PathVariable long id, HttpServletRequest request){
         Optional<Event> eventOp = eventService.findById(id);
@@ -103,9 +133,16 @@ public class EventRestController {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
     }
-
+    @Operation(summary = "Create Event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "event created sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
+            
+    })
     @PostMapping("/new")//tested
-    public ResponseEntity<Event> createEvent(MultipartFile newImage, Event event, HttpServletRequest request) throws SQLException, IOException{
+    public ResponseEntity<Event> createEvent(MultipartFile newImage, Event event, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
         System.out.println(newImage==null);
         event.setImgUrl(getBlob(newImage));
         Principal principal = request.getUserPrincipal();
@@ -126,16 +163,30 @@ public class EventRestController {
                 event.setAsociation(asoOp.get());
             }
             eventService.save(event);
-            return new ResponseEntity<>(event,HttpStatus.CREATED);
+            URI location = new URI("https://127.0.0.1:8443/api/events/"+event.getId());
+            return ResponseEntity.created(location).body(event);
         }else if(user.getRol().equals("ADMIN")){
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+    @Operation(summary = "Edit event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "event edited sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
     @PutMapping("/{id}")//testeado
     public ResponseEntity<Event> editEvent(@PathVariable long id, Event event, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
-        Event eventDB=eventService.findById(id).orElseThrow();
+        Optional<Event> eventDBOp=eventService.findById(id);
+        if(eventDBOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event eventDB=eventDBOp.get();
         event.setAsociation(eventDB.getAsociation());
         if(principal==null){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -167,6 +218,15 @@ public class EventRestController {
         
         
     }
+    @Operation(summary = "Change event image")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "event image changed sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
     @PutMapping("/image/{id}")//testado
     public ResponseEntity<Event> setImage(@PathVariable long id, MultipartFile newImage, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
         Optional<Event> eventOp = eventService.findById(id);
@@ -192,18 +252,22 @@ public class EventRestController {
             }
             event.setImgUrl(getBlob(newImage));
             eventService.save(event);
-            URI location = new URI("https://127.0.0.1:8443/api/events/image/"+id);
-            return ResponseEntity.created(location).body(null);
+            return new ResponseEntity<>(HttpStatus.OK);
         }else if(user.getRol().equals("ADMIN")){
             event.setImgUrl(getBlob(newImage));
             eventService.save(event);
-            URI location = new URI("https://127.0.0.1:8443/api/events/image/"+id);
-            return ResponseEntity.created(location).body(null);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         
     }
-
+    @Operation(summary = "Get event image")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "event image getted sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
     @GetMapping("/image/{id}")
     public ResponseEntity<Resource> getImage(@PathVariable long id) throws SQLException, IOException{
         Optional<Event> eventOp = eventService.findById(id);
@@ -212,7 +276,6 @@ public class EventRestController {
         }
         Event event = eventOp.get();
         Resource image=getFile(event.getImage());
-        System.out.println("length: "+image.contentLength());
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").contentLength(image.contentLength()).body(image);
     }
 
@@ -227,7 +290,6 @@ public class EventRestController {
 
         byte[] data;
         Resource resource = null;
-        System.out.println("length1: "+image.length());
         data = image.getBytes(1, (int)image.length());
         resource = new ByteArrayResource(data);
         return resource;

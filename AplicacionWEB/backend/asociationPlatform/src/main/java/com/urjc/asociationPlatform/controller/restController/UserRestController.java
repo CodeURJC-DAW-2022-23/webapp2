@@ -177,15 +177,13 @@ public class UserRestController {
 
                 EmailDetails emailDetails = new EmailDetails();
                 emailDetails.adminMode(user.getUsername(), user.getEmail());
-
                 emailService.sendSimpleMail(emailDetails);
-            }else if(user.getRol().equals("BASE")){
 
-                user.setValidated(true);
-            }
-            else{
+            }else if(!user.getRol().equals("BASE")){
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
+            user.setValidated(true);
+            user.setencodedPassword(passwordEncoder.encode(user.getencodedPassword()));
             userService.save(user);
             URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -259,10 +257,11 @@ public class UserRestController {
                         asoService.deleteById(asociation.getId());
                     }
                     else{
+                        System.out.println("borrar caso normal");
                         userService.deleteById(id);
                     }
 
-                    return new ResponseEntity<>(user,HttpStatus.OK);
+                    return new ResponseEntity<>(HttpStatus.OK);
                 }
                 else
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -294,22 +293,25 @@ public class UserRestController {
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
             
     })
+    @PostMapping("/me/favorites/{id}")
     private ResponseEntity<Event> addFavorites(@PathVariable long id, HttpServletRequest request){
         if(request.getUserPrincipal() != null){
-                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
-                try{
-                    Event event = eventService.findById(id).orElseThrow();
-                    userPrincipal.addFavoritos(event);
-                    userService.save(userPrincipal);
-                    return new ResponseEntity<>(event,HttpStatus.OK);
-                }
-                catch (NoSuchElementException e){
-                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-                
+
+            Optional<User> userOp=userService.findByUsername(request.getUserPrincipal().getName());
+            if(userOp.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+            User userPrincipal = userOp.get();
+            Optional<Event> eventOp = eventService.findById(id);
+            if(eventOp.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            Event event=eventOp.get();
+            userPrincipal.addFavoritos(event);
+            userService.save(userPrincipal);
+            return new ResponseEntity<>(event,HttpStatus.OK);
         }
-        else
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @Operation(summary = "Remove event from current user's favorites")

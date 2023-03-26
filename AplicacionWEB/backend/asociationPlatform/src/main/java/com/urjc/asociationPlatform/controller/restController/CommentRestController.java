@@ -1,8 +1,11 @@
 package com.urjc.asociationPlatform.controller.restController;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
@@ -79,10 +82,9 @@ public class CommentRestController {
     })
 
     @PostMapping("/new/{id}")//tested
-	public ResponseEntity<Comment> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request){
+	public ResponseEntity<Comment> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request) throws URISyntaxException{
         System.out.println("crear");
         Principal principal = request.getUserPrincipal();
-
         if(principal != null){
             try {
                 String fecha = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a").format(LocalDateTime.now());
@@ -93,8 +95,8 @@ public class CommentRestController {
                 Event event = eventService.findById(id).orElseThrow();
                 event.addComment(newComent);
                 eventService.save(event);
-
-                return new ResponseEntity<>(newComent, HttpStatus.OK);
+                URI location = new URI("https://127.0.0.1:8443/api/comments/"+newComent.getId());
+                return ResponseEntity.created(location).body(newComent);
             } catch (NoSuchElementException e) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
@@ -130,4 +132,20 @@ public class CommentRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 	}
+    @Operation(summary = "Get list of comments of event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "list of comments sucessfully getted",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Comment.class))}),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)      
+    })
+    @GetMapping("/commentList/{id}")
+    public ResponseEntity<List<Comment>> deleteComment(@PathVariable long id){
+        Optional<Event> eventOp=eventService.findById(id);
+        if(eventOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event event = eventOp.get();
+        return new ResponseEntity<>(event.getComments(),HttpStatus.OK);
+        
+    }
 }

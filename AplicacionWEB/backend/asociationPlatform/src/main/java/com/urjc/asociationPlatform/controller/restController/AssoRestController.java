@@ -1,5 +1,6 @@
 package com.urjc.asociationPlatform.controller.restController;
 
+import java.net.URI;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +14,15 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.urjc.asociationPlatform.model.Asociation;
+import com.urjc.asociationPlatform.model.Comment;
+import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.service.AsociationService;
+import com.urjc.asociationPlatform.service.CommentService;
+import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,6 +34,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 
@@ -40,6 +47,12 @@ public class AssoRestController {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private EventService eventService;
+
+  @Autowired
+  private CommentService commentService;
 
 	private User getUser(HttpServletRequest request) {
 	  Principal principal = request.getUserPrincipal();
@@ -62,6 +75,24 @@ public class AssoRestController {
         @ApiResponse(responseCode = "404", description = "comment not found", content = @Content)
             
     })
+  @PostMapping("/miAsociacion")
+  public ResponseEntity<Asociation> create(@RequestBody Asociation asso, HttpServletRequest request){
+    User currentUser = checkAdminOrAsso("ASO", request);
+    
+    if (currentUser == null)
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    asso.setOwner(currentUser);
+
+    assoService.save(asso);
+    URI location = ServletUriComponentsBuilder
+      .fromCurrentRequest()
+      .path("/admin/{id}")
+      .buildAndExpand(asso.getId())
+      .toUri();
+    return ResponseEntity.created(location).body(asso);
+  }
+
   @GetMapping("/miAsociacion")
   public ResponseEntity<Asociation> getMyAsso(HttpServletRequest request) {
     User currentUser = checkAdminOrAsso("ASO", request);
@@ -145,9 +176,18 @@ public class AssoRestController {
       return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
     Optional<Asociation> asso = assoService.findById(id);
+    if(asso.isEmpty()){
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    Asociation asociation = asso.get();
     if (asso.isEmpty())
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    
+      List<Event> asoEvents= eventService.findAllbyAsociation(asociation);
+      for(Event asoEvent : asoEvents){
+          System.out.print("\n borrando evento \n");
+          asoEvent = clearEvent(asoEvent);
+          eventService.deleteById(asoEvent.getId());
+      }
     assoService.deleteById(id);
     return new ResponseEntity<>(HttpStatus.OK);
   }
@@ -166,7 +206,7 @@ public class AssoRestController {
     if (oldAsso.isEmpty())
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-    if (oldAsso.get().getId() != asso.getId())
+    if (oldAsso.get().getId() != asso.getId() || asso.getOwner().getId() != oldAsso.get().getOwner().getId())
       return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 
     asso.setId(id);
@@ -181,4 +221,23 @@ public class AssoRestController {
 
     return currentUser;
   }
+  private Event clearEvent(Event event){
+		List<User> users = userService.findAll();
+		for(User user:users){
+		  if(user.isInFavorites(event)){
+			user.removeFavoritos(event);
+			userService.save(user);
+		  }
+			
+		}
+		List<Comment> comments=event.getComments();
+		for(Comment comment:comments){
+		  comment.clear();
+		  commentService.save(comment);
+		  commentService.deleteById(comment.getId());
+		}
+		event.clear();
+		eventService.save(event);
+		return event;
+	}
 }
