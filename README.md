@@ -312,6 +312,13 @@ Por último, ha sido el principal responsable de implementar el servidor MySQL t
 
 ### Diagrama de clases y templates
 ![diagramaclases](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/DiagramaClasesFase3.png?raw=true)
+Para probar el API REST hemos usado Postman para realiza peticiones al servidor y comprobar sus respuestas
+![Postman](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/Postman_Example.png?raw=true)
+El API REST la hemos documentado con OpenAPI
+![OpenApi](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/OpenApi.png?raw=true)
+![OpenApi_example](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/Example_openApi.png?raw=true)
+
+
 
 ### Participación de miembros
 
@@ -355,3 +362,82 @@ Documentación y API REST ligado a las fucionalidades asociación
 | 2	| Añadir consultar asociacion a la API REST | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/2c1161b0a7371848de9466522e963bfe5e6cc595 |
 | 3 | Añadidas funcionalidades de asociación | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/a66f564ecbea5caaf526f6085e1c177de6640a9e |
 | 4 | Añadir documentación de la clase AssoRestController | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/d93ac92e98b93e9da6179dd376d089f7aad0a2a6 |
+
+**Rubén González de Pablo:**
+
+- Tareas realizadas: 
+
+Ha implementado el API REST relativa a las operaciones de los eventos y la ha documentado
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	| Obtener eventos por ID y por filtros | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b0d97c84e4c549838a150940fb34c1d6e8c12ce4 |
+| 2	| Versión preliminar de editar, borrar y crear eventos | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/f8451427184f2bd8910658796c3c907e53ce96d1 |
+| 3 | Testeo del API REST | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/082e61ae67edcb635203393ed541bf694bb2119a |
+| 4 | Equals y hashCode a los modelos | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/7d365d682589d14a4913e0420e2a7cbd41d50f2a |
+| 5	| DOcumentacion del API de eventos | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/da16e4d146e46d27598503a4ce5bdee7202da41b |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	| EventRestController.java |
+| 2	| Event.java |
+| 3 | Comment.java |  
+| 4 | Asociation.java |  
+| 5	| User.java | 
+
+**Andrea Cardenal Millán:**
+
+- Tareas realizadas: 
+
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+
+**Daniel Gallardo de Eugenio:**
+
+- Tareas realizadas: 
+
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
