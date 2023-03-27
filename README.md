@@ -310,6 +310,9 @@ Por último, ha sido el principal responsable de implementar el servidor MySQL t
 
 ## Fase 3: 
 
+### Diagrama de clases y templates
+![diagramaclases](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/DiagramaClasesFase3.png?raw=true)
+
 ### Participación de miembros
 
 **Daniel Pérez Moraleda:**
