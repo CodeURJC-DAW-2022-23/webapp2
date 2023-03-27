@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.urjc.asociationPlatform.repository.UserRepository;
 
 @Entity
@@ -19,6 +20,7 @@ public class User {
 
     private String email;
     private String username;
+    @JsonIgnore
     private String encodedPassword;
     private String rol;
 
