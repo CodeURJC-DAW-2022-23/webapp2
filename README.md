@@ -401,19 +401,19 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 
 | Commit | Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	|  |  |
-| 2	|  |  |
-| 3 |  |  |
-| 4 |  |  |
-| 5	|  |  |
+| 1	| Creacion de comentarios rest | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/63653ad2d68d8f9deed318817d0d71d61aa7f8bd | 
+| 2	| Funciones de añadir y borrar comentario | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/9eaa51ceb063e91a5bd5c2c9a87ce1efb441bb6f |
+| 3 | Añadir open api | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/9eaa51ceb063e91a5bd5c2c9a87ce1efb441bb6f |
+| 4 | Metodo terminado de añadir comentario | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/090fc6f9405296554197f763870cb6cc5a21bec9 |
+| 5	| Metodo terminado de borrar comentario | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/090fc6f9405296554197f763870cb6cc5a21bec9 |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	|  |
-| 2	|  |
-| 3 |  |  
+| 1	| Comment.java |
+| 2	| User.java |
+| 3 | CommentRestController.java |  
 | 4 |  |  
 | 5	|  | 
 
