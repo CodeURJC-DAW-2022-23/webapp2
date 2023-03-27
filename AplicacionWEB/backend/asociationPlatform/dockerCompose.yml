@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  web:
+    image: rudber/asociation_platform
+    ports:
+      - "8443:8443"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/asociation_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+    depends_on:
+      - db
+    restart: on-failure
+  db:
+    image: mysql:8.0.24
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: asociation_db
+    ports:
+      - "3307:3306"
