@@ -340,3 +340,18 @@ Ha implementado el sistema de seguridad y login para API rest, además de crear 
 | 3 | LoginRestController.java	|  
 | 4 | RestSecurityConfig.java |  
 | 5	| LoginRequest.java | 
+
+**Fiorella Victoria Hernández Mejía
+
+- Tareas realizadas:
+
+Documentación y API REST ligado a las fucionalidades asociación 
+
+-5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	| Añadir editar asociacion a la API REST | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/04bade9c4e7964b5f5797a6db5d321ded979bcfb |
+| 2	| Añadir consultar asociacion a la API REST | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/2c1161b0a7371848de9466522e963bfe5e6cc595 |
+| 3 | Añadidas funcionalidades de asociación | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/a66f564ecbea5caaf526f6085e1c177de6640a9e |
+| 4 | Añadir documentación de la clase AssoRestController | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/d93ac92e98b93e9da6179dd376d089f7aad0a2a6 |
