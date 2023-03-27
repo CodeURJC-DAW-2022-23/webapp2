@@ -393,9 +393,7 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 
 **Andrea Cardenal Millán:**
 
-- Tareas realizadas: 
-
-
+- Tareas realizadas: He implementado el API REST relativa a las operaciones de los comentarios
 
 - 5 commits más significativos: 
 
