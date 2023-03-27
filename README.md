@@ -341,13 +341,13 @@ Ha implementado el sistema de seguridad y login para API rest, además de crear 
 | 4 | RestSecurityConfig.java |  
 | 5	| LoginRequest.java | 
 
-**Fiorella Victoria Hernández Mejía
+** Fiorella Victoria Hernández Mejía
 
 - Tareas realizadas:
 
 Documentación y API REST ligado a las fucionalidades asociación 
 
--5 commits más significativos: 
+- 5 commits más significativos: 
 
 | Commit | Descripcion	| Link |
 | --- | :---: | :---: |
