@@ -61,7 +61,6 @@ public class CommentRestController {
 
     @GetMapping("/{id}")//tested
     public ResponseEntity<Comment> getComment(@PathVariable long id) {
-        
         Optional<Comment> comment = commentService.findById(id);
         if (comment.isPresent()) {
             return new ResponseEntity<>(comment.get(), HttpStatus.OK);

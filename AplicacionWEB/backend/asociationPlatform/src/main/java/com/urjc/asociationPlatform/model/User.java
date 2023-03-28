@@ -20,7 +20,7 @@ public class User {
 
     private String email;
     private String username;
-    @JsonIgnore
+    //@JsonIgnore
     private String encodedPassword;
     private String rol;
 
