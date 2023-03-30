@@ -32,7 +32,7 @@ public class Event {
     private String description;
     private String location;
     @ManyToOne ()
-    @JsonIgnore
+    //@JsonIgnore
     //@OnDelete(action = OnDeleteAction.CASCADE)
     private Asociation asociation;
     private String campus;
@@ -41,17 +41,17 @@ public class Event {
     private String startTime;
     private String endTime;
     private String duration;
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToMany()
     private Set<User> likeList = new HashSet<>();
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToMany()
     private Set<User> dislikeList = new HashSet<>();
 
-    @JsonIgnore
+    //@JsonIgnore
     @Lob
     private Blob image;
 

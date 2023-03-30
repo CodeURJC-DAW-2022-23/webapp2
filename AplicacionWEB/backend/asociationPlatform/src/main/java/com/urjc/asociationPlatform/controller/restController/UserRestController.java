@@ -34,12 +34,15 @@ import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.model.restModel.ChangePassword;
+import com.urjc.asociationPlatform.model.restModel.EventDTO;
+import com.urjc.asociationPlatform.model.restModel.UserDTO;
 import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -69,19 +72,19 @@ public class UserRestController {
     @Operation(summary = "Get a user by admin")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "user found",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),        
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),        
         @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
         @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
             
     })
     @GetMapping("/admin/{id}")
-	public ResponseEntity<User> getProfile(@PathVariable long id,HttpServletRequest request) {
+	public ResponseEntity<UserDTO> getProfile(@PathVariable long id,HttpServletRequest request) {
         if(userService.findById(id).isPresent()){
             User user = userService.findById(id).get();
             try{
                 User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
-                return new ResponseEntity<>(user, HttpStatus.OK);
+                return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
             }catch (NoSuchElementException e){
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
@@ -93,16 +96,16 @@ public class UserRestController {
     @Operation(summary = "Get current user")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "user found",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content)
             
     })
     @GetMapping("/me")
-    public ResponseEntity<User> me(HttpServletRequest request) {
+    public ResponseEntity<UserDTO> me(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         if(principal != null){
             User user = userService.findByUsername(principal.getName()).get();
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
         }
         else
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -111,19 +114,19 @@ public class UserRestController {
     @Operation(summary = "Modify current user")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "user modified sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content)
             
     })
     @PatchMapping("/me")
-    public ResponseEntity<User> modifyUser(@RequestParam String newName, @RequestParam String newEmail, HttpServletRequest request) throws IOException, SQLException {
+    public ResponseEntity<UserDTO> modifyUser(@RequestParam String newName, @RequestParam String newEmail, HttpServletRequest request) throws IOException, SQLException {
         Principal principal = request.getUserPrincipal();
         if(principal != null){
             User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
             userPrincipal.setUsername(newName);
             userPrincipal.setEmail(newEmail);
             userService.save(userPrincipal);
-            return new ResponseEntity<>(userPrincipal, HttpStatus.OK);
+            return new ResponseEntity<>(new UserDTO(userPrincipal), HttpStatus.OK);
         }else
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
      
@@ -132,7 +135,7 @@ public class UserRestController {
     @Operation(summary = "Modify user by admin")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "user modified sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enough privileges or admin is modifying itself", content = @Content),
@@ -140,7 +143,7 @@ public class UserRestController {
             
     })
     @PatchMapping("/admin/{id}")
-    public ResponseEntity<User> modifyUserbyAdmin(@PathVariable long id, @RequestParam String newName, @RequestParam String newEmail, @RequestParam String newRol, HttpServletRequest request) throws IOException, SQLException {
+    public ResponseEntity<UserDTO> modifyUserbyAdmin(@PathVariable long id, @RequestParam String newName, @RequestParam String newEmail, @RequestParam String newRol, HttpServletRequest request) throws IOException, SQLException {
         if(userService.findById(id).isPresent()){
             User user = userService.findById(id).get();
             try{
@@ -150,7 +153,7 @@ public class UserRestController {
                     user.setEmail(newEmail);
                     user.setRol(newRol);
                     userService.save(user);
-                    return new ResponseEntity<>(user, HttpStatus.OK);
+                    return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
                 }
                 else
                     return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -165,13 +168,13 @@ public class UserRestController {
     @Operation(summary = "Register a user")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "user created sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
         @ApiResponse(responseCode = "403", description = "existing user or wrong role", content = @Content)
             
     })
     @PostMapping("/")
-    public ResponseEntity<User> register(@RequestBody User user){
+    public ResponseEntity<UserDTO> register(@RequestBody User user){
         if(!userService.existUsername(user.getUsername()) && !userService.existEmail(user.getEmail())){
             if(user.getRol().equals("ASO")){
 
@@ -199,20 +202,20 @@ public class UserRestController {
     @Operation(summary = "Modify my password")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "password modified sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
         @ApiResponse(responseCode = "403", description = "wrong password", content = @Content)
             
     })
     @PatchMapping("/me/password")
-    public ResponseEntity<User> modifyMyPassWord(@RequestBody ChangePassword password, HttpServletRequest request) throws IOException, SQLException {
+    public ResponseEntity<UserDTO> modifyMyPassWord(@RequestBody ChangePassword password, HttpServletRequest request) throws IOException, SQLException {
         Principal principal = request.getUserPrincipal();
         if(principal != null){
             User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
             if(passwordEncoder.matches(password.oldPassword,userPrincipal.getencodedPassword())){
                 userPrincipal.setencodedPassword(passwordEncoder.encode(password.newPassword));
                 userService.save(userPrincipal);
-                return new ResponseEntity<>(userPrincipal, HttpStatus.OK);
+                return new ResponseEntity<>(new UserDTO(userPrincipal), HttpStatus.OK);
             }
             else
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -223,7 +226,7 @@ public class UserRestController {
     @Operation(summary = "Delete user by admin")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "user deleted sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enough privileges or admin is deleting itself", content = @Content),
@@ -231,7 +234,7 @@ public class UserRestController {
             
     })
     @DeleteMapping("/admin/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable long id,HttpServletRequest request){
+    public ResponseEntity<UserDTO> deleteUser(@PathVariable long id,HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         if(principal != null){
             User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
@@ -273,28 +276,72 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    /*@GetMapping("/me/favorites")
-    private ResponseEntity<List<Event>> getFavorites(HttpServletRequest request){
-        if(request.getUserPrincipal() != null){
-                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
-                List<Event> favs = userPrincipal.getFavoritos();
-                return new ResponseEntity<>(favs,HttpStatus.OK);
+    @Operation(summary = "Get user favorites by admin")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "favourites from user getted sucessfully",content = {
+            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(type = "array", implementation = EventDTO.class)))}),
+        @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enough privileges", content = @Content),
+        @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
+            
+    })
+    @GetMapping("/admin/{id}/favorites")
+    public ResponseEntity<List<EventDTO>> getUserFavorites(@PathVariable long id,HttpServletRequest request){
+        Principal principal = request.getUserPrincipal();
+        if(principal != null){
+            User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
+            try{
+                User user = userService.findById(id).orElseThrow();
+                List<Event> favs = user.getFavoritos();
+                List<EventDTO> list = new ArrayList<EventDTO>();
+                for(Event fav : favs){
+                    list.add(new EventDTO(fav));
+                }
+                return new ResponseEntity<>(list,HttpStatus.OK);
+            }catch (NoSuchElementException e){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         }
         else
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-    }*/
+    }
+
+    @Operation(summary = "Get my favorites")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "favourites getted sucessfully",content = {
+            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(type = "array", implementation = EventDTO.class)))}),
+        @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
+        @ApiResponse(responseCode = "403", description = "not enough privileges", content = @Content),
+        @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
+            
+    })
+    @GetMapping("/me/favorites")
+    private ResponseEntity<List<EventDTO>> getMyFavorites(HttpServletRequest request){
+        if(request.getUserPrincipal() != null){
+                User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
+                List<Event> favs = userPrincipal.getFavoritos();
+                List<EventDTO> list = new ArrayList<EventDTO>();
+                for(Event fav : favs){
+                    list.add(new EventDTO(fav));
+                }
+                return new ResponseEntity<>(list,HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
 
     @Operation(summary = "Add event to current user's favorites")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "event added sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid event id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
             
     })
     @PostMapping("/me/favorites/{id}")
-    private ResponseEntity<Event> addFavorites(@PathVariable long id, HttpServletRequest request){
+    private ResponseEntity<EventDTO> addFavorites(@PathVariable long id, HttpServletRequest request){
         if(request.getUserPrincipal() != null){
 
             Optional<User> userOp=userService.findByUsername(request.getUserPrincipal().getName());
@@ -309,7 +356,7 @@ public class UserRestController {
             Event event=eventOp.get();
             userPrincipal.addFavoritos(event);
             userService.save(userPrincipal);
-            return new ResponseEntity<>(event,HttpStatus.OK);
+            return new ResponseEntity<>(new EventDTO(event),HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
@@ -317,14 +364,14 @@ public class UserRestController {
     @Operation(summary = "Remove event from current user's favorites")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "event removed sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid event id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "user is not registered", content = @Content),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
             
     })
     @DeleteMapping("/me/favorites/{id}")
-    private ResponseEntity<Event> removeFavorites(@PathVariable long id, HttpServletRequest request){
+    private ResponseEntity<EventDTO> removeFavorites(@PathVariable long id, HttpServletRequest request){
         if(request.getUserPrincipal() != null){
                 User userPrincipal = userService.findByUsername(request.getUserPrincipal().getName()).orElseThrow();
                 try{

@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -26,12 +27,14 @@ import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.model.restModel.CommentDTO;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
@@ -51,7 +54,7 @@ public class CommentRestController {
     @Operation(summary = "Get Comment")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "comment obtained sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Comment.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = CommentDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "comment is not created", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enough privileges or admin is modifying itself", content = @Content),
@@ -60,10 +63,10 @@ public class CommentRestController {
     })
 
     @GetMapping("/{id}")//tested
-    public ResponseEntity<Comment> getComment(@PathVariable long id) {
+    public ResponseEntity<CommentDTO> getComment(@PathVariable long id) {
         Optional<Comment> comment = commentService.findById(id);
         if (comment.isPresent()) {
-            return new ResponseEntity<>(comment.get(), HttpStatus.OK);
+            return new ResponseEntity<>(new CommentDTO(comment.get()), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -81,7 +84,7 @@ public class CommentRestController {
     })
 
     @PostMapping("/new/{id}")//tested
-	public ResponseEntity<Comment> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request) throws URISyntaxException{
+	public ResponseEntity<CommentDTO> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request) throws URISyntaxException{
         System.out.println("crear");
         Principal principal = request.getUserPrincipal();
         if(principal != null){
@@ -95,7 +98,7 @@ public class CommentRestController {
                 event.addComment(newComent);
                 eventService.save(event);
                 URI location = new URI("https://127.0.0.1:8443/api/comments/"+newComent.getId());
-                return ResponseEntity.created(location).body(newComent);
+                return ResponseEntity.created(location).body(new CommentDTO(newComent));
             } catch (NoSuchElementException e) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
@@ -108,7 +111,7 @@ public class CommentRestController {
     @Operation(summary = "Remove Comment")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "comment removed sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Comment.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = CommentDTO.class))}),
         @ApiResponse(responseCode = "400", description = "invalid id supplied", content = @Content),
         @ApiResponse(responseCode = "401", description = "comment is not created", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enough privileges or admin is modifying itself", content = @Content),
@@ -117,7 +120,7 @@ public class CommentRestController {
     })
 
     @DeleteMapping("/{id}")//tested
-	public ResponseEntity<Comment> deleteComment(@PathVariable long id, HttpServletRequest request){
+	public ResponseEntity<CommentDTO> deleteComment(@PathVariable long id, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         User user = userService.findByUsername(principal.getName()).orElseThrow();
         System.out.println(user.getRol());
@@ -134,17 +137,21 @@ public class CommentRestController {
     @Operation(summary = "Get list of comments of event")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "list of comments sucessfully getted",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Comment.class))}),
+            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(type = "array", implementation = CommentDTO.class)))}),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)      
     })
     @GetMapping("/commentList/{id}")
-    public ResponseEntity<List<Comment>> deleteComment(@PathVariable long id){
+    public ResponseEntity<List<CommentDTO>> deleteComment(@PathVariable long id){
         Optional<Event> eventOp=eventService.findById(id);
         if(eventOp.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Event event = eventOp.get();
-        return new ResponseEntity<>(event.getComments(),HttpStatus.OK);
+        List<CommentDTO> list = new ArrayList<CommentDTO>();
+        for(Comment comment:event.getComments()){
+            list.add(new CommentDTO(comment));
+        }
+        return new ResponseEntity<>(list,HttpStatus.OK);
         
     }
 }
