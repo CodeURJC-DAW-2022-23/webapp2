@@ -37,6 +37,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
+import com.urjc.asociationPlatform.model.restModel.EventDTO;
 import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.EventService;
 import com.urjc.asociationPlatform.service.UserService;
@@ -44,6 +45,7 @@ import com.urjc.asociationPlatform.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
@@ -65,29 +67,33 @@ public class EventRestController {
     @Operation(summary = "Get Event by id")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Event getted succesfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "404", description = "Event not found", content = @Content)
             
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Event> getEvent(@PathVariable long id){
+    public ResponseEntity<EventDTO> getEvent(@PathVariable long id){
         Optional<Event> ev = eventService.findById(id);
         if (ev.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(ev.get(), HttpStatus.OK);
+        return new ResponseEntity<>(new EventDTO(ev.get()), HttpStatus.OK);
     }
     @Operation(summary = "Get events using filters")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Events getted succesfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(type = "array", implementation = EventDTO.class)))}),
             
     })
     @GetMapping("/filters")
-    public ResponseEntity<List<Event>> searchFilters(String name, String month, String campus, String asociation, int page){
+    public ResponseEntity<List<EventDTO>> searchFilters(String name, String month, String campus, String asociation, int page){
         page=page*6;
         List<Event> events = eventService.getEventsByFilters(name,month,campus,asociation,page);
-        return new ResponseEntity<>(events, HttpStatus.OK);
+        List<EventDTO> dto = new ArrayList<EventDTO>();
+        for(Event event : events){
+            dto.add(new EventDTO(event));
+        }
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
 
@@ -95,14 +101,14 @@ public class EventRestController {
     @Operation(summary = "Delete event")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "event removed sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
             
     })
     @DeleteMapping("/{id}")//tested
-    public ResponseEntity<Event> deleteEvent(@PathVariable long id, HttpServletRequest request){
+    public ResponseEntity<EventDTO> deleteEvent(@PathVariable long id, HttpServletRequest request){
         Optional<Event> eventOp = eventService.findById(id);
         if(eventOp.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -110,7 +116,7 @@ public class EventRestController {
         Event event = eventOp.get();
         Principal principal = request.getUserPrincipal();
         if(principal==null){
-            return new ResponseEntity<Event>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<EventDTO>(HttpStatus.UNAUTHORIZED);
         }
         Optional<User> userOp = userService.findByUsername(principal.getName());
         if(userOp.isEmpty()){
@@ -118,7 +124,7 @@ public class EventRestController {
         }
         User user = userOp.get();
         if(user.getRol().equals("BASE")){
-            return new ResponseEntity<Event>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<EventDTO>(HttpStatus.FORBIDDEN);
         }
         else if(user.getRol().equals("ASO")){
             if(!event.getAsociation().getOwner().equals(user)){
@@ -136,13 +142,13 @@ public class EventRestController {
     @Operation(summary = "Create Event")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "event created sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
             
     })
     @PostMapping("/new")//tested
-    public ResponseEntity<Event> createEvent(MultipartFile newImage, Event event, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
+    public ResponseEntity<EventDTO> createEvent(MultipartFile newImage, Event event, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
         System.out.println(newImage==null);
         event.setImgUrl(getBlob(newImage));
         Principal principal = request.getUserPrincipal();
@@ -164,7 +170,7 @@ public class EventRestController {
             }
             eventService.save(event);
             URI location = new URI("https://127.0.0.1:8443/api/events/"+event.getId());
-            return ResponseEntity.created(location).body(event);
+            return ResponseEntity.created(location).body(new EventDTO(event));
         }else if(user.getRol().equals("ADMIN")){
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
@@ -173,14 +179,14 @@ public class EventRestController {
     @Operation(summary = "Edit event")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "event edited sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
             
     })
     @PutMapping("/{id}")//testeado
-    public ResponseEntity<Event> editEvent(@PathVariable long id, Event event, HttpServletRequest request){
+    public ResponseEntity<EventDTO> editEvent(@PathVariable long id, Event event, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         Optional<Event> eventDBOp=eventService.findById(id);
         if(eventDBOp.isEmpty()){
@@ -208,11 +214,11 @@ public class EventRestController {
             
             event.setId(id);
             eventService.save(event);
-            return new ResponseEntity<>(event,HttpStatus.OK);
+            return new ResponseEntity<>(new EventDTO(event),HttpStatus.OK);
         }else if(user.getRol().equals("ADMIN")){
             event.setId(id);
             eventService.save(event);
-            return new ResponseEntity<>(event,HttpStatus.OK);
+            return new ResponseEntity<>(new EventDTO(event),HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         
@@ -221,14 +227,14 @@ public class EventRestController {
     @Operation(summary = "Change event image")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "event image changed sucessfully",content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+            @Content(mediaType = "application/json", schema = @Schema(implementation = EventDTO.class))}),
         @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
         @ApiResponse(responseCode = "403", description = "not enouth privileges", content = @Content),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
             
     })
     @PutMapping("/image/{id}")//testado
-    public ResponseEntity<Event> setImage(@PathVariable long id, MultipartFile newImage, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
+    public ResponseEntity<EventDTO> setImage(@PathVariable long id, MultipartFile newImage, HttpServletRequest request) throws SQLException, IOException, URISyntaxException{
         Optional<Event> eventOp = eventService.findById(id);
         if(eventOp.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -99,6 +99,10 @@ public class Comment {
         this.event = event;
     }
 
+    public Event getEvent(){
+        return this.event;
+    }
+
     public void clear(){
         this.favorites.clear();
     }
