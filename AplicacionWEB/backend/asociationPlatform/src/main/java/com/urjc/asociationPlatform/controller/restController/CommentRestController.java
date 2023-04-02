@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -84,7 +85,7 @@ public class CommentRestController {
     })
 
     @PostMapping("/new/{id}")//tested
-	public ResponseEntity<CommentDTO> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request) throws URISyntaxException{
+	public ResponseEntity<CommentDTO> postComment(@PathVariable long id,@RequestBody Comment newComent, HttpServletRequest request) throws URISyntaxException{
         System.out.println("crear");
         Principal principal = request.getUserPrincipal();
         if(principal != null){
