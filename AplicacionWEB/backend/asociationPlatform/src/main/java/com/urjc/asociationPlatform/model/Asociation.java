@@ -41,7 +41,7 @@ public class Asociation {
 
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    //@JsonIgnore
+    @JsonIgnore
     private User owner;
 
     

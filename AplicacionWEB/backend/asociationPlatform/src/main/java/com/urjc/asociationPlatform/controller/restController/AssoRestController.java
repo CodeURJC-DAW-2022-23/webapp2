@@ -175,7 +175,12 @@ public class AssoRestController {
             
     })
   @PutMapping("/{id}")
-  public ResponseEntity<Asociation> editAsso(@RequestBody Asociation asso,@PathVariable long id, HttpServletRequest request) {
+  public ResponseEntity<Asociation> editAsso(@RequestBody Asociation asso, @PathVariable long id, HttpServletRequest request) {
+    Optional<Asociation> aso = assoService.findById(id);
+    if(aso.isEmpty()){
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    asso.setOwner(aso.get().getOwner());
     return edditAssoAux("ADMIN", request, asso, id);
   }
   
