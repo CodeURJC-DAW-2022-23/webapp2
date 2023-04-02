@@ -3,11 +3,11 @@ package com.urjc.asociationPlatform.model.restModel;
 import com.urjc.asociationPlatform.model.Comment;
 
 public class CommentDTO {
-    private Long id;
-    private EventDTO event;
-    private String comment_user;
-    private String description;
-    private String time;
+    public Long id;
+    public EventDTO event;
+    public String comment_user;
+    public String description;
+    public String time;
 
     public CommentDTO(Comment comment){
         this.id = comment.getId();
