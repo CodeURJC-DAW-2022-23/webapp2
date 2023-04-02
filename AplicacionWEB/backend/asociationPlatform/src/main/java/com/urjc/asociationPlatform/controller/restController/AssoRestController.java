@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.urjc.asociationPlatform.model.Asociation;
 import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
@@ -68,11 +69,11 @@ public class AssoRestController {
 	}
 
 
-  @Operation(summary = "Get personal Association")
+  @Operation(summary = "Create personal Association")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Association obtained sucessfully",content = {
+        @ApiResponse(responseCode = "200", description = "Association created sucessfully",content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Asociation.class))}),
-        @ApiResponse(responseCode = "404", description = "comment not found", content = @Content)
+        @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
             
     })
   @PostMapping("/miAsociacion")
@@ -93,6 +94,14 @@ public class AssoRestController {
     return ResponseEntity.created(location).body(asso);
   }
 
+  @Operation(summary = "Get personal Association")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Association obtained sucessfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Asociation.class))}),
+        @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+            
+    })
+  @JsonView(Asociation.Asso.class)
   @GetMapping("/miAsociacion")
   public ResponseEntity<Asociation> getMyAsso(HttpServletRequest request) {
     User currentUser = checkAdminOrAsso("ASO", request);
@@ -114,6 +123,7 @@ public class AssoRestController {
         @ApiResponse(responseCode = "404", description = "Association not found", content = @Content)
             
     })
+  @JsonView(Asociation.Asso.class)
   @GetMapping("/{id}")
   public ResponseEntity<Asociation> getById(@PathVariable long id) {
     Optional<Asociation> asso = assoService.findById(id);
@@ -129,6 +139,7 @@ public class AssoRestController {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Asociation.class))})
             
     })
+  @JsonView(Asociation.Asso.class)
   @GetMapping("/asociationsList")
   public ResponseEntity<List<Asociation>> ListAsso() {
     return new ResponseEntity<>(assoService.findAll(), HttpStatus.OK);
@@ -145,6 +156,12 @@ public class AssoRestController {
     })
   @PutMapping("/miAsociacion")
   public ResponseEntity<Asociation> editMyAsso(@RequestBody Asociation asso, HttpServletRequest request) {
+    User currentUser = checkAdminOrAsso("ASO", request);
+    
+    if (currentUser == null)
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    asso.setOwner(currentUser);
     return edditAssoAux("ASO", request, asso, null);
   }
 

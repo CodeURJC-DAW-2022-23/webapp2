@@ -13,20 +13,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.urjc.asociationPlatform.repository.UserRepository;
 import com.urjc.asociationPlatform.service.EventService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Asociation {
+    public interface Asso {}
+
+    @JsonView(Asso.class)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="Id")
     private Long id;
 
+    @JsonView(Asso.class)
     private String name;
+
+    @JsonView(Asso.class)
     @Lob
     @Column( length = 100000 )
     private String description;
+
+    @JsonView(Asso.class)
     private String faculty;
+
+    @JsonView(Asso.class)
     private String campus;
+
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     //@JsonIgnore
