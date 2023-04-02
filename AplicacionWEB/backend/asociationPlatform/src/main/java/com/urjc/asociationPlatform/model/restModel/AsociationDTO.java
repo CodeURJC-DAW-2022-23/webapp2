@@ -8,7 +8,7 @@ public class AsociationDTO {
     public String description;
     public String faculty;
     public String campus;
-    public Long owner;
+    public Long ownerId;
 
     public AsociationDTO(Asociation asociation){
         this.id = asociation.getId();
@@ -17,8 +17,8 @@ public class AsociationDTO {
         this.faculty = asociation.getFaculty();
         this.campus = asociation.getCampus();
         if(asociation.getOwner() == null)
-            this.owner = Long.valueOf(0);
+            this.ownerId = Long.valueOf(0);
         else
-            this.owner = asociation.getOwnerId();
+            this.ownerId = asociation.getOwnerId();
     }
 }
