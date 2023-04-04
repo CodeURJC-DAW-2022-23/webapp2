@@ -15,16 +15,17 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"description\": \"hknbjhghjg\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "description",
+							"value": "test",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/comments/new/11",
+					"raw": "https://127.0.0.1:8443/api/comment/new/11",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -35,7 +36,7 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"comments",
+						"comment",
 						"new",
 						"11"
 					]
@@ -49,7 +50,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/comments/7",
+					"raw": "https://127.0.0.1:8443/api/comments/20",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -61,7 +62,7 @@
 					"path": [
 						"api",
 						"comments",
-						"7"
+						"20"
 					]
 				}
 			},
@@ -73,7 +74,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/comments/5",
+					"raw": "https://127.0.0.1:8443/api/comment/27",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -84,8 +85,8 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"comments",
-						"5"
+						"comment",
+						"27"
 					]
 				}
 			},
@@ -97,7 +98,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/comments/commentList/3",
+					"raw": "https://127.0.0.1:8443/api/comments/11",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -109,8 +110,7 @@
 					"path": [
 						"api",
 						"comments",
-						"commentList",
-						"3"
+						"11"
 					]
 				}
 			},

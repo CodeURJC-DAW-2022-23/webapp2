@@ -40,7 +40,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
-@RequestMapping("/api/comments")
+//@RequestMapping("/api/comments")
 public class CommentRestController {
     @Autowired
     private CommentService commentService;
@@ -63,7 +63,7 @@ public class CommentRestController {
             
     })
 
-    @GetMapping("/{id}")//tested
+    @GetMapping("/api/comment/{id}")//tested
     public ResponseEntity<CommentDTO> getComment(@PathVariable long id) {
         Optional<Comment> comment = commentService.findById(id);
         if (comment.isPresent()) {
@@ -84,8 +84,8 @@ public class CommentRestController {
             
     })
 
-    @PostMapping("/new/{id}")//tested
-	public ResponseEntity<CommentDTO> postComment(@PathVariable long id,@RequestBody Comment newComent, HttpServletRequest request) throws URISyntaxException{
+    @PostMapping("/api/comment/new/{id}")//tested
+	public ResponseEntity<CommentDTO> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request) throws URISyntaxException{
         System.out.println("crear");
         Principal principal = request.getUserPrincipal();
         if(principal != null){
@@ -120,7 +120,7 @@ public class CommentRestController {
             
     })
 
-    @DeleteMapping("/{id}")//tested
+    @DeleteMapping("/api/comment/{id}")//tested
 	public ResponseEntity<CommentDTO> deleteComment(@PathVariable long id, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         User user = userService.findByUsername(principal.getName()).orElseThrow();
@@ -141,7 +141,7 @@ public class CommentRestController {
             @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(type = "array", implementation = CommentDTO.class)))}),
         @ApiResponse(responseCode = "404", description = "event not found", content = @Content)      
     })
-    @GetMapping("/commentList/{id}")
+    @GetMapping("/api/comments/{id}")
     public ResponseEntity<List<CommentDTO>> deleteComment(@PathVariable long id){
         Optional<Event> eventOp=eventService.findById(id);
         if(eventOp.isEmpty()){
