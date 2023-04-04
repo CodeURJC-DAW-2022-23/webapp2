@@ -85,7 +85,7 @@ public class CommentRestController {
     })
 
     @PostMapping("/api/comment/new/{id}")//tested
-	public ResponseEntity<CommentDTO> postComment(@PathVariable long id, Comment newComent, HttpServletRequest request) throws URISyntaxException{
+	public ResponseEntity<CommentDTO> postComment(@PathVariable long id, @RequestBody Comment newComent, HttpServletRequest request) throws URISyntaxException{
         System.out.println("crear");
         Principal principal = request.getUserPrincipal();
         if(principal != null){

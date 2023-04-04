@@ -15,14 +15,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "description",
-							"value": "test",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"holaPepe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "https://127.0.0.1:8443/api/comment/new/11",
@@ -50,7 +49,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/comments/20",
+					"raw": "https://127.0.0.1:8443/api/comment/20",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -61,7 +60,7 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"comments",
+						"comment",
 						"20"
 					]
 				}
