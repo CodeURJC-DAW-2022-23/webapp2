@@ -11,6 +11,6 @@ import com.urjc.asociationPlatform.repository.CustomEventRepositoryImpl;
 public class AsociationPlatformApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AsociationPlatformApplication.class, args);
+		SpringApplication.run(AsociationPlatformApplication.class, args); 
 	}
 }
