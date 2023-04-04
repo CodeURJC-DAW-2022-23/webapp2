@@ -1,0 +1,1021 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8443
+  description: Generated server url
+paths:
+  /api/events/{id}:
+    get:
+      tags:
+      - event-rest-controller
+      summary: Get Event by id
+      operationId: getEvent
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Event getted succesfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "404":
+          description: Event not found
+    put:
+      tags:
+      - event-rest-controller
+      summary: Edit event
+      operationId: editEvent
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: event
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Event'
+      responses:
+        "404":
+          description: event not found
+        "403":
+          description: not enouth privileges
+        "200":
+          description: event edited sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "401":
+          description: no user register
+    delete:
+      tags:
+      - event-rest-controller
+      summary: Delete event
+      operationId: deleteEvent
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: event removed sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "404":
+          description: event not found
+        "403":
+          description: not enouth privileges
+        "401":
+          description: no user register
+  /api/events/image/{id}:
+    get:
+      tags:
+      - event-rest-controller
+      summary: Get event image
+      operationId: getImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: event image getted sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        "404":
+          description: event not found
+    put:
+      tags:
+      - event-rest-controller
+      summary: Change event image
+      operationId: setImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: newImage
+        in: query
+        required: true
+        schema:
+          type: string
+          format: binary
+      responses:
+        "404":
+          description: event not found
+        "403":
+          description: not enouth privileges
+        "200":
+          description: event image changed sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "401":
+          description: no user register
+  /api/aso/{id}:
+    get:
+      tags:
+      - asso-rest-controller
+      summary: Get Association by id
+      operationId: getById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Association not found
+        "200":
+          description: Association obtained sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+    put:
+      tags:
+      - asso-rest-controller
+      summary: Edit association
+      operationId: editAsso
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asociation'
+        required: true
+      responses:
+        "401":
+          description: current user doesn´t have the required permissions
+        "403":
+          description: these changes can´t be made
+        "404":
+          description: Asociation not found
+        "200":
+          description: Association edited sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+    delete:
+      tags:
+      - asso-rest-controller
+      summary: Delete Association
+      operationId: deleteAsso
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "401":
+          description: current user doesn´t have the required permissions
+        "404":
+          description: Association not found
+        "200":
+          description: Association deleted sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+  /api/aso/miAsociacion:
+    get:
+      tags:
+      - asso-rest-controller
+      summary: Get personal Association
+      operationId: getMyAsso
+      responses:
+        "404":
+          description: User not found
+        "200":
+          description: Association obtained sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+    put:
+      tags:
+      - asso-rest-controller
+      summary: Edit personal association
+      operationId: editMyAsso
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asociation'
+        required: true
+      responses:
+        "401":
+          description: current user doesn´t have the required permissions
+        "403":
+          description: these changes can´t be made
+        "404":
+          description: Asociation not found
+        "200":
+          description: Association edited sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+    post:
+      tags:
+      - asso-rest-controller
+      summary: Create personal Association
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asociation'
+        required: true
+      responses:
+        "404":
+          description: User not found
+        "200":
+          description: Association created sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+  /sendMail:
+    post:
+      tags:
+      - email-controller
+      operationId: sendMail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDetails'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/users/me/favorites/{id}:
+    post:
+      tags:
+      - user-rest-controller
+      summary: Add event to current user's favorites
+      operationId: addFavorites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: event added sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "400":
+          description: invalid event id supplied
+        "404":
+          description: event not found
+        "401":
+          description: user is not registered
+    delete:
+      tags:
+      - user-rest-controller
+      summary: Remove event from current user's favorites
+      operationId: removeFavorites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: event removed sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "400":
+          description: invalid event id supplied
+        "404":
+          description: event not found
+        "401":
+          description: user is not registered
+  /api/users/:
+    post:
+      tags:
+      - user-rest-controller
+      summary: Register a user
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "400":
+          description: invalid id supplied
+        "403":
+          description: existing user or wrong role
+        "201":
+          description: user created sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+  /api/events/new:
+    post:
+      tags:
+      - event-rest-controller
+      summary: Create Event
+      operationId: createEvent
+      parameters:
+      - name: newImage
+        in: query
+        required: true
+        schema:
+          type: string
+          format: binary
+      - name: event
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Event'
+      responses:
+        "403":
+          description: not enouth privileges
+        "201":
+          description: event created sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventDTO'
+        "401":
+          description: no user register
+  /api/comment/new/{id}:
+    post:
+      tags:
+      - comment-rest-controller
+      summary: Post Comment
+      operationId: postComment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+        required: true
+      responses:
+        "400":
+          description: invalid id supplied
+        "401":
+          description: comment is not created
+        "200":
+          description: comment posted sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        "403":
+          description: not enough privileges or admin is modifying itself
+        "404":
+          description: comment not found
+  /api/auth/logout:
+    post:
+      tags:
+      - login-rest-controller
+      summary: Logout as user
+      operationId: logOut
+      responses:
+        "200":
+          description: user logged out sucessfully
+        "405":
+          description: logout error
+  /api/auth/login:
+    post:
+      tags:
+      - login-rest-controller
+      summary: Login as user
+      operationId: login
+      parameters:
+      - name: accessToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "405":
+          description: wrong username or password
+        "200":
+          description: user logged in sucessfully
+  /api/users/me:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get current user
+      operationId: me
+      responses:
+        "200":
+          description: user found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        "401":
+          description: user is not registered
+    patch:
+      tags:
+      - user-rest-controller
+      summary: Modify current user
+      operationId: modifyUser
+      parameters:
+      - name: newName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: newEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "401":
+          description: user is not registered
+        "200":
+          description: user modified sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+  /api/users/me/password:
+    patch:
+      tags:
+      - user-rest-controller
+      summary: Modify my password
+      operationId: modifyMyPassWord
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+        required: true
+      responses:
+        "403":
+          description: wrong password
+        "401":
+          description: user is not registered
+        "200":
+          description: password modified sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+  /api/users/admin/{id}:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get a user by admin
+      operationId: getProfile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: invalid id supplied
+        "200":
+          description: user found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        "401":
+          description: user is not registered
+        "404":
+          description: user not found
+    delete:
+      tags:
+      - user-rest-controller
+      summary: Delete user by admin
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: invalid id supplied
+        "403":
+          description: not enough privileges or admin is deleting itself
+        "401":
+          description: user is not registered
+        "404":
+          description: user not found
+        "200":
+          description: user deleted sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+    patch:
+      tags:
+      - user-rest-controller
+      summary: Modify user by admin
+      operationId: modifyUserbyAdmin
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: newName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: newEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: newRol
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "400":
+          description: invalid id supplied
+        "401":
+          description: user is not registered
+        "200":
+          description: user modified sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        "403":
+          description: not enough privileges or admin is modifying itself
+        "404":
+          description: user not found
+  /api/users/me/favorites:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get my favorites
+      operationId: getMyFavorites
+      responses:
+        "200":
+          description: favourites getted sucessfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventDTO'
+        "401":
+          description: user is not registered
+        "403":
+          description: not enough privileges
+        "404":
+          description: user not found
+  /api/users/admin/{id}/favorites:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get user favorites by admin
+      operationId: getUserFavorites
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: invalid id supplied
+        "401":
+          description: user is not registered
+        "200":
+          description: favourites from user getted sucessfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventDTO'
+        "403":
+          description: not enough privileges
+        "404":
+          description: user not found
+  /api/events/filters:
+    get:
+      tags:
+      - event-rest-controller
+      summary: Get events using filters
+      operationId: searchFilters
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: month
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: campus
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: asociation
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Events getted succesfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventDTO'
+  /api/comments/{id}:
+    get:
+      tags:
+      - comment-rest-controller
+      summary: Get list of comments of event
+      operationId: deleteComment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: event not found
+        "200":
+          description: list of comments sucessfully getted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentDTO'
+  /api/comment/{id}:
+    get:
+      tags:
+      - comment-rest-controller
+      summary: Get Comment
+      operationId: getComment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: invalid id supplied
+        "200":
+          description: comment obtained sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentDTO'
+        "401":
+          description: comment is not created
+        "403":
+          description: not enough privileges or admin is modifying itself
+        "404":
+          description: comment not found
+    delete:
+      tags:
+      - comment-rest-controller
+      summary: Remove Comment
+      operationId: deleteComment_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: invalid id supplied
+        "401":
+          description: comment is not created
+        "403":
+          description: not enough privileges or admin is modifying itself
+        "404":
+          description: comment not found
+        "200":
+          description: comment removed sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentDTO'
+  /api/aso/asociationsList:
+    get:
+      tags:
+      - asso-rest-controller
+      summary: Get Association list
+      operationId: ListAsso
+      responses:
+        "200":
+          description: Association list obtained sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsociationDTO'
+components:
+  schemas:
+    Asociation:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        faculty:
+          type: string
+        campus:
+          type: string
+        owner:
+          $ref: '#/components/schemas/User'
+        ownerId:
+          type: integer
+          format: int64
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        event:
+          $ref: '#/components/schemas/Event'
+        description:
+          type: string
+        time:
+          type: string
+        commentUser:
+          type: string
+        totalFavorites:
+          type: integer
+          format: int32
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        date:
+          type: string
+          format: date-time
+        month:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        asociation:
+          $ref: '#/components/schemas/Asociation'
+        campus:
+          type: string
+        credits:
+          type: boolean
+        booking:
+          type: boolean
+        startTime:
+          type: string
+        endTime:
+          type: string
+        duration:
+          type: string
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        image:
+          type: object
+          properties:
+            binaryStream:
+              type: object
+        imgUrl:
+          type: object
+          properties:
+            binaryStream:
+              type: object
+          writeOnly: true
+        totalLikes:
+          type: integer
+          format: int32
+        totalDislikes:
+          type: integer
+          format: int32
+        asociationName:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        username:
+          type: string
+        getencodedPassword:
+          type: string
+        rol:
+          type: string
+        favoritos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        validated:
+          type: boolean
+        checkToken:
+          type: string
+    EventDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        date:
+          type: string
+          format: date-time
+        month:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        asociation:
+          type: string
+        campus:
+          type: string
+        credits:
+          type: boolean
+        booking:
+          type: boolean
+        startTime:
+          type: string
+        endTime:
+          type: string
+        duration:
+          type: string
+    AsociationDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        faculty:
+          type: string
+        campus:
+          type: string
+        ownerId:
+          type: integer
+          format: int64
+    EmailDetails:
+      type: object
+      properties:
+        recipient:
+          type: string
+        msgBody:
+          type: string
+        subject:
+          type: string
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        username:
+          type: string
+        rol:
+          type: string
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    ChangePassword:
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+    CommentDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        event:
+          $ref: '#/components/schemas/EventDTO'
+        comment_user:
+          type: string
+        description:
+          type: string
+        time:
+          type: string
