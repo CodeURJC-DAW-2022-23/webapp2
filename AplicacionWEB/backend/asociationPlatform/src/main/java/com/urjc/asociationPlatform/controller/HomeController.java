@@ -6,6 +6,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -84,7 +85,7 @@ public class HomeController {
         //month = "";
         //campus= "";
         if(!model.containsAttribute("eventsMore")){
-            List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,1);
+            List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,PageRequest.of(0, 6)).getContent();
             model.addAttribute("eventsMore",events);
             //model.addAttribute("asociations",getAsociations(events));
         }
@@ -149,7 +150,7 @@ public class HomeController {
     }
     @GetMapping("/loadMore/{page}") 
     public String LoadMore(Model model, @PathVariable int page){
-        List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation,page);
+        List<Event> events=eventService.getEventsByFilters(searchInfo, month, campus, asociation, PageRequest.of(0, page)).getContent();
         //List<Event> events = eventService.findAll();
         model.addAttribute("eventsMore",events);
         generateFiltersOptions(model);

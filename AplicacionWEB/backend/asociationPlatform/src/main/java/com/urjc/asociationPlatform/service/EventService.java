@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.urjc.asociationPlatform.model.Asociation;
@@ -69,63 +71,11 @@ public class EventService {
 
 	//query ruben
 
-	public List<Event> getEventsByFilters(String name, String month, String campus, String asociation, int page){
+	public Page<Event> getEventsByFilters(String name, String month, String campus, String asociation, Pageable pageable){
 
 
-        List<Object[]> eventsObj = eventRepository.customQuery(name, month, campus, asociation, page);
-        
-        List<Event> eventsList=new ArrayList<>();
+        return eventRepository.customQuery(name, month, campus, asociation, pageable);
 
-        for(Object[] obj : eventsObj){
-            Event event=new Event();
-            if(obj[0] instanceof BigInteger){
-                event.setId(((BigInteger)obj[0]).longValue());
-            }
-            if(obj[1] instanceof Boolean){
-                event.setBooking((boolean)obj[1]);
-            }
-            if(obj[2] instanceof String){
-                event.setCampus((String)obj[2]);
-            }
-            if(obj[3] instanceof Boolean){
-                event.setCredits((boolean)obj[3]);
-            }
-            if(obj[4] instanceof Date){
-                event.setDate((Date)obj[4]);
-            }
-            if(obj[5] instanceof String){
-                event.setDescription((String)obj[5]);
-            }
-            if(obj[6] instanceof String){
-                event.setDuration((String)obj[6]);
-            }
-            if(obj[7] instanceof String){
-                event.setEndTime((String)obj[7]);
-            }
-            if(obj[8] instanceof Blob){
-                event.setImgUrl((Blob)obj[8]);
-            }
-            if(obj[9] instanceof String){
-                event.setLocation((String)obj[9]);
-            }
-            if(obj[10] instanceof String){
-                event.setMonth((String)obj[10]);
-            }
-            if(obj[11] instanceof String){
-                event.setName((String)obj[11]);
-            }
-            if(obj[12] instanceof String){
-                event.setStartTime((String)obj[12]);
-            }
-            if(obj[13] instanceof BigInteger){
-                event.setAsociation(asociationService.findById(((BigInteger)obj[13]).longValue()).get()); //Probably works
-                //event.setAsociation(asociationService.findByName((String)obj[13]).get());
-            }
-            eventsList.add(event);
-        
-        
-        }
-        return eventsList;
         /*
         if(name.equals("") || name.equals("ALL")){
             name="*";

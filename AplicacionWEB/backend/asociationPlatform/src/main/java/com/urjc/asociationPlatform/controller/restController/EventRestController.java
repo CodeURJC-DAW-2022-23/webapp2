@@ -19,6 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -86,14 +89,14 @@ public class EventRestController {
             
     })
     @GetMapping("/filters")
-    public ResponseEntity<List<EventDTO>> searchFilters(String name, String month, String campus, String asociation, int page){
-        page=page*6;
-        List<Event> events = eventService.getEventsByFilters(name,month,campus,asociation,page);
+    public ResponseEntity<Page<EventDTO>> searchFilters(String name, String month, String campus, String asociation, int page){
+        //page=page*6;
+        Page<Event> events = eventService.getEventsByFilters(name,month,campus,asociation,PageRequest.of(page, 6));
         List<EventDTO> dto = new ArrayList<EventDTO>();
         for(Event event : events){
             dto.add(new EventDTO(event));
         }
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return new ResponseEntity<>(new PageImpl<>(dto,events.getPageable(),events.getTotalElements()), HttpStatus.OK);
     }
 
 
