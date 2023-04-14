@@ -1,1 +1,39 @@
 <p>comment works!</p>
+<section class="comments-container">
+    <h1>Comentarios</h1>
+
+    <ul id="comments-list" class="comments-list">
+        {{#commentsList}}
+        <li>
+            <div class="comment-main-level"> 
+                <div class="comment-box">
+                    {{#comment}}
+                    <div class="comment-head">
+                        <h6 class="comment-name"><a href="">{{comment_user}}</a></h6>
+                        <span>{{time}}</span>
+                        <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}/{{id}}/like"><i class='bx {{#like}}bxs-heart{{/like}}{{^like}}bx-heart{{/like}}'></i></a></p>
+                        
+                        
+                    </div>
+                    <div class="comment-content">{{description}}</div>
+                    {{/comment}}
+                </div>  
+            </div>
+        </li>
+        {{/commentsList}}
+    </ul>
+
+    <div class="comment-form">
+        <form class="form" method="post" action="/crearComentario/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}">
+            <div class="form-row">
+            <textarea class="input" name="description" placeholder="Añadir Comentario..."></textarea>
+
+            </div>
+    
+            <div class="form-row">
+            <input type="submit" value="Añadir Comentario">
+            <input type="hidden" name="_csrf" value="{{token}}"/>
+            </div>
+        </form>
+    </div>
+   </section>
