@@ -1,0 +1,23 @@
+ul,h6{
+    margin: 0;
+}
+
+.hero{
+    height: 400px;
+}
+
+.hero.moreinfo{
+    background: green;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(../img/juntos.jpg) no-repeat center top; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hero .titleName{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}

@@ -1,0 +1,87 @@
+html{
+    position: relative;
+  }
+  
+body {
+    font-size  : 13px;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.8px;
+    line-height: 30px;
+    background: rgb(242, 243, 248);
+    color      : #283035;
+    margin: 0 auto;
+    text-align: justify;
+}   
+
+.hero.moreinfo{
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(../img/juntos.jpg) no-repeat center top; */
+    background: red;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.hero .titleName{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro .container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro .container .container1{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.intro .container .titleName{
+    width: 50%;
+}
+
+/** nombre asociación **/ 
+.intro .container .titleName h3{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    font-size: 45px;
+    font-weight: 400;
+    line-height: 50px;
+    color: #283035;
+}
+
+/** imagen del texto **/
+.intro .container .titleName img{
+    height: 400px;
+    width: 420px;
+    margin-left: 100px;
+    background: blue;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(../img/foto.jpeg) no-repeat center top; */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/** parrafo con info **/
+.intro .container .info{
+    margin-top: 110px;
+    width: 50%;
+}
+
+.intro .container .info h3{
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #283035;
+}

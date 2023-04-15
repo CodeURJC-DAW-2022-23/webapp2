@@ -7,7 +7,12 @@ import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
-import { CommentsComponent } from './comments/comments.component'
+import { CommentsComponent } from './details/comments/comments.component';
+import { MoreinfoComponent } from './details/moreinfo/moreinfo.component';
+import { MoreinfoheroComponent } from './details/moreinfohero/moreinfohero.component';
+import { LikesComponent } from './details/likes/likes.component';
+import { FavoritesComponent } from './details/addfavorites/addfavorites.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +21,11 @@ import { CommentsComponent } from './comments/comments.component'
     SearchComponent,
     CardComponent,
     LoginComponent,
-    CommentsComponent
+    CommentsComponent,
+    MoreinfoComponent,
+    MoreinfoheroComponent,
+    LikesComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule
