@@ -7,7 +7,8 @@ import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { AdminComponent } from './admin/admin.component'
     SearchComponent,
     CardComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule
