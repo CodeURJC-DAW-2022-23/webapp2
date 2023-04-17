@@ -8,12 +8,11 @@
                 <div class="comment-box">
                     <div class="comment-head">
                         <h6 class="comment-name"><a href=""></a></h6>
-                        <!-- <span>Hora</span> -->
-                        <!-- <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}/{{id}}/like"><i class='bx {{#like}}bxs-heart{{/like}}{{^like}}bx-heart{{/like}}'></i></a></p> -->
+                        <span>Hora</span> 
+                        <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/"><i class=''></i></a></p> 
                         
                     </div> 
-                    <!-- 
-                    <div class="comment-content">{{description}}</div> -->
+                    <div class="comment-content">{{description}}</div> 
                 </div>  
             </div>
         </li>
@@ -27,7 +26,7 @@
             </div>
     
             <div class="form-row">
-            <input type="submit" value="Añadir Comentario">
+            <input id="addComment" type="submit" value="Añadir Comentario">
             <input type="hidden" name="_csrf" value="tokken"/>
             </div>
         </form>
