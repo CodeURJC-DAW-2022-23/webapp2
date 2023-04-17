@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-addfavorites',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./addfavorites.component.css']
 })
 export class FavoritesComponent {
-
+  constructor() { }
+  ngOnInit() {
+    $("#addFavorites").on("click", function () {
+      
+    });
+  }
 }
