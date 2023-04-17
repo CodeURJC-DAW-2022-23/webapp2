@@ -12,8 +12,7 @@ import { MoreinfoComponent } from './details/moreinfo/moreinfo.component';
 import { MoreinfoheroComponent } from './details/moreinfohero/moreinfohero.component';
 import { LikesComponent } from './details/likes/likes.component';
 import { FavoritesComponent } from './details/addfavorites/addfavorites.component';
-import { EdituserComponent } from './edituser/edituser.component';
-import { MyAccountComponent } from './my-account/my-account.component'
+import { UserComponent } from './user/user.component'
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { MyAccountComponent } from './my-account/my-account.component'
     MoreinfoheroComponent,
     LikesComponent,
     FavoritesComponent,
-    EdituserComponent,
-    MyAccountComponent
+    UserComponent,
   ],
   imports: [
     BrowserModule
