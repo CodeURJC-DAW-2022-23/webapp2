@@ -11,7 +11,8 @@ import { SearchComponent } from './home/search/search.component';
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component'
+import { UserComponent } from './user/user.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { UserComponent } from './user/user.component'
   imports: [
     BrowserModule,
     FormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

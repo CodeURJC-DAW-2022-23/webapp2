@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+  faBars = faBars;
+  faUser = faUser;
   showme:boolean=true;
   username = "Hola"
   email = "gmail"
