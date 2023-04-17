@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
+  showme:boolean=true;
   username = "Hola"
   email = "gmail"
   userId = 1;
+  toogleSidebar(){
+    this.showme = !this.showme
+  }
 }
