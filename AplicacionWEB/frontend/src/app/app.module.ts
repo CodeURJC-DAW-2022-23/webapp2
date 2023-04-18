@@ -12,7 +12,8 @@ import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppRoutingModule } from './app-routing.module'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     BrowserModule,
     FormsModule,
     FontAwesomeModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
