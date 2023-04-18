@@ -19,18 +19,21 @@ export class AuthService {
   user: User | undefined;
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) {
-    this.userService.getMe().subscribe(
+    /*this.userService.getMe().subscribe(
       response=>{
         this.user = response.user;
         this.logged = true;
       },
       error => console.log(error)
-    );
+    );*/
    }
 
-  logIn(username:string, password:string): Observable<any>{
-    return this.http.post(BASE_URL+'/login', { username: username, password: password }, { withCredentials: true }).pipe(
+  logIn(username:string, password:string){
+    this.http.post(BASE_URL+'/login', { username: username, password: password }, { withCredentials: true }).pipe(
       map((response:any)=>{
+
+        console.log(response);
+
         return response;
       }),
       catchError((error: HttpErrorResponse) => {
