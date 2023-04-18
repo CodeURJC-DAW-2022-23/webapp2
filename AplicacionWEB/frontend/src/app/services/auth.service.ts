@@ -8,6 +8,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
+const BASE_URL = '/api/auth';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +29,7 @@ export class AuthService {
    }
 
   logIn(username:string, password:string): Observable<any>{
-    return this.http.post().pipe(
+    return this.http.post(BASE_URL+'/login', { username: username, password: password }, { withCredentials: true }).pipe(
       map((response:any)=>{
         return response;
       }),
@@ -42,20 +44,10 @@ export class AuthService {
   }
 
   logOut(){
-    return this.http.post().subscribe((resp: any)=>{
+    return this.http.post(BASE_URL + '/logout', { withCredentials: true }).subscribe((resp: any)=>{
       this.logged = false;
       this.user = undefined;
+      this.router.navigate(['/']);
     })
-  }
-
-  register(){
-    return this.http.post() .pipe(
-      map((response: any) => {
-        return response;
-      }),
-      catchError((error: any) => {
-        return throwError('Algo salio mal');
-      })
-    );
   }
 }
