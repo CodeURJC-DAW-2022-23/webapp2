@@ -1,4 +1,4 @@
-export interface aso{
+export interface Aso{
     id?:number;
     name:string;
     description:string;
