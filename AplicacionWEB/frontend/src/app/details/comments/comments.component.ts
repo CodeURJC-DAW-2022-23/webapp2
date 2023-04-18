@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Comment } from 'src/app/models/comment.model';
 import * as $ from 'jquery';
 
 
@@ -9,8 +10,13 @@ import * as $ from 'jquery';
 })
 export class CommentsComponent {
 
-  totalLikes = "2"
+ 
+  newComment!: boolean;
+  comment!: Comment;
+
+  totalLikes: number = 0;
   description = "Esto es un comentario"
+
   constructor() { }
   ngOnInit() {
     $("#addComment").on("click", function () {
