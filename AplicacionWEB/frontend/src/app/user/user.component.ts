@@ -9,10 +9,8 @@ import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 export class UserComponent {
   faBars = faBars;
   faUser = faUser;
-  showme:boolean=true;
   username = "Hola"
-  email = "gmail"
-  userId = 1;
+  showme:boolean=true;
   toogleSidebar(){
     this.showme = !this.showme
   }

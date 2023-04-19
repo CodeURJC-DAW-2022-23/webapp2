@@ -13,7 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
+import { EditMyUserComponent } from './user/edit-my-user/edit-my-user.component';
+import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { AppRoutingModule } from './app-routing.module'
     CardComponent,
     LoginComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    EditMyUserComponent,
+    MyUserFavsComponent
   ],
   imports: [
     BrowserModule,
