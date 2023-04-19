@@ -16,7 +16,8 @@ import { UserComponent } from './user/user.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { EditMyUserComponent } from './user/edit-my-user/edit-my-user.component';
-import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component'
+import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component';
+import { HomeComponent } from './home/home.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component'
     AdminComponent,
     UserComponent,
     EditMyUserComponent,
-    MyUserFavsComponent
+    MyUserFavsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
