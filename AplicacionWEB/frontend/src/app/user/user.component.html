@@ -32,14 +32,14 @@
 
                     <div class="sb-sidenav-menu-heading">Mi Cuenta</div>
 
-                    <a class="nav-link" href="/miCuenta">
+                    <a class="nav-link" [routerLink]="['/myUser']">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Cuenta
                     </a>
 
                     <div class="sb-sidenav-menu-heading">Favoritos</div>
 
-                    <a class="nav-link" href="/miCuenta/favoritos">
+                    <a class="nav-link" [routerLink]="['/myUser/favorites']">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Eventos Favoritos
                     </a>
@@ -57,8 +57,7 @@
     </div>
     <div id="layoutSidenav_content">
         <div class="container-fluid px-4">
-            <!--<app-edit-my-user></app-edit-my-user>-->
-            <app-my-user-favs></app-my-user-favs>
+            <router-outlet></router-outlet>
         </div>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
