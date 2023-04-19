@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -32,8 +33,9 @@ import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component'
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     FontAwesomeModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

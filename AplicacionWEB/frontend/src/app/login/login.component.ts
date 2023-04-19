@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
 
   logIn(){
     this.authService.logIn(this.username, this.password);
+    
   }
 
   register(){
     const formData = new FormData();
-    formData.append('name', this.username);
+    formData.append('username', this.username);
     formData.append('email', this.email);
-    formData.append('password', this.password);
+    formData.append('encodedPassword', this.password);
     formData.append('rol', this.rol);
 
     this.userService.register(formData);

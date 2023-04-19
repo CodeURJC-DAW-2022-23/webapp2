@@ -41,22 +41,20 @@
             </div>
             <div class="select-container">
                     <select class="custom-select" id="mes" name="monthSelect" onchange="document.getElementById('submitBtn').click();">
-                        <!-- {{#monthsValues}}
-                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
-                        {{/monthsValues}} -->
+                        <ng-template ngFor let-month [ngForOf]="monthsValues">
+                            <option value={{month.value}} [selected]="month.select" >{{month.content}}</option>
+                        </ng-template>
                     </select>
                     <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
                         <svg class="submit-button">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
                         </svg>
-                    </button> -->
+                    </button> --> 
                 
             </div>
             <div class="select-container">
                     <select class="custom-select" id="campus" name="campusValue" onchange="document.getElementById('submitBtn').click();">
-                        <!-- {{#campusValues}}
-                        <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
-                        {{/campusValues}} -->
+                        <option *ngFor="let campus of campusValues " value={{campus.value}} [selected]="campus.select" >{{campus.content}}</option>
                     </select>
                     <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
                         <svg class="submit-button">

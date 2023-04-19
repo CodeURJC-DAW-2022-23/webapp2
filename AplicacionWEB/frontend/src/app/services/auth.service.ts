@@ -19,6 +19,10 @@ export class AuthService {
   user: User | undefined;
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) {
+    this.reqIsLogged();
+  }
+
+  reqIsLogged(){
     this.userService.getMe().subscribe(
       response=>{
         this.user = response.user;
@@ -26,21 +30,28 @@ export class AuthService {
       },
       error => console.log(error)
     );
-   }
+  }
 
-  logIn(username:string, password:string): Observable<any>{
-    return this.http.post(BASE_URL+'/login', { username: username, password: password }, { withCredentials: true }).pipe(
-      map((response:any)=>{
-        return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        let errorMessage = 'Ocurrió un error al intentar iniciar sesión';
-        if (error.status === 401) {
-          errorMessage = 'Credenciales inválidas';
-        }
-        return throwError(errorMessage);
-      })
-    )
+  logIn(username:string, password:string){
+    this.http.post(BASE_URL+'/login', { username: username, password: password }, { withCredentials: true }).subscribe(
+      (response)=> this.reqIsLogged(),
+      (error) => alert("Credenciales invalidas")
+    );
+    // .pipe(
+    //   map((response:any)=>{
+
+    //     console.log(response);
+
+    //     return response;
+    //   }),
+    //   catchError((error: HttpErrorResponse) => {
+    //     let errorMessage = 'Ocurrió un error al intentar iniciar sesión';
+    //     if (error.status === 401) {
+    //       errorMessage = 'Credenciales inválidas';
+    //     }
+    //     return throwError(errorMessage);
+    //   })
+    // )
   }
 
   logOut(){
