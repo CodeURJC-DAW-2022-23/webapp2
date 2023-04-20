@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { Comment } from '../models/comment.model';
 
 const BASE_URL = '/api/comments';
@@ -13,9 +13,9 @@ export class CommentService{
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+
   getComment(id: number){
-    return this.httpClient.get(BASE_URL + '/' + id).pipe(
-    ) as Observable<Comment>;
+    return this.httpClient.get(BASE_URL + '/' + id).pipe() as Observable<Comment>;
 }
 
 deleteComment(id: number){
@@ -23,10 +23,4 @@ deleteComment(id: number){
 }
 
 
-
-private handleError(error: any) {
-console.log("ERROR:");
-console.error(error);
-return throwError("Server error (" + error.status + "): " + error.text())
-}
 }

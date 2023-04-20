@@ -13,7 +13,8 @@ import { MoreinfoheroComponent } from './details/moreinfohero/moreinfohero.compo
 import { LikesComponent } from './details/likes/likes.component';
 import { FavoritesComponent } from './details/addfavorites/addfavorites.component';
 import { UserComponent } from './user/user.component';
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
+import { AdminComponent } from './admin/admin.component'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AppRoutingModule } from './app-routing.module'
     LikesComponent,
     FavoritesComponent,
     UserComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
