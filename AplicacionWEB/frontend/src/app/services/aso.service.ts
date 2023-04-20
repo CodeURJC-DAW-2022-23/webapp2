@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AsoRest } from '../models/aso.rest.model';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
+import { Aso } from '../models/aso.model';
+import { catchError, throwError } from 'rxjs';
 
 const BASE_URL = '/api/aso';
 @Injectable({
@@ -10,7 +11,15 @@ const BASE_URL = '/api/aso';
 export class AsoService {
 
   constructor(private http: HttpClient) { }
-  asoList(): Observable<AsoRest[]>{
-    return this.http.get(BASE_URL+'/asociationsList').pipe() as Observable<AsoRest[]>;
+  asoList(): Observable<Aso[]>{
+    return this.http.get(BASE_URL+'/asociationsList').pipe() as Observable<Aso[]>;
   }
+
+
+
+  private handleError(error: any) {
+		console.log("ERROR:");
+		console.error(error);
+		return throwError("Server error (" + error.status + "): " + error.text())
+	}
 }

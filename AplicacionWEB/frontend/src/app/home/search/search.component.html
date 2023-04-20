@@ -26,9 +26,9 @@
         <div class="filter">
             <div class="select-container">
                     <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitBtn').click();">
-                        <!-- {{#asoValues}}
-                            <option value="{{value}}" {{#selected}}selected{{/selected}} >{{content}}</option>
-                        {{/asoValues}} -->
+                        <ng-template ngFor let-aso [ngForOf]="asoValues">
+                            <option value={{aso.value}} [selected]="aso.select" >{{aso.content}}</option>
+                        </ng-template>
                     </select>
                     
                     <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">
