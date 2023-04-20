@@ -14,7 +14,13 @@ import { LikesComponent } from './details/likes/likes.component';
 import { FavoritesComponent } from './details/addfavorites/addfavorites.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { EventsComponent } from './events/events.component';
+import { AsosComponent } from './asos/asos.component';
+import { UsersComponent } from './users/users.component';
+import { EditeventComponent } from './editevent/editevent.component';
+import { EditasoComponent } from './editaso/editaso.component';
+import { EdituserComponent } from './edituser/edituser.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +37,12 @@ import { AdminComponent } from './admin/admin.component'
     FavoritesComponent,
     UserComponent,
     AdminComponent,
+    EventsComponent,
+    AsosComponent,
+    UsersComponent,
+    EditeventComponent,
+    EditasoComponent,
+    EdituserComponent,
   ],
   imports: [
     BrowserModule,
