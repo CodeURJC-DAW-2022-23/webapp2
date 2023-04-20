@@ -1,8 +1,8 @@
 import { Component, OnInit  } from '@angular/core';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
-import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 import { User } from '../models/user.model';
-import { UserProfile } from '../models/user.rest.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +10,7 @@ import { UserProfile } from '../models/user.rest.model';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit  {
-  u?:UserProfile;
+  u?:User;
   faBars = faBars;
   faUser = faUser;
   username?:string;
@@ -27,10 +27,8 @@ export class UserComponent implements OnInit  {
   loadUser(){
     this.userService.getMe().subscribe(
       response=>{
-        console.log(response);
         this.u = response;
-        console.log(this.u);
-        this.username=this.u.user.username;
+        this.username=this.u.username;
       }
     );
     //this.username = this.u;
