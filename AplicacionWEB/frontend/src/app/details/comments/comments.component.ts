@@ -21,25 +21,25 @@ export class CommentsComponent {
   description = "Esto es un comentario"
 
   constructor(private service: CommentService) { }
-  ngOnInit(): void{
+  // ngOnInit(): void{
 
-    const idComment = this.activatedRouter.snapshot.params['idComment'];
+  //   const idComment = this.activatedRouter.snapshot.params['idComment'];
 
-    if (idComment) {
-        this.service.getComment(idComment).subscribe(
-            response => {
-                this.comment = response;
-                this.totalLikes = this.comment.totalLikes;
-                this.description = this.comment.description;
-            },
-            error => console.log(error)
-        )
+  //   if (idComment) {
+  //       this.service.getComment(idComment).subscribe(
+  //           response => {
+  //               this.comment = response;
+  //               this.totalLikes = this.comment.totalLikes;
+  //               this.description = this.comment.description;
+  //           },
+  //           error => console.log(error)
+  //       )
 
-        this.newComment = false;
-    } else {     
-        this.newComment = true;
-    }
-  }
+  //       this.newComment = false;
+  //   } else {     
+  //       this.newComment = true;
+  //   }
+  // }
 
   save() {
     if (this.newComment) {
