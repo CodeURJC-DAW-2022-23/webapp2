@@ -14,7 +14,8 @@ import { LikesComponent } from './details/likes/likes.component';
 import { FavoritesComponent } from './details/addfavorites/addfavorites.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { EventsComponent } from './admin/events/events.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdminComponent } from './admin/admin.component'
     FavoritesComponent,
     UserComponent,
     AdminComponent,
+    EventsComponent,
   ],
   imports: [
     BrowserModule,
