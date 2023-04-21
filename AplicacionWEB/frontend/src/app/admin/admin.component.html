@@ -32,12 +32,12 @@
 
                     <div class="sb-sidenav-menu-heading">Core</div>
 
-                    <a class="nav-link" [routerLink]="['/events']">
+                    <a class="nav-link" [routerLink]="['admin/events']">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Eventos
                     </a>
 
-                    <a class="nav-link"  [routerLink]="['/asos']">
+                    <a class="nav-link"  [routerLink]="['admin/asos']">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Asociaciones
                     </a>
@@ -57,9 +57,9 @@
     </div>
 
     <div id="layoutSidenav_content">
-        <main>
-         
-        </main>
+        <div class="container-fluid px-4">
+            <router-outlet></router-outlet>
+        </div>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
