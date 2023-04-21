@@ -22,6 +22,7 @@ import { EventsComponent } from './admin/events/events.component';
 import { AsosComponent } from './admin/asos/asos.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EditeventComponent } from './admin/events/editevent/editevent.component';
+import { EditasoComponent } from './admin/asos/editaso/editaso.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditeventComponent } from './admin/events/editevent/editevent.component
     AsosComponent,
     UsersComponent,
     EditeventComponent,
+    EditasoComponent,
   ],
   imports: [
     BrowserModule,

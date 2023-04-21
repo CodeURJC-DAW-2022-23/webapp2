@@ -8,6 +8,7 @@ import { EventsComponent } from './admin/events/events.component';
 import { AsosComponent } from './admin/asos/asos.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EditeventComponent } from './admin/events/editevent/editevent.component';
+import { EditasoComponent } from './admin/asos/editaso/editaso.component';
 
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
       // ]
     },
     {path: 'editevent', component: EditeventComponent },
+    {path: 'editaso', component: EditasoComponent},
 
     {path: 'asos', component: AsosComponent },
     {path: 'users', component: UsersComponent},

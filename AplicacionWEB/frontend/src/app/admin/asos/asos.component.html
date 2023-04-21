@@ -22,27 +22,16 @@
                            
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Facultad</th>
-                            <th>Campus</th>
-                            <th>Modificar</th>
-                            <th>Eliminar</th>
-                            
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <tr>
-                            <td>id</td>
-                            <td>name</td>
-                            <td>description</td>
-                            <td>faculty</td>
-                            <td>campus</td>
+                            <td>{{id}}</td>
+                            <td>{{name}}</td>
+                            <td>{{description}}</td>
+                            <td>{{faculty}}</td>
+                            <td>{{campus}}</td>
                             <td><form action="/admin/editAsoc/id">
-                                <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success">
+                                <a [routerLink]="['/admin/events/editaso']"> <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success"> </a>
+                                
                                 <input type="hidden" name="_csrf" value="token"/>
                             </form></td>
                             <td><form action="/admin/adminAsoc/id/delete" method="post">

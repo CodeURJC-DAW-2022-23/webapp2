@@ -22,30 +22,20 @@
 
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Rol</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-
-                    </tr>
-                </tfoot>
                 <tbody>
                     <tr>
-                        <td>id</td>
-                        <td>username</td>
-                        <td>email</td>
-                        <td>rol</td>
+                        <td>{{id}}</td>
+                        <td>{{username}}</td>
+                        <td>{{email}}</td>
+                        <td>{{rol}}</td>
                         <td>
-                            <form action="/admin/editarUsuarios/id">
+                            <form >
+                                <a [routerLink]="['/admin/events/edituser']"></a>
                                 <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
                             </form>
                         </td>
                         <td>
-                            <form action="/admin/editarUsuarios/id/delete" method="post">
+                            <form action="" method="post">
                                 <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
                                 <input type="hidden" name="_csrf" value="token" />
                             </form>

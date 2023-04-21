@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
-
+  id?: number;
+  username?: string;
+  email?: string;
+  rol?: string;
 }

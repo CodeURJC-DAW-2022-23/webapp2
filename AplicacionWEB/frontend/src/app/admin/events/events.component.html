@@ -20,33 +20,22 @@
                         <th>Asociación</th>
                         <th>Modificar</th>
                         <th>Eliminar</th>
-                       
                     </tr>
                 </thead>
                 <tfoot>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Fecha</th>
-                        <th>Localización</th>
-                        <th>Asociación</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                        
-                    </tr>
-                </tfoot>
                 <tbody>
                     <tr>
-                        <td>id</td>
-                        <td>name</td>
-                        <td>date</td>
-                        <td>location</td>
-                        <td>ASOname</td>
-                        <td><form action="/admin/events/editevent">
-                            <input [routerLink]="['/admin/events/editevent']" type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
+                        <td>{{id}}</td>
+                        <td>{{name}}</td>
+                        <td>{{date}}</td>
+                        <td>{{location}}</td>
+                        <td>{{ASOname}}</td>
+                        <td><form>
+                            <a [routerLink]="['/admin/events/editevent']"> <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar"> </a>
+                            
                             <input type="hidden" name="_csrf" value="token"/>
                         </form></td>
-                        <td><form action="/admin/editarEventos/" method="post">
+                        <td><form method="post">
                             <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
                             <input type="hidden" name="_csrf" value="token"/>
                         </form></td>
