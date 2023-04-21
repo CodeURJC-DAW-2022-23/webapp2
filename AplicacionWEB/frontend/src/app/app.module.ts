@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component'
 import { AssoComponent } from './asso/asso.component';
 import { EditAsso } from './asso/edit/edit-aso-form.component';
+import { AssoNewEvent } from './asso/new_event/new-event.component';
+import { Events } from './asso/events/events.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { EditAsso } from './asso/edit/edit-aso-form.component';
     LoginComponent,
     AdminComponent,
     AssoComponent,
-    EditAsso
+    EditAsso,
+    AssoNewEvent,
+    Events
   ],
   imports: [
     BrowserModule,
