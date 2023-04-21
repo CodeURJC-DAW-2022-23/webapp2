@@ -5,17 +5,17 @@
     </div>
     <div class='widget__details'>
         <div class='widget__name'>
-            <!-- {{name}} -->
+            {{event?.name}}
         </div>
         <div class='widget__type'>
-            <!-- {{#asociation}}{{name}}{{/asociation}} -->
+            {{event?.asociation}}
         </div>
         <div class='widget__info'>
             <span>
                 Universidad Rey Juan Carlos
             </span>
             <span>
-                <!-- {{campus}} -->
+                {{event?.campus}}
             </span>
         </div>
         <div class='widget__hidden'>
@@ -26,7 +26,7 @@
                         Fecha
                     </td>
                     <td>
-                        <!-- {{date}} -->
+                        {{event?.date}}
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +34,7 @@
                         Horario
                     </td>
                     <td>
-                        <!-- {{startTime}} - {{endTime}} -->
+                         {{event?.startTime}} - {{event?.endTime}}
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                         Lugar
                     </td>
                     <td>
-                        <!-- {{location}} -->
+                       {{event?.location}}
                     </td>
                 </tr>
                 <tr>
@@ -50,8 +50,7 @@
                         Reserva
                     </td>
                     <td>
-                        <!-- {{#booking}}Si{{/booking}}
-                        {{^booking}}No{{/booking}} -->
+                        {{getBooking()}}
                     </td>
                 </tr>
                 <tr>
@@ -59,8 +58,7 @@
                         Creditos
                     </td>
                     <td>
-                        <!-- {{#credits}}Si{{/credits}}
-                        {{^credits}}No{{/credits}} -->
+                        {{getCredits()}}
                     </td>
                 </tr>
             </table>
