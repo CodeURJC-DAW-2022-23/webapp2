@@ -32,7 +32,7 @@
 
                     <div class="sb-sidenav-menu-heading">Core</div>
 
-                    <a class="nav-link" [routerLink]="['/events']>
+                    <a class="nav-link" [routerLink]="['/events']">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Eventos
                     </a>
@@ -57,7 +57,9 @@
     </div>
 
     <div id="layoutSidenav_content">
-        <main> </main>
+        <main>
+            <app-events></app-events> 
+        </main>
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
