@@ -159,6 +159,7 @@ public class AssoRestController {
     })
   @PutMapping("/miAsociacion")
   public ResponseEntity<AsociationDTO> editMyAsso(@RequestBody Asociation asso, HttpServletRequest request) {
+    System.out.println("hola");
     User currentUser = checkAdminOrAsso("ASO", request);
     
     if (currentUser == null)

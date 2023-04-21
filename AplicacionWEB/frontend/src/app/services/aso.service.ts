@@ -15,8 +15,19 @@ export class AsoService {
     return this.http.get(BASE_URL+'/asociationsList').pipe() as Observable<Aso[]>;
   }
 
+  getAssoById(id: Number) : Observable<Aso> {
+    return this.http.get(BASE_URL + '/' + id).pipe() as Observable<Aso>;
+  }
 
+  getMyAsso() : Observable<Aso> {
+    return this.http.get(BASE_URL + '/miAsociacion').pipe() as Observable<Aso>;
+  }
 
+  editMyAsso(asso: Aso) {
+    console.log(BASE_URL + '/' + 1);
+    this.http.put(BASE_URL + '/' + 1, JSON.stringify(asso)).pipe(); //BASE_URL + '/miAsociacion'
+  }
+  
   private handleError(error: any) {
 		console.log("ERROR:");
 		console.error(error);
