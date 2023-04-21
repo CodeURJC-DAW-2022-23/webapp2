@@ -5,98 +5,14 @@
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
 
-    <div class="col">
+    <div *ngFor="let event of events" class="col">
         <div class="card h-100">
             <img src="/1/image" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
+                <h5 class="card-title">{{event.name}}</h5>
+                <p class="card-text">{{event.description}}</p>
                 <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100">
-            <img src="/1/image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p class="card-text">Desc</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
-                <a href="/eliminarFavoritos/1" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                <a (click) = "removeFav(event.id)" class="btn btn-sm btn-outline-danger">Eliminar</a>
             </div>
         </div>
     </div>

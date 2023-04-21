@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { User } from '../models/user.model';
+import { Event } from '../models/event.model';
 
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
@@ -27,7 +28,11 @@ export class UserService {
   }
 
   getFavs(){
-    return this.http.get(BASE_URL +"/me/favorites");
+    return this.http.get(BASE_URL +"/me/favorites").pipe()as Observable<Event[]>;
+  }
+
+  removeFav(id:Number){
+    return this.http.delete(BASE_URL +"/me/favorites/"+id);
   }
 
   register(formData: FormData){
