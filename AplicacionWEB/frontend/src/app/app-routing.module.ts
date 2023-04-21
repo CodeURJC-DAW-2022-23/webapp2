@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-// import { UserComponent } from './user/user.component';
-// import { HomeComponent } from './home/home.component';
 
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { EventsComponent } from './admin/events/events.component';
 import { AsosComponent } from './admin/asos/asos.component';
-
-import { Comment } from './details/comments/comments.component';
-
+import { UsersComponent } from './admin/users/users.component';
+import { EditeventComponent } from './admin/events/editevent/editevent.component';
 
 
 
@@ -20,8 +17,15 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent,
   children: [
-    {path: 'events', component: EventsComponent},
-    {path: 'asos', component: AsosComponent},
+    {path: 'events', component: EventsComponent,
+      // children: [
+      //   { path: 'editevent', component: EditeventComponent }
+      // ]
+    },
+    {path: 'editevent', component: EditeventComponent },
+
+    {path: 'asos', component: AsosComponent },
+    {path: 'users', component: UsersComponent},
   ]
   }
   
