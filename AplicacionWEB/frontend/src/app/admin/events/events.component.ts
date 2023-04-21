@@ -12,10 +12,11 @@ export class EventsComponent {
   date?: string;
   location?: string;
   ASOname?: string;
+  event: Event|undefined;
 
   constructor(private router: Router) { }
 
   modify() {
-     this.router.navigate(['/admin/editevent/{{id}}']);
+     this.router.navigate(['/admin/editevent/', this.event?.id]);
   }
 }

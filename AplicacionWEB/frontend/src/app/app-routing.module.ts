@@ -23,7 +23,7 @@ const routes: Routes = [
       //   { path: 'editevent', component: EditeventComponent }
       // ]
     },
-    {path: 'editevent', component: EditeventComponent },
+    {path: 'editevent/:id', component: EditeventComponent },
     {path: 'editaso', component: EditasoComponent},
 
     {path: 'asos', component: AsosComponent },
