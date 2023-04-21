@@ -3,6 +3,7 @@ import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +17,7 @@ export class UserComponent implements OnInit  {
   username?:string;
   showme:boolean=true;
 
-  constructor(private userService:UserService){
+  constructor(private userService:UserService, private authService:AuthService,private router: Router){
     
   }
 
@@ -31,7 +32,12 @@ export class UserComponent implements OnInit  {
         this.username=this.u.username;
       }
     );
-    //this.username = this.u;
+    
+  }
+
+  logout(){
+    this.authService.logOut();
+    this.router.navigate(['']);
   }
 
   toogleSidebar(){
