@@ -30,7 +30,7 @@
                             <td>{{faculty}}</td>
                             <td>{{campus}}</td>
                             <td><form action="/admin/editAsoc/id">
-                                <a [routerLink]="['/admin/events/editaso']"> <input type="submit" value="Modificar" class="btn btn-sm btn-outline-success"> </a>
+                                <button (click)="modify()" id="modify" class="btn btn-sm btn-outline-success" type="submit">Modificar</button>
                                 
                                 <input type="hidden" name="_csrf" value="token"/>
                             </form></td>

@@ -30,8 +30,7 @@
                         <td>{{rol}}</td>
                         <td>
                             <form >
-                                <a [routerLink]="['/admin/events/edituser']"></a>
-                                <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
+                            <button (click)="modify()" id="modify" class="btn btn-sm btn-outline-success" type="submit">Modificar</button>
                             </form>
                         </td>
                         <td>
