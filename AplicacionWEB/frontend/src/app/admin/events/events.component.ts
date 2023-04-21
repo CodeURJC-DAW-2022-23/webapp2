@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -11,4 +12,10 @@ export class EventsComponent {
   date?: string;
   location?: string;
   ASOname?: string;
+
+  constructor(private router: Router) { }
+
+  modify() {
+     this.router.navigate(['/admin/editevent/{{id}}']);
+  }
 }

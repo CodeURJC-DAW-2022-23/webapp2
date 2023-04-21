@@ -31,9 +31,9 @@
                         <td>{{location}}</td>
                         <td>{{ASOname}}</td>
                         <td><form>
-                            <a [routerLink]="['/admin/events/editevent']"> <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar"> </a>
+                            <button (click)="modify()" id="modify" class="btn btn-sm btn-outline-success" type="submit">Modificar</button> 
                             
-                            <input type="hidden" name="_csrf" value="token"/>
+                            <!-- <button [routerLink]="['/admin/events/editevent']">Modificar</button> -->
                         </form></td>
                         <td><form method="post">
                             <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
