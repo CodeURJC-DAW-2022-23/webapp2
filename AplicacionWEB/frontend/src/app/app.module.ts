@@ -16,7 +16,7 @@ import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminComponent } from './admin/admin.component';
 import { EventsComponent } from './admin/events/events.component';
-import { AsosComponent } from './asos/asos.component'
+import { AsosComponent } from './admin/asos/asos.component';
 
 @NgModule({
   declarations: [
