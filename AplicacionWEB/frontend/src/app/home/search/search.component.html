@@ -1,8 +1,8 @@
 <form action="/globalFormSubmit" method="post">
     <div class="hero container-fluid">
         <div class="search-form" id="buscador">
-            <input type="search" value="" placeholder="Busca eventos o categorías" class="search-input" name="searchBar">
-            <button id="submitBtn" class="search-button" name="_csrf" value="">
+            <input type="search" value="" placeholder="Busca eventos o categorías" class="search-input" name="searchBar" [(ngModel)]='searchInput'>
+            <button id="submitBtn" class="search-button" name="_csrf" value="" (click)="search()">
                 <svg class="submit-button">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
                 </svg>
@@ -25,7 +25,7 @@
     <div class="filters-container">
         <div class="filter">
             <div class="select-container">
-                    <select class="custom-select" id="asociacion" name="asociationValue" onchange="document.getElementById('submitBtn').click();">
+                    <select class="custom-select" id="asociacion" name="asociationValue" (change)="search()" [(ngModel)]="asoSelected">
                         <ng-template ngFor let-aso [ngForOf]="asoValues">
                             <option value={{aso.value}} [selected]="aso.select" >{{aso.content}}</option>
                         </ng-template>
@@ -40,7 +40,7 @@
                 
             </div>
             <div class="select-container">
-                    <select class="custom-select" id="mes" name="monthSelect" onchange="document.getElementById('submitBtn').click();">
+                    <select class="custom-select" id="mes" name="monthSelect" (change)="search()" [(ngModel)]='monthSelected'>
                         <ng-template ngFor let-month [ngForOf]="monthsValues">
                             <option value={{month.value}} [selected]="month.select" >{{month.content}}</option>
                         </ng-template>
@@ -53,7 +53,7 @@
                 
             </div>
             <div class="select-container">
-                    <select class="custom-select" id="campus" name="campusValue" onchange="document.getElementById('submitBtn').click();">
+                    <select class="custom-select" id="campus" name="campusValue" (change)="search()" [(ngModel)]="campusSelected">
                         <option *ngFor="let campus of campusValues " value={{campus.value}} [selected]="campus.select" >{{campus.content}}</option>
                     </select>
                     <!-- <button style="display: none;" id="submitBtn" type="submit" class="search-button" name="_csrf" value="{{token}}">

@@ -11,7 +11,7 @@ import { Event } from 'src/app/models/event.model';
 export class SearchComponent {
   page:number=0;
   searchInput:String="";
-  monthSelected:String="All";
+  monthSelected:String="";
   monthsValues = [
     {value: "", content: "Mes", select: true},
     {value: "All", content: "Todos", select: false},
@@ -28,7 +28,7 @@ export class SearchComponent {
     {value: "NOVIEMBRE", content: "Noviembre", select: false},
     {value: "DICIEMBRE", content: "Diciembre", select: false}
   ]
-  campusSelected:String = "All";
+  campusSelected:String = "";
   campusValues = [
     {value: "", content: "Campus", select: true},
     {value: "All", content: "Todos", select: false},
@@ -39,7 +39,7 @@ export class SearchComponent {
     {value: "MADRID-VICALVARO", content: "Madrid-Vicalvaro", select: false},
     {value: "MADRID-QUINTANA", content: "Madrid-Quintana", select: false}
   ]
-  asoSelected:String="All";
+  asoSelected:String="";
   asoValues=[
     {value: "", content: "Asociación", select: true},
     {value: "All", content: "Todas", select: false}
@@ -65,6 +65,7 @@ export class SearchComponent {
     }
     )
     this.page=0;
+    this.moreEvents=true;
     
   }
   loadMore(){
