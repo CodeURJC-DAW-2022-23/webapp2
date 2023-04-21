@@ -12,6 +12,9 @@ import { SearchComponent } from './home/search/search.component';
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component'
+import { AssoComponent } from './asso/asso.component';
+import { EditAsso } from './asso/edit/edit-aso-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,9 @@ import { AdminComponent } from './admin/admin.component'
     SearchComponent,
     CardComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    AssoComponent,
+    EditAsso
   ],
   imports: [
     BrowserModule,

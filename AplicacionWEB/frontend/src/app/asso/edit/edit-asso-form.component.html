@@ -1,0 +1,57 @@
+<div id="layoutSidenav_content">
+      <div class="container-fluid px-4">
+          <h1 class="mt-4">Mi Asociación</h1>
+          <ol class="breadcrumb mb-4">
+              <li class="breadcrumb-item active">Mi Asociación</li>
+          </ol>
+              <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="">
+                  <h2>Editar asociación</h2>
+                  <hr/>
+                      <div class="row">
+                          <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                              <label for="eventName">Nombre</label>
+                              <input type="text" class="form-control" id="name" name="name" [(ngModel)]='asso.name'/>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="form-group py-2">
+                              <select name="campus" class="form-select" aria-label="Default select example">
+                                  <option value="" selected hidden></option>
+                                  <option value="Alcorcón">ALCORCÓN</option>
+                                  <option value="Aranjuez">ARANJUEZ</option>
+                                  <option value="Fuenlabrada">FUENLABRADA</option>
+                                  <option value="Móstoles">MÓSTOLES</option>
+                                  <option value="Madrid-Vicalvaro">MADRID-VICALVARO</option>
+                                  <option value="Madrid-Quintana">MADRID-QUINTANA</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="form-group py-2">
+                              <select name="faculty" class="form-select" aria-label="Default select example">
+                                  <option value="" selected hidden></option>
+                                  <option value="Facultad de Artes y Humanidades">Facultad de Artes y Humanidades</option>
+                                  <option value="Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares">Facultad de CC de la Educación y del Deporte y Estudios Interdisciplinares</option>
+                                  <option value="Facultad de Ciencias de la Comunicación">Facultad de Ciencias de la Comunicación</option>
+                                  <option value="Facultad de Ciencias de la Economía y de la Empresa">Facultad de Ciencias de la Economía y de la Empresa</option>
+                                  <option value="Facultad de Ciencias de la Salud">Facultad de Ciencias de la Salud</option>
+                                  <option value="Facultad de Ciencias Jurídicas y Políticas">Facultad de Ciencias Jurídicas y Políticas</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class='d-sm-flex py-sm-2'>
+                              <div class="form-group py-2 py-sm-0 col-sm-7 pe-sm-3">
+                                  <label for="">Descripción</label>
+                                  <textarea type="text" class="form-control" id="description" name="description"></textarea>
+                          </div>
+                      </div>  
+                  </div>
+
+                  <div class="d-flex py-2 w-100">
+                      <div class="flex-fill"></div>
+                      <button type="submit" class="btn btn-success px-4">Modificar</button>
+                      <input type="hidden" name="_csrf" value=""/>
+                  </div>
+              </form>
+</div>

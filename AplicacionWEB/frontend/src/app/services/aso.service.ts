@@ -11,7 +11,7 @@ const BASE_URL = '/api/aso';
 export class AsoService {
 
   constructor(private http: HttpClient) { }
-  asoList(): Observable<Aso[]>{
+  asoList(): Observable<Aso[]> {
     return this.http.get(BASE_URL+'/asociationsList').pipe() as Observable<Aso[]>;
   }
 
