@@ -1,4 +1,5 @@
 import { Component, Input} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 
 @Component({
@@ -8,24 +9,28 @@ import { Event } from 'src/app/models/event.model';
 })
 export class CardComponent {
   @Input()
-  event:Event | undefined;
+  event:Event;
+  constructor(private router: Router, activatedRoute:ActivatedRoute){}
 
-
-  imageURL(){
-    return '/api/events/image/'+this.event?.id;
+  
+  infoEvent(){
+    this.router.navigate(['/infoEvento/',this.event?.id]);
   }
-  getBooking(){
-    if (this.event?.booking){
+imageURL(){
+    return '/api/events/image/'+this.event.id;
+}
+getBooking(){
+    if (this.event.booking){
       return 'Si';
     }else{
       return 'No';
     }
-  }
-  getCredits(){
-    if (this.event?.credits){
+}
+getCredits(){
+    if (this.event.credits){
       return 'Si';
     }else{
       return 'No';
     }
-  }
+}
 }

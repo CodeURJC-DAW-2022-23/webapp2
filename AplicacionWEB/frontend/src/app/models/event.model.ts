@@ -12,4 +12,6 @@ export interface Event{
     startTime:String;
     endTime:String;
     duration:String;
+
+    
 }

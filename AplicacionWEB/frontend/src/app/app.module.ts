@@ -28,7 +28,7 @@ import { HomeComponent } from './home/home.component'
     CardComponent,
     LoginComponent,
     AdminComponent,
-    EventInfoComponent
+    EventInfoComponent,
     UserComponent,
     EditMyUserComponent,
     MyUserFavsComponent,

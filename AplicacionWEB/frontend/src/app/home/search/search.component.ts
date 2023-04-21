@@ -44,14 +44,15 @@ export class SearchComponent {
     {value: "", content: "Asociación", select: true},
     {value: "All", content: "Todas", select: false}
   ]
-  events:Event[] | undefined;
+  events:Event[];
   moreEvents:Boolean=true;
 
   constructor(private asoService:AsoService, private eventService:EventService){}
 
   ngOnInit(){
     this.asoService.asoList().subscribe(
-      asos=>{for(let aso of asos){
+      asos=>{
+        for(let aso of asos){
         this.asoValues.push({value: aso.name, content:aso.name, select: false})
       }
     }
