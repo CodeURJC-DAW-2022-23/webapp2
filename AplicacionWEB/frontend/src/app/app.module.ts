@@ -9,10 +9,16 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
+import { EventInfoComponent } from './event-info/event-info.component';
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { EventInfoComponent } from './event_info/event-info/event-info.component'
+import { UserComponent } from './user/user.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppRoutingModule } from './app-routing.module';
+import { EditMyUserComponent } from './user/edit-my-user/edit-my-user.component';
+import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component';
+import { HomeComponent } from './home/home.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +29,17 @@ import { EventInfoComponent } from './event_info/event-info/event-info.component
     LoginComponent,
     AdminComponent,
     EventInfoComponent
+    UserComponent,
+    EditMyUserComponent,
+    MyUserFavsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
