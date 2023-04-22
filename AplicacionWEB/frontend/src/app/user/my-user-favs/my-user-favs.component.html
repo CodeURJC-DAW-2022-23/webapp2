@@ -11,7 +11,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{event.name}}</h5>
                 <p class="card-text">{{event.description}}</p>
-                <a href="/infoEvento/1" class="btn btn-sm btn-outline-primary">Más info</a>
+                <a href="/infoEvento/{{(event.id)}}" class="btn btn-sm btn-outline-primary">Más info</a>
                 <a (click) = "removeFav(event.id)" class="btn btn-sm btn-outline-danger">Eliminar</a>
             </div>
         </div>
