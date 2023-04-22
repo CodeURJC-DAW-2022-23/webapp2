@@ -30,4 +30,8 @@ export class UserService {
     );
   }
 
+  allUsers():Observable<any>{
+    return this.http.get(BASE_URL+"/all").pipe() as Observable<User[]>;
+  }
+
 }
