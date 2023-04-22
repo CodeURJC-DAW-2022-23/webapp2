@@ -75,8 +75,12 @@
                 </th>
               </tr>
             </thead>
-            <tbody *ngFor="let event of events">
-              <tr>
+            <tbody>
+              <tr *ngFor="let event of events">
+                <td>{{event.id}}</td>
+                <td>{{event.name}}</td>
+                <td>{{event.date}}</td>
+                <td>{{event.location}}</td>
                 <td class="datatable-empty" colspan="6">No entries found</td>
               </tr>
             </tbody>

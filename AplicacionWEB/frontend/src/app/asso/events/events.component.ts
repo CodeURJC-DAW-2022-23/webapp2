@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as simpleDatatables from 'simple-datatables';
 import { Aso } from 'src/app/models/aso.model';
 import { AsoService } from 'src/app/services/aso.service';
+import { Event } from 'src/app/models/event.model';
 
 @Component({
   selector: 'asso-events',
@@ -10,13 +11,13 @@ import { AsoService } from 'src/app/services/aso.service';
 })
 
 export class Events {
-  events: Events[];
+  events: Event[];
 
   constructor(private assoService: AsoService){}
 
   ngOnInit() {
-    this.assoService.getAssoById(1).subscribe((reponse)=>{ // cambiar getAssoByID por getMyAsso
-    
+    this.assoService.getEvents().subscribe((response)=>{
+      this.events = response;
     });
   }
 }
