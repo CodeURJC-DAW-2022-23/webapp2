@@ -34,4 +34,9 @@ export class UserService {
     return this.http.get(BASE_URL+"/all").pipe() as Observable<User[]>;
   }
 
+   deleteUser(id: number) {
+   // return this.httpClient.delete(BASE_URL + '/' + id, { withCredentials: true });
+    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
+
 }

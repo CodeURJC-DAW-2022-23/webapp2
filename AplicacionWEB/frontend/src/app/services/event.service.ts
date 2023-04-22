@@ -20,4 +20,9 @@ export class EventService {
   eventById(id:Number):Observable<Event>{
     return this.http.get(BASE_URL+"/"+id).pipe() as Observable<Event>;
   }
+
+  deleteEvent(id: number) {
+   // return this.httpClient.delete(BASE_URL + '/' + id, { withCredentials: true });
+    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
 }

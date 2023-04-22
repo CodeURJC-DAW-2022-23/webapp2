@@ -26,4 +26,9 @@ export class EventsComponent {
   modify() {
      this.router.navigate(['/admin/editevent/', this.event?.id]);
   }
+
+  delete(id: number) {
+    this.eventService.deleteEvent(id);
+  }
+
 }

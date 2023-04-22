@@ -38,5 +38,9 @@ export class AsoService {
 		console.log("ERROR:");
 		console.error(error);
 		return throwError("Server error (" + error.status + "): " + error.text())
-	}
+  }
+  
+  deleteAso(id: number) {
+    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
 }

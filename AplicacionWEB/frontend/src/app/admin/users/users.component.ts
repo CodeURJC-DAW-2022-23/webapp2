@@ -25,4 +25,8 @@ export class UsersComponent {
   modify() {
      this.router.navigate(['/admin/edituser/', this.user?.id]);
   }
+
+  delete(id: number) {
+    this.userService.deleteUser(id);
+  }
 }
