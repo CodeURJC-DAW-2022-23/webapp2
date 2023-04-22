@@ -20,4 +20,17 @@ export class EventsComponent {
   modify() {
      this.router.navigate(['/admin/editevent/', this.event?.id]);
   }
+
+  ngOnInit() {
+    this.loadEvent();
+  }
+
+  loadEvent() {
+     this.eventService.getEvent().subscribe(
+      response=>{
+        this.e = response;
+        this.name=this.e.name;
+      }
+    );
+  }
 }
