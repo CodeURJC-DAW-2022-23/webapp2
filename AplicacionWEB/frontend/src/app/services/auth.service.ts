@@ -16,15 +16,11 @@ const BASE_URL = '/api/auth';
 export class AuthService {
 
   logged!: boolean;
-  event: Event | undefined;
 
-  constructor(private http: HttpClient, private router: Router, private eventService: EventService) {
+  constructor(private http: HttpClient, private router: Router) {
    
   }
 
-  getEvent(){
-    return this.event;
-  }
   logOut() {
     
   }
