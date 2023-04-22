@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as simpleDatatables from 'simple-datatables';
+
 
 @Component({
   selector: 'app-asso',
@@ -8,5 +10,10 @@ import * as simpleDatatables from 'simple-datatables';
 })
 
 export class AssoComponent {
+  constructor(private router: Router){
+  }
   
+  goToPage(pageName : string){
+    this.router.navigate([`${pageName}`]);
+  }
 }

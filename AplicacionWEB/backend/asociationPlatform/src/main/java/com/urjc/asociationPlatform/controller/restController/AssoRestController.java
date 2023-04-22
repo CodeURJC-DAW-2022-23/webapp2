@@ -117,6 +117,27 @@ public class AssoRestController {
     return new ResponseEntity<>(new AsociationDTO(asso.get()), HttpStatus.OK);
   }
 
+  // @Operation(summary = "Get personal Associations")
+  //   @ApiResponses(value = {
+  //       @ApiResponse(responseCode = "200", description = "Association obtained sucessfully",content = {
+  //           @Content(mediaType = "application/json", schema = @Schema(implementation = AsociationDTO.class))}),
+  //       @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+            
+  //   })
+  // @GetMapping("/miAsociacion")
+  // public ResponseEntity<AsociationDTO> getMyAsso(HttpServletRequest request) {
+  //   User currentUser = checkAdminOrAsso("ASO", request);
+    
+  //   if (currentUser == null)
+  //     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+  //   Optional<Asociation> asso = assoService.findByOwner(currentUser);
+  //   if (asso.isEmpty())
+  //     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+  //   return new ResponseEntity<>(new AsociationDTO(asso.get()), HttpStatus.OK);
+  // }
+
   @Operation(summary = "Get Association by id")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Association obtained sucessfully",content = {

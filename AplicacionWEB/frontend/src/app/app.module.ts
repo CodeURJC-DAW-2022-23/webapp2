@@ -16,6 +16,7 @@ import { AssoComponent } from './asso/asso.component';
 import { EditAsso } from './asso/edit/edit-aso-form.component';
 import { AssoNewEvent } from './asso/new_event/new-event.component';
 import { Events } from './asso/events/events.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { Events } from './asso/events/events.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
