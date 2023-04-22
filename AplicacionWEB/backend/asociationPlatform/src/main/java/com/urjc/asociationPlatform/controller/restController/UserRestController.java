@@ -388,6 +388,20 @@ public class UserRestController {
         else
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }  
+    @Operation(summary = "Get event list")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "List of users correct", content = @Content)
+            
+    })
+    @GetMapping("/all")
+    public ResponseEntity<List<UserDTO>> getAllUsers(){
+        List<User> findAll = userService.findAll();
+        List<UserDTO> dtos=new ArrayList<>();
+        for(User user:findAll){
+            dtos.add(new UserDTO(user));
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
 
     private Event clearEvent(Event event){
 		List<User> users = userService.findAll();

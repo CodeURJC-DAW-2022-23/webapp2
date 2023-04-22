@@ -15,7 +15,7 @@ export class EditAsso {
   constructor(private assoService: AsoService){}
 
   ngOnInit() {
-    this.assoService.getAssoById(1).subscribe((response)=>{ // cambiar getAssoByID por getMyAsso
+    this.assoService.getMyAsso().subscribe((response)=>{ // cambiar getAssoByID por getMyAsso
       this.asso = response;
     });
   }

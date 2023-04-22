@@ -31,7 +31,7 @@ export class AsoService {
   editMyAsso(asso: Aso) {
     console.log(BASE_URL + '/' + 1);
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(BASE_URL + '/miAsociacion', JSON.stringify(asso),{headers}).pipe(); //BASE_URL + '/miAsosiacion'
+    return this.http.put(BASE_URL + '/miAsociacion', JSON.stringify(asso),{headers}).pipe();
   }
   
   private handleError(error: any) {

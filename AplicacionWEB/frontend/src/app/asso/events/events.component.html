@@ -47,8 +47,7 @@
               placeholder="Search..."
               type="search"
               title="Search within table"
-              aria-controls="datatablesSimple"
-            />
+              aria-controls="datatablesSimple"/>
           </div>
         </div>
         <div class="datatable-container">
@@ -81,8 +80,16 @@
                 <td>{{event.name}}</td>
                 <td>{{event.date}}</td>
                 <td>{{event.location}}</td>
-                <td class="datatable-empty" colspan="6">No entries found</td>
+                <td><form action="/admin/editarEventos/">
+                  <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
+                  <input type="hidden" name="_csrf" value=""/>
+                </form></td>
+                  <td><form action="/admin/editarEventos//delete" method="post">
+                  <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
+                  <input type="hidden" name="_csrf" value=""/>
+                </form></td>
               </tr>
+              
             </tbody>
           </table>
         </div>
@@ -94,5 +101,6 @@
         </div>
       </div>
     </div>
+  
   </div>
 </div>

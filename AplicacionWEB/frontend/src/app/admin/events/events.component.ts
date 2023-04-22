@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from '../../models/event.model';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-events',
@@ -14,8 +15,13 @@ export class EventsComponent {
   location?: string;
   ASOname?: string;
   event: Event|undefined;
+  events:Event[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private eventService:EventService) { 
+    this.eventService.allEvents().subscribe((response)=>{
+      this.events=response;
+    })
+  }
 
   modify() {
      this.router.navigate(['/admin/editevent/', this.event?.id]);
