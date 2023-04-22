@@ -22,10 +22,14 @@ export class AuthService {
     this.reqIsLogged();
   }
 
+  getUser(){
+    return this.user;
+  }
+
   reqIsLogged(){
     this.userService.getMe().subscribe(
       response=>{
-        this.user = response.user;
+        this.user = response;
         this.logged = true;
       },
       error => console.log(error)
@@ -37,6 +41,7 @@ export class AuthService {
       (response)=> this.reqIsLogged(),
       (error) => alert("Credenciales invalidas")
     );
+    this.router.navigate(['/']);
     // .pipe(
     //   map((response:any)=>{
 

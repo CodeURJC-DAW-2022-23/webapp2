@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { UserProfile } from '../models/user.rest.model';
+import { User } from '../models/user.model';
 
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
@@ -15,8 +15,8 @@ export class UserService {
 
   constructor(private http: HttpClient ) { }
 
-  getMe(): Observable<UserProfile>{
-    return this.http.get(BASE_URL+'/me', { withCredentials: true }).pipe()as Observable<UserProfile>;
+  getMe(): Observable<User>{
+    return this.http.get(BASE_URL+'/me', { withCredentials: true }).pipe()as Observable<User>;
   }
 
   register(formData: FormData){

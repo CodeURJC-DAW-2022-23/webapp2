@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-edit-my-user',
@@ -6,7 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-my-user.component.css']
 })
 export class EditMyUserComponent {
-  username = "Hola"
-  email = "gmail"
-  userId = 1;
+  user?:User;
+  username = this.user?.username;
+  email = this.user?.email;
+  userId = this.user?.id;
+
+  constructor(private userService:UserService){
+    
+  }
+
+  ngOnInit() {
+    this.loadUser();
+  }
+
+  loadUser(){
+    this.userService.getMe().subscribe(
+      response=>{
+        this.user = response;
+        this.username=this.user.username;
+        this.email=this.user.email;
+        this.userId=this.user.id;
+      }
+    );
+    //this.username = this.u;
+  }
 }
