@@ -25,6 +25,10 @@ export class MyUserFavsComponent implements OnInit{
     this.getFavs();
   }
 
+  imageURL(id:Number){
+    return '/api/events/image/'+id;
+}
+
   getFavs(){
     this.userService.getFavs().subscribe(
       response=>{
