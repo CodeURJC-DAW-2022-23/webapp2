@@ -16,5 +16,9 @@ export class EventService {
   }
   eventById(id:Number):Observable<Event>{
     return this.http.get(BASE_URL+"/"+id).pipe() as Observable<Event>;
-  }
+    }
+    
+    getEvent() {
+        
+    }
 }
