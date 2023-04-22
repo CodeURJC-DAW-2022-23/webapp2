@@ -14,7 +14,7 @@ export class AsosComponent {
   description?: string;
   faculty?: string;
   campus?: string;
-  aso: Aso | undefined;
+  aso: Aso|undefined;
   asos: Aso[];
 
   constructor(private router: Router, private asoService: AsoService) {
