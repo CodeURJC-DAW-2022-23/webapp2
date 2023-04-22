@@ -23,6 +23,7 @@ import com.urjc.asociationPlatform.model.Comment;
 import com.urjc.asociationPlatform.model.Event;
 import com.urjc.asociationPlatform.model.User;
 import com.urjc.asociationPlatform.model.restModel.AsociationDTO;
+import com.urjc.asociationPlatform.model.restModel.EventDTO;
 import com.urjc.asociationPlatform.service.AsociationService;
 import com.urjc.asociationPlatform.service.CommentService;
 import com.urjc.asociationPlatform.service.EventService;
@@ -117,6 +118,30 @@ public class AssoRestController {
     return new ResponseEntity<>(new AsociationDTO(asso.get()), HttpStatus.OK);
   }
 
+  @Operation(summary = "Get personal Associations")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Associations obtained sucessfully",content = {
+          @Content(mediaType = "application/json", schema = @Schema(implementation = AsociationDTO.class))}),
+      @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+          
+  })
+@GetMapping("/misEventos")
+public ResponseEntity<List<EventDTO>> getMyAssos(HttpServletRequest request) {
+  User currentUser = checkAdminOrAsso("ASO", request);
+  
+  if (currentUser == null)
+    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+  Optional<Asociation> asso = assoService.findByOwner(currentUser);
+  if (asso.isEmpty())
+    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+  List<EventDTO> list = new ArrayList<EventDTO>();
+  for(Event event : eventService.findAllbyAsociation(asso.get()))
+      list.add(new EventDTO(event));
+  return new ResponseEntity<>(list, HttpStatus.OK);
+}
+
   @Operation(summary = "Get Association by id")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Association obtained sucessfully",content = {
@@ -159,6 +184,7 @@ public class AssoRestController {
     })
   @PutMapping("/miAsociacion")
   public ResponseEntity<AsociationDTO> editMyAsso(@RequestBody Asociation asso, HttpServletRequest request) {
+    System.out.println("hola");
     User currentUser = checkAdminOrAsso("ASO", request);
     
     if (currentUser == null)

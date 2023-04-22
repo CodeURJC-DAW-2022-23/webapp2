@@ -41,6 +41,7 @@ export class AuthService {
       (response)=> this.reqIsLogged(),
       (error) => alert("Credenciales invalidas")
     );
+    this.router.navigate(['/']);
     // .pipe(
     //   map((response:any)=>{
 

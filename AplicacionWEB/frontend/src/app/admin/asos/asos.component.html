@@ -1,0 +1,45 @@
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Asociaciones</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Asociaciones</li>
+    </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Tabla Usuarios
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Facultad</th>
+                            <th>Campus</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{name}}</td>
+                            <td>{{description}}</td>
+                            <td>{{faculty}}</td>
+                            <td>{{campus}}</td>
+                            <td><form action="/admin/editAsoc/id">
+                                <button (click)="modify()" id="modify" class="btn btn-sm btn-outline-success" type="submit">Modificar</button>
+                                
+                                <input type="hidden" name="_csrf" value="token"/>
+                            </form></td>
+                            <td><form action="/admin/adminAsoc/id/delete" method="post">
+                                <input type="submit" value="Eliminar" class="btn btn-sm btn-outline-danger">
+                                <input type="hidden" name="_csrf" value="token"/>
+                            </form></td>
+                        </tr>             
+            </tbody>
+        </table>
+    </div>
+</div>

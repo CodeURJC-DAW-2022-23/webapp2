@@ -1,0 +1,134 @@
+   <app-header></app-header>
+   <header class="nav container_fluid">
+        <div class="">
+            <a href="/"><img class="logo" src="/img/URJ_logo_BN_NEG_corona_roja.png" alt=""></a>
+
+            <div id="mainListDiv" class="main_list">
+                <!-- <ul class="navlinks">
+                    <li><a href="login.html">Mi Espacio</a></li>
+                </ul> -->
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </header>
+
+    <div class="hero moreinfo">
+      <div class="titleName">
+          <h2></h2>
+      </div> 
+    </div>
+
+    <section class="intro">
+      <div class="container">
+          <div class="container1">
+                <div class="titleName">
+                    <h3>{{event.name}}</h3>
+                    <img src={{imageURL()}} alt="">
+                </div>
+                <div class="info">
+                    <h3>{{event.asociation}}</h3>
+                    
+                    <p>
+                        {{event.description}}
+                    </p>
+                    
+                    <p>Horario: {{event.startTime}} - {{event.endTime}}</p>
+
+                    <p>Fecha: {{event.date}}</p>
+
+                    <p>Lugar: {{event.location}}</p>
+
+                    <p>Campus: {{event.campus}}</p>
+
+                    <p>Reserva: {{getBooking()}}</p>
+
+                    <p>Creditos: {{getCredits()}}</p>
+                     
+                </div>
+                
+            </div>
+        </div>
+    </section>
+  
+    <!-- <section class="row1">
+        <input type="hidden" id="likeValue" value={{totalLikes}}>
+        <input type="hidden" id="dislikeValue" value={{totalDislikes}}>
+        <div id="puntuation">
+            <div class="container barLikes">
+                    <div class="like">
+                        <a href="/infoEvento/{{#event}}{{id}}{{/event}}/like"><i class='bx {{#like}}bxs-happy{{/like}}{{^like}}bx-happy{{/like}}'></i></a>{{totalLikes}}
+                    </div>
+                    <div class="barGraph">
+                        <div id="bar">
+                            <div id="likeArea"></div>
+                            <div id="dislikeArea"></div>
+                        </div>
+                    </div>
+                    <div class="dislike">
+                        {{totalDislikes}}<a href="/infoEvento/{{#event}}{{id}}{{/event}}/dislike"><i class='bx {{#dislike}}bxs-sad{{/dislike}}{{^dislike}}bx-sad{{/dislike}}'></i></a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row1">  
+        <div class="seccion">
+   
+        <div class="button-line-ext">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+            <span class="line4"></span>
+            <a href="/agregarFavoritos/{{#event}}{{id}}{{/event}}">Añadir favoritos</a>
+        </div>
+        {{/view}}
+   </section>
+
+
+   <section class="comments-container">
+    <h1>Comentarios</h1>
+
+    <ul id="comments-list" class="comments-list">
+        {{#commentsList}}
+        <li>
+            <div class="comment-main-level"> 
+                <div class="comment-box">
+                    {{#comment}}
+                    <div class="comment-head">
+                        <h6 class="comment-name"><a href="">{{comment_user}}</a></h6>
+                        <span>{{time}}</span>
+                        <p class="likesNumberRight">{{totalLikes}}<a href="/infoEvento/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}/{{id}}/like"><i class='bx {{#like}}bxs-heart{{/like}}{{^like}}bx-heart{{/like}}'></i></a></p>
+                        
+                        
+                    </div>
+                    <div class="comment-content">{{description}}</div>
+                    {{/comment}}
+                </div>  
+            </div>
+        </li>
+        {{/commentsList}}
+    </ul>
+
+    <div class="comment-form">
+        <form class="form" method="post" action="/crearComentario/{{#view}}{{#event}}{{id}}{{/event}}{{/view}}">
+            <div class="form-row">
+            <textarea class="input" name="description" placeholder="Añadir Comentario..."></textarea>
+
+            </div>
+    
+            <div class="form-row">
+            <input type="submit" value="Añadir Comentario">
+            <input type="hidden" name="_csrf" value="{{token}}"/>
+            </div>
+        </form>
+    </div>
+   </section> -->
+  
+      <script src="/js/jquery.js"></script>
+      <script src="/js/script.js"></script>
+      <script src="/js/likes.js"></script> 
+<app-footer></app-footer>

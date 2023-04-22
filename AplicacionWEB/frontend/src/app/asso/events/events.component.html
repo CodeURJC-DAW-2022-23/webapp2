@@ -1,0 +1,106 @@
+<div class="container-fluid px-4">
+  <h1 class="mt-4">Eventos</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Eventos</li>
+  </ol>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <svg
+        height="15px"
+        class="svg-inline--fa fa-table me-1"
+        aria-hidden="true"
+        focusable="false"
+        data-prefix="fas"
+        data-icon="table"
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        data-fa-i2svg=""
+      >
+        <path
+          fill="currentColor"
+          d="M448 32C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM224 256V160H64V256H224zM64 320V416H224V320H64zM288 416H448V320H288V416zM448 256V160H288V256H448z"
+        ></path></svg><!-- <i class="fas fa-table me-1"></i> Font Awesome fontawesome.com -->
+      Tabla Eventos
+    </div>
+    <div class="card-body">
+      <div
+        class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns datatable-empty"
+      >
+        <div class="datatable-top">
+          <div class="datatable-dropdown">
+            <label>
+              <select class="datatable-selector">
+                <option value="5">5</option>
+                <option value="10" selected="">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+              </select>
+              entries per page
+            </label>
+          </div>
+          <div class="datatable-search">
+            <input
+              class="datatable-input"
+              placeholder="Search..."
+              type="search"
+              title="Search within table"
+              aria-controls="datatablesSimple"/>
+          </div>
+        </div>
+        <div class="datatable-container">
+          <table class="datatable-table">
+            <thead>
+              <tr>
+                <th data-sortable="true" style="width: 7.381615598885793%">
+                  <a href="#" class="datatable-sorter">Id</a>
+                </th>
+                <th data-sortable="true" style="width: 17.270194986072422%">
+                  <a href="#" class="datatable-sorter">Nombre</a>
+                </th>
+                <th data-sortable="true" style="width: 13.92757660167131%">
+                  <a href="#" class="datatable-sorter">Fecha</a>
+                </th>
+                <th data-sortable="true" style="width: 24.37325905292479%">
+                  <a href="#" class="datatable-sorter">Localización</a>
+                </th>
+                <th data-sortable="true" style="width: 19.637883008356546%">
+                  <a href="#" class="datatable-sorter">Modificar</a>
+                </th>
+                <th data-sortable="true" style="width: 17.40947075208914%">
+                  <a href="#" class="datatable-sorter">Eliminar</a>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of events">
+                <td>{{event.id}}</td>
+                <td>{{event.name}}</td>
+                <td>{{event.date}}</td>
+                <td>{{event.location}}</td>
+                <td><form action="/admin/editarEventos/">
+                  <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
+                  <input type="hidden" name="_csrf" value=""/>
+                </form></td>
+                  <td><form action="/admin/editarEventos//delete" method="post">
+                  <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
+                  <input type="hidden" name="_csrf" value=""/>
+                </form></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="datatable-bottom">
+          <div class="datatable-info"></div>
+          <nav class="datatable-pagination">
+            <ul class="datatable-pagination-list"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
