@@ -30,7 +30,7 @@ export class AsoService {
 
   editMyAsso(asso: Aso) {
     console.log(BASE_URL + '/' + 1);
-    this.http.put(BASE_URL + '/miAsosiasion', JSON.stringify(asso)).pipe(); //BASE_URL + '/miAsosiacion'
+    this.http.put(BASE_URL + '/miAsosiasion', JSON.stringify(asso)).pipe();
   }
   
   private handleError(error: any) {
