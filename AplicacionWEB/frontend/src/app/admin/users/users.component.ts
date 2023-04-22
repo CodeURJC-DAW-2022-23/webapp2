@@ -13,7 +13,6 @@ export class UsersComponent {
   username?: string;
   email?: string;
   rol?: string;
-  user: User | undefined;
   users: User[];
 
   constructor(private router: Router, private userService: UserService) {
@@ -22,8 +21,8 @@ export class UsersComponent {
     })
    }
 
-  modify() {
-     this.router.navigate(['/admin/edituser/', this.user?.id]);
+  modify(id: number) {
+     this.router.navigate(['/admin/edituser/', id]);
   }
 
   delete(id: number) {
