@@ -18,7 +18,7 @@ export class EventService {
     return this.http.get(BASE_URL+"/"+id).pipe() as Observable<Event>;
     }
     
-    getEvent() {
-        
+    getEvent(): Observable<Event>{
+        return this.http.get(BASE_URL+'/events', { withCredentials: true }).pipe()as Observable<Event>;
     }
 }

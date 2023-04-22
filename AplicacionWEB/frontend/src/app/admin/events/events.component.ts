@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Event } from '../../models/event.model';
 import { EventService } from 'src/app/services/event.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
+  
 export class EventsComponent {
   e?: Event;
   id?: number;
@@ -35,7 +35,7 @@ export class EventsComponent {
      this.eventService.getEvent().subscribe(
       response=>{
         this.e = response;
-        this.name =this.e.name;
+       // this.name = this.e.name;
       }
     );
   }
