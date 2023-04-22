@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Aso } from '../models/aso.model';
 import { Event } from '../models/event.model';
 import { catchError, throwError } from 'rxjs';
@@ -30,7 +30,8 @@ export class AsoService {
 
   editMyAsso(asso: Aso) {
     console.log(BASE_URL + '/' + 1);
-    this.http.put(BASE_URL + '/miAsosiasion', JSON.stringify(asso)).pipe();
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(BASE_URL + '/miAsociacion', JSON.stringify(asso),{headers}).pipe(); //BASE_URL + '/miAsosiacion'
   }
   
   private handleError(error: any) {

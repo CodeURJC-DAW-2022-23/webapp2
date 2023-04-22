@@ -22,7 +22,7 @@ export class EditAsso {
 
   editAsso(event : any) {
     event.preventDefault();
-    this.assoService.editMyAsso(this.asso);
+    this.assoService.editMyAsso(this.asso).subscribe(response=>{});
   }
 }
 

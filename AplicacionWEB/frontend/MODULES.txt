@@ -1,0 +1,2 @@
+Instalar Font Awesome: Seleccionar font awesome 6 y seleccionar los 3 paquetes gratuitos usando la tecla espacio
+ng add @fortawesome/angular-fontawesome
