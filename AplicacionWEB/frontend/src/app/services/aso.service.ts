@@ -14,12 +14,4 @@ export class AsoService {
   asoList(): Observable<Aso[]>{
     return this.http.get(BASE_URL+'/asociationsList').pipe() as Observable<Aso[]>;
   }
-
-
-
-  private handleError(error: any) {
-		console.log("ERROR:");
-		console.error(error);
-		return throwError("Server error (" + error.status + "): " + error.text())
-	}
 }

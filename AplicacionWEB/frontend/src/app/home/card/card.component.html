@@ -1,21 +1,21 @@
 <div class='widget'>
-    <div style='background: url({{imageURL()}}) no-repeat center/cover;' class='widget__photo'></div>
+    <div style='background: url("{{imageURL()}}") no-repeat center/cover;' class='widget__photo'></div>
     <div class='widget__button'>
         <a (click)="infoEvent()" >Más Info</a> 
     </div>
     <div class='widget__details'>
         <div class='widget__name'>
-            {{event?.name}}
+            {{event.name}}
         </div>
         <div class='widget__type'>
-            {{event?.asociation}}
+            {{event.asociation}}
         </div>
         <div class='widget__info'>
             <span> 
                 Universidad Rey Juan Carlos
             </span>
             <span>
-                {{event?.campus}}
+                {{event.campus}}
             </span>
         </div>
         <div class='widget__hidden'>
@@ -26,7 +26,7 @@
                         Fecha
                     </td>
                     <td>
-                        {{event?.date}}
+                        {{event.date}}
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +34,7 @@
                         Horario
                     </td>
                     <td>
-                         {{event?.startTime}} - {{event?.endTime}}
+                         {{event.startTime}} - {{event.endTime}}
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                         Lugar
                     </td>
                     <td>
-                       {{event?.location}}
+                       {{event.location}}
                     </td>
                 </tr>
                 <tr>
