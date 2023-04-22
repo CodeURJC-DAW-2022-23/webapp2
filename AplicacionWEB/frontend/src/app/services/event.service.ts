@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Event } from '../models/event.model';
@@ -22,7 +22,11 @@ export class EventService {
   }
 
   deleteEvent(id: number) {
-   // return this.httpClient.delete(BASE_URL + '/' + id, { withCredentials: true });
     return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
+
+   adminEditEvent(event: Event) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(BASE_URL + '/editEvent', JSON.stringify(event),{headers}).pipe();
   }
 }

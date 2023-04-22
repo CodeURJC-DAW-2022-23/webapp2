@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { User } from '../models/user.model';
@@ -34,9 +34,13 @@ export class UserService {
     return this.http.get(BASE_URL+"/all").pipe() as Observable<User[]>;
   }
 
-   deleteUser(id: number) {
-   // return this.httpClient.delete(BASE_URL + '/' + id, { withCredentials: true });
+  deleteUser(id: number) {
     return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
+
+  adminEditUser(user: User) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(BASE_URL + '/editUser', JSON.stringify(user),{headers}).pipe();
   }
 
 }

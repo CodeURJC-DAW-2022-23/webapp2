@@ -43,4 +43,10 @@ export class AsoService {
   deleteAso(id: number) {
     return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
   }
+
+  
+  adminEditAso(aso: Aso) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(BASE_URL + '/editAso', JSON.stringify(aso),{headers}).pipe();
+  }
 }
