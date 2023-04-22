@@ -13,7 +13,7 @@ import { EventService } from 'src/app/services/event.service';
 export class EventsComponent {
   e?: Event;
   id?: number;
-  name?: string;
+  name?: String;
   date?: string;
   location?: string;
   ASOname?: string;
@@ -35,7 +35,7 @@ export class EventsComponent {
      this.eventService.getEvent().subscribe(
       response=>{
         this.e = response;
-       // this.name = this.e.name;
+        this.name = this.e.name;
       }
     );
   }
