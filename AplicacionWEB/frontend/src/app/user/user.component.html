@@ -1,13 +1,14 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/"><img class="logo" src="assets/img/CoronaRoja.png" alt="image"></a>
+    <a class="navbar-brand ps-3" [routerLink]="['']"><img class="logo" src="assets/img/CoronaRoja.png" alt="image"></a>
 
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" (click)="toogleSidebar()"><fa-icon [icon]="faBars"></fa-icon></button>
 
     <ul class="navbar-nav ms-auto ms-md-7 me-7 me-lg-7">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><fa-icon [icon]="faUser"></fa-icon></a>
+            <a class="nav-link" (click) = logout()>Cerrar Sesión</a>
+            <!--<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><fa-icon [icon]="faUser"></fa-icon></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                 <li><hr class="dropdown-divider" /></li>
@@ -17,8 +18,7 @@
                         <input type="hidden" name="_csrf" value=""/>
                     </form>
                 </li>
-                    <!-- <a class="dropdown-item" href="/logout">Cerrar Sesión</a></li> -->
-            </ul>
+            </ul>-->
         </li>
     </ul>
     

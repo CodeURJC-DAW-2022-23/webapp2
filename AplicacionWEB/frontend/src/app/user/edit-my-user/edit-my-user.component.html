@@ -6,27 +6,27 @@
         </ol>
         
         <div class="container-fluid py-5">
-            <form class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post" action="/miCuenta/{{userId}}">
+            <form #editmyuser = "ngForm" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5">
                 <h2>Editar Cuenta</h2>
                 <hr/>
                 <div class='d-sm-flex py-sm-2 row'>
                     <div class="row separate">
                         <div class="form-group py-2 py-sm-0 col-sm-7">
                             <label for="eventName">Nombre</label>
-                            <input type="text" class="form-control" id="name" name="username" value="{{username}}" />
+                            <input [(ngModel)]="username" type="text" class="form-control" id="name" name="username" />
                         </div>
                     </div>
                     <div class="row separate">
                         <div class="form-group py-2 py-sm-0 col-sm-7">
                             <label for="">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{email}}" />
+                            <input [(ngModel)]="email" type="email" class="form-control" id="email" name="email" />
                         </div>
                     </div>
                 </div>
-
+                <!-- value="{{username}}"-->
                 <div class="d-flex py-2 w-100">
                     <div class="flex-fill"></div>
-                    <button type="submit" class="btn btn-success px-4">Modificar</button>
+                    <a (click) = "onClickSubmit()"><button type="submit" class="btn btn-success px-4">Modificar</button></a>
                     <input type="hidden" name="_csrf" value=""/>
                 </div>
             </form>
