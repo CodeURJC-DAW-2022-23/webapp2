@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 import * as $ from 'jquery';
 import { AuthService } from 'src/app/services/auth.service';
+import { delay } from 'rxjs';
 
 
 @Component({
@@ -22,11 +23,13 @@ export class CommentsComponent {
 
   constructor(private commentService: CommentService,private authService:AuthService, private router: Router) { }
   ngOnInit(){
+    this.loadComments();
+  }
+  loadComments(){
     this.commentService.commentList(this.eventC.id).subscribe(
       comments=>this.commentList=comments
     )
   }
-
   save() {
     if(this.authService.logged){
       this.comment.event=this.eventC;

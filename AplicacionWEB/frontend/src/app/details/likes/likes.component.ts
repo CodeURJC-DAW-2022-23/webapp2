@@ -22,11 +22,15 @@ export class LikesComponent {
  like(){
   if(this.authService.logged){
     this.eventService.giveLike(this.eventL.id).subscribe(response=>{});
-    this.eventL.totalLikes+=1;
-    if(this.likeStyle == faLike)
+    
+    if(this.likeStyle == faLike){
       this.likeStyle = faLikeSelect;
-    else
+      this.eventL.totalLikes+=1;
+    }
+    else{
       this.likeStyle = faLike
+      this.eventL.totalLikes-=1;
+    }
   }else{
     this.router.navigate(['/login']);
   }
@@ -35,11 +39,16 @@ export class LikesComponent {
  dislike(){
   if(this.authService.logged){
     this.eventService.giveDislike(this.eventL.id).subscribe(response=>{});
-    this.eventL.totalDislikes+=1;
-    if(this.dislikeStyle == faDislike)
+    
+    if(this.dislikeStyle == faDislike){
       this.dislikeStyle = faDislikeSelect;
-    else
+      this.eventL.totalDislikes+=1;
+    }
+      
+    else{ 
       this.dislikeStyle = faDislike;
+      this.eventL.totalDislikes-=1;
+    }
   }else{
     this.router.navigate(['/login']);
   }

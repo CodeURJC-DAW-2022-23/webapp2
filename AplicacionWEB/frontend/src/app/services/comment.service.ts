@@ -28,6 +28,11 @@ addComment(comment: Comment){
   const body={description: comment.description}
   return this.httpClient.post(BASE_URL+'/new/'+comment.event.id,body).pipe();
 }
+giveLike(id: number){
+  const body={};
+  return this.httpClient.post(BASE_URL+'/like/'+id,body).pipe();
+
+}
 
 
 }

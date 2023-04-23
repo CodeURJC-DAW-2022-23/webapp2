@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { faHeart as faLikeSelect} from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faLike} from '@fortawesome/free-regular-svg-icons';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comment',
@@ -11,20 +12,27 @@ import { faHeart as faLike} from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent {
-  constructor(private authService:AuthService, private router: Router){}
+  @Input()
+  comment:Comment;
+  constructor(private authService:AuthService, private router: Router,private commentService:CommentService){}
   heart = faLike;
 
   like(){
     if(this.authService.logged){
-      if(this.heart == faLike)
+      
+      this.commentService.giveLike(this.comment.id).subscribe(response=>{});
+      if(this.heart == faLike){
         this.heart = faLikeSelect;
-      else
+        this.comment.totalLikes+=1;
+      }
+      else{
         this.heart = faLike
+        this.comment.totalLikes-=1;
+      }
     }else{
       this.router.navigate(['/login']);
     }
   }
 
-  @Input()
-  comment:Comment;
+  
 }
