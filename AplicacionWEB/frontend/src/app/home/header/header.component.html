@@ -1,23 +1,27 @@
 <header class="nav container_fluid">
-    <div class="">
+    <div class="container-fluid">
         <a href="#"><img class="logo" src="assets/img/CoronaRoja.png" alt=""></a>
 
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
-                
+                <ng-container *ngIf="currentUser">
+
+                    <ng-container *ngIf="currentUser.rol === 'ADMIN'">
+                        <li><a [routerLink]="['/admin/events']">Panel de Control</a></li>
+                    </ng-container>
+
+                    <ng-container *ngIf="currentUser.rol === 'BASE'">
+                        <li><a [routerLink]="['/myUser']">Mi Espacio</a></li>
+                    </ng-container>
+
+                    <ng-container *ngIf="currentUser.rol === 'ASO'">
+                        <li><a [routerLink]="['/aso/miEspacio']">Mi Asociación</a></li>
+                    </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="!currentUser">
                     <li><a [routerLink]="['/login']">Login</a></li>
-                
-              
-                    <!-- {{#aso}}
-                        <li><a href="/aso/miEspacio">Mi Asociación</a></li>
-                    {{/aso}} 
-                    {{#base}}
-                        <li><a href="miCuenta">Mi Espacio</a></li>
-                    {{/base}} 
-                    {{#admin}}
-                        <li><a href="/admin/editarUsuarios">Panel de Control</a></li>
-                    {{/admin}}  -->
-              
+                </ng-container>   
             </ul>
         </div>
         <span class="navTrigger">
