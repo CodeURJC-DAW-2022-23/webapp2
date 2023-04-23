@@ -13,6 +13,9 @@ import { EventService } from 'src/app/services/event.service';
 })
 
 export class Events {
+changePage(page: string, id: Number) {
+  this.router.navigate([page, id]);
+}
 
   constructor(private eventService: EventService, private assoService: AsoService, private router: Router){}
 

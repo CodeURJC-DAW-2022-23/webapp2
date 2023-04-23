@@ -20,8 +20,9 @@ export class AssoNewEvent {
     const [hours2, minutes2] = this.event.startTime.split(':');
 
     const formData = new FormData();
-    if (this.file)
+    if (this.file){
       formData.append('newImage', this.file);
+    }
     formData.append('name', this.event.name);
     formData.append('date', this.event.date);
     formData.append('month', "agosto");
@@ -34,12 +35,6 @@ export class AssoNewEvent {
     formData.append('endTime', this.event.endTime);
     formData.append('duration', `${Number(hours1) - Number(hours2)}h ${Number(minutes1) - Number(minutes2)}min`);
     this.eventService.create(formData).subscribe(response=>{});
-  }
-
-  boolToString(b: boolean) : string{
-    if (b)
-      return "true";
-    return "false";
   }
 
   onFileSelected(e: any) {

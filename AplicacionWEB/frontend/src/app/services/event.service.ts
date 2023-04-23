@@ -29,4 +29,12 @@ export class EventService {
   delete(id: Number) {
     return this.http.delete(BASE_URL + "/" + id).pipe();
   }
+
+  edit(formData: FormData, id: Number) {
+    return this.http.put(BASE_URL + "/" + id, formData).pipe();
+  }
+  
+  sendImage(formData: FormData, id: Number) {
+    return this.http.put(BASE_URL + "/image/" + id, formData).pipe();
+  }
 }

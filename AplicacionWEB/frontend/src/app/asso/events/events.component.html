@@ -81,7 +81,7 @@
                 <td>{{event.date}}</td>
                 <td>{{event.location}}</td>
                 <td><form>
-                  <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar" (click)="goToPage('/aso/editEvent/' + event.id)">
+                  <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar" (click)="changePage('/aso/editEvent/', event.id)">
                   <input type="hidden" name="_csrf" value=""/>
                 </form></td>
                   <td><form action="/admin/editarEventos//delete" method="post">
