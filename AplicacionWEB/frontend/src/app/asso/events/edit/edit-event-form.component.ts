@@ -33,7 +33,8 @@ export class EditEventAssoComponent {
     if (this.areImage){
       const formDataImg=new FormData();
       formDataImg.append('newImage', this.file);
-      this.eventService.sendImage(formData,this.event.id).subscribe(response=>{});
+      console.log(this.file.size)
+      this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
     }
     formData.append('name', this.event.name);
     formData.append('date', this.event.date);
