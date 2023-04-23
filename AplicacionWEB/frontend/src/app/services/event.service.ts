@@ -35,6 +35,7 @@ export class EventService {
   }
   
   sendImage(formData: FormData, id: Number) {
+    console.log((formData.get("newImage")as File).size)
     return this.http.put(BASE_URL + "/image/" + id, formData).pipe();
   }
 }

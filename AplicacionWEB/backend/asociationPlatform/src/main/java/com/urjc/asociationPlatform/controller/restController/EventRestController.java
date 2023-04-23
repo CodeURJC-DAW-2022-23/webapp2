@@ -254,6 +254,8 @@ public class EventRestController {
             if(!event.getAsociation().getOwner().equals(user)){
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
+            System.out.println("------------------size: "+newImage.getSize());
+            System.out.println("------------------size: "+getBlob(newImage).length());
             event.setImgUrl(getBlob(newImage));
             eventService.save(event);
             return new ResponseEntity<>(HttpStatus.OK);
