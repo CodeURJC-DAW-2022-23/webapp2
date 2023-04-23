@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as simpleDatatables from 'simple-datatables';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -10,10 +11,14 @@ import * as simpleDatatables from 'simple-datatables';
 })
 
 export class AssoComponent {
-  constructor(private router: Router){
+  constructor(private router: Router, private authService:AuthService){
   }
   
   goToPage(pageName : string){
     this.router.navigate([`${pageName}`]);
+  }
+  logout(){
+    this.authService.logOut();
+    this.router.navigate(['']);
   }
 }

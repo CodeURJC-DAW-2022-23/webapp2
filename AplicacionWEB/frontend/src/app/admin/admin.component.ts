@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as simpleDatatables from 'simple-datatables';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +9,7 @@ import * as simpleDatatables from 'simple-datatables';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  constructor() { }
+  constructor(private authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     window.addEventListener('DOMContentLoaded', event => {
@@ -17,6 +19,11 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+  logout(){
+    this.authService.logOut();
+    this.router.navigate(['']);
+  }
 }
+
 
 
