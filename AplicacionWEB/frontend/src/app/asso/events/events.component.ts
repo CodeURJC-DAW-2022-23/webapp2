@@ -4,6 +4,7 @@ import { Aso } from 'src/app/models/aso.model';
 import { AsoService } from 'src/app/services/aso.service';
 import { Event } from 'src/app/models/event.model';
 import { Router } from '@angular/router';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'asso-events',
@@ -12,15 +13,18 @@ import { Router } from '@angular/router';
 })
 
 export class Events {
-deleteEvent(arg0: string) {
-throw new Error('Method not implemented.');
-}
-goToPage(pageName: string) {
-  this.router.navigate([`${pageName}`]);
-}
-  events: Event[];
 
-  constructor(private assoService: AsoService, private router: Router){}
+  constructor(private eventService: EventService, private assoService: AsoService, private router: Router){}
+
+  deleteEvent(id : Number) {
+    this.eventService.delete(id).subscribe((response)=>{});
+  }
+
+  goToPage(pageName: string) {
+    this.router.navigate([`${pageName}`]);
+  }
+    events: Event[];
+
 
   ngOnInit() {
     this.assoService.getEvents().subscribe((response)=>{

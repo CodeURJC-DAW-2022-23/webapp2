@@ -25,4 +25,8 @@ export class EventService {
   create(formData: FormData) {
     return this.http.post(BASE_URL + "/new", formData).pipe();
   }
+
+  delete(id: Number) {
+    return this.http.delete(BASE_URL + "/" + id).pipe();
+  }
 }
