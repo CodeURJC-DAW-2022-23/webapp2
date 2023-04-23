@@ -14,38 +14,14 @@ import * as $ from 'jquery';
 export class CommentsComponent {
 
  
-  newComment!: boolean;
-  comment!: Comment;
-
-  totalLikes: number = 0;
-  description = "Esto es un comentario"
+  commentList:Comment[];
+  comment: Comment;
 
   constructor(private service: CommentService) { }
-  // ngOnInit(): void{
-
-  //   const idComment = this.activatedRouter.snapshot.params['idComment'];
-
-  //   if (idComment) {
-  //       this.service.getComment(idComment).subscribe(
-  //           response => {
-  //               this.comment = response;
-  //               this.totalLikes = this.comment.totalLikes;
-  //               this.description = this.comment.description;
-  //           },
-  //           error => console.log(error)
-  //       )
-
-  //       this.newComment = false;
-  //   } else {     
-  //       this.newComment = true;
-  //   }
-  // }
+ 
 
   save() {
-    if (this.newComment) {
-       // this.filmService.addComment(this.id, this.totalLikes, this.description);
-    }
+    
   }
 }
-export { Comment };
 

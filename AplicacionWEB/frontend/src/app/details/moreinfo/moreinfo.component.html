@@ -2,28 +2,31 @@
     <div class="container">
         <div class="container1">
               <div class="titleName">
-                  <h3>{{EVENTname}}</h3>
-                  <img src="" alt="">
+                  <h3>{{event.name}}</h3>
+                  <img src={{imageURL()}} alt="">
               </div>
               <div class="info">
-                  <h3>{{ASOname}}</h3>
+                  <h3>{{event.asociation}}</h3>
                   
-                  <p>Descripcion: {{description}}</p>
+                  <p>Descripcion: {{event.description}}</p>
                   
-                  <p>Horario: {{date}}</p>
+                  <p>Horario: {{event.startTime}} - {{event.endTime}}</p>
 
-                  <p>Fecha: {{time}}</p>
+                  <p>Fecha: {{event.date}}</p>
 
-                  <p>Lugar: {{place}}</p>
+                  <p>Lugar: {{event.location}}</p>
 
-                  <p>Campus: {{campus}}</p>
+                  <p>Campus: {{event.campus}}</p>
 
-                  <p>Reserva: {{reservation}}</p>
+                  <p>Reserva: {{getBooking()}}</p>
 
-                  <p>Creditos: {{credits}}</p>
+                  <p>Creditos: {{getCredits()}}</p>
                    
               </div>
               
           </div>
       </div>
   </section>
+  <app-likes [eventL]="event"></app-likes>
+  <app-addfavorites [eventF]="event"></app-addfavorites>
+  <app-comments></app-comments>

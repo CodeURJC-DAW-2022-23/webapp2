@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { Event } from 'src/app/models/event.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-addfavorites',
@@ -7,10 +10,17 @@ import * as $ from 'jquery';
   styleUrls: ['./addfavorites.component.css']
 })
 export class FavoritesComponent {
-  constructor() { }
+  constructor(private authService:AuthService, private router: Router) { }
+  @Input()
+  eventF:Event;
   ngOnInit() {
-    $("#addFavorites").on("click", function () {
-      
-    });
+   
+  }
+  agregarFavoritos(){
+    if(this.authService.logged){
+
+    }else{
+      this.router.navigate(['/login']);
+    }
   }
 }

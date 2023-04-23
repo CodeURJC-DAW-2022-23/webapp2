@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginComponent } from 'src/app/login/login.component';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { EventService } from 'src/app/services/event.service';
+import { Event } from 'src/app/models/event.model';
 
 @Component({
   selector: 'app-moreinfo',
@@ -8,19 +11,34 @@ import { LoginComponent } from 'src/app/login/login.component';
   styleUrls: ['./moreinfo.component.css']
 })
 export class MoreinfoComponent {
-  EVENTname = "Evento 1"
-  ASOname = "Asociacion 1";
-  description = "¡Te invitamos a introducirte en el mundo del código dando los primeros pasos en programación! Aunque estemos en plena revolución digital y vivamos pegados a la tecnología, el mundo del código y la programación aún resulta algo desconocido o inaccesible... ¡Cuando es todo lo contrario! Descubre con este plan que programar es, no solo una actividad sencilla, sino también estimulante. ";
-  date = "12:00 am";
-  time = "16 abril";
-  place = "Aulario III";
-  campus = "Mostoles";
-  reservation = "NO";
-  credits = "1 ETCS";
 
-  constructor(private http: HttpClient){}
+  event:Event;
+  constructor(private router: RouterModule, activatedRoute: ActivatedRoute, private eventService:EventService,private http: HttpClient){
+    const idEvent = activatedRoute.snapshot.params['id'] as Number;
+    this.eventService.eventById(idEvent).subscribe(
+      eventIn=>this.event=eventIn
+    )
+  }
   login = "http://localhost:4200/login";
   getLogin(){
     return this.http.get<LoginComponent>(this.login)
   }
+  imageURL(){
+    return '/api/events/image/'+this.event.id;
+  }
+
+getBooking(){
+    if (this.event.booking){
+      return 'Si';
+    }else{
+      return 'No';
+    }
+}
+getCredits(){
+    if (this.event.credits){
+      return 'Si';
+    }else{
+      return 'No';
+    }
+}
 }

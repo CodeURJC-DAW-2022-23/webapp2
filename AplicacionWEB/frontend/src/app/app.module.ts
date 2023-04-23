@@ -35,6 +35,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { EditeventComponent } from './admin/events/editevent/editevent.component';
 import { EditasoComponent } from './admin/asos/editaso/editaso.component';
 import { EdituserComponent } from './admin/users/edituser/edituser.component';
+import { CommentComponent } from './details/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { EdituserComponent } from './admin/users/edituser/edituser.component';
     AssoComponent,
     EditAsso,
     AssoNewEvent,
-    Events
+    Events,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
