@@ -4,7 +4,7 @@
     <div id="puntuation">
         <div class="container barLikes">
                 <div class="like">
-                    <a href="" (click)="like()"><i class='bx {{likeStyle}}'></i>hola</a>{{eventL.totalLikes}}
+                    <a (click)="like()"><fa-icon [icon]="likeStyle"></fa-icon></a>{{eventL.totalLikes}}
                 </div>
                 <div class="barGraph">
                     <div id="bar">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="dislike">
-                    {{eventL.totalDislikes}}<a href="" (click)="dislike()">hola</a>
+                    {{eventL.totalDislikes}}<a (click)="dislike()"><fa-icon [icon]="dislikeStyle"></fa-icon></a>
                 </div>
         </div>
     </div>

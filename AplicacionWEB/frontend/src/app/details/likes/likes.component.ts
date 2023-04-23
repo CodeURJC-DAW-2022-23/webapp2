@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFaceLaugh as faLikeSelect, faFaceFrownOpen as faDislikeSelect} from '@fortawesome/free-solid-svg-icons';
+import { faFaceLaugh as faLike, faFaceFrownOpen as faDislike} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-likes',
@@ -11,17 +12,18 @@ import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 })
 export class LikesComponent {
   constructor(private authService:AuthService, private router: Router){}
-  faBars = faBars;
-  faUser = faUser;
  
   @Input()
   eventL:Event;
 
- likeStyle:string="bx-happy";
- dislikeStyle:string="bx-sad";
+ likeStyle=faLike;
+ dislikeStyle=faDislike;
  like(){
   if(this.authService.logged){
-    this.likeStyle="bxs-happy";
+    if(this.likeStyle == faLike)
+      this.likeStyle = faLikeSelect;
+    else
+      this.likeStyle = faLike
   }else{
     this.router.navigate(['/login']);
   }
@@ -29,7 +31,10 @@ export class LikesComponent {
  }
  dislike(){
   if(this.authService.logged){
-    this.dislikeStyle="bxs-sad";
+    if(this.dislikeStyle == faDislike)
+      this.dislikeStyle = faDislikeSelect;
+    else
+      this.dislikeStyle = faDislike;
   }else{
     this.router.navigate(['/login']);
   }
