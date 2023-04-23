@@ -11,7 +11,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 export class EdituserComponent {
 
   user: User;
-  username:string;
   constructor(private router: Router, activatedRoute: ActivatedRoute,private userService: UserService){
     const idEvent = activatedRoute.snapshot.params['id'] as number;
     this.load(idEvent);
@@ -23,7 +22,6 @@ export class EdituserComponent {
   load(id: number){
     this.userService.getUser(id).subscribe((response)=>{ 
       this.user = response;
-      this.username = response.username;
     });
   }
   ngOnInit() {
