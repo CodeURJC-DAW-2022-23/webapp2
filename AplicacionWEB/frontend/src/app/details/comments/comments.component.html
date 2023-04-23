@@ -13,8 +13,9 @@
                     <div class="comment-content">description</div>
                 </div>  
             </div>
+            <app-comment *ngFor="let com of commentList" [comment]="com"></app-comment>
         </li>
-        <app-comment *ngFor="let com of commentList" [comment]="com"></app-comment>
+        
     </ul>
     
 
