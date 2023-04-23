@@ -38,9 +38,9 @@ export class UserService {
     return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
   }
 
-  adminEditUser(user: User) {
+  adminEditUser(id: number, user: User) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(BASE_URL + '/editUser', JSON.stringify(user),{headers}).pipe();
+    return this.http.put(BASE_URL + '/admin/'+id, JSON.stringify(user),{headers}).pipe();
   }
 
 }

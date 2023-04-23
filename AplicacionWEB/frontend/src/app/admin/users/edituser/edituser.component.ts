@@ -18,8 +18,8 @@ export class EdituserComponent {
       this.user = response;
     });
   }
-  editUser(user : any) {
+  editUser(id: number, user : any) {
     user.preventDefault();
-    this.userService.adminEditUser(this.user).subscribe(response=>{});
+    this.userService.adminEditUser(id, this.user).subscribe(response=>{});
   }
 }
