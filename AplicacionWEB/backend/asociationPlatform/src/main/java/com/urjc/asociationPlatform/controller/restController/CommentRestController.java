@@ -155,4 +155,35 @@ public class CommentRestController {
         return new ResponseEntity<>(list,HttpStatus.OK);
         
     }
+
+
+    @Operation(summary = "Give like to comment")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "like done succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "404", description = "comment not found", content = @Content)
+            
+    })
+    @PostMapping("/api/comment/like/{id}")
+    public ResponseEntity<Comment> giveDislike(@PathVariable long id, HttpServletRequest request){
+        Optional<Comment> commentOp = commentService.findById(id);
+        if(commentOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Comment comment = commentOp.get();
+
+        Principal principal = request.getUserPrincipal();
+        if(principal==null){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        Optional<User> userOp = userService.findByUsername(principal.getName());
+        if(userOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        User user = userOp.get();
+        comment.addFavorites(user);
+        commentService.save(comment);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

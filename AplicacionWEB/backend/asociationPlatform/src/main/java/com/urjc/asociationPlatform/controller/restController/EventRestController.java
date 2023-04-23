@@ -167,6 +167,7 @@ public class EventRestController {
                 event.setAsociation(asoOp.get());
             }
             event.setDuration(calculateDuration(event.getStartTime(), event.getEndTime()));
+            event.setMonth(calculateMonth(event.getDate().toString()));
             eventService.save(event);
             URI location = new URI("https://127.0.0.1:8443/api/events/"+event.getId());
             return ResponseEntity.created(location).body(event);
@@ -293,6 +294,66 @@ public class EventRestController {
     public ResponseEntity<List<Event>> getAllEvents(){
         return new ResponseEntity<>(eventService.findAll(), HttpStatus.OK);
     }
+    @Operation(summary = "Give like to event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "like done succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
+    @PostMapping("/like/{id}")
+    public ResponseEntity<Event> giveLike(@PathVariable long id, HttpServletRequest request){
+        Optional<Event> eventOp = eventService.findById(id);
+        if(eventOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event event = eventOp.get();
+
+        Principal principal = request.getUserPrincipal();
+        if(principal==null){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        Optional<User> userOp = userService.findByUsername(principal.getName());
+        if(userOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        User user = userOp.get();
+        event.addLike(user);
+        eventService.save(event);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Give dislike to event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "dislike done succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
+    @PostMapping("/dislike/{id}")
+    public ResponseEntity<Event> giveDislike(@PathVariable long id, HttpServletRequest request){
+        Optional<Event> eventOp = eventService.findById(id);
+        if(eventOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event event = eventOp.get();
+
+        Principal principal = request.getUserPrincipal();
+        if(principal==null){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        Optional<User> userOp = userService.findByUsername(principal.getName());
+        if(userOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        User user = userOp.get();
+        event.addDislike(user);
+        eventService.save(event);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     //=====================auxiliar functions=======================
     public Blob getBlob(MultipartFile file) throws SQLException, IOException {
@@ -320,6 +381,14 @@ public class EventRestController {
             response=(Integer.parseInt(endParts[0])-Integer.parseInt(startParts[0]))+"h ";
             response+= Math.abs(Integer.parseInt(endParts[1])-Integer.parseInt(startParts[1]))+"min";
         }
+        
+        return response;
+    }
+    private String[] monthsValue={"", "All", "ENERO", "FEBRERO", "MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
+    private String calculateMonth(String date){
+        String[] dateParts=date.split("-");
+        String response=monthsValue[Integer.parseInt(dateParts[1])];
+        
         
         return response;
     }
