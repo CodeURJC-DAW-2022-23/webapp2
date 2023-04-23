@@ -1,6 +1,6 @@
 .hero {
     height             : 40rem;
-    /* background-image   : url(../img/bg-searchbar.jpg); */
+    /*background-image   : url(../assets/img/bgSearchbar.jpg);*/
     background-repeat  : no-repeat;
     background-position: center;
     background-size    : cover;
