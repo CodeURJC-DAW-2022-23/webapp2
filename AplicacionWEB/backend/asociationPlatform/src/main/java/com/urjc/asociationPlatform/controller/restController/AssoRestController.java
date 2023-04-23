@@ -200,7 +200,7 @@ public class AssoRestController {
       @ApiResponse(responseCode = "404", description = "Asociation not found", content = @Content)
 
   })
-  @PutMapping("/editAso")
+  @PutMapping("/{id}")
   public ResponseEntity<AsociationDTO> editAsso(@RequestBody Asociation asso, @PathVariable long id,
       HttpServletRequest request) {
     Optional<Asociation> aso = assoService.findById(id);

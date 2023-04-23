@@ -141,7 +141,7 @@ public class UserRestController {
             @ApiResponse(responseCode = "404", description = "user not found", content = @Content)
 
     })
-    @PatchMapping("/editUser")
+    @PatchMapping("/{id}")
     public ResponseEntity<UserDTO> modifyUserbyAdmin(@PathVariable long id, @RequestParam String newName,
             @RequestParam String newEmail, @RequestParam String newRol, HttpServletRequest request)
             throws IOException, SQLException {
