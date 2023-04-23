@@ -20,4 +20,8 @@ export class EventService {
   eventById(id:Number):Observable<Event>{
     return this.http.get(BASE_URL+"/"+id).pipe() as Observable<Event>;
   }
+  giveLike(id:Number){
+    const body={};
+    return this.http.post(BASE_URL+'/like/'+id,body).pipe();
+  }
 }
