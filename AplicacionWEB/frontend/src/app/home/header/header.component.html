@@ -6,16 +6,16 @@
             <ul class="navlinks">
                 <ng-container *ngIf="currentUser">
 
-                    <ng-container *ngIf="currentUser.rol === 'admin'">
-                        <li><a [routerLink]="['/admin']">Panel de Control</a></li>
+                    <ng-container *ngIf="currentUser.rol === 'ADMIN'">
+                        <li><a [routerLink]="['/admin/events']">Panel de Control</a></li>
                     </ng-container>
 
-                    <ng-container *ngIf="currentUser.rol === 'base'">
-                        <li><a [routerLink]="['/user']">Mi Espacio</a></li>
+                    <ng-container *ngIf="currentUser.rol === 'BASE'">
+                        <li><a [routerLink]="['/myUser']">Mi Espacio</a></li>
                     </ng-container>
 
-                    <ng-container *ngIf="currentUser.rol === 'aso'">
-                        <li><a [routerLink]="['/aso']">Mi Asociación</a></li>
+                    <ng-container *ngIf="currentUser.rol === 'ASO'">
+                        <li><a [routerLink]="['/aso/miEspacio']">Mi Asociación</a></li>
                     </ng-container>
                 </ng-container>
 
