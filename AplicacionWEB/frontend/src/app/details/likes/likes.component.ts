@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-likes',
@@ -10,8 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LikesComponent {
   constructor(private authService:AuthService, private router: Router){}
- @Input()
- eventL:Event;
+  faBars = faBars;
+  faUser = faUser;
+ 
+  @Input()
+  eventL:Event;
 
  likeStyle:string="bx-happy";
  dislikeStyle:string="bx-sad";

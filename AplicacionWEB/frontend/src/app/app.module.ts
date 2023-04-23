@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
-import { EventInfoComponent } from './event-info/event-info.component';
+
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
 
@@ -49,7 +49,6 @@ import { CommentComponent } from './details/comment/comment.component';
     MoreinfoComponent,
     MyUserFavsComponent,
     EditMyUserComponent,
-    EventInfoComponent,
     MoreinfoheroComponent,
     LikesComponent,
     FavoritesComponent,

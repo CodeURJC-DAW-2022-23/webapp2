@@ -29,5 +29,9 @@ export class UserService {
       })
     );
   }
+  addFavorites(id:number){
+    const body={};
+    return this.http.post(BASE_URL+'/me/favorites/'+id,body).pipe();
+  }
 
 }

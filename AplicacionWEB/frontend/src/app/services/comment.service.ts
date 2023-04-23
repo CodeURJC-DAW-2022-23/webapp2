@@ -24,6 +24,10 @@ deleteComment(id: number){
 commentList(idEvent:number): Observable<Comment[]>{
   return this.httpClient.get(BASE_URL+'s/'+idEvent).pipe() as Observable<Comment[]>;
 }
+addComment(comment: Comment){
+  const body={description: comment.description}
+  return this.httpClient.post(BASE_URL+'/new/'+comment.event.id,body).pipe();
+}
 
 
 }

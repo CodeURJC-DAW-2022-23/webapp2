@@ -166,6 +166,7 @@ public class EventRestController {
             if(asoOp.isPresent()){
                 event.setAsociation(asoOp.get());
             }
+            event.setDuration(calculateDuration(event.getStartTime(), event.getEndTime()));
             eventService.save(event);
             URI location = new URI("https://127.0.0.1:8443/api/events/"+event.getId());
             return ResponseEntity.created(location).body(event);
@@ -307,5 +308,19 @@ public class EventRestController {
         data = image.getBytes(1, (int)image.length());
         resource = new ByteArrayResource(data);
         return resource;
+    }
+    private String calculateDuration(String start, String end){
+        String[] startParts=start.split(":");
+        String[] endParts=end.split(":");
+        String response="";
+        if(Integer.parseInt(endParts[1])<Integer.parseInt(startParts[1])){
+            response=(Integer.parseInt(endParts[0])-Integer.parseInt(startParts[0])-1)+"h ";
+            response+= (60 + (Integer.parseInt(endParts[1])-Integer.parseInt(startParts[1])))+"min";
+        }else{
+            response=(Integer.parseInt(endParts[0])-Integer.parseInt(startParts[0]))+"h ";
+            response+= Math.abs(Integer.parseInt(endParts[1])-Integer.parseInt(startParts[1]))+"min";
+        }
+        
+        return response;
     }
 }

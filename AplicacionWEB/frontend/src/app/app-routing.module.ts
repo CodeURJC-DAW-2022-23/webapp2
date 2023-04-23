@@ -18,7 +18,6 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { EditMyUserComponent } from './user/edit-my-user/edit-my-user.component';
 import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component';
-import { EventInfoComponent } from './event-info/event-info.component';
 import { MoreinfoComponent } from './details/moreinfo/moreinfo.component';
 
 
