@@ -17,8 +17,8 @@ export class EditasoComponent {
       this.aso = response;
     });
   }
-  editAso(aso : any) {
+  editAso(id: number, aso : any) {
     aso.preventDefault();
-    this.asoService.adminEditAso(this.aso).subscribe(response=>{});
+    this.asoService.adminEditAso(id, this.aso).subscribe(response=>{});
   }
 }
