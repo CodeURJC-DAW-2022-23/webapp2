@@ -4,7 +4,7 @@
             <div class="comment-head">
                 <h6 class="comment-name"><a href="">{{comment.comment_user}}</a></h6>
                 <span>{{comment.time}}</span>
-                <p class="likesNumberRight">{{comment.totalLikes}}<a href='bx bx-heart'></a></p>
+                <p class="likesNumberRight">{{comment.totalLikes}}<a (click)="like()"><fa-icon [icon]="heart"></fa-icon></a></p>
                 
                 
             </div>
