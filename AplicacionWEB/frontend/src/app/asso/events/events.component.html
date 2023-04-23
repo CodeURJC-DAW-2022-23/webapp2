@@ -80,12 +80,12 @@
                 <td>{{event.name}}</td>
                 <td>{{event.date}}</td>
                 <td>{{event.location}}</td>
-                <td><form action="/admin/editarEventos/">
-                  <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
+                <td><form>
+                  <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar" (click)="goToPage('/aso/editEvent/' + event.id)">
                   <input type="hidden" name="_csrf" value=""/>
                 </form></td>
                   <td><form action="/admin/editarEventos//delete" method="post">
-                  <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
+                  <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar" (click)="deleteEvent(event.name)">
                   <input type="hidden" name="_csrf" value=""/>
                 </form></td>
               </tr>

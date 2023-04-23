@@ -3,6 +3,7 @@ import * as simpleDatatables from 'simple-datatables';
 import { Aso } from 'src/app/models/aso.model';
 import { AsoService } from 'src/app/services/aso.service';
 import { Event } from 'src/app/models/event.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'asso-events',
@@ -11,9 +12,15 @@ import { Event } from 'src/app/models/event.model';
 })
 
 export class Events {
+deleteEvent(arg0: string) {
+throw new Error('Method not implemented.');
+}
+goToPage(pageName: string) {
+  this.router.navigate([`${pageName}`]);
+}
   events: Event[];
 
-  constructor(private assoService: AsoService){}
+  constructor(private assoService: AsoService, private router: Router){}
 
   ngOnInit() {
     this.assoService.getEvents().subscribe((response)=>{
