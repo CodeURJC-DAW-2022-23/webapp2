@@ -27,7 +27,6 @@ export class AdminComponent implements OnInit {
     this.loadUser();
   }
 
-
   loadUser(){
     this.userService.getMe().subscribe(
       response=>{
@@ -35,7 +34,11 @@ export class AdminComponent implements OnInit {
         this.username=this.u.username;
       }
     );
-    
+  }
+
+  logout(){
+    this.authService.logOut();
+    this.router.navigate(['']);
   }
 }
 

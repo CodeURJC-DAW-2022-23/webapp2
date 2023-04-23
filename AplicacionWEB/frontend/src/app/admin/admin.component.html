@@ -7,19 +7,7 @@
 
     <ul class="navbar-nav ms-auto ms-md-7 me-7 me-lg-7">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Ajustes</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                    <form action="/logout" method="post">
-                        <input type="submit" value="Cerrar Sesión" style="text-decoration:none;">
-                        <input type="hidden" name="_csrf" value="token"/>
-                    </form>
-                </li>
-                <!-- (click)="logout()" -->
-                <!-- <a class="dropdown-item" href="/logout">Cerrar Sesión</a></li> -->
-            </ul>
+            <a class="nav-link" (click)="logout()">Cerrar Sesión</a>
         </li>
     </ul>
     
