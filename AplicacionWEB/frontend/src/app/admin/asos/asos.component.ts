@@ -25,7 +25,7 @@ export class AsosComponent {
   modify(id: number) {
      this.router.navigate(['/admin/editaso/', id]);
   }
-  delete(id: number) {
+  deleteAso(id: number) {
     this.asoService.deleteAso(id);
   }
 }
