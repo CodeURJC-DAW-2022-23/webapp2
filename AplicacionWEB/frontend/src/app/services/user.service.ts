@@ -22,6 +22,10 @@ export class UserService {
     return this.http.get(BASE_URL+'/me', { withCredentials: true }).pipe()as Observable<User>;
   }
 
+  getUser(id:Number): Observable<User>{
+    return this.http.get(BASE_URL+'/admin/'+id, { withCredentials: true }).pipe()as Observable<User>;
+  }
+
   editUser(name:string,email:string): Observable<User>{
     /*let params = new HttpParams();
     params = params.append("newName", name);
@@ -53,12 +57,13 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+    console.log("delete")
+    return this.http.delete(BASE_URL+"/admin/"+id);
   }
 
   adminEditUser(id: number, user: User) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.patch(BASE_URL + '/admin/'+id, JSON.stringify(user),{headers}).pipe();
+    const body = {};
+    return this.http.patch(BASE_URL + '/admin/'+id+"?newName="+user.username+"&newEmail="+user.email+"&newRol="+user.rol,body).pipe();
   }
 
 }
