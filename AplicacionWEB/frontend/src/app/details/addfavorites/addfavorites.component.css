@@ -1,1 +1,117 @@
-@import url(../../../css/details.css);
+.row1 {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+  
+
+.seccion {
+margin: auto;
+font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+font-weight: 700;
+font-size: 18px;
+padding: 2em;
+}
+
+.button-line-ext a {
+    text-decoration: none;
+    color:  #283035;
+    }
+    
+    
+    .button-line-ext{
+        padding: 4px 28px;
+        border: none;
+        background: transparent;
+        color: #283035;
+        width: auto;
+        float: left;
+        position: relative;
+        line-height: 45px;
+        cursor: pointer;
+        margin: 1em 2em 1em 2em;
+    }
+    
+    .button-line-ext .line1,
+    .button-line-ext .line2,
+    .button-line-ext2 .line1_1,
+    .button-line-ext2 .line2_2,
+    .button-white-ext .line1,
+    .button-white-ext .line2,
+    .button-white-ext2 .line1_1,
+    .button-white-ext2 .line2_2 {
+    top: 0;
+    right: 0;
+    }
+    
+    .button-line-ext .line3,
+    .button-line-ext .line4,
+    .button-line-ext2 .line3_2,
+    .button-line-ext2 .line4_2,
+    .button-white-ext .line3,
+    .button-white-ext .line4,
+    .button-white-ext2 .line3_2,
+    .button-white-ext2 .line4_2 {
+    bottom: 0;
+    left: 0;
+    }
+    
+    .button-line-ext .line1,
+    .button-line-ext .line3,
+    .button-line-ext2 .line1_2,
+    .button-line-ext2 .line3_2,
+    .button-white-ext .line1,
+    .button-white-ext .line3,
+    .button-white-ext2 .line1_2,
+    .button-white-ext2 .line3_2 {
+    height: 3px;
+    width: 18px;
+    }
+    
+    .button-line-ext .line2,
+    .button-line-ext .line4,
+    .button-line-ext2 .line2_2,
+    .button-line-ext2 .line4_2,
+    .button-white-ext .line2,
+    .button-white-ext .line4,
+    .button-white-ext2 .line2_2,
+    .button-white-ext2 .line4_2{
+    height: 18px;
+    width: 3px;
+    }
+    
+    .button-line-ext span{
+    position: absolute;
+    display: block;
+    transition: all 300ms; 
+    background: #283035;
+    }
+    
+    
+    .button-line-ext:hover .line1,
+    .button-line-ext:hover .line3,
+    .button-line-ext:active .line1,
+    .button-line-ext:active .line3,
+    .button-white-ext:hover .line1,
+    .button-white-ext:hover .line3,
+    .button-white-ext:active .line1,
+    .button-white-ext:active .line3 {
+    width: 100%;
+    }
+    
+    .button-line-ext:hover .line2,
+    .button-line-ext:active .line2,
+    .button-white-ext:hover .line2,
+    .button-white-ext:active .line2{
+    height:100%;
+    background: #283035;
+    }
+    
+    .button-line-ext:hover .line4,
+    .button-line-ext:active .line4,
+    .button-white-ext:hover .line4,
+    .button-white-ext:active .line4{
+    height:100%;
+    background: #283035;
+    }
+    
