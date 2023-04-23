@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as simpleDatatables from 'simple-datatables';
 import { EventService } from 'src/app/services/event.service';
 import { Event } from '../../../models/event.model';
@@ -11,9 +11,14 @@ import { Event } from '../../../models/event.model';
 
 export class editEventAssoComponent {
 
-  e: Event;
-
-  constructor(private eventService: EventService){}
+  event: Event;
+  
+  constructor(private eventService: EventService, private activatedRoute: ActivatedRoute){
+    const idEvent = activatedRoute.snapshot.params['id'] as Number;
+    this.eventService.eventById(idEvent).subscribe(
+      eventIn=>this.event=eventIn
+    )
+  }
 
 
 }
