@@ -17,7 +17,7 @@ export class EditasoComponent {
       this.aso = response;
     });
   }
-  editevent(aso : any) {
+  editAso(aso : any) {
     aso.preventDefault();
     this.asoService.adminEditAso(this.aso).subscribe(response=>{});
   }

@@ -18,7 +18,7 @@ export class EdituserComponent {
       this.user = response;
     });
   }
-  editevent(user : any) {
+  editUser(user : any) {
     user.preventDefault();
     this.userService.adminEditUser(this.user).subscribe(response=>{});
   }
