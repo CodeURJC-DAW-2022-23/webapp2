@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Comment } from '../models/comment.model';
 
-const BASE_URL = '/api/comments';
+const BASE_URL = '/api/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,9 @@ export class CommentService{
 
 deleteComment(id: number){
     return this.httpClient.delete(BASE_URL + '/' + id, { withCredentials: true });
+}
+commentList(idEvent:number): Observable<Comment[]>{
+  return this.httpClient.get(BASE_URL+'s/'+idEvent).pipe() as Observable<Comment[]>;
 }
 
 
