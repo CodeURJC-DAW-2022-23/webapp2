@@ -2,22 +2,11 @@
 <section class="comments-container">
     <h1>Comentarios</h1>
     <ul id="comments-list" class="comments-list">
-        <!-- <li>
-            <div class="comment-main-level"> 
-                <div class="comment-box">
-                    <div class="comment-head">
-                        <h6 class="comment-name"><a href="">comment_user</a></h6>
-                        <span>time</span>
-                        <p class="likesNumberRight">5<a href=''></a></p>
-                    </div>
-                    <div class="comment-content">description</div>
-                </div>  
-            </div>
-        </li> -->
+
         <app-comment *ngFor="let com of commentList" [comment]="com"></app-comment>
+        
     </ul>
     
-
     <div class="comment-form">
         <form class="form" method="post" action="/crearComentario/">
             <div class="form-row">
