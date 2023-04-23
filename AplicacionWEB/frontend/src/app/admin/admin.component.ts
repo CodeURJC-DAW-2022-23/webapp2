@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
   username?: string;
   u?:User;
+  valid:boolean = false;
 
   constructor(private userService:UserService, private authService:AuthService, private router: Router) { }
 
@@ -32,12 +33,15 @@ export class AdminComponent implements OnInit {
       response=>{
         this.u = response;
         this.username=this.u.username;
+        if(this.u.rol === "ADMIN")
+        this.valid = true;
       }
     );
   }
 
   logout(){
     this.authService.logOut();
+    this.valid = false;
     this.router.navigate(['']);
   }
 }

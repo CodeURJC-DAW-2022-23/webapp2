@@ -46,7 +46,7 @@
     </div>
 
     <div id="layoutSidenav_content">
-        <div class="container-fluid px-4">
+        <div *ngIf="valid" class="container-fluid px-4">
             <router-outlet></router-outlet>
         </div>
         <footer class="py-4 bg-light mt-auto">
