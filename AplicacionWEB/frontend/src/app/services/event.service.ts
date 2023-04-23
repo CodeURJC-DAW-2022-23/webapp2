@@ -24,4 +24,8 @@ export class EventService {
     const body={};
     return this.http.post(BASE_URL+'/like/'+id,body).pipe();
   }
+  giveDislike(id:Number){
+    const body={};
+    return this.http.post(BASE_URL+'/dislike/'+id,body).pipe();
+  }
 }

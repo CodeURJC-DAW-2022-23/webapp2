@@ -4,6 +4,7 @@ import { Event } from 'src/app/models/event.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { faFaceLaugh as faLikeSelect, faFaceFrownOpen as faDislikeSelect} from '@fortawesome/free-solid-svg-icons';
 import { faFaceLaugh as faLike, faFaceFrownOpen as faDislike} from '@fortawesome/free-regular-svg-icons';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-likes',
@@ -11,7 +12,7 @@ import { faFaceLaugh as faLike, faFaceFrownOpen as faDislike} from '@fortawesome
   styleUrls: ['./likes.component.css']
 })
 export class LikesComponent {
-  constructor(private authService:AuthService, private router: Router){}
+  constructor(private authService:AuthService, private router: Router, private eventService:EventService){}
  
   @Input()
   eventL:Event;
@@ -20,6 +21,7 @@ export class LikesComponent {
  dislikeStyle=faDislike;
  like(){
   if(this.authService.logged){
+    this.eventService.giveLike(this.eventL.id).subscribe(response=>{});
     if(this.likeStyle == faLike)
       this.likeStyle = faLikeSelect;
     else
@@ -31,6 +33,7 @@ export class LikesComponent {
  }
  dislike(){
   if(this.authService.logged){
+    this.eventService.giveDislike(this.eventL.id).subscribe(response=>{});
     if(this.dislikeStyle == faDislike)
       this.dislikeStyle = faDislikeSelect;
     else
