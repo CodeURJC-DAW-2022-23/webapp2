@@ -16,16 +16,24 @@ export class AsosComponent {
   campus?: string;
   asos: Aso[];
 
-  constructor(private router: Router, private asoService: AsoService) {
+  constructor(private router: Router, private asoService: AsoService) {}
+  
+  ngOnInit(){
     this.asoService.asoList().subscribe((response) => {
       this.asos = response;
     })
-   }
+  }
 
   modify(id: number) {
      this.router.navigate(['/admin/editaso/', id]);
   }
   deleteAso(id: number) {
-    this.asoService.deleteAso(id);
+    ;
+     this.asoService.deleteAso(id).subscribe(
+      response =>{
+        this.ngOnInit();
+      }
+    )
   }
+
 }

@@ -22,11 +22,12 @@ export class EventService {
   }
 
   deleteEvent(id: number) {
-    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+    return this.http.delete(BASE_URL + '/admin/' + id);
   }
 
-   adminEditEvent(event: Event) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(BASE_URL + '/editEvent', JSON.stringify(event),{headers}).pipe();
+   adminEditEvent(id: number, event: Event) {
+    const body = {};
+     return this.http.patch(BASE_URL + '/admin/' + id + "?newName=" + event.name + "&newDescription=" + event.description + "&newAso=" + event.asociation, body).pipe();
+     //faltan atributos
   }
 }

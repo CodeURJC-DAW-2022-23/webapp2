@@ -27,9 +27,6 @@ export class UserService {
   }
 
   editUser(name:string,email:string): Observable<User>{
-    /*let params = new HttpParams();
-    params = params.append("newName", name);
-    params = params.append("newEmail", email);*/
     return this.http.patch(BASE_URL + "/me?newName="+name+"&newEmail="+email,{ withCredentials: true }).pipe()as Observable<User>;
   }
 
@@ -57,7 +54,6 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    console.log("delete")
     return this.http.delete(BASE_URL+"/admin/"+id);
   }
 
