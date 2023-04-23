@@ -22,6 +22,7 @@ export class LikesComponent {
  like(){
   if(this.authService.logged){
     this.eventService.giveLike(this.eventL.id).subscribe(response=>{});
+    this.eventL.totalLikes+=1;
     if(this.likeStyle == faLike)
       this.likeStyle = faLikeSelect;
     else
@@ -34,6 +35,7 @@ export class LikesComponent {
  dislike(){
   if(this.authService.logged){
     this.eventService.giveDislike(this.eventL.id).subscribe(response=>{});
+    this.eventL.totalDislikes+=1;
     if(this.dislikeStyle == faDislike)
       this.dislikeStyle = faDislikeSelect;
     else
