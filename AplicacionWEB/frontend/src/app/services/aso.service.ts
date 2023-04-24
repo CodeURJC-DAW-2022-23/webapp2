@@ -38,5 +38,15 @@ export class AsoService {
 		console.log("ERROR:");
 		console.error(error);
 		return throwError("Server error (" + error.status + "): " + error.text())
-	}
+  }
+  
+  deleteAso(id: number) {
+    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
+
+  
+  adminEditAso(id: number, aso: Aso) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(BASE_URL + '/'+id, JSON.stringify(aso),{headers}).pipe();
+  }
 }

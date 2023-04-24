@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AsoService } from 'src/app/services/aso.service';
+import { Aso } from 'src/app/models/aso.model';
 
 @Component({
   selector: 'app-asos',
@@ -12,10 +14,26 @@ export class AsosComponent {
   description?: string;
   faculty?: string;
   campus?: string;
+  asos: Aso[];
 
-  constructor(private router: Router) { }
-
-  modify() {
-     //this.router.navigate(['/admin/editaso/', this.aso?.id]);
+  constructor(private router: Router, private asoService: AsoService) {}
+  
+  ngOnInit(){
+    this.asoService.asoList().subscribe((response) => {
+      this.asos = response;
+    })
   }
+
+  modify(id: number) {
+     this.router.navigate(['/admin/editaso/', id]);
+  }
+  deleteAso(id: number) {
+    ;
+     this.asoService.deleteAso(id).subscribe(
+      response =>{
+        this.ngOnInit();
+      }
+    )
+  }
+
 }
