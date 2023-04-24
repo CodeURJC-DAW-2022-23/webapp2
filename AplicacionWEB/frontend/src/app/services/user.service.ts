@@ -8,6 +8,7 @@ import { Event } from '../models/event.model';
 
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 const BASE_URL = '/api/users';
 
@@ -16,7 +17,7 @@ const BASE_URL = '/api/users';
 })
 export class UserService {
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   getMe(): Observable<User>{
     return this.http.get(BASE_URL+'/me', { withCredentials: true }).pipe()as Observable<User>;
@@ -38,9 +39,10 @@ export class UserService {
     return this.http.delete(BASE_URL +"/me/favorites/"+id);
   }
 
-  register(formData: FormData){
-    return this.http.post(BASE_URL + "/", formData).pipe(
+  register(username:string,password:string,rol:string,email:string){
+    return this.http.post(BASE_URL + "/", {"username":username,"encodedPassword":password,"rol":rol,"email":email}).pipe(
       map((response: any) => {
+        this.router.navigate(['/']);
         return response;
       }),
       catchError((error: any) => {
@@ -48,6 +50,7 @@ export class UserService {
       })
     );
   }
+
   addFavorites(id:number){
     const body={};
     return this.http.post(BASE_URL+'/me/favorites/'+id,body).pipe();
