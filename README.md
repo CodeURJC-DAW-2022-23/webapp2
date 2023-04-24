@@ -462,3 +462,133 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 
 ![Diagrama1](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/diagrama1.png?raw=true)
 ![Diagrama2](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/diagrama2.png?raw=true)
+
+## Participación de miembros
+
+**Daniel Pérez Moraleda:**
+
+
+- Tareas realizadas: 
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+**Fiorella Victoria Hernández Mejía:**
+
+
+- Tareas realizadas: 
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+**Rubén González de Pablo:**
+
+- Tareas realizadas: 
+
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+**Andrea Cardenal Millán:**
+
+- Tareas realizadas: 
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  | 
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+
+**Daniel Gallardo de Eugenio:**
+
+- Tareas realizadas: 
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
