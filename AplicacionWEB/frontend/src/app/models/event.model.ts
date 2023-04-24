@@ -7,8 +7,8 @@ export interface Event{
     location:String;
     asociation:String;
     campus:string;
-    credits:Boolean;
-    booking:Boolean;
+    credits:boolean;
+    booking:boolean;
     startTime:String;
     endTime:String;
     duration:String;

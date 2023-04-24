@@ -47,6 +47,6 @@ export class AsoService {
   
   adminEditAso(id: number, aso: Aso) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(BASE_URL + '/admin/'+id, JSON.stringify(aso),{headers}).pipe();
+    return this.http.put(BASE_URL + '/'+id, JSON.stringify(aso),{headers}).pipe();
   }
 }

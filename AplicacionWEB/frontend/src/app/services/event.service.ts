@@ -22,7 +22,7 @@ export class EventService {
   }
 
   deleteEvent(id: number) {
-    return this.http.delete(BASE_URL + '/admin/' + id);
+    return this.http.delete(BASE_URL + '/' + id).pipe();
   }
 
    adminEditEvent(id: number, event: Event) {
