@@ -17,6 +17,7 @@ export class UserComponent implements OnInit  {
   faUser = faUser;
   username?:string;
   showme:boolean=true;
+  
 
   constructor(private userService:UserService, private authService:AuthService,private router: Router){
     

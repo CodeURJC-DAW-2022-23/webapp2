@@ -14,7 +14,6 @@ export class EventsComponent {
   date?: string;
   location?: string;
   ASOname?: string;
-  event: Event|undefined;
   events:Event[];
 
   constructor(private router: Router, private eventService:EventService) { 
@@ -23,7 +22,12 @@ export class EventsComponent {
     })
   }
 
-  modify() {
-     this.router.navigate(['/admin/editevent/', this.event?.id]);
+  modify(id: number) {
+     this.router.navigate(['/admin/editevent/', id]);
   }
+
+  delete(id: number) {
+    this.eventService.deleteEvent(id);
+  }
+
 }

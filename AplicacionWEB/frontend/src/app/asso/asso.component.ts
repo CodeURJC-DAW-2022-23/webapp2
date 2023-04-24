@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as simpleDatatables from 'simple-datatables';
-
+import { AsoService } from '../services/aso.service';
 
 @Component({
   selector: 'app-asso',
