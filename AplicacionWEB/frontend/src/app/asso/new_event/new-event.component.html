@@ -54,18 +54,8 @@
     </div>
     <div>
       <label for="form-select">Campus</label>
-      <select
-        name="campus"
-        class="form-select"
-        aria-label="Default select example"
-        [(ngModel)]="event.campus"
-      >
-        <option value="ALCORCÓN">ALCORCÓN</option>
-        <option value="ARANJUEZ">ARANJUEZ</option>
-        <option value="FUENLABRADA">FUENLABRADA</option>
-        <option value="MÓSTOLES">MÓSTOLES</option>
-        <option value="MADRID-VICALVARO">MADRID-VICALVARO</option>
-        <option value="MADRID-QUINTANA">MADRID-QUINTANA</option>
+      <select name="campus" class="form-select" aria-label="Default select example" [(ngModel)]="event.campus">
+        <option *ngFor="let campus of campusValues " value={{campus.value}} [selected]="campus.select" >{{campus.content}}</option>
       </select>
     </div>
     <div class="form-group py-2">

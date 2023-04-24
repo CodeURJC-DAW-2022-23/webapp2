@@ -14,7 +14,14 @@ export class AssoNewEvent {
   file = {} as File;
 
   constructor(private eventService: EventService){}
-
+  campusValues = [
+    {value: "ALCORCON", content: "Alcorcón", select: false},
+    {value: "ARANJUEZ", content: "Aranjuez", select: false},
+    {value: "FUENLABRADA", content: "Fuenlabrada", select: false},
+    {value: "MOSTOLES", content: "Móstoles", select: false},
+    {value: "MADRID-VICALVARO", content: "Madrid-Vicalvaro", select: false},
+    {value: "MADRID-QUINTANA", content: "Madrid-Quintana", select: false}
+  ]
   createEvent(e : any) {
     const [hours1, minutes1] = this.event.endTime.split(':');
     const [hours2, minutes2] = this.event.startTime.split(':');
@@ -31,7 +38,7 @@ export class AssoNewEvent {
     formData.append('campus', this.event.campus);
     formData.append('credits', this.event?.credits?.toString() ?? 'false');
     formData.append('booking', this.event?.booking?.toString() ?? 'false');
-    formData.append('starTime', this.event.startTime);
+    formData.append('startTime', this.event.startTime);
     formData.append('endTime', this.event.endTime);
     formData.append('duration', `${Number(hours1) - Number(hours2)}h ${Number(minutes1) - Number(minutes2)}min`);
     this.eventService.create(formData).subscribe(response=>{});

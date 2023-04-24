@@ -14,7 +14,14 @@ export class EditEventAssoComponent {
   event: Event;
   file = {} as File;
   areImage:boolean=false;
-  campusValue  = ["ALCORCON","ARANJUEZ","FUENLABRADA","MOSTOLES","MADRID-VICALVARO","MADRID-QUINTANA"];
+  campusValues = [
+    {value: "ALCORCON", content: "Alcorcón", select: false},
+    {value: "ARANJUEZ", content: "Aranjuez", select: false},
+    {value: "FUENLABRADA", content: "Fuenlabrada", select: false},
+    {value: "MOSTOLES", content: "Móstoles", select: false},
+    {value: "MADRID-VICALVARO", content: "Madrid-Vicalvaro", select: false},
+    {value: "MADRID-QUINTANA", content: "Madrid-Quintana", select: false}
+  ]
   
   constructor(private eventService: EventService, private activatedRoute: ActivatedRoute){
     const idEvent = activatedRoute.snapshot.params['id'] as Number;
@@ -26,6 +33,19 @@ export class EditEventAssoComponent {
     this.areImage=false;
   }
 
+  selected(i:boolean){
+    if(i){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  changeCredits(res:boolean){
+    this.event.credits=res;
+  }
+  changeBooking(res:boolean){
+    this.event.booking=res;
+  }
   editEvent(e : any) {
     const [hours1, minutes1] = this.event.endTime.split(':');
     const [hours2, minutes2] = this.event.startTime.split(':');
@@ -39,7 +59,7 @@ export class EditEventAssoComponent {
     formData.append('campus', this.event.campus);
     formData.append('credits', this.event?.credits?.toString() ?? 'false');
     formData.append('booking', this.event?.booking?.toString() ?? 'false');
-    formData.append('starTime', this.event.startTime);
+    formData.append('startTime', this.event.startTime);
     formData.append('endTime', this.event.endTime);
     formData.append('duration', `${Number(hours1) - Number(hours2)}h ${Number(minutes1) - Number(minutes2)}min`);
     this.eventService.edit(formData, this.event.id).subscribe(response=>{

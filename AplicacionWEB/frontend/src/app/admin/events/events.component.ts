@@ -30,7 +30,7 @@ export class EventsComponent {
   }
 
   deleteEvent(id: number) {
-    this.eventService.deleteEvent(id).subscribe(
+    this.eventService.delete(id).subscribe(
       response =>{
         this.ngOnInit();
       });
