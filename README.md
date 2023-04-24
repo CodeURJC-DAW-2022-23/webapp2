@@ -441,3 +441,24 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 | 3 |  |  
 | 4 |  |  
 | 5	|  | 
+
+
+## Fase 4:
+
+## Preparación del entorno de desarrollo
+
+1. Instalar Docker Desktop
+2. Crear una cuenta en Dockerhub
+3. 
+4. 
+5. 
+6. Execute the command "docker-compose up" on the shell.
+7. Abrir otra shell en la raíz de la aplicación
+8. Ejecute el comando "cd code/frontend".
+9. Ejecute el comando "npm install".
+10. Ejecute el comando "npm run dev".
+
+## Diagrama de clases y templates de la SPA
+
+![Diagrama1](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/diagrama1.png?raw=true)
+![Diagrama2](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/diagrama2.png?raw=true)
