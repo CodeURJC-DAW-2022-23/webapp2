@@ -1,4 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+
+import { HttpClient, HttpParams,  HttpHeaders } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 
 import { User } from '../models/user.model';
@@ -20,10 +22,11 @@ export class UserService {
     return this.http.get(BASE_URL+'/me', { withCredentials: true }).pipe()as Observable<User>;
   }
 
+  getUser(id:Number): Observable<User>{
+    return this.http.get(BASE_URL+'/admin/'+id, { withCredentials: true }).pipe()as Observable<User>;
+  }
+
   editUser(name:string,email:string): Observable<User>{
-    /*let params = new HttpParams();
-    params = params.append("newName", name);
-    params = params.append("newEmail", email);*/
     return this.http.patch(BASE_URL + "/me?newName="+name+"&newEmail="+email,{ withCredentials: true }).pipe()as Observable<User>;
   }
 
@@ -48,6 +51,19 @@ export class UserService {
   addFavorites(id:number){
     const body={};
     return this.http.post(BASE_URL+'/me/favorites/'+id,body).pipe();
+  }
+
+  allUsers():Observable<any>{
+    return this.http.get(BASE_URL+"/all").pipe() as Observable<User[]>;
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(BASE_URL+"/admin/"+id);
+  }
+
+  adminEditUser(id: number, user: User) {
+    const body = {};
+    return this.http.patch(BASE_URL + '/admin/'+id+"?newName="+user.username+"&newEmail="+user.email+"&newRol="+user.rol,body).pipe();
   }
 
 }

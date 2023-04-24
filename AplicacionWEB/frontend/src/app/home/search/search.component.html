@@ -1,5 +1,5 @@
 <form action="/globalFormSubmit" method="post">
-    <div class="hero container-fluid">
+    <div [ngStyle]="{'background-image' : 'url(assets/img/bgSearchbar.jpg)'}" class="hero container-fluid">
         <div class="search-form" id="buscador">
             <input type="search" value="" placeholder="Busca eventos o categorías" class="search-input" name="searchBar" [(ngModel)]='searchInput'>
             <button id="submitBtn" class="search-button" name="_csrf" value="" (click)="search()">

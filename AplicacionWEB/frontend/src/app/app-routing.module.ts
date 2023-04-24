@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { EditMyUserComponent } from './user/edit-my-user/edit-my-user.component';
 import { MyUserFavsComponent } from './user/my-user-favs/my-user-favs.component';
 import { MoreinfoComponent } from './details/moreinfo/moreinfo.component';
+import { EditEventAssoComponent } from './asso/events/edit/edit-event-form.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   children: [
     {path: 'miEspacio', component: EditAsso},
     {path: 'newEvent', component: AssoNewEvent},
-    {path: 'eventManagerAso', component: Events}
+    {path: 'eventManagerAso', component: Events},
+    {path: 'editEvent/:id', component: EditEventAssoComponent}
   ]
  },
   {path: 'admin', component: AdminComponent,

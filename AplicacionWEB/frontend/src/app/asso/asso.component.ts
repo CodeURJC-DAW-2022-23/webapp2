@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as simpleDatatables from 'simple-datatables';
 import { AuthService } from '../services/auth.service';
 
+import { AsoService } from '../services/aso.service';
 
 @Component({
   selector: 'app-asso',
