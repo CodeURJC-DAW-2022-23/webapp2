@@ -14,6 +14,7 @@ export class EditEventAssoComponent {
   event: Event;
   file = {} as File;
   areImage:boolean=false;
+  campusValue  = ["ALCORCON","ARANJUEZ","FUENLABRADA","MOSTOLES","MADRID-VICALVARO","MADRID-QUINTANA"];
   
   constructor(private eventService: EventService, private activatedRoute: ActivatedRoute){
     const idEvent = activatedRoute.snapshot.params['id'] as Number;

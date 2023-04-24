@@ -13,23 +13,31 @@ import { EventService } from 'src/app/services/event.service';
 })
 
 export class Events {
-changePage(page: string, id: Number) {
-  this.router.navigate([page, id]);
-}
+
+  events: Event[];
+
+  changePage(page: string, id: Number) {
+    this.router.navigate([page, id]);
+  }
 
   constructor(private eventService: EventService, private assoService: AsoService, private router: Router){}
 
   deleteEvent(id : Number) {
-    this.eventService.delete(id).subscribe((response)=>{});
+    this.eventService.delete(id).subscribe((response)=>{
+      this.refresh();
+      this.goToPage("aso/eventManagerAso");
+    });
   }
 
   goToPage(pageName: string) {
     this.router.navigate([`${pageName}`]);
   }
-    events: Event[];
-
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.assoService.getEvents().subscribe((response)=>{
       this.events = response;
     });
