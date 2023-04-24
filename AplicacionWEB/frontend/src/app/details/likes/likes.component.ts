@@ -38,6 +38,7 @@ export class LikesComponent implements OnInit {
       this.likeStyle = faLike
       this.eventL.totalLikes-=1;
     }
+    this.calculateBar();
   }else{
     this.router.navigate(['/login']);
   }
@@ -56,14 +57,15 @@ export class LikesComponent implements OnInit {
       this.dislikeStyle = faDislike;
       this.eventL.totalDislikes-=1;
     }
+    this.calculateBar();
   }else{
     this.router.navigate(['/login']);
   }
  }
 
  calculateBar() {
-  const likes = parseInt(this.elementRef.nativeElement.querySelector('#likeValue').value);
-  const dislikes = parseInt(this.elementRef.nativeElement.querySelector('#dislikeValue').value);
+  const likes = this.eventL.totalLikes;
+  const dislikes = this.eventL.totalDislikes;
   const total = likes + dislikes;
 
   const percentageLikes = (likes / total) * 100;

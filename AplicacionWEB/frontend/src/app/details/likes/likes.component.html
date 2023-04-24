@@ -1,10 +1,9 @@
 <section class="row1">
-    <input type="hidden" id="likeValue" value={{eventL.totalLikes}}>
-    <input type="hidden" id="dislikeValue" value={{eventL.totalDislikes}}>
     <div id="puntuation">
         <div class="container barLikes">
                 <div class="like">
-                    <a (click)="like()" [(ngModel)]="likeBarWidth" (ngModelChange)="calculateBar()"><fa-icon [icon]="likeStyle"></fa-icon></a>{{eventL.totalLikes}}
+                    <!--(click)="like()"-->
+                    <a (click)="like()" [(ngModel)]="likeBarWidth"><fa-icon [icon]="likeStyle"></fa-icon></a>{{eventL.totalLikes}}
                 </div>
                 <div class="barGraph">
                     <div id="bar">
@@ -13,7 +12,7 @@
                     </div>
                 </div>
                 <div class="dislike">
-                    {{eventL.totalDislikes}}<a (click)="dislike()" [(ngModel)]="dislikeBarWidth" (ngModelChange)="calculateBar()"><fa-icon [icon]="dislikeStyle"></fa-icon></a>
+                    {{eventL.totalDislikes}}<a (click)="dislike()" [(ngModel)]="dislikeBarWidth"><fa-icon [icon]="dislikeStyle"></fa-icon></a>
                 </div>
         </div>
     </div>
