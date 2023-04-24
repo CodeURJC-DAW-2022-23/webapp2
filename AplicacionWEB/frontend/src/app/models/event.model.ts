@@ -1,17 +1,17 @@
 export interface Event{
     id:number;
-    name:String;
-    date:String;
-    month:String;
-    description:String;
-    location:String;
-    asociation:String;
+    name:string;
+    date:string;
+    month:string;
+    description:string;
+    location:string;
+    asociation:string;
     campus:string;
-    credits:Boolean;
-    booking:Boolean;
-    startTime:String;
-    endTime:String;
-    duration:String;
+    credits:boolean;
+    booking:boolean;
+    startTime:string;
+    endTime:string;
+    duration:string;
     totalDislikes:number;
     totalLikes:number;
     asociationName:number;

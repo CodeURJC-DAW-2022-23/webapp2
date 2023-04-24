@@ -42,21 +42,6 @@ export class AuthService {
       (error) => alert("Credenciales invalidas")
     );
     this.router.navigate(['/']);
-    // .pipe(
-    //   map((response:any)=>{
-
-    //     console.log(response);
-
-    //     return response;
-    //   }),
-    //   catchError((error: HttpErrorResponse) => {
-    //     let errorMessage = 'Ocurrió un error al intentar iniciar sesión';
-    //     if (error.status === 401) {
-    //       errorMessage = 'Credenciales inválidas';
-    //     }
-    //     return throwError(errorMessage);
-    //   })
-    // )
   }
 
   logOut(){
@@ -66,4 +51,21 @@ export class AuthService {
       this.router.navigate(['/']);
     })
   }
+
+  isLogged() {
+    return this.logged;
+  }
+
+  isAdmin() {
+    return this.user && (this.user.rol == "ADMIN");
+  }
+
+  isBase() {
+    return this.user && (this.user.rol == "BASE");
+  }
+
+  isAso() {
+    return this.user && (this.user.rol == "ASO");
+  }
+
 }

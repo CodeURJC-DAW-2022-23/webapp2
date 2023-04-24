@@ -32,6 +32,11 @@ export class UserComponent implements OnInit  {
       response=>{
         this.u = response;
         this.username=this.u.username;
+        if(!(this.u.rol === "BASE"))
+          this.router.navigate(['']);
+      },
+      error => {
+        this.router.navigate(['']);
       }
     );
     
@@ -39,7 +44,6 @@ export class UserComponent implements OnInit  {
 
   logout(){
     this.authService.logOut();
-    this.router.navigate(['']);
   }
 
   toogleSidebar(){

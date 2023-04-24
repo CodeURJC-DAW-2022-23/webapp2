@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { User } from '../models/user.model';
 
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { Event } from '../models/event.model';
 
 
 @Component({
@@ -14,10 +16,12 @@ export class LoginComponent implements OnInit {
 
   username!: string;
   password!:string;
-  rol!:string;
+  rol:string = "BASE";
   email!:string;
 
-  constructor(private authService: AuthService, private userService:UserService) { }
+  constructor(private authService: AuthService, private userService:UserService) {
+    
+  }
   
   ngOnInit() {
     $("#goRight").on("click", function () {
@@ -51,12 +55,11 @@ export class LoginComponent implements OnInit {
   }
 
   register(){
-    const formData = new FormData();
-    formData.append('username', this.username);
-    formData.append('email', this.email);
-    formData.append('encodedPassword', this.password);
-    formData.append('rol', this.rol);
-
-    this.userService.register(formData);
+    console.log(this.rol);
+    this.userService.register(this.username,this.password,this.rol,this.email).subscribe(
+      response =>{
+        console.log(response)
+      }
+    );
   }
 }

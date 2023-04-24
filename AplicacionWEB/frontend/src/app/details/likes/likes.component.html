@@ -1,19 +1,18 @@
 <section class="row1">
-    <input type="hidden" id="likeValue" value=>
-    <input type="hidden" id="dislikeValue" value=>
     <div id="puntuation">
         <div class="container barLikes">
                 <div class="like">
-                    <a href=""><i class=''></i></a>
+                    <!--(click)="like()"-->
+                    <a (click)="like()" [(ngModel)]="likeBarWidth"><fa-icon [icon]="likeStyle"></fa-icon></a>{{eventL.totalLikes}}
                 </div>
                 <div class="barGraph">
                     <div id="bar">
-                        <div id="likeArea"></div>
-                        <div id="dislikeArea"></div>
+                        <div id="likeArea" [style.width.%]="likeBarWidth"></div>
+                        <div id="dislikeArea" [style.width.%]="dislikeBarWidth"></div>
                     </div>
                 </div>
                 <div class="dislike">
-                    <a href=""><i class=''></i></a>
+                    {{eventL.totalDislikes}}<a (click)="dislike()" [(ngModel)]="dislikeBarWidth"><fa-icon [icon]="dislikeStyle"></fa-icon></a>
                 </div>
         </div>
     </div>

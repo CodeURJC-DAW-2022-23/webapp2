@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
-import { Event } from 'src/app/models/event.model';
+import { Component, OnInit  } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as simpleDatatables from 'simple-datatables';
 import { EventService } from 'src/app/services/event.service';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-
+import { Event } from '../../../models/event.model';
 @Component({
-  selector: 'app-editevent',
-  templateUrl: './editevent.component.html',
-  styleUrls: ['./editevent.component.css']
+  selector: 'asso-edit-event',
+  templateUrl: './edit-event-form.component.html',
+  styleUrls: ['../../../../css/boostrap.css']
 })
-export class EditeventComponent {
+
+export class EditEventAssoComponent {
+
   event: Event;
   file = {} as File;
   areImage:boolean=false;
@@ -20,19 +22,18 @@ export class EditeventComponent {
     {value: "MADRID-VICALVARO", content: "Madrid-Vicalvaro", select: false},
     {value: "MADRID-QUINTANA", content: "Madrid-Quintana", select: false}
   ]
-  constructor(private router: Router, activatedRoute: ActivatedRoute, private eventService: EventService) {
-    const idEvent = activatedRoute.snapshot.params['id'] as number;
-    this.load(idEvent);
+  
+  constructor(private eventService: EventService, private activatedRoute: ActivatedRoute, private router: Router){
+    const idEvent = activatedRoute.snapshot.params['id'] as Number;
+    this.eventService.eventById(idEvent).subscribe(
+      eventIn=>this.event=eventIn
+    )
   }
-
-  load(id: number){
-    this.eventService.eventById(id).subscribe((response)=>{ 
-      this.event = response;
-    });
-  }
-  ngOnInit() {
+  ngOnInit(){
+    this.areImage=false;
     
   }
+
   selected(i:boolean){
     if(i){
       return true;
@@ -46,7 +47,6 @@ export class EditeventComponent {
   changeBooking(res:boolean){
     this.event.booking=res;
   }
-
   editEvent(e : any) {
     const [hours1, minutes1] = this.event.endTime.split(':');
     const [hours2, minutes2] = this.event.startTime.split(':');
@@ -68,12 +68,13 @@ export class EditeventComponent {
       if (this.areImage){
         const formDataImg=new FormData();
         formDataImg.append('newImage', this.file);
-        this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
         
+        this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
       }
-      this.router.navigate(['admin/events']);
+      this.router.navigate(['aso/eventManagerAso']);
     });
   }
+  
   onFileSelected(e: any) {
     this.file = e.target.files[0];
     this.areImage=true;
@@ -81,5 +82,4 @@ export class EditeventComponent {
     if (this.file)
       fileInput = this.file.name;  
   }
-  
 }

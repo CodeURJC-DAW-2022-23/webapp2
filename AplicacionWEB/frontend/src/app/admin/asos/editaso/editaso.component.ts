@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Aso } from 'src/app/models/aso.model';
 import { AsoService } from 'src/app/services/aso.service';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-editaso',
@@ -10,15 +11,23 @@ import { AsoService } from 'src/app/services/aso.service';
 export class EditasoComponent {
   aso: Aso;
 
-  constructor(private asoService: AsoService){}
+  constructor(private router: Router, activatedRoute: ActivatedRoute, private asoService: AsoService) {
+     const idEvent = activatedRoute.snapshot.params['id'] as number;
+    this.load(idEvent);
+  }
 
-  ngOnInit(id: Number) {
+   load(id: number){
     this.asoService.getAssoById(id).subscribe((response)=>{ 
       this.aso = response;
     });
   }
-  editAso(id: number, aso : any) {
-    aso.preventDefault();
-    this.asoService.adminEditAso(id, this.aso).subscribe(response=>{});
+  ngOnInit() {
+    
+  }
+
+  editAso(id: number) {
+    this.asoService.adminEditAso(id, this.aso).subscribe(response => {
+      this.router.navigate(['admin/asos']);
+    });
   }
 }

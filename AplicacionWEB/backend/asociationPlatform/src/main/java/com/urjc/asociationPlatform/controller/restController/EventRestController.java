@@ -157,6 +157,8 @@ public class EventRestController {
             if (asoOp.isPresent()) {
                 event.setAsociation(asoOp.get());
             }
+            event.setDuration(calculateDuration(event.getStartTime(), event.getEndTime()));
+            event.setMonth(calculateMonth(event.getDate().toString()));
             eventService.save(event);
             URI location = new URI("https://127.0.0.1:8443/api/events/" + event.getId());
             return ResponseEntity.created(location).body(event);
@@ -245,6 +247,8 @@ public class EventRestController {
             if (!event.getAsociation().getOwner().equals(user)) {
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
+            System.out.println("------------------size: "+newImage.getSize());
+            System.out.println("------------------size: "+getBlob(newImage).length());
             event.setImgUrl(getBlob(newImage));
             eventService.save(event);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -285,6 +289,66 @@ public class EventRestController {
     public ResponseEntity<List<Event>> getAllEvents() {
         return new ResponseEntity<>(eventService.findAll(), HttpStatus.OK);
     }
+    @Operation(summary = "Give like to event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "like done succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
+    @PostMapping("/like/{id}")
+    public ResponseEntity<Event> giveLike(@PathVariable long id, HttpServletRequest request){
+        Optional<Event> eventOp = eventService.findById(id);
+        if(eventOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event event = eventOp.get();
+
+        Principal principal = request.getUserPrincipal();
+        if(principal==null){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        Optional<User> userOp = userService.findByUsername(principal.getName());
+        if(userOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        User user = userOp.get();
+        event.addLike(user);
+        eventService.save(event);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Give dislike to event")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "dislike done succesfully",content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Event.class))}),
+        @ApiResponse(responseCode = "401", description = "no user register", content = @Content),
+        @ApiResponse(responseCode = "404", description = "event not found", content = @Content)
+            
+    })
+    @PostMapping("/dislike/{id}")
+    public ResponseEntity<Event> giveDislike(@PathVariable long id, HttpServletRequest request){
+        Optional<Event> eventOp = eventService.findById(id);
+        if(eventOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Event event = eventOp.get();
+
+        Principal principal = request.getUserPrincipal();
+        if(principal==null){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        Optional<User> userOp = userService.findByUsername(principal.getName());
+        if(userOp.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        User user = userOp.get();
+        event.addDislike(user);
+        eventService.save(event);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     // =====================auxiliar functions=======================
     public Blob getBlob(MultipartFile file) throws SQLException, IOException {
@@ -301,5 +365,27 @@ public class EventRestController {
         data = image.getBytes(1, (int) image.length());
         resource = new ByteArrayResource(data);
         return resource;
+    }
+    private String calculateDuration(String start, String end){
+        String[] startParts=start.split(":");
+        String[] endParts=end.split(":");
+        String response="";
+        if(Integer.parseInt(endParts[1])<Integer.parseInt(startParts[1])){
+            response=(Integer.parseInt(endParts[0])-Integer.parseInt(startParts[0])-1)+"h ";
+            response+= (60 + (Integer.parseInt(endParts[1])-Integer.parseInt(startParts[1])))+"min";
+        }else{
+            response=(Integer.parseInt(endParts[0])-Integer.parseInt(startParts[0]))+"h ";
+            response+= Math.abs(Integer.parseInt(endParts[1])-Integer.parseInt(startParts[1]))+"min";
+        }
+        
+        return response;
+    }
+    private String[] monthsValue={"", "All", "ENERO", "FEBRERO", "MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
+    private String calculateMonth(String date){
+        String[] dateParts=date.split("-");
+        String response=monthsValue[Integer.parseInt(dateParts[1])];
+        
+        
+        return response;
     }
 }

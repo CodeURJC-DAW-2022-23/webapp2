@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from 'src/app/models/comment.model';
 import { CommentService } from "src/app/services/comment.service";
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { Event } from 'src/app/models/event.model';
 import * as $ from 'jquery';
+import { AuthService } from 'src/app/services/auth.service';
+import { delay } from 'rxjs';
 
 
 @Component({
@@ -13,39 +15,34 @@ import * as $ from 'jquery';
 })
 export class CommentsComponent {
 
- 
-  newComment!: boolean;
-  comment!: Comment;
+  @Input()
+  eventC:Event;
+  commentList:Comment[];
+  comment: Comment = {} as Comment;
+  description:string;
 
-  totalLikes: number = 0;
-  description = "Esto es un comentario"
-
-  constructor(private service: CommentService) { }
-  // ngOnInit(): void{
-
-  //   const idComment = this.activatedRouter.snapshot.params['idComment'];
-
-  //   if (idComment) {
-  //       this.service.getComment(idComment).subscribe(
-  //           response => {
-  //               this.comment = response;
-  //               this.totalLikes = this.comment.totalLikes;
-  //               this.description = this.comment.description;
-  //           },
-  //           error => console.log(error)
-  //       )
-
-  //       this.newComment = false;
-  //   } else {     
-  //       this.newComment = true;
-  //   }
-  // }
-
+  constructor(private commentService: CommentService,private authService:AuthService, private router: Router) { }
+  ngOnInit(){
+    this.loadComments();
+  }
+  loadComments(){
+    this.commentService.commentList(this.eventC.id).subscribe(
+      comments=>this.commentList=comments
+    )
+  }
   save() {
-    if (this.newComment) {
-       // this.filmService.addComment(this.id, this.totalLikes, this.description);
+    if(this.authService.logged){
+      this.comment.event=this.eventC;
+      this.comment.description=this.description;
+      this.commentService.addComment(this.comment).subscribe(
+        response=>{
+          this.loadComments();
+        });
+      this.description="";
+    }else{
+      this.router.navigate(['/login']);
     }
+    
   }
 }
-export { Comment };
 

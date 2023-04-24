@@ -4,22 +4,22 @@
 
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
-                <ng-container *ngIf="currentUser">
+                <ng-container *ngIf="authService.isLogged()">
 
-                    <ng-container *ngIf="currentUser.rol === 'ADMIN'">
+                    <ng-container *ngIf="authService.isLogged() && authService.isAdmin()">
                         <li><a [routerLink]="['/admin/events']">Panel de Control</a></li>
                     </ng-container>
 
-                    <ng-container *ngIf="currentUser.rol === 'BASE'">
+                    <ng-container *ngIf="authService.isLogged() && authService.isBase()">
                         <li><a [routerLink]="['/myUser']">Mi Espacio</a></li>
                     </ng-container>
 
-                    <ng-container *ngIf="currentUser.rol === 'ASO'">
+                    <ng-container *ngIf="authService.isLogged() && authService.isAso()">
                         <li><a [routerLink]="['/aso/miEspacio']">Mi Asociación</a></li>
                     </ng-container>
                 </ng-container>
 
-                <ng-container *ngIf="!currentUser">
+                <ng-container *ngIf="!authService.isLogged()">
                     <li><a [routerLink]="['/login']">Login</a></li>
                 </ng-container>   
             </ul>
