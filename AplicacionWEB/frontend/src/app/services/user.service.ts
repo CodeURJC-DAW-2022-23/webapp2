@@ -8,6 +8,7 @@ import { Event } from '../models/event.model';
 
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 const BASE_URL = '/api/users';
 
@@ -16,16 +17,17 @@ const BASE_URL = '/api/users';
 })
 export class UserService {
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   getMe(): Observable<User>{
     return this.http.get(BASE_URL+'/me', { withCredentials: true }).pipe()as Observable<User>;
   }
 
+  getUser(id:Number): Observable<User>{
+    return this.http.get(BASE_URL+'/admin/'+id, { withCredentials: true }).pipe()as Observable<User>;
+  }
+
   editUser(name:string,email:string): Observable<User>{
-    /*let params = new HttpParams();
-    params = params.append("newName", name);
-    params = params.append("newEmail", email);*/
     return this.http.patch(BASE_URL + "/me?newName="+name+"&newEmail="+email,{ withCredentials: true }).pipe()as Observable<User>;
   }
 
@@ -37,9 +39,10 @@ export class UserService {
     return this.http.delete(BASE_URL +"/me/favorites/"+id);
   }
 
-  register(formData: FormData){
-    return this.http.post(BASE_URL + "/", formData).pipe(
+  register(username:string,password:string,rol:string,email:string){
+    return this.http.post(BASE_URL + "/", {"username":username,"encodedPassword":password,"rol":rol,"email":email}).pipe(
       map((response: any) => {
+        this.router.navigate(['/']);
         return response;
       }),
       catchError((error: any) => {
@@ -48,17 +51,22 @@ export class UserService {
     );
   }
 
+  addFavorites(id:number){
+    const body={};
+    return this.http.post(BASE_URL+'/me/favorites/'+id,body).pipe();
+  }
+
   allUsers():Observable<any>{
     return this.http.get(BASE_URL+"/all").pipe() as Observable<User[]>;
   }
 
   deleteUser(id: number) {
-    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+    return this.http.delete(BASE_URL+"/admin/"+id);
   }
 
   adminEditUser(id: number, user: User) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.patch(BASE_URL + '/admin/'+id, JSON.stringify(user),{headers}).pipe();
+    const body = {};
+    return this.http.patch(BASE_URL + '/admin/'+id+"?newName="+user.username+"&newEmail="+user.email+"&newRol="+user.rol,body).pipe();
   }
 
 }

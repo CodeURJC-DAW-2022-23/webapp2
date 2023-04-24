@@ -1,22 +1,15 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnChanges{
+export class HeaderComponent{
   currentUser:User;
 
-  constructor(private userService:UserService){}
+  constructor(public authService:AuthService){}
 
-  ngOnChanges(): void {
-    this.userService.getMe().subscribe(
-      response=>{
-        this.currentUser = response;
-      } 
-    );
-  }
 }

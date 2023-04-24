@@ -10,12 +10,13 @@ import { AsoService } from 'src/app/services/aso.service';
 })
 
 export class EditAsso {
+
   asso: Aso;
 
   constructor(private assoService: AsoService){}
 
   ngOnInit() {
-    this.assoService.getMyAsso().subscribe((response)=>{ // cambiar getAssoByID por getMyAsso
+    this.assoService.getMyAsso().subscribe((response)=>{
       this.asso = response;
     });
   }
@@ -25,4 +26,3 @@ export class EditAsso {
     this.assoService.editMyAsso(this.asso).subscribe(response=>{});
   }
 }
-

@@ -17,17 +17,23 @@ export class EventsComponent {
   events:Event[];
 
   constructor(private router: Router, private eventService:EventService) { 
+    
+  }
+  ngOnInit(){
     this.eventService.allEvents().subscribe((response)=>{
       this.events=response;
     })
   }
-
+  
   modify(id: number) {
      this.router.navigate(['/admin/editevent/', id]);
   }
 
-  delete(id: number) {
-    this.eventService.deleteEvent(id);
+  deleteEvent(id: number) {
+    this.eventService.delete(id).subscribe(
+      response =>{
+        this.ngOnInit();
+      });
   }
 
 }

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
-import { EventInfoComponent } from './event-info/event-info.component';
+
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
 
@@ -17,6 +17,7 @@ import { CommentsComponent } from './details/comments/comments.component';
 import { EditAsso } from './asso/edit/edit-aso-form.component';
 import { AssoComponent } from './asso/asso.component';
 import { AssoNewEvent } from './asso/new_event/new-event.component';
+import { EditEventAssoComponent} from './asso/events/edit/edit-event-form.component';
 import { Events } from './asso/events/events.component';
 import { MoreinfoComponent } from './details/moreinfo/moreinfo.component';
 import { MoreinfoheroComponent } from './details/moreinfohero/moreinfohero.component';
@@ -35,6 +36,8 @@ import { UsersComponent } from './admin/users/users.component';
 import { EditeventComponent } from './admin/events/editevent/editevent.component';
 import { EditasoComponent } from './admin/asos/editaso/editaso.component';
 import { EdituserComponent } from './admin/users/edituser/edituser.component';
+import { CommentComponent } from './details/comment/comment.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +51,6 @@ import { EdituserComponent } from './admin/users/edituser/edituser.component';
     MoreinfoComponent,
     MyUserFavsComponent,
     EditMyUserComponent,
-    EventInfoComponent,
     MoreinfoheroComponent,
     LikesComponent,
     FavoritesComponent,
@@ -63,8 +65,10 @@ import { EdituserComponent } from './admin/users/edituser/edituser.component';
     HomeComponent,
     AssoComponent,
     EditAsso,
+    EditEventAssoComponent,
     AssoNewEvent,
-    Events
+    Events,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

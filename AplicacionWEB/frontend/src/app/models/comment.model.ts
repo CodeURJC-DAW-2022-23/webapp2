@@ -1,9 +1,9 @@
-
+import { Event } from "./event.model";
 export interface Comment {
-  id?: number;
+  id: number;
   event: Event;
   comment_user: string;
   description: string;
   time: string;
-  //favorites: Set<User>;
+  totalLikes:number;
 }

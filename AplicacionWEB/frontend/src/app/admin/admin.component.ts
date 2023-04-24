@@ -34,6 +34,9 @@ export class AdminComponent implements OnInit {
         this.username=this.u.username;
         if(!(this.u.rol === "ADMIN"))
           this.router.navigate(['']);
+      },
+      error => {
+        this.router.navigate(['']);
       }
     );
   }
@@ -43,5 +46,6 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['']);
   }
 }
+
 
 

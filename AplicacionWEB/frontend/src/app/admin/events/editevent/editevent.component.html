@@ -7,49 +7,43 @@
     <div class="container-fluid py-5">
         <form action="/admin/editarEventos/id" class="py-5 px-2 mx-auto col-sm-10 col-md-7 col-lg-5" method="post"
             enctype="multipart/form-data">
-            <div class="form-group py-2">
-                <label for="asociation">Asociación</label>
-                <input name="asociation" type="text" value="asociation" class="form-control" id="asociation"
-                    required />
-            </div>
+            
             <div class="form-group py-2">
                 <label for="eventName">Nombre</label>
-                <input name="name" type="text" value="name" class="form-control" id="eventName" required />
+                <input name="name" type="text" value="name" class="form-control" id="eventName" required [(ngModel)]="event.name"/>
             </div>
             <div class="form-group py-2">
                 <label for="">Fecha y hora</label>
                 <div class='d-flex align-items-center gap-2'>
                     <input name="date" value="date" type="date" class="form-control bootstrap-date" id="eventDate"
-                        required />
+                        required [(ngModel)]="event.date"/>
                     <span>de</span>
                     <input name="startTime" value="startTime" type="time"
-                        class="form-control bootstrap-datetimepicker" id="eventDate" required />
+                        class="form-control bootstrap-datetimepicker" id="eventDate" required [(ngModel)]="event.startTime"/>
                     <span>hasta</span>
                     <input name="endTime" value="endTime" type="time" class="form-control bootstrap-datetimepicker"
-                        id="eventDate" required />
+                        id="eventDate" required [(ngModel)]="event.endTime"/>
                 </div>
             </div>
             <div>
                 <label for='form-select'>Campus</label>
-                <select name="campus" class="form-select" aria-label="Default select example">
-                
-                    <option value="value" #selectedselected>content</option>
-                  
-                </select>
+                    <select name="campus" class="form-select" aria-label="Default select example" [(ngModel)]="event.campus">
+                        <option *ngFor="let campus of campusValues " value={{campus.value}} [selected]="campus.select" >{{campus.content}}</option>
+                    </select>
             </div>
             <div class="form-group py-2">
                 <label for="">Ubicación</label>
-                <input name="location" value="location" type="text" class="form-control" id="eventPlace" required />
+                <input name="location" value="location" type="text" class="form-control" id="eventPlace" required [(ngModel)]="event.location"/>
             </div>
             <div class="form-group">
                 <label for='form-check'>¿Se darán créditos por la asistencia?</label>
                 <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="credits" id="yes" value="yes">
+                        <input class="form-check-input" type="radio" name="creditsT" value="true" (change)="changeCredits(true)" [checked]="selected(event.credits)">
                         <label class="form-check-label" for="yes">Si</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="credits" id="no" value="no">
+                        <input class="form-check-input" type="radio" name="creditsF" value="false" (change)="changeCredits(false)" [checked]="selected(!event.credits)">
                         <label class="form-check-label" for="no">No</label>
                     </div>
                 </div>
@@ -58,11 +52,11 @@
                 <label for='form-check'>¿Hará falta reservar?</label>
                 <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="reservation" id="yes" value="yes">
+                        <input class="form-check-input" type="radio" name="reservationT" id="yes" value="true" (change)="changeBooking(true)" [checked]="selected(event.booking)">
                         <label class="form-check-label" for="yes">Si</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="reservation" id="no" value="no">
+                        <input class="form-check-input" type="radio" name="reservationF" id="no" value="false" (change)="changeBooking(false)" [checked]="selected(!event.booking)">
                         <label class="form-check-label" for="no">No</label>
                     </div>
                 </div>
@@ -70,14 +64,14 @@
             <div class="form-group py-2">
                 <label for="">Descripción</label>
                 <textarea name="description" type="text" class="form-control" style=" height: 10em;"
-                    required> description</textarea>
+                    required [(ngModel)]="event.description"> description</textarea>
             </div>
             <div>
-                <input name="image" class="form-control" type="file" accept="image/*" />
+                <input name="image" class="form-control" type="file" accept="image/*" (change)="onFileSelected($event)"/>
             </div>
             <div class="d-flex py-2 w-100">
                 <div class="flex-fill"></div>
-                <button type="submit" class="btn btn-danger px-4">Guardar cambios</button>
+                <button type="submit" class="btn btn-danger px-4" (click)="editEvent($event)">Guardar cambios</button>
                 <input type="hidden" name="_csrf" value="token" />
             </div>
         </form>

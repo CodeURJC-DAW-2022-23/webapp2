@@ -27,9 +27,9 @@
             </div>
             <div>
               <label for="cars">Elige el tipo de cuenta:</label>
-              <select name="rol" id="rol">
-                  <option  [(ngModel)]="rol" value="BASE">Usuario</option>
-                  <option  [(ngModel)]="rol" value="ASO">Asociación (Tendrás que esperar a que un admin te valide)</option>
+              <select name="rol" id="rol" [(ngModel)]="rol">
+                  <option selected value="BASE">Usuario</option>
+                  <option value="ASO">Asociación (Tendrás que esperar a que un admin te valide)</option>
               </select>
             </div>
             <div class="form-element form-submit">
