@@ -23,7 +23,7 @@ export class EditEventAssoComponent {
     {value: "MADRID-QUINTANA", content: "Madrid-Quintana", select: false}
   ]
   
-  constructor(private eventService: EventService, private activatedRoute: ActivatedRoute){
+  constructor(private eventService: EventService, private activatedRoute: ActivatedRoute, private router: Router){
     const idEvent = activatedRoute.snapshot.params['id'] as Number;
     this.eventService.eventById(idEvent).subscribe(
       eventIn=>this.event=eventIn
@@ -31,6 +31,7 @@ export class EditEventAssoComponent {
   }
   ngOnInit(){
     this.areImage=false;
+    
   }
 
   selected(i:boolean){
@@ -70,6 +71,7 @@ export class EditEventAssoComponent {
         
         this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
       }
+      this.router.navigate(['aso/eventManagerAso']);
     });
   }
   

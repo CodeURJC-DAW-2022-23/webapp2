@@ -2,6 +2,7 @@ import { Component, OnInit, Optional } from '@angular/core';
 import { Event } from 'src/app/models/event.model';
 import * as simpleDatatables from 'simple-datatables';
 import { EventService } from 'src/app/services/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'asso-new-event',
@@ -13,7 +14,10 @@ export class AssoNewEvent {
   event = {} as Event;
   file = {} as File;
 
-  constructor(private eventService: EventService){}
+  constructor(private eventService: EventService, private router: Router){
+    this.event.booking=true;
+    this.event.credits=true;
+  }
   campusValues = [
     {value: "ALCORCON", content: "Alcorcón", select: false},
     {value: "ARANJUEZ", content: "Aranjuez", select: false},
@@ -41,7 +45,9 @@ export class AssoNewEvent {
     formData.append('startTime', this.event.startTime);
     formData.append('endTime', this.event.endTime);
     formData.append('duration', `${Number(hours1) - Number(hours2)}h ${Number(minutes1) - Number(minutes2)}min`);
-    this.eventService.create(formData).subscribe(response=>{});
+    this.eventService.create(formData).subscribe(response=>{
+      this.router.navigate(['aso/eventManagerAso']);
+    });
   }
 
   onFileSelected(e: any) {

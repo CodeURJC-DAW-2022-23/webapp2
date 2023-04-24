@@ -69,8 +69,9 @@ export class EditeventComponent {
         const formDataImg=new FormData();
         formDataImg.append('newImage', this.file);
         this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
-        this.router.navigate(['admin/events']);
+        
       }
+      this.router.navigate(['admin/events']);
     });
   }
   onFileSelected(e: any) {
