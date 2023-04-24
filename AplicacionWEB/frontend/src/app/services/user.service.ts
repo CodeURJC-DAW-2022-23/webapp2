@@ -1,4 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+
+import { HttpClient, HttpParams,  HttpHeaders } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 
 import { User } from '../models/user.model';
@@ -44,6 +46,19 @@ export class UserService {
         return throwError('Algo salio mal');
       })
     );
+  }
+
+  allUsers():Observable<any>{
+    return this.http.get(BASE_URL+"/all").pipe() as Observable<User[]>;
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(BASE_URL + '/' + id, { withCredentials: true });
+  }
+
+  adminEditUser(id: number, user: User) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.patch(BASE_URL + '/admin/'+id, JSON.stringify(user),{headers}).pipe();
   }
 
 }

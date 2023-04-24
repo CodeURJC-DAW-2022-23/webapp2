@@ -63,15 +63,13 @@
                     <tr *ngFor="let event of events">
                       <td>{{event.id}}</td>
                       <td>{{event.name}}</td>
-                      <td>{{event.date}}</td>
+                      <td>{{event.date}}</td> 
                       <td>{{event.location}}</td>
                       <td><form action="/admin/editarEventos/">
-                        <input type="submit" class="btn btn-sm btn-outline-success" value="Modificar">
-                        <input type="hidden" name="_csrf" value=""/>
+                        <button (click)="modify(event.id)" id="modify" class="btn btn-sm btn-outline-success" type="submit">Modificar</button>
                       </form></td>
-                        <td><form action="/admin/editarEventos//delete" method="post">
-                        <input type="submit" class="btn btn-sm btn-outline-danger" value="Eliminar">
-                        <input type="hidden" name="_csrf" value=""/>
+                        <td><form action="" method="post">
+                        <button (click)="delete(event.id)" id="delete" class="btn btn-sm btn-outline-danger" type="submit">Eliminar</button>
                       </form></td>
                     </tr>
                     
