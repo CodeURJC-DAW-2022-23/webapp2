@@ -33,6 +33,9 @@ export class UserComponent implements OnInit  {
         this.username=this.u.username;
         if(!(this.u.rol === "BASE"))
           this.router.navigate(['']);
+      },
+      error => {
+        this.router.navigate(['']);
       }
     );
     
