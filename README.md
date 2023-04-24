@@ -545,27 +545,27 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 
 **Andrea Cardenal Millán:**
 
-- Tareas realizadas: 
+- Tareas realizadas: Me he encargado de gestionar las funcionalidades disponibles para un usuario administrador. Entre ellas están consultar, modificar y borrar usuarios, eventos y asociaciones.
 
 - 5 commits más significativos: 
 
 | Commit | Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	|  |  | 
-| 2	|  |  |
-| 3 |  |  |
-| 4 |  |  |
-| 5	|  |  |
+| 1	| Métodos de edit aso y edit event | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/0216c9264f88e8a532e31c2746b0e5ba14b5d762 | 
+| 2	| Métodos edit user | https://github.com/CodeURJC-DAW-2022-23/webapp2/commits?author=AndreaCardenalMillan |
+| 3 | Componente admin | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/cd519049f32f853a3c3256d098b70c86855eafba |
+| 4 | Crear componente usuarios desde el punto de vista administrador | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/ebc8a0d2011d0c580bc66f20adcb6e77bebf7ed9 |
+| 5	| Crear componente asociaciones desde el punto de vista administrador | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/dc0e424e946cafaf557afb0073089a6a0169035d |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	|  |
-| 2	|  |
-| 3 |  |  
-| 4 |  |  
-| 5	|  | 
+| 1	| admin.component.ts |
+| 2	| events.component.ts |
+| 3 | aso.component.ts |  
+| 4 | users.component.ts |  
+| 5	| details.component.ts | 
 
 
 **Daniel Gallardo de Eugenio:**
