@@ -44,7 +44,6 @@ export class UserComponent implements OnInit  {
 
   logout(){
     this.authService.logOut();
-    this.router.navigate(['']);
   }
 
   toogleSidebar(){

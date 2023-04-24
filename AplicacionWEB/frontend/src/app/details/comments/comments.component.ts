@@ -34,11 +34,15 @@ export class CommentsComponent {
     if(this.authService.logged){
       this.comment.event=this.eventC;
       this.comment.description=this.description;
-      this.commentService.addComment(this.comment).subscribe(response=>{});
+      this.commentService.addComment(this.comment).subscribe(
+        response=>{
+          this.loadComments();
+        });
       this.description="";
     }else{
       this.router.navigate(['/login']);
     }
+    
   }
 }
 
