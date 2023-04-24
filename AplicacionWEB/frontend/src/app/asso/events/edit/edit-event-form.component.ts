@@ -30,12 +30,6 @@ export class EditEventAssoComponent {
     const [hours2, minutes2] = this.event.startTime.split(':');
 
     const formData = new FormData();
-    if (this.areImage){
-      const formDataImg=new FormData();
-      formDataImg.append('newImage', this.file);
-      
-      this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
-    }
     formData.append('name', this.event.name);
     formData.append('date', this.event.date);
     formData.append('month', "agosto");
@@ -47,7 +41,15 @@ export class EditEventAssoComponent {
     formData.append('starTime', this.event.startTime);
     formData.append('endTime', this.event.endTime);
     formData.append('duration', `${Number(hours1) - Number(hours2)}h ${Number(minutes1) - Number(minutes2)}min`);
-    this.eventService.edit(formData, this.event.id).subscribe(response=>{});
+    this.eventService.edit(formData, this.event.id).subscribe(response=>{
+      
+      if (this.areImage){
+        const formDataImg=new FormData();
+        formDataImg.append('newImage', this.file);
+        
+        this.eventService.sendImage(formDataImg,this.event.id).subscribe(response=>{});
+      }
+    });
   }
   
   onFileSelected(e: any) {
