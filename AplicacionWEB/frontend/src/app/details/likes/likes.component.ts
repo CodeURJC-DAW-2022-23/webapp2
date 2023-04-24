@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from 'src/app/models/event.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,9 +11,16 @@ import { EventService } from 'src/app/services/event.service';
   templateUrl: './likes.component.html',
   styleUrls: ['./likes.component.css']
 })
-export class LikesComponent {
-  constructor(private authService:AuthService, private router: Router, private eventService:EventService){}
- 
+export class LikesComponent implements OnInit {
+  constructor(private elementRef:ElementRef, private authService:AuthService, private router: Router, private eventService:EventService){}
+  
+  likeBarWidth: number = 0;
+  dislikeBarWidth: number = 0;
+
+  ngOnInit() {
+    this.calculateBar();
+  }
+
   @Input()
   eventL:Event;
 
@@ -53,4 +60,16 @@ export class LikesComponent {
     this.router.navigate(['/login']);
   }
  }
+
+ calculateBar() {
+  const likes = parseInt(this.elementRef.nativeElement.querySelector('#likeValue').value);
+  const dislikes = parseInt(this.elementRef.nativeElement.querySelector('#dislikeValue').value);
+  const total = likes + dislikes;
+
+  const percentageLikes = (likes / total) * 100;
+  const percentageDislikes = (dislikes / total) * 100;
+
+  this.likeBarWidth = percentageLikes;
+  this.dislikeBarWidth = percentageDislikes;
+}
 }

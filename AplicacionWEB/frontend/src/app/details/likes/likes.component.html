@@ -4,16 +4,16 @@
     <div id="puntuation">
         <div class="container barLikes">
                 <div class="like">
-                    <a (click)="like()"><fa-icon [icon]="likeStyle"></fa-icon></a>{{eventL.totalLikes}}
+                    <a (click)="like()" [(ngModel)]="likeBarWidth" (ngModelChange)="calculateBar()"><fa-icon [icon]="likeStyle"></fa-icon></a>{{eventL.totalLikes}}
                 </div>
                 <div class="barGraph">
                     <div id="bar">
-                        <div id="likeArea"></div>
-                        <div id="dislikeArea"></div>
+                        <div id="likeArea" [style.width.%]="likeBarWidth"></div>
+                        <div id="dislikeArea" [style.width.%]="dislikeBarWidth"></div>
                     </div>
                 </div>
                 <div class="dislike">
-                    {{eventL.totalDislikes}}<a (click)="dislike()"><fa-icon [icon]="dislikeStyle"></fa-icon></a>
+                    {{eventL.totalDislikes}}<a (click)="dislike()" [(ngModel)]="dislikeBarWidth" (ngModelChange)="calculateBar()"><fa-icon [icon]="dislikeStyle"></fa-icon></a>
                 </div>
         </div>
     </div>
