@@ -441,3 +441,154 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 | 3 |  |  
 | 4 |  |  
 | 5	|  | 
+
+
+## Fase 4:
+
+## Preparación del entorno de desarrollo
+
+1. Instalar Docker Desktop
+2. Crear una cuenta en Dockerhub
+3. Abrir una bash
+4. Clonar el repositorio con el siguiente comando: git clone https://github.com/CodeURJC-DAW-2022-23/webapp2.git
+5. Navegar hasta la carpeta docker con: cd webapp2/code/docker.
+6. Ejecute el comando "docker-compose up".
+7. Abrir otra shell en la raíz de la aplicación
+8. Ejecute el comando "cd code/frontend".
+9. Ejecute el comando "npm install".
+10. Ejecute el comando "npm run dev".
+
+## Diagrama de clases y templates de la SPA
+
+![Diagrama1](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/diagrama1.png?raw=true)
+![Diagrama2](https://github.com/CodeURJC-DAW-2022-23/webapp2/blob/main/AplicacionWEB/screenshot/diagrama2.png?raw=true)
+
+## Participación de miembros
+
+**Daniel Pérez Moraleda:**
+
+
+- Tareas realizadas: 
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+**Fiorella Victoria Hernández Mejía:**
+
+
+- Tareas realizadas: 
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+**Rubén González de Pablo:**
+
+- Tareas realizadas: 
+
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
+
+**Andrea Cardenal Millán:**
+
+- Tareas realizadas: Me he encargado de gestionar las funcionalidades disponibles para un usuario administrador. Entre ellas están consultar, modificar y borrar usuarios, eventos y asociaciones.
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	| Métodos de edit aso y edit event | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/0216c9264f88e8a532e31c2746b0e5ba14b5d762 | 
+| 2	| Métodos edit user | https://github.com/CodeURJC-DAW-2022-23/webapp2/commits?author=AndreaCardenalMillan |
+| 3 | Componente admin | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/cd519049f32f853a3c3256d098b70c86855eafba |
+| 4 | Crear componente usuarios desde el punto de vista administrador | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/ebc8a0d2011d0c580bc66f20adcb6e77bebf7ed9 |
+| 5	| Crear componente asociaciones desde el punto de vista administrador | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/dc0e424e946cafaf557afb0073089a6a0169035d |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	| admin.component.ts |
+| 2	| events.component.ts |
+| 3 | aso.component.ts |  
+| 4 | users.component.ts |  
+| 5	| details.component.ts | 
+
+
+**Daniel Gallardo de Eugenio:**
+
+- Tareas realizadas: 
+
+
+- 5 commits más significativos: 
+
+| Commit | Descripcion	| Link |
+| --- | :---: | :---: |
+| 1	|  |  |
+| 2	|  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5	|  |  |
+
+- 5 ficheros que más ha participado: 
+
+| Numero	| Fichero	|
+| --- | :---: | 
+| 1	|  |
+| 2	|  |
+| 3 |  |  
+| 4 |  |  
+| 5	|  | 
