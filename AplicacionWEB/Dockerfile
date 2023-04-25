@@ -6,7 +6,7 @@ WORKDIR /project
 COPY frontend/ .
 
 RUN npm install
-RUN npm run build --prod --base-href=/new/
+RUN npm run ng build -- --configuration production --base-href=/new/
 
 #---------------------------------------------------
 
