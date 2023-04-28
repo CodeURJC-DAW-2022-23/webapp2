@@ -186,6 +186,8 @@ public class EventRestController {
         }
         Event eventDB = eventDBOp.get();
         event.setAsociation(eventDB.getAsociation());
+        event.setDuration(calculateDuration(event.getStartTime(), event.getEndTime()));
+        event.setMonth(calculateMonth(event.getDate().toString()));
         if (principal == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -380,7 +382,7 @@ public class EventRestController {
         
         return response;
     }
-    private String[] monthsValue={"", "All", "ENERO", "FEBRERO", "MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
+    private String[] monthsValue={"All", "ENERO", "FEBRERO", "MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"};
     private String calculateMonth(String date){
         String[] dateParts=date.split("-");
         String response=monthsValue[Integer.parseInt(dateParts[1])];
