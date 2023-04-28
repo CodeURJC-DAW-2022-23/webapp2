@@ -470,26 +470,27 @@ Ha implementado el API REST relativa a las operaciones de los eventos y la ha do
 
 - Tareas realizadas: 
 
+Implementación total de las páginas exclusivas del usuario base y la petición a API para modificar el usuario propio. Implementación del cierre de sesión en la página del usuario y la restricción a páginas no autorizadas. Además de asistir en la corrección de errores en el apartado de detalles de eventos, somo es el sistema de valoraciones y publicación de comentarios.
 
 - 5 commits más significativos: 
 
 | Commit | Descripcion	| Link |
 | --- | :---: | :---: |
-| 1	|  |  |
-| 2	|  |  |
-| 3 |  |  |
-| 4 |  |  |
-| 5	|  |  |
+| 1	| Creación del sistema de rutas en Angular. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/40de006adf90c277ffcb84c9a1ad57d86f0770b0 |
+| 2	| Creación de los distintos componentes del usuario base. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/b837b7ab7c1b04e46e184d7545094bdf22575881 |
+| 3 | Parte lógica de la lista de eventos favoritos. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/e74c83bcc9a56d8851a66e5959eb1a7c8b6b90a7 |
+| 4 | Implementación del cerrado de sesión. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/dab57dc11bba8e8f356fafb9ca063aa54be063d2 |
+| 5	| Editar los datos de mi usuario base. | https://github.com/CodeURJC-DAW-2022-23/webapp2/commit/7c7051127539986a847b3641639facc7c5566fb6 |
 
 - 5 ficheros que más ha participado: 
 
 | Numero	| Fichero	|
 | --- | :---: | 
-| 1	|  |
-| 2	|  |
-| 3 |  |  
-| 4 |  |  
-| 5	|  | 
+| 1	| my-user-favs.component.ts |
+| 2	| edit-my-user.component.ts |
+| 3 | user.service.ts |  
+| 4 | app-routing.module.ts |  
+| 5	| likes.component.html | 
 
 **Fiorella Victoria Hernández Mejía:**
 
