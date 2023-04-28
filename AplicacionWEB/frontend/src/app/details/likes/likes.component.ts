@@ -28,17 +28,16 @@ export class LikesComponent implements OnInit {
  dislikeStyle=faDislike;
  like(){
   if(this.authService.logged){
-    this.eventService.giveLike(this.eventL.id).subscribe(response=>{
-      if(this.likeStyle == faLike){
-        this.likeStyle = faLikeSelect;
-        this.eventL.totalLikes+=1;
-      }
-      else{
-        this.likeStyle = faLike
-        this.eventL.totalLikes-=1;
-      }
-      this.calculateBar();
-    });
+    this.eventService.giveLike(this.eventL.id).subscribe(response=>{});
+    if(this.likeStyle == faLike){
+      this.likeStyle = faLikeSelect;
+      this.eventL.totalLikes+=1;
+    }
+    else{
+      this.likeStyle = faLike
+      this.eventL.totalLikes-=1;
+    }
+    this.calculateBar();
     
   }else{
     this.router.navigate(['/login']);
@@ -47,18 +46,17 @@ export class LikesComponent implements OnInit {
  }
  dislike(){
   if(this.authService.logged){
-    this.eventService.giveDislike(this.eventL.id).subscribe(response=>{
-      if(this.dislikeStyle == faDislike){
-        this.dislikeStyle = faDislikeSelect;
-        this.eventL.totalDislikes+=1;
-      }
-        
-      else{ 
-        this.dislikeStyle = faDislike;
-        this.eventL.totalDislikes-=1;
-      }
-      this.calculateBar();
-    });
+    this.eventService.giveDislike(this.eventL.id).subscribe(response=>{});
+    if(this.dislikeStyle == faDislike){
+      this.dislikeStyle = faDislikeSelect;
+      this.eventL.totalDislikes+=1;
+    }
+      
+    else{ 
+      this.dislikeStyle = faDislike;
+      this.eventL.totalDislikes-=1;
+    }
+    this.calculateBar();
     
   }else{
     this.router.navigate(['/login']);
