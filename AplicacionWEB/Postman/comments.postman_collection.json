@@ -114,6 +114,31 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "like Comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:8443/api/comment/like/16",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"comment",
+						"like",
+						"16"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

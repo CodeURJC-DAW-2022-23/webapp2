@@ -24,7 +24,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/events/11",
+					"raw": "https://127.0.0.1:8443/api/events/4",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -36,7 +36,7 @@
 					"path": [
 						"api",
 						"events",
-						"11"
+						"4"
 					]
 				}
 			},
@@ -48,7 +48,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/events/filters?name=&month=&campus=&asociation=&page=1",
+					"raw": "https://127.0.0.1:8443/api/events/filters?name=&month=&campus=&asociation=&page=0",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -81,7 +81,7 @@
 						},
 						{
 							"key": "page",
-							"value": "1"
+							"value": "0"
 						}
 					]
 				}
@@ -103,7 +103,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/events/2",
+					"raw": "https://127.0.0.1:8443/api/events/12",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -115,7 +115,7 @@
 					"path": [
 						"api",
 						"events",
-						"2"
+						"12"
 					]
 				}
 			},
@@ -133,17 +133,17 @@
 							"key": "newImage",
 							"contentType": "",
 							"type": "file",
-							"src": "/C:/Users/X3500PC/Pictures/Screenshots/Captura de pantalla 2023-03-02 234226.png"
+							"src": "/C:/Users/X3500PC/Pictures/Screenshots/Captura de pantalla 2023-03-25 223114.png"
 						},
 						{
 							"key": "name",
-							"value": "EventóTest",
-							"contentType": "charset=UTF-8",
+							"value": "Evento examen",
+							"contentType": "",
 							"type": "text"
 						},
 						{
 							"key": "date",
-							"value": "2025-03-25",
+							"value": "2025-07-25",
 							"type": "text"
 						},
 						{
@@ -173,7 +173,7 @@
 						},
 						{
 							"key": "booking",
-							"value": "true",
+							"value": "false",
 							"type": "text"
 						},
 						{
@@ -183,22 +183,12 @@
 						},
 						{
 							"key": "endTime",
-							"value": "19:30",
+							"value": "19:20",
 							"type": "text"
 						},
 						{
 							"key": "duration",
 							"value": "6h 0min",
-							"type": "text"
-						},
-						{
-							"key": "totalLikes",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "totalDislikes",
-							"value": "3",
 							"type": "text"
 						}
 					]
@@ -232,7 +222,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "casa",
+							"value": "coche",
 							"type": "text"
 						},
 						{
@@ -327,7 +317,7 @@
 						{
 							"key": "newImage",
 							"type": "file",
-							"src": "/C:/Users/X3500PC/Pictures/Screenshots/Captura de pantalla_20230226_195607.png"
+							"src": "/C:/Users/X3500PC/Pictures/Screenshots/Captura de pantalla 2023-03-24 130601.png"
 						}
 					]
 				},
@@ -357,7 +347,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://127.0.0.1:8443/api/events/image/11",
+					"raw": "https://127.0.0.1:8443/api/events/image/4",
 					"protocol": "https",
 					"host": [
 						"127",
@@ -370,7 +360,81 @@
 						"api",
 						"events",
 						"image",
-						"11"
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:8443/api/events/all",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"events",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "like",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:8443/api/events/like/4",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"events",
+						"like",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dislike",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:8443/api/events/dislike/4",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"events",
+						"dislike",
+						"4"
 					]
 				}
 			},

@@ -266,7 +266,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"test@email.com\",\r\n    \"username\": \"test\",\r\n    \"encodedPassword\": \"1234\",\r\n    \"rol\": \"BASE\"\r\n}",
+					"raw": "{\r\n    \"email\": \"testuser@email.com\",\r\n    \"username\": \"user\",\r\n    \"encodedPassword\": \"1234\",\r\n    \"rol\": \"BASE\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -323,6 +323,10 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "https://127.0.0.1:8443/api/users/me/favorites/11",
 					"protocol": "https",
@@ -339,6 +343,30 @@
 						"me",
 						"favorites",
 						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://127.0.0.1:8443/api/users/all",
+					"protocol": "https",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"users",
+						"all"
 					]
 				}
 			},
